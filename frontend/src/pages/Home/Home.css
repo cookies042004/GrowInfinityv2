@@ -1,0 +1,11 @@
+.homeBanner {
+    background: url('../../assets/img/homebanner.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+}
+
+.experience-card:hover .experience-icon {
+    color: white !important;
+}

@@ -1,0 +1,199 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AdminLogin } from "./admin/pages/auth/AdminLogin.jsx";
+import { Dashboard } from "./admin/Dashboard.jsx";
+import PrivateRoute from "./admin/components/PrivateRoute.jsx";
+import { AddPropertyCategory } from "./admin/pages/category/AddPropertyCategory.jsx";
+import { Error404 } from "./components/Error404.jsx";
+import { ViewPropertyCategory } from "./admin/pages/category/ViewPropertyCategory.jsx";
+import { ViewContact } from "./admin/pages/contact/ViewContact.jsx";
+import { AddNews } from "./admin/pages/news/AddNews.jsx";
+import { ViewNews } from "./admin/pages/news/ViewNews.jsx";
+import { UpdateNews } from "./admin/pages/news/UpdateNews.jsx";
+import { AddAmenity } from "./admin/pages/amenity/AddAmenity.jsx";
+import { ViewAmenity } from "./admin/pages/amenity/ViewAmenity.jsx";
+import { UpdateAmenity } from "./admin/pages/amenity/UpdateAmenity.jsx";
+import { AddProperty } from "./admin/pages/property/AddProperty.jsx";
+import { ViewProperty } from "./admin/pages/property/ViewProperty.jsx";
+import { Home } from "./pages/Home/Home.jsx";
+import { About } from "./pages/About/About.jsx";
+import { Projects } from "./pages/Projects/Projects.jsx";
+import { Services } from "./pages/Services/Services.jsx";
+import { News } from "./pages/News/News.jsx";
+import { Contact } from "./pages/Contact/Contact.jsx";
+import { Brochure } from "./pages/Brochure/Brochure.jsx";
+import { AddBrochure } from "./admin/pages/brochure/AddBrochure.jsx";
+import { ViewBrochure } from "./admin/pages/brochure/ViewBrochure.jsx";
+import { UpdateBrochure } from "./admin/pages/brochure/UpdateBrochure.jsx";
+import { UpdateProperty } from "./admin/pages/property/UpdateProperty.jsx";
+import { Search } from "./pages/Search/Search.jsx";
+import { ProjectDetails } from "./pages/ProjectDetails/ProjectDetails.jsx";
+
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/project/:id" element={<ProjectDetails />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/news" element={<News />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/brochure" element={<Brochure />} />
+      <Route path="/search" element={<Search />} />
+
+      {/* Admin Routes  */}
+      <Route path="/admin" element={<AdminLogin />} />
+
+      {/* Admin Protected Routes  */}
+
+      {/* Dashboard  */}
+      <Route
+        path="/admin/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Property */}
+      <Route
+        path="/admin/dashboard/add-property"
+        element={
+          <PrivateRoute>
+            <AddProperty />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/view-property"
+        element={
+          <PrivateRoute>
+            <ViewProperty />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/update-property/:id"
+        element={
+          <PrivateRoute>
+            <UpdateProperty />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Property Category  */}
+      <Route
+        path="/admin/dashboard/add-property-category"
+        element={
+          <PrivateRoute>
+            <AddPropertyCategory />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/view-property-category"
+        element={
+          <PrivateRoute>
+            <ViewPropertyCategory />
+          </PrivateRoute>
+        }
+      />
+      {/* News  */}
+      <Route
+        path="/admin/dashboard/add-news"
+        element={
+          <PrivateRoute>
+            <AddNews />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/view-news"
+        element={
+          <PrivateRoute>
+            <ViewNews />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/dashboard/update-news/:id"
+        element={
+          <PrivateRoute>
+            <UpdateNews />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Amenity  */}
+      <Route
+        path="/admin/dashboard/add-amenity"
+        element={
+          <PrivateRoute>
+            <AddAmenity />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/view-amenity"
+        element={
+          <PrivateRoute>
+            <ViewAmenity />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/update-amenity/:id"
+        element={
+          <PrivateRoute>
+            <UpdateAmenity />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Brochure  */}
+      <Route
+        path="/admin/dashboard/add-brochure"
+        element={
+          <PrivateRoute>
+            <AddBrochure />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/view-brochure"
+        element={
+          <PrivateRoute>
+            <ViewBrochure />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/dashboard/update-brochure/:id"
+        element={
+          <PrivateRoute>
+            <UpdateBrochure />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Contact  */}
+      <Route
+        path="/admin/dashboard/view-contact"
+        element={
+          <PrivateRoute>
+            <ViewContact />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Error  */}
+      <Route path="/*" element={<Error404 />} />
+    </Routes>
+  );
+};
+
+export default App;
