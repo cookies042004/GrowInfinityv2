@@ -160,9 +160,59 @@ const deleteProperty = async (req, res) => {
   }
 };
 
+// Search Property
+const searchProperty = async (req, res) => {
+  console.log("Search Property Request:", req.query);
+  try {
+    const { query } = req.query;
+    if (!query) {
+      return res.status(400).json({
+        success: false,
+        message: "Query parameter is required",
+      });
+    }
+
+    // Use a regular expression for case-insensitive search
+    const searchRegex = new RegExp(query, 'i');
+
+    const properties = await Property.find({
+      $or: [
+        { name: searchRegex },
+        { location: searchRegex },
+        { address: searchRegex },
+        { city: searchRegex },
+        { state: searchRegex },
+      ],
+    })
+      .populate("category", "name")
+      .populate("amenities", "name type");
+
+    if (properties.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No properties found matching your search.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Properties successfully fetched!",
+      properties,
+    });
+  } catch (error) {
+    console.log("Error in searchProperty:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error,
+    });
+  }
+};
+
 module.exports = {
   getProperty,
   getSingleProperty,
   createProperty,
   deleteProperty,
+  searchProperty
 };

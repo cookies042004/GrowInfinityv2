@@ -57,7 +57,7 @@ export const ProjectDetails = () => {
       {property && (
         <div className="bg-[#eeeeee] grid sm:grid-cols-12">
           <div className="col-span-8 m-5">
-            <div className="bg-white p-5">
+            <div className="bg-white p-10">
               <h1 className="font-bold text-4xl font-dmsans">
                 {property.name}
               </h1>

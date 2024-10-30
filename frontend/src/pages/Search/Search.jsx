@@ -2,8 +2,18 @@ import React from "react";
 import { Layout } from "../../components/Layout";
 import "./Search.css";
 import { PropertyCard } from "../../components/PropertyCard";
+import { useParams } from "react-router-dom";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const Search = () => {
+  const { id } = useParams();
+  const apiUrl = `http://localhost:4000/api/v1/property/search?query=${id}`
+
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
+
+  const properties = data.properties;
+
+
   return (
     <Layout>
       {/* Search Hero  */}
@@ -22,24 +32,26 @@ export const Search = () => {
       </div>
 
       <div className="flex my-8 justify-center">
-        <h3 className="text-3xl">Search results for <span className="font-bold">'Abcd'</span> </h3>
+        <h3 className="text-5xl">Search results for <span className="font-bold capitalize">{id}</span> </h3>
       </div>
 
-      <div className="flex justify-around">
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
+      <div className="grid sm:grid-cols-12 mx-16">
+        {
+          properties && properties.map((property) => {
+            return (
+              <div className="col-span-4 flex justify-center">
+                <PropertyCard key={property._id}
+                  id={property._id}
+                  name={property.name}
+                  address={property.address}
+                  image={property.propertyImages[0]} />
+              </div>
+            )
+          })
+        }
+
       </div>
-      <div className="flex justify-around">
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-      </div>
-      <div className="flex justify-around">
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-      </div>
+
     </Layout>
   );
 };
