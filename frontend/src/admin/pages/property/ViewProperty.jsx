@@ -127,17 +127,17 @@ export const ViewProperty = () => {
                               <TableCell>{property.parking}</TableCell>
                               <TableCell>{property.furnishType}</TableCell>
                               <TableCell>
-                                {property.amenity.filter((item) => item.type == 'flat_amenity').map((amenityItem, i) => (
+                                {property.amenities.filter((item) => item.type == 'flat_amenity').map((amenityItem, i) => (
                                   <span key={i}>{amenityItem.name + " "}</span>
                                 ))}
                               </TableCell>
                               <TableCell>
-                                {property.amenity.filter((item) => item.type == 'society_amenity' ).map((amenityItem, i) => (
+                                {property.amenities.filter((item) => item.type == 'society_amenity' ).map((amenityItem, i) => (
                                   <span key={i}>{amenityItem.name + " "}</span>
                                 ))}
                               </TableCell>
                               <TableCell>
-                                {property.amenity.filter((item) => item.type == 'location_advantages').map((amenityItem, i) => (
+                                {property.amenities.filter((item) => item.type == 'location_advantages').map((amenityItem, i) => (
                                   <span key={i}>{amenityItem.name + " "}</span>
                                 ))}
                               </TableCell>
@@ -173,24 +173,6 @@ export const ViewProperty = () => {
                               </TableCell>
                               <TableCell>
                                 <div className="flex sm:block">
-                                  <Link
-                                    to={`/admin/dashboard/update-property/${property._id}`}
-                                  >
-                                    <Button
-                                      // onClick={() => handleEdit(property._id)}
-                                      endIcon={<EditIcon />}
-                                      variant="outlined"
-                                      size="small"
-                                      color="success"
-                                      style={{
-                                        textTransform: "none",
-                                        marginRight: "20px",
-                                        marginBottom: "10px",
-                                      }}
-                                    >
-                                      Edit
-                                    </Button>
-                                  </Link>
                                   <Button
                                     onClick={() => handleDelete(property._id)}
                                     endIcon={<DeleteIcon />}

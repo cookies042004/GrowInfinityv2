@@ -19,6 +19,7 @@ import HomeIcon from "@mui/icons-material/Home";
 
 import PureCounter from "@srexi/purecounterjs";
 import { Link } from "react-router-dom";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const Home = () => {
   useEffect(() => {
@@ -43,6 +44,10 @@ export const Home = () => {
     setProperty(false);
   };
 
+  const apiUrl = "http://localhost:4000/api/v1/property";
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
+
+  const properties = data.properties;
   return (
     <Layout>
       {/* Hero  */}
@@ -213,42 +218,72 @@ export const Home = () => {
 
       {/* Featured Projects  */}
       <div className="bg-white">
-        <h1 className="text-center text-black lg:text-6xl text-3xl font-bold py-3 lg:font-medium">
+        <h1 className="text-center text-black lg:text-6xl text-3xl font-bold py-8 lg:font-medium">
           Featured Projects
         </h1>
         <div className="flex justify-around mx-5 my-4 overflow-hidden">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+          {properties &&
+            properties
+              .filter(
+                (property) => property.category.name == "Featured Projects"
+              )
+              .slice(0, 3)
+              .map((property) => {
+                return (
+                  <PropertyCard
+                    key={property._id}
+                    id={property._id}
+                    name={property.name}
+                    address={property.address}
+                    image={property.propertyImages[0]}
+                  />
+                );
+              })}
         </div>
 
         <div className="flex justify-center my-3">
-          <button
-            className="w-[30%] bg-[#03002E] text-white rounded-[36.06px] font-normal font-dmsans py-1 md:text-lg lg:text-[27.29px]"
-            style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
-          >
-            View All
-          </button>
+          <Link to={"/property/featured-projects"}>
+            <button
+              className=" bg-[#03002E] text-white rounded-3xl font-normal font-dmsans px-20 py-2 text-lg lg:text-xl"
+              style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            >
+              View All
+            </button>
+          </Link>
         </div>
       </div>
 
       {/* Luxury Project */}
       <div className="bg-white">
-        <h1 className="text-center text-black lg:text-6xl text-3xl font-bold py-3 lg:font-medium">
+        <h1 className="text-center text-black lg:text-6xl text-3xl font-bold py-8 lg:font-medium">
           Our Luxury Projects
         </h1>
-        <div className="flex justify-between mx-5 my-4 overflow-hidden">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+        <div className="flex justify-around mx-5 my-4 overflow-hidden">
+          {properties &&
+            properties
+              .filter((property) => property.category.name == "Luxury Project")
+              .slice(0, 3)
+              .map((property) => {
+                return (
+                  <PropertyCard
+                    key={property._id}
+                    id={property._id}
+                    name={property.name}
+                    address={property.address}
+                    image={property.propertyImages[0]}
+                  />
+                );
+              })}
         </div>
         <div className="flex justify-center my-3">
-          <button
-            className="w-[30%] bg-[#03002E] text-white rounded-[36.06px] font-normal font-dmsans py-1 md:text-lg lg:text-[27.29px] "
-            style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
-          >
-            View All
-          </button>
+          <Link to={"/property/luxury-project"}>
+            <button
+              className=" bg-[#03002E] text-white rounded-3xl font-normal font-dmsans px-20 py-2 text-lg lg:text-xl"
+              style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            >
+              View All
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -391,17 +426,31 @@ export const Home = () => {
           Top Properties
         </h1>
         <div className="flex justify-around mx-5 my-4 overflow-hidden">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+          {properties &&
+            properties
+              .filter((property) => property.category.name == "Top Properties")
+              .slice(0, 3)
+              .map((property) => {
+                return (
+                  <PropertyCard
+                    key={property._id}
+                    id={property._id}
+                    name={property.name}
+                    address={property.address}
+                    image={property.propertyImages[0]}
+                  />
+                );
+              })}
         </div>
         <div className="flex justify-center my-3">
-          <button
-            className="w-[30%] bg-[#03002E] text-white rounded-[36.06px] font-normal font-dmsans py-1 md:text-lg lg:text-[27.29px]"
-            style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
-          >
-            View All
-          </button>
+          <Link to={"/property/top-properties"}>
+            <button
+              className=" bg-[#03002E] text-white rounded-3xl font-normal font-dmsans px-20 py-2 text-lg lg:text-xl"
+              style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            >
+              View All
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -414,7 +463,10 @@ export const Home = () => {
             Looking To Buy Or Sell Your Property?
           </h2>
           <div>
-            <Link to='/contact' className="flex items-center gap-4 bg-white p-3 m-5 rounded-[32px] text-[#03002E] text-lg">
+            <Link
+              to="/contact"
+              className="flex items-center gap-4 bg-white p-3 m-5 rounded-[32px] text-[#03002E] text-lg"
+            >
               Get in touch{" "}
               <span>
                 <img src={ArrowCircleUp} alt="" width={40} />

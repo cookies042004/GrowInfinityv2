@@ -10,8 +10,15 @@ import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import PiggyBank from "../../assets/img/piggybank.png";
 import { PropertyCard } from "../../components/PropertyCard";
+import { Link } from "react-router-dom";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const Services = () => {
+  const apiUrl = "http://localhost:4000/api/v1/property";
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
+
+  const properties = data.properties;
+
   return (
     <Layout>
       {/* Service Hero  */}
@@ -112,21 +119,35 @@ export const Services = () => {
 
       {/* Top Properties  */}
       <div className="bg-white">
-        <h1 className="text-center text-black text-6xl pt-3 pb-8 font-medium">
+        <h1 className="text-center text-black  text-3xl md:text-4xl font-bold lg:text-6xl  py-3 lg:font-medium">
           Top Properties
         </h1>
-        <div className="flex justify-between mx-5 my-4 overflow-hidden">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+        <div className="flex justify-around mx-5 my-4 overflow-hidden">
+          {properties &&
+            properties
+              .filter((property) => property.category.name == "Top Properties")
+              .slice(0, 3)
+              .map((property) => {
+                return (
+                  <PropertyCard
+                    key={property._id}
+                    id={property._id}
+                    name={property.name}
+                    address={property.address}
+                    image={property.propertyImages[0]}
+                  />
+                );
+              })}
         </div>
-        <div className="my-4 mx-3">
-          <button
-            className="w-[100%] bg-[#03002E] text-white rounded-[36.06px] font-normal font-dmsans py-1 text-[27.29px]"
-            style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
-          >
-            View All
-          </button>
+        <div className="flex justify-center my-3">
+          <Link to={"/property/top-properties"}>
+            <button
+              className=" bg-[#03002E] text-white rounded-3xl font-normal font-dmsans px-20 py-2 text-lg lg:text-2xl"
+              style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            >
+              View All
+            </button>
+          </Link>
         </div>
       </div>
     </Layout>

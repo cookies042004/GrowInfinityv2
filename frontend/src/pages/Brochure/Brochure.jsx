@@ -30,7 +30,7 @@ export const Brochure = () => {
       </div>
 
       <div>
-        <h1 className="font-dmsans text-4xl font-bold lg:my-3 py-3 lg:font-medium lg:text-[59.08px] text-center">
+        <h1 className="font-dmsans text-4xl font-bold lg:my-3 py-8 lg:font-medium lg:text-[59.08px] text-center">
           Brochures
         </h1>
 

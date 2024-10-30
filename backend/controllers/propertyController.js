@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const Property = require("../models/property");
-const Category = require("../models/category"); 
-const Amenity = require("../models/amenity"); 
+const Category = require("../models/category");
+const Amenity = require("../models/amenity");
 
 // Get all Properties
 const getProperty = async (req, res) => {
@@ -30,7 +30,9 @@ const getProperty = async (req, res) => {
 const getSingleProperty = async (req, res) => {
   try {
     const propertyId = req.params.id;
-    const property = await Property.findById(propertyId);
+    const property = await Property.findById(propertyId)
+      .populate("category", "name")
+      .populate("amenities", "name type image");
 
     if (!property) {
       res.status(404).json({
@@ -69,26 +71,14 @@ const createProperty = async (req, res) => {
       parking,
       furnishType,
       constructionStatus,
-      amenitiesNames, // Assume this is an array of amenity names
+      amenities,
     } = req.body;
-
-    // Fetch category ObjectId
-    const categoryName = await Category.findOne({ _id: category });
-    if (!categoryName) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid category." });
-    }
-
-    // Fetch amenity ObjectIds
-    const amenities = await Amenity.find({ name: { $in: amenitiesNames } });
-    const amenityIds = amenities.map((amenity) => amenity._id);
 
     const propertyImages = req.files.propertyImages.map((file) => file.path);
     const brochure = req.files.brochure[0].path;
 
     const newProperty = new Property({
-      category: categoryName.name,
+      category,
       name,
       location,
       description,
@@ -99,7 +89,7 @@ const createProperty = async (req, res) => {
       parking,
       furnishType,
       constructionStatus,
-      amenities: amenityIds, // Use the ObjectIds of amenities
+      amenities,
       propertyImages,
       brochure,
     });

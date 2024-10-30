@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import { useFetchData } from "../../../hooks/useFetchData";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 export const AddProperty = () => {
@@ -134,15 +135,14 @@ export const AddProperty = () => {
     // Append form fields to FormData
     Object.keys(formData).forEach((key) => {
       if (
-        key === "societyAmenities" ||
-        key === "flatAmenities" ||
-        key === "locationAdvantages"
+        Array.isArray(formData[key]) &&
+        (key === "societyAmenities" ||
+          key === "flatAmenities" ||
+          key === "locationAdvantages")
       ) {
-        allSelectedAmenities.forEach(
-          (item) => formDataToSend.append("amenities", item) // Fixed from amenity to amenities
+        formData[key].forEach((item) =>
+          formDataToSend.append("amenities", item)
         );
-      } else if (Array.isArray(formData[key])) {
-        formData[key].forEach((item) => formDataToSend.append(key, item));
       } else {
         formDataToSend.append(key, formData[key]);
       }
@@ -170,17 +170,36 @@ export const AddProperty = () => {
       );
 
       if (response.status === 201) {
-        alert("Property added successfully!");
-        // Reset form...
+        toast.success("Property added successfully!");
+        setFormData({
+          category: "",
+          name: "",
+          location: "",
+          address: "",
+          description: "",
+          city: "",
+          state: "",
+          pincode: "",
+          videoLink: "",
+          constructionStatus: "",
+          parking: "",
+          furnishType: "",
+          societyAmenities: [],
+          flatAmenities: [],
+          locationAdvantages: [],
+        });
+        setUploadedImages([]); 
+        setBrochure(null); 
       }
     } catch (error) {
       console.error("Error adding property:", error);
-      alert("Failed to add property.");
+      toast.error("Failed to add property.");
     }
   };
 
   return (
     <>
+      <ToastContainer />
       <AdminLayout />
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
@@ -415,9 +434,9 @@ export const AddProperty = () => {
                             control={
                               <Checkbox
                                 color="secondary"
-                                name={amenity.name}
+                                name={amenity._id}
                                 checked={formData.societyAmenities.includes(
-                                  amenity.name
+                                  amenity._id
                                 )}
                                 onChange={(e) =>
                                   handleCheckboxChange(e, "societyAmenities")
@@ -444,9 +463,9 @@ export const AddProperty = () => {
                             control={
                               <Checkbox
                                 color="secondary"
-                                name={amenity.name}
+                                name={amenity._id}
                                 checked={formData.flatAmenities.includes(
-                                  amenity.name
+                                  amenity._id
                                 )}
                                 onChange={(e) =>
                                   handleCheckboxChange(e, "flatAmenities")
@@ -475,9 +494,9 @@ export const AddProperty = () => {
                             control={
                               <Checkbox
                                 color="secondary"
-                                name={amenity.name}
+                                name={amenity._id}
                                 checked={formData.locationAdvantages.includes(
-                                  amenity.name
+                                  amenity._id
                                 )}
                                 onChange={(e) =>
                                   handleCheckboxChange(e, "locationAdvantages")
@@ -524,7 +543,7 @@ export const AddProperty = () => {
                 <div className="w-full mb-4 p-2">
                   <FormControl component="fieldset">
                     <FormLabel id="image-upload">
-                      Upload Property Images
+                      Upload Property Images (5 images only)
                     </FormLabel>
                     <input
                       accept="image/*"

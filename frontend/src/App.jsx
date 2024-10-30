@@ -25,9 +25,9 @@ import { Brochure } from "./pages/Brochure/Brochure.jsx";
 import { AddBrochure } from "./admin/pages/brochure/AddBrochure.jsx";
 import { ViewBrochure } from "./admin/pages/brochure/ViewBrochure.jsx";
 import { UpdateBrochure } from "./admin/pages/brochure/UpdateBrochure.jsx";
-import { UpdateProperty } from "./admin/pages/property/UpdateProperty.jsx";
 import { Search } from "./pages/Search/Search.jsx";
 import { ProjectDetails } from "./pages/ProjectDetails/ProjectDetails.jsx";
+import { SingleProject } from "./pages/SingleProject/SingleProject.jsx";
 
 const App = () => {
   return (
@@ -41,6 +41,7 @@ const App = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/brochure" element={<Brochure />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/property/:id" element={<SingleProject />} />
 
       {/* Admin Routes  */}
       <Route path="/admin" element={<AdminLogin />} />
@@ -71,14 +72,6 @@ const App = () => {
         element={
           <PrivateRoute>
             <ViewProperty />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/dashboard/update-property/:id"
-        element={
-          <PrivateRoute>
-            <UpdateProperty />
           </PrivateRoute>
         }
       />
