@@ -5,7 +5,7 @@ export const NewsCard = ({ item }) => {
     <div className="bg-[#F1F1F1] rounded-[19.4px] font-poppins m-4 ">
       <div className="p-3">
         <img
-          src={`http://localhost:4000/${item.image}`}
+          src={`${process.env.BASE_URL}/${item.image}`}
           alt=""
           className="h-[280px] w-full rounded-[19.4px]"
         />

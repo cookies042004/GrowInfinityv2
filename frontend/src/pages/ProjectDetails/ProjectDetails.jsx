@@ -30,7 +30,7 @@ import Carousel from "../../components/Carousel";
 
 export const ProjectDetails = () => {
   const { id } = useParams();
-  const apiUrl = `http://localhost:4000/api/v1/property/${id}`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property/${id}`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
@@ -178,7 +178,7 @@ export const ProjectDetails = () => {
                           <div key={index} className="col-span-3 my-8">
                             <div className="flex items-center justify-center gap-3">
                               <img
-                                src={`http://localhost:4000/${amenity.image}`}
+                                src={`${process.env.BASE_URL}/${amenity.image}`}
                                 alt=""
                                 height={40}
                                 width={25}
@@ -203,7 +203,7 @@ export const ProjectDetails = () => {
                           <div key={index} className="col-span-3 my-8">
                             <div className="flex items-center justify-center gap-3">
                               <img
-                                src={`http://localhost:4000/${amenity.image}`}
+                                src={`${process.env.BASE_URL}/${amenity.image}`}
                                 alt=""
                                 height={40}
                                 width={25}
@@ -230,7 +230,7 @@ export const ProjectDetails = () => {
                           <div key={index} className="col-span-3 my-8">
                             <div className="flex items-center justify-center gap-3">
                               <img
-                                src={`http://localhost:4000/${amenity.image}`}
+                                src={`${process.env.BASE_URL}${amenity.image}`}
                                 alt=""
                                 height={40}
                                 width={25}

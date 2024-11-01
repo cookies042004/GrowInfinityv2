@@ -21,7 +21,7 @@ export const UpdateAmenity = () => {
 
   const { id } = useParams();
 
-  const apiUrl = `http://localhost:4000/api/v1/amenities/${id}`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/amenities/${id}`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
@@ -148,7 +148,7 @@ export const UpdateAmenity = () => {
                         Current Amenity Image:
                       </Typography>
                       <img
-                        src={`http://localhost:4000/${data.amenity.image}`}
+                        src={`${process.env.BASE_URL}/${data.amenity.image}`}
                         alt="Current Amenity Image"
                         style={{
                           height: "100px",

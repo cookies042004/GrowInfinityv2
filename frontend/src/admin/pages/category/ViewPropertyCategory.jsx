@@ -10,7 +10,7 @@ import { AdminLayout } from "../../components/AdminLayout";
 export const ViewPropertyCategory = () => {
   document.title = "View Property Category";
 
-  const apiUrl = `http://localhost:4000/api/v1/category`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/category`;
 
   // Custom hook to fetch data
   const { data, loading, error, refetch } = useFetchData(apiUrl);

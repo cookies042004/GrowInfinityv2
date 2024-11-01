@@ -32,7 +32,7 @@ const Carousel = ({ galleryImages }) => {
             data-carousel-item
           >
             <img
-              src={`http://localhost:4000/${image}`}
+              src={`${process.env.BASE_URL}/${image}`}
               className="block h-full object-cover object-center"
               alt={`Slide ${index + 1}`}
               style={{ width: "100%" }}

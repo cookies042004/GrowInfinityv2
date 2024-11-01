@@ -15,6 +15,7 @@ const newsRoutes = require("./routes/newsRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const brochureRoutes = require("./routes/brochureRoutes");
 const propertyRoutes = require("./routes/propertyRoutes");
+const propertyEnquiryRoutes = require("./routes/propertyEnquiryRoutes");
 
 // Middleware
 app.use(cors());
@@ -33,6 +34,7 @@ app.use("/api/v1/news", newsRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/brochures", brochureRoutes);
 app.use("/api/v1/property", propertyRoutes);
+app.use("/api/v1/property-enquiry", propertyEnquiryRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);

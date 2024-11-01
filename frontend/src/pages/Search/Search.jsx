@@ -7,7 +7,7 @@ import { useFetchData } from "../../hooks/useFetchData";
 
 export const Search = () => {
   const { id } = useParams();
-  const apiUrl = `http://localhost:4000/api/v1/property/search?query=${id}`
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property/search?query=${id}`
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 

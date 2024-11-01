@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
 
 export const Contact = () => {
-  const apiUrl = "http://localhost:4000/api/v1/contact";
+  const apiUrl = `${process.env.BASE_URL}/api/v1/contact`;
   const [formData, setFormData] = useState({
     name: "",
     email: "",

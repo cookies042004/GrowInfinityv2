@@ -7,7 +7,7 @@ import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import "./Brochure.css";
 
 export const Brochure = () => {
-  const apiUrl = "http://localhost:4000/api/v1/brochures/";
+  const apiUrl = `${process.env.BASE_URL}/api/v1/brochures/`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
   const brochures = data.brochure;
@@ -43,7 +43,7 @@ export const Brochure = () => {
                   <div className="brochure-card border rounded-lg m-3 lg:m-5 hover:shadow-2xl">
                     <div className="p-3">
                       <img
-                        src={`http://localhost:4000/${brochure.image}`}
+                        src={`${process.env.BASE_URL}/${brochure.image}`}
                         alt={brochure.name}
                         className="h-[350px] w-full rounded-lg"
                       />
@@ -58,7 +58,7 @@ export const Brochure = () => {
                       </p>
                     </div>
                     <div className="p-3">
-                      <a href={`http://localhost:4000/${brochure.pdf}`} download target='_blank'>
+                      <a href={`${process.env.BASE_URL}/${brochure.pdf}`} download target='_blank'>
                         <button
                           className="w-full p-3 border bg-[#03002e] text-white rounded-lg text-xl hover:bg-white hover:text-[#03002e] hover:border border-[#03002e]"
                           style={{

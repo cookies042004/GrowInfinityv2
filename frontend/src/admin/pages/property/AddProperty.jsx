@@ -28,7 +28,7 @@ export const AddProperty = () => {
     error: categoryError,
     loading: categoryLoading,
     refetch: refetchCategories,
-  } = useFetchData("http://localhost:4000/api/v1/category");
+  } = useFetchData(`${process.env.BASE_URL}/api/v1/category`);
 
   const categories = categoriesData?.category || [];
 
@@ -37,7 +37,7 @@ export const AddProperty = () => {
     error: amenitiesError,
     loading: amenitiesLoading,
     refetch: refetchAmenities,
-  } = useFetchData("http://localhost:4000/api/v1/amenities");
+  } = useFetchData(`${process.env.BASE_URL}/api/v1/amenities`);
 
   const amenities = amenitiesData?.amenity || [];
 
@@ -160,7 +160,7 @@ export const AddProperty = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/property",
+        `${process.env.BASE_URL}/api/v1/property`,
         formDataToSend,
         {
           headers: {

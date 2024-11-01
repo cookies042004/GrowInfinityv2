@@ -28,6 +28,7 @@ import { UpdateBrochure } from "./admin/pages/brochure/UpdateBrochure.jsx";
 import { Search } from "./pages/Search/Search.jsx";
 import { ProjectDetails } from "./pages/ProjectDetails/ProjectDetails.jsx";
 import { SingleProject } from "./pages/SingleProject/SingleProject.jsx";
+import { ViewPropertyEnquiry } from "./admin/pages/propertyEnquiry/ViewPropertyEnquiry.jsx";
 
 const App = () => {
   return (
@@ -179,6 +180,16 @@ const App = () => {
         element={
           <PrivateRoute>
             <ViewContact />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Property Enquiry  */}
+      <Route
+        path="/admin/dashboard/view-property-enquiry"
+        element={
+          <PrivateRoute>
+            <ViewPropertyEnquiry />
           </PrivateRoute>
         }
       />

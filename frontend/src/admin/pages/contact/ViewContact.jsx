@@ -19,7 +19,7 @@ import { AdminLayout } from "../../components/AdminLayout";
 
 export const ViewContact = () => {
   document.title = "View Contact";
-  const apiUrl = `http://localhost:4000/api/v1/contact`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/contact`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl); // Use the custom hook
 

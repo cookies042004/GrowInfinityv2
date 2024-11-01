@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
 
 export const Services = () => {
-  const apiUrl = "http://localhost:4000/api/v1/property";
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property`;
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
   const properties = data.properties;

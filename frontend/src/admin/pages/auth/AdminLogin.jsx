@@ -26,7 +26,7 @@ export const AdminLogin = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const apiURL = `http://localhost:4000/api/v1/admin/login`;
+  const apiURL = `${process.env.BASE_URL}/api/v1/admin/login`;
 
   const navigate = useNavigate();
 

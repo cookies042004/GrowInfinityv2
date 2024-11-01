@@ -23,7 +23,7 @@ import axios from "axios";
 
 export const ViewAmenity = () => {
   document.title = "View Amenity";
-  const apiUrl = `http://localhost:4000/api/v1/amenities`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/amenities`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
   const amenity = data.amenity;
@@ -109,7 +109,7 @@ export const ViewAmenity = () => {
                             <TableCell>{amenity.name}</TableCell>
                             <TableCell>
                               <img
-                                src={`http://localhost:4000/${amenity.image}`}
+                                src={`${process.env.BASE_URL}/${amenity.image}`}
                                 alt={amenity.name}
                                 style={{
                                   height: "50px",

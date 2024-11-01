@@ -23,7 +23,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 export const ViewNews = () => {
   document.title = "View News";
-  const apiUrl = `http://localhost:4000/api/v1/news`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/news`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl); // Use the custom hook
 
@@ -105,7 +105,7 @@ export const ViewNews = () => {
                             <TableCell>{article.url}</TableCell>
                             <TableCell>
                               <img
-                                src={`http://localhost:4000/${article.image}`}
+                                src={`${process.env.BASE_URL}/${article.image}`}
                                 alt={article.title}
                                 style={{
                                   height: "100px",

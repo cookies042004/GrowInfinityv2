@@ -8,7 +8,7 @@ import { AdminLayout } from "../../components/AdminLayout";
 
 export const AddPropertyCategory = () => {
   document.title = "Add Property Category";
-  const apiURL = `http://localhost:4000/api/v1/category`; // Ensure URL starts with `http://` or `https://`
+  const apiURL = `${process.env.BASE_URL}/api/v1/category`; // Ensure URL starts with `http://` or `https://`
 
   const [name, setName] = useState("");
 

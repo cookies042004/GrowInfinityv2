@@ -21,7 +21,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
 export const ViewBrochure = () => {
-  const apiUrl = `http://localhost:4000/api/v1/brochures/`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/brochures/`;
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
   const brochures = data.brochure;
@@ -109,7 +109,7 @@ export const ViewBrochure = () => {
                             </TableCell>
                             <TableCell>
                               <img
-                                src={`http://localhost:4000/${brochure.image}`}
+                                src={`${process.env.BASE_URL}/${brochure.image}`}
                                 alt={brochure.name}
                                 style={{
                                   height: "100px",

@@ -6,7 +6,7 @@ import { PropertyCard } from "../../components/PropertyCard";
 
 export const SingleProject = () => {
   const { id } = useParams();
-  const apiUrl = `http://localhost:4000/api/v1/property`;
+  const apiUrl = `/api/v1/property`;
   const { data, loading, error, refetch } = useFetchData(apiUrl);
   const properties = data.properties;
   return (

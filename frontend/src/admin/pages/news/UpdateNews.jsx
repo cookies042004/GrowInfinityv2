@@ -19,7 +19,7 @@ export const UpdateNews = () => {
     selectedFile: null,
   });
 
-  const apiUrl = `http://localhost:4000/api/v1/news/${id}`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/news/${id}`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
@@ -138,7 +138,7 @@ export const UpdateNews = () => {
                         Current News Image:
                       </Typography>
                       <img
-                        src={`http://localhost:4000/${data.news.image}`}
+                        src={`${process.env.BASE_URL}/${data.news.image}`}
                         alt="Current News"
                         style={{
                           height: "100px",

@@ -7,7 +7,7 @@ import { useFetchData } from "../../hooks/useFetchData";
 import { Link } from "react-router-dom";
 
 export const News = () => {
-  const apiUrl = "http://localhost:4000/api/v1/news";
+  const apiUrl = `${process.env.BASE_URL}/api/v1/news`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 

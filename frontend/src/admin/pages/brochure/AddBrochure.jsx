@@ -48,7 +48,7 @@ export const AddBrochure = () => {
 
     try {
       // Making POST request to the API
-      const apiUrl = "http://localhost:4000/api/v1/brochures/"; // Adjust the API endpoint as needed
+      const apiUrl = `${process.env.BASE_URL}/api/v1/brochures/`; // Adjust the API endpoint as needed
       const response = await axios.post(apiUrl, formDataToSend, {
         headers: {
           "Content-Type": "multipart/form-data",

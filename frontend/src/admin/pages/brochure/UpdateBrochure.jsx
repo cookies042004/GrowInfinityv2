@@ -18,7 +18,7 @@ export const UpdateBrochure = () => {
     pdf: null,
   });
 
-  const apiUrl = `http://localhost:4000/api/v1/brochures/${id}`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/brochures/${id}`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
@@ -129,7 +129,7 @@ export const UpdateBrochure = () => {
                         Current Brochure Image:
                       </Typography>
                       <img
-                        src={`http://localhost:4000/${data.brochure.image}`}
+                        src={`${process.env.BASE_URL}/${data.brochure.image}`}
                         alt="Current Brochure"
                         style={{
                           height: "100px",

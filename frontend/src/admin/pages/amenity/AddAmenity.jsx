@@ -23,7 +23,7 @@ export const AddAmenity = () => {
     selectedFile: null,
   });
 
-  const apiUrl = `http://localhost:4000/api/v1/amenities`;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/amenities`;
 
   const handleChange = (e) => {
     const { name, value } = e.target;

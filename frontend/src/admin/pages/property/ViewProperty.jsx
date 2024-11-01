@@ -23,7 +23,7 @@ import axios from "axios";
 export const ViewProperty = () => {
   document.title = "View Property";
 
-  const apiUrl = "http://localhost:4000/api/v1/property";
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
@@ -148,7 +148,7 @@ export const ViewProperty = () => {
                                     return (
                                       <img
                                         key={index}
-                                        src={`http://localhost:4000/${element}`}
+                                        src={`${process.env.BASE_URL}/${element}`}
                                         alt={
                                           element.split("/")[
                                             element.split("/").length - 1
