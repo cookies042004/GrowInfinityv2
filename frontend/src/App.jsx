@@ -17,9 +17,10 @@ import { AddProperty } from "./admin/pages/property/AddProperty.jsx";
 import { ViewProperty } from "./admin/pages/property/ViewProperty.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { About } from "./pages/About/About.jsx";
-import { Projects } from "./pages/Projects/Projects.jsx";
 import { Services } from "./pages/Services/Services.jsx";
 import { News } from "./pages/News/News.jsx";
+import { Event } from "./pages/Event/Event.jsx";
+import { SingleEvent } from "./pages/SingleEvent/SingleEvent.jsx";
 import { Contact } from "./pages/Contact/Contact.jsx";
 import { Brochure } from "./pages/Brochure/Brochure.jsx";
 import { AddBrochure } from "./admin/pages/brochure/AddBrochure.jsx";
@@ -35,7 +36,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/projects" element={<Projects />} />
+      <Route path="/event" element={<Event />} />
+      <Route path="/event/:id" element={<SingleEvent />} />
       <Route path="/project/:id" element={<ProjectDetails />} />
       <Route path="/services" element={<Services />} />
       <Route path="/news" element={<News />} />

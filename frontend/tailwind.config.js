@@ -6,7 +6,9 @@ export default {
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"], 
         poppins: ["Poppins", "sans-serif"],
-        inter: ["Inter", "sans-serif"]// Add your custom font here
+        inter: ["Inter", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+
       },
     },
   },

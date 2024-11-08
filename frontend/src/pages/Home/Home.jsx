@@ -7,64 +7,52 @@ import ApartmentIcon from "@mui/icons-material/Apartment";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
-import ArrowCircleUp from "../../assets/img/arrowcircleup.png";
 
 import { Choose } from "../../components/Choose";
 import { Testimonials } from "../../components/Testimonials";
 
 import { Typewriter } from "react-simple-typewriter";
 
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import HomeIcon from "@mui/icons-material/Home";
-
 import PureCounter from "@srexi/purecounterjs";
 import { Link, useNavigate } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
+import Icon1 from "../../assets/img/Icon.png";
+import Icon2 from "../../assets/img/Icon (1).png";
+import Icon3 from "../../assets/img/Icon (2).png";
+import gallery2 from "../../assets/img/gallery2.png";
+import gallery1 from "../../assets/img/gallery1.png";
+import gallery3 from "../../assets/img/gallery3.png";
+import home from "../../assets/img/home.png";
+import house from "../../assets/img/house.png";
+import EastIcon from "@mui/icons-material/East";
+import { Card } from "../../components/Card";
+import { NewsCard } from "../../components/NewsCard";
+
+import { Button } from "@mui/material";
+import { Marquee } from "../../components/Marquee";
+import { LatestNews } from "../../components/LatestNews";
+import { Calculator } from "../../components/Calculator";
+import CalculateIcon from "@mui/icons-material/Calculate";
+import { SearchBar } from "../../components/SearchBar";
 
 export const Home = () => {
   useEffect(() => {
     new PureCounter();
   }, []);
-  const navigator = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [property, setProperty] = useState(false);
-  const [bhk, setBhk] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("Sale");
-  const [bhkValue, setBhkValue] = useState("4 BHK");
-
-  const options = ["Sale", "Purchase"];
-  const bhkOptions = ["2 BHK", "3 BHK", "4 BHK"]; // Add BHK options here
-
-  const handleBhkClick = (value) => {
-    setBhkValue(value);
-    setBhk(false);
-  };
-
-  const handleOptionClick = (value) => {
-    setSelectedValue(value);
-    setProperty(false);
-  };
+  
+  const [calculator, setCalculator] = useState(false);
 
   const apiUrl = `${process.env.BASE_URL}/api/v1/property`;
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
   const properties = data.properties;
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    try {
-      navigator(`/search/${searchQuery}`)
-    }
-    catch (error) {
-      console.log(error)
-    }
-  }
   return (
     <Layout>
       {/* Hero  */}
-      <div className="homeBanner h-screen flex flex-col items-center lg:items-start justify-center lg:ps-24">
+      <div className="homeBanner relative h-screen flex flex-col items-center lg:items-start justify-center lg:ps-24 overflow-hidden">
         <div className="text-center">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl  font-medium mt-10 lg:mt-24">
+          <h1 className="text-3xl lg:text-4xl  font-medium mt-10 lg:mt-24">
             Find your next{" "}
             <Typewriter
               words={["best cozy place", "dream home", "office"]}
@@ -74,169 +62,48 @@ export const Home = () => {
           </h1>
         </div>
         <div className="my-10">
-          <p className="font-dmsans text-center font-normal text-lg lg:text-xl lg:text-left">
-            Find the best places around you at the cheepest and affordable
+          <p className="font-dmsans text-center font-normal text-lg lg:text-lg lg:text-left">
+            Find the best places around you at the cheapest and affordable
             prices.
           </p>
         </div>
 
-        <form onSubmit={handleSearch}>
-          <div className="grid sm:grid-cols-12 ">
-            <div
-              className="col-span-12 lg:col-span-10 bg-white h-[300] w-[100%] rounded-[13.27px]"
-              style={{ boxShadow: "0px 16.39px 33.56px 0px #0000001A" }}
-            >
-              <div className="grid sm:grid-cols-12 p-5 items-center gap-5">
-                <div className="col-span-12 lg:col-span-2 md:col-span-3">
-                  <button
-                    id="dropdownDefaultButton"
-                    data-dropdown-toggle="dropdown"
-                    className="text-black bg-[#F4F4F4] font-medium text-sm px-5 w-full py-2.5 text-center justify-between lg:justify-start inline-flex items-center rounded-[17.56px]"
-                    type="button"
-                    onClick={() => setProperty(!property)}
-                  >
-                    <HomeOutlinedIcon
-                      sx={{ color: "#03002E", marginRight: "8px" }}
-                    />{" "}
-                    {selectedValue}{" "}
-                    <svg
-                      className="w-2.5 h-2.5 ms-3 flex-end"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 4 4 4-4"
-                      />
-                    </svg>
-                  </button>
+        <SearchBar />
 
-                  {/* <!-- Dropdown menu --> */}
-                  <div
-                    id="dropdown"
-                    className={
-                      property
-                        ? "absolute mt-3 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                        : "hidden"
-                    }
-                  >
-                    <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownDefaultButton"
-                    >
-                      {options.map((option) => (
-                        <li key={option}>
-                          <a
-                            onClick={() => handleOptionClick(option)}
-                            className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${selectedValue === option
-                              ? "bg-gray-200 dark:bg-gray-500"
-                              : ""
-                              }`}
-                          >
-                            {option}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-span-12 lg:col-span-6 md:col-span-6">
-                  <div className="lg:mx-4 mx-0">
-                    <input
-                      type="text"
-                      placeholder="Your desired location goes here"
-                      className="bg-[#F4F4F4] rounded-[17.56px] p-3 w-full outline-none"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-                {/* BHK Dropdown */}
-                <div className="col-span-12 lg:col-span-2 md:col-span-3">
-                  <button
-                    id="dropdownBhkButton"
-                    data-dropdown-toggle="dropdownBhk"
-                    className="text-black w-full bg-[#F4F4F4] font-medium text-sm px-5 py-2.5 text-center inline-flex justify-between lg:justify-start items-center rounded-[17.56px]"
-                    type="button"
-                    onClick={() => setBhk(!bhk)}
-                  >
-                    <HomeIcon sx={{ color: "#03002E", paddingRight: "5px" }} />{" "}
-                    {bhkValue}{" "}
-                    <svg
-                      className="w-2.5 h-2.5 ms-3"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 4 4 4-4"
-                      />
-                    </svg>
-                  </button>
-
-                  {/* BHK Dropdown Menu */}
-                  <div
-                    id="dropdownBhk"
-                    className={
-                      bhk
-                        ? "absolute mt-3 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                        : "hidden"
-                    }
-                  >
-                    <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownBhkButton"
-                    >
-                      {bhkOptions.map((option) => (
-                        <li key={option}>
-                          <a
-                            onClick={() => handleBhkClick(option)}
-                            className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${bhkValue === option
-                              ? "bg-gray-200 dark:bg-gray-500"
-                              : ""
-                              }`}
-                          >
-                            {option}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-span-12 lg:col-span-2 md:col-span-12">
-                  <div>
-                    <button
-                      type="submit"
-                      className="text-white bg-[#03002E]  w-full rounded-[8.59px] py-2 px-10"
-                      style={{ boxShadow: "0px 5.46px 13.27px 0px #03002E80" }}
-                    >
-                      Search
-                    </button>
-                  </div>
-                </div>
-              </div>
+        <div
+          className={`absolute right-0 top-[24%] rounded-lg transition-transform duration-500 ease-in-out ${
+            calculator ? "translate-x-[0]" : "translate-x-[94%]"
+          }`}
+        >
+          <div
+            className="flex justify-center items-center cursor-pointer"
+            onClick={() => {
+              setCalculator(!calculator);
+            }}
+          >
+            <div className="bg-white rounded-s-lg">
+              <p
+                className="font-medium uppercase py-4 px-2"
+                style={{
+                  writingMode: "vertical-rl",
+                  transform: "rotate(180deg)",
+                }}
+              >
+                Calculate EMI
+              </p>
+              <CalculateIcon sx={{ fontSize: "50px", color: "#03002e" }} />
             </div>
+            <Calculator />
           </div>
-        </form>
-      </div>
+        </div>
+      </div> 
 
       {/* Featured Projects  */}
       <div className="bg-white">
-        <h1 className="text-center text-black lg:text-6xl text-3xl font-bold py-8 lg:font-medium">
+        <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
           Featured Projects
         </h1>
-        <div className="flex justify-around mx-5 my-4 overflow-hidden">
+        {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
           {properties &&
             properties
               .filter(
@@ -254,12 +121,14 @@ export const Home = () => {
                   />
                 );
               })}
-        </div>
+        </div> */}
+
+        <Card />
 
         <div className="flex justify-center my-3">
           <Link to={"/property/featured-projects"}>
             <button
-              className=" bg-[#03002E] text-white rounded-3xl font-normal font-dmsans px-20 py-2 text-lg lg:text-xl"
+              className="bg-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1 text-lg transition-colors duration-300 font-medium"
               style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
             >
               View All
@@ -270,10 +139,10 @@ export const Home = () => {
 
       {/* Luxury Project */}
       <div className="bg-white">
-        <h1 className="text-center text-black lg:text-6xl text-3xl font-bold py-8 lg:font-medium">
+        <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
           Our Luxury Projects
         </h1>
-        <div className="flex justify-around mx-5 my-4 overflow-hidden">
+        {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
           {properties &&
             properties
               .filter((property) => property.category.name == "Luxury Project")
@@ -289,11 +158,12 @@ export const Home = () => {
                   />
                 );
               })}
-        </div>
+        </div> */}
+        <Card />
         <div className="flex justify-center my-3">
-          <Link to={"/property/luxury-project"}>
+          <Link to={"/property/featured-projects"}>
             <button
-              className=" bg-[#03002E] text-white rounded-3xl font-normal font-dmsans px-20 py-2 text-lg lg:text-xl"
+              className="bg-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1 text-lg transition-colors duration-300 font-medium"
               style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
             >
               View All
@@ -303,144 +173,135 @@ export const Home = () => {
       </div>
 
       {/* More than 10 years of experience  */}
-      <div className="grid sm:grid-cols-12 my-10">
-        <div className="grid sm:grid-cols-12 col-span-12 lg:col-span-6">
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 border border-[#03002E] rounded-[17.07px] m-5 hover:bg-[#03002E] hover:text-white transition-all ease-in-out experience-card">
-            <div className="flex flex-col items-center justify-center">
-              <ApartmentIcon
-                sx={{
-                  fontSize: 100,
-                  color: "#03002e",
-                  paddingTop: "10px",
-                  paddingBottom: "10px",
-                  transition: "color 0.3s ease-in-out",
-                }}
-                className="experience-icon"
-              />
-              <div className="flex flex-col gap-1 my-4">
-                <p className="font-poppins text-3xl font-bold text-[40px] text-center">
-                  <span
-                    className="purecounter"
-                    data-purecounter-start="0"
-                    data-purecounter-end="500"
-                    data-purecounter-duration="3"
-                  >
-                    500
-                  </span>
-                </p>
-                <p className="font-poppins font-medium text-[20.48px]">
-                  Units Sold
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 border border-[#03002E] rounded-[17.07px] m-5 hover:bg-[#03002E] hover:text-white transition-all ease-in-out experience-card">
-            <div className="flex flex-col items-center justify-center">
-              <EmojiEmotionsIcon
-                sx={{
-                  fontSize: 100,
-                  color: "#03002e",
-                  paddingTop: "10px",
-                  paddingBottom: "10px",
-                  transition: "color 0.3s ease-in-out",
-                }}
-                className="experience-icon"
-              />
-              <div className="flex flex-col gap-1 my-4">
-                <p className="font-poppins text-3xl font-bold text-[40px] text-center">
-                  <span
-                    className="purecounter"
-                    data-purecounter-start="0"
-                    data-purecounter-end="2000"
-                    data-purecounter-duration="3"
-                  >
-                    2000
-                  </span>
-                </p>
-                <p className="font-poppins font-medium text-[20.48px]">
-                  Happy Users
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 border border-[#03002E] rounded-[17.07px] m-5 hover:bg-[#03002E] hover:text-white transition-all ease-in-out experience-card">
-            <div className="flex flex-col items-center justify-center">
-              <AspectRatioIcon
-                sx={{
-                  fontSize: 100,
-                  color: "#03002e",
-                  paddingTop: "10px",
-                  paddingBottom: "10px",
-                  transition: "color 0.3s ease-in-out",
-                }}
-                className="experience-icon"
-              />
-              <div className="flex flex-col gap-1 my-4">
-                <p className="font-poppins text-3xl font-bold text-[40px] text-center">
-                  <span
-                    className="purecounter"
-                    data-purecounter-start="0"
-                    data-purecounter-end="10"
-                    data-purecounter-duration="3"
-                    data-purecounter-suffix="+"
-                  >
-                    10+
-                  </span>
-                </p>
-                <p className="font-poppins font-medium text-[20.48px]">
-                  Years of Experience
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 border border-[#03002E] rounded-[17.07px] m-5 hover:bg-[#03002E] hover:text-white transition-all ease-in-out experience-card">
-            <div className="flex flex-col items-center justify-center">
-              <AccessibilityNewIcon
-                sx={{
-                  fontSize: 100,
-                  color: "#03002e",
-                  paddingTop: "10px",
-                  paddingBottom: "10px",
-                  transition: "color 0.3s ease-in-out",
-                }}
-                className="experience-icon"
-              />
-              <div className="flex flex-col gap-1 my-4">
-                <p className="font-poppins text-3xl font-bold text-[40px] text-center">
-                  <span
-                    className="purecounter"
-                    data-purecounter-start="0"
-                    data-purecounter-end="30"
-                    data-purecounter-duration="3"
-                  >
-                    30
-                  </span>
-                </p>
-                <p className="font-poppins font-medium text-[20.48px]">
-                  Employees
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-12 lg:col-span-6 flex flex-col m-8 lg:gap-16 gap-9">
-          <h1 className="text-3xl lg:text-6xl font-poppins font-bold">
-            More than{" "}
-            <span className="text-[#03002e]">10 Years of Experience</span>
+      <div className="bg-[#03002e] text-white my-10 experience">
+        <div className="max-w-[1280px] mx-auto py-10">
+          <h1 className="text-3xl text-center lg:text-4xl font-poppins font-bold py-4">
+            More than 10 Years of Experience
           </h1>
-          <p className="text-lg lg:text-3xl text-justify font-poppins font-medium text-[#161A23] lg:me-10 me-0 px-3 lg:px-0">
+          <p className="text-lg py-5 text-center lg:text-lg font-poppins font-medium lg:me-10 me-0 px-3 lg:px-0">
             Over the years, Grow infinity has built a reputation for providing a
             seamless experience to customers to secure their dream homes.
           </p>
+          <div className="grid sm:grid-cols-12">
+            <div className="col-span-3 rounded-[17.07px] m-8  hover:text-white transition-all ease-in-out experience-card">
+              <div className="flex flex-col items-center justify-center">
+                <ApartmentIcon
+                  sx={{
+                    fontSize: 100,
+                    paddingTop: "10px",
+                    paddingBottom: "10px",
+                    transition: "color 0.3s ease-in-out",
+                  }}
+                  className="experience-icon"
+                />
+                <div className="flex flex-col gap-1 my-4">
+                  <p className="font-poppins font-semibold text-2xl text-center">
+                    <span
+                      className="purecounter"
+                      data-purecounter-start="0"
+                      data-purecounter-end="500"
+                      data-purecounter-duration="3"
+                    >
+                      500
+                    </span>
+                  </p>
+                  <p className="font-poppins font-medium text-lg">Units Sold</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-3  rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+              <div className="flex flex-col items-center justify-center">
+                <EmojiEmotionsIcon
+                  sx={{
+                    fontSize: 100,
+                    paddingTop: "10px",
+                    paddingBottom: "10px",
+                    transition: "color 0.3s ease-in-out",
+                  }}
+                  className="experience-icon"
+                />
+                <div className="flex flex-col gap-1 my-4">
+                  <p className="font-poppins font-semibold text-2xl text-center">
+                    <span
+                      className="purecounter"
+                      data-purecounter-start="0"
+                      data-purecounter-end="2000"
+                      data-purecounter-duration="3"
+                    >
+                      2000
+                    </span>
+                  </p>
+                  <p className="font-poppins font-medium text-lg">
+                    Happy Users
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+              <div className="flex flex-col items-center justify-center">
+                <AspectRatioIcon
+                  sx={{
+                    fontSize: 100,
+                    paddingTop: "10px",
+                    paddingBottom: "10px",
+                    transition: "color 0.3s ease-in-out",
+                  }}
+                  className="experience-icon"
+                />
+                <div className="flex flex-col gap-1 my-4">
+                  <p className="font-poppins font-semibold text-2xl text-center">
+                    <span
+                      className="purecounter"
+                      data-purecounter-start="0"
+                      data-purecounter-end="10"
+                      data-purecounter-duration="3"
+                      data-purecounter-suffix="+"
+                    >
+                      10+
+                    </span>
+                  </p>
+                  <p className="font-poppins font-medium text-lg">
+                    Years of Experience
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+              <div className="flex flex-col items-center justify-center">
+                <AccessibilityNewIcon
+                  sx={{
+                    fontSize: 100,
+                    paddingTop: "10px",
+                    paddingBottom: "10px",
+                    transition: "color 0.3s ease-in-out",
+                  }}
+                  className="experience-icon"
+                />
+                <div className="flex flex-col gap-1 my-4">
+                  <p className="font-poppins font-semibold text-2xl text-center">
+                    <span
+                      className="purecounter"
+                      data-purecounter-start="0"
+                      data-purecounter-end="30"
+                      data-purecounter-duration="3"
+                    >
+                      30
+                    </span>
+                  </p>
+                  <p className="font-poppins font-medium text-lg">Employees</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Top Properties  */}
       <div className="bg-white">
-        <h1 className="text-center text-black  text-3xl md:text-4xl font-bold lg:text-6xl  py-3 lg:font-medium">
+        <h1 className="text-center text-black  text-3xl lg:text-4xl font-bold py-3 lg:font-medium">
           Top Properties
         </h1>
-        <div className="flex justify-around mx-5 my-4 overflow-hidden">
+        {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
           {properties &&
             properties
               .filter((property) => property.category.name == "Top Properties")
@@ -456,11 +317,12 @@ export const Home = () => {
                   />
                 );
               })}
-        </div>
+        </div> */}
+        <Card />
         <div className="flex justify-center my-3">
           <Link to={"/property/top-properties"}>
             <button
-              className=" bg-[#03002E] text-white rounded-3xl font-normal font-dmsans px-20 py-2 text-lg lg:text-xl"
+              className="bg-[#03002E] hover:bg-white hover:text-[#03002E] border-2 border-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1 text-lg transition-colors duration-300 font-medium"
               style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
             >
               View All
@@ -469,27 +331,166 @@ export const Home = () => {
         </div>
       </div>
 
-      <Testimonials />
-      <Choose />
-
-      <div className="hidden lg:block bg-[#03002e] rounded-[14px] m-5 p-3">
-        <div className="flex justify-between items-center">
-          <h2 className="text-white p-8 text-2xl font-inter font-bold text-[36px]">
-            Looking To Buy Or Sell Your Property?
-          </h2>
-          <div>
-            <Link
-              to="/contact"
-              className="flex items-center gap-4 bg-white p-3 m-5 rounded-[32px] text-[#03002E] text-lg"
-            >
-              Get in touch{" "}
-              <span>
-                <img src={ArrowCircleUp} alt="" width={40} />
-              </span>{" "}
-            </Link>
+      <div className="mx-auto max-w-[1280px] my-10">
+        <div className="grid sm:grid-cols-12">
+          <div className="col-span-7">
+            <div className="grid sm:grid-cols-12">
+              <div className="col-span-12">
+                <div className="grid sm:grid-cols-12">
+                  <div className="col-span-9 m-5">
+                    <img
+                      src={gallery2}
+                      alt=""
+                      className="rounded-lg h-[260px] w-[100%] "
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-12">
+                <div className="grid sm:grid-cols-12">
+                  <div className="col-span-5 mx-5">
+                    <img
+                      src={gallery3}
+                      alt=""
+                      className="rounded-lg h-[280px] w-full"
+                    />
+                  </div>
+                  <div className="col-span-6">
+                    <img
+                      src={gallery1}
+                      alt=""
+                      className="rounded-lg h-[450px] w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-span-5 flex flex-col justify-center ps-14">
+            <h1 className="text-[#1A1A1A] font-roboto text-4xl font-medium">
+              How It works? <br />
+              Find a perfect home
+            </h1>
+            <p className="font-roboto text-lg text-[#1A1A1A] mt-5">
+              Pellentesque egestas elementum egestas faucibus sem. Velit nunc
+              egestas ut morbi. Leo diam diam.
+            </p>
+            <ul className="my-10 flex flex-col gap-10">
+              <li>
+                <div className="flex gap-5">
+                  <div className="relative">
+                    <img src={Icon1} alt="" className="w-[35px] h-[35px]" />
+                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] bottom-[38px]"></div>
+                  </div>
+                  <div className="flex-col">
+                    <h1 className="text-xl font-roboto font-medium text-[#1A1A1A]">
+                      Find Real Estate
+                    </h1>
+                    <p className="mt-2">
+                      Sumo petentium ut per, at his wisim utinam <br />{" "}
+                      adipiscing. Est ei graeco
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="flex gap-5">
+                  <div className="relative">
+                    <img src={Icon2} alt="" className="w-[35px] h-[35px]" />
+                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] bottom-[38px]"></div>
+                  </div>
+                  <div className="flex-col">
+                    <h1 className="text-xl font-roboto font-medium text-[#1A1A1A]">
+                      Meet Realtor
+                    </h1>
+                    <p className="mt-2">
+                      Sumo petentium ut per, at his wisim utinam <br />{" "}
+                      adipiscing. Est ei graeco
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="flex gap-5">
+                  <div className="relative">
+                    <img src={Icon3} alt="" className="w-[35px] h-[35px]" />
+                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] bottom-[38px]"></div>
+                  </div>
+                  <div className="flex-col">
+                    <h1 className="text-xl font-roboto font-medium text-[#1A1A1A]">
+                      Take the keys
+                    </h1>
+                    <p className="mt-2">
+                      Sumo petentium ut per, at his wisim utinam <br />{" "}
+                      adipiscing. Est ei graeco
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+
+      <Testimonials />
+      <Choose />
+
+      <LatestNews />
+
+      <div className="max-w-[1280px] mx-auto my-10">
+        <div className="grid sm:grid-cols-12">
+          <div className="col-span-6 m-5">
+            <div className="bg-[#F9F9F9] font-roboto p-14 rounded-lg">
+              <div className="grid sm:grid-cols-12">
+                <div className="col-span-9">
+                  <div className="flex flex-col gap-4">
+                    <h4 className="font-medium text-2xl">
+                      Looking for the new home?
+                    </h4>
+                    <p className="text-lg font-normal pe-20 text-justify">
+                      10 new offers every day. 350 offers on site, trusted by a
+                      community of thousands of users.
+                    </p>
+                    <button className="bg-[#1F4B43] rounded-lg text-white w-[150px] py-3 flex items-center justify-center gap-2 mt-8">
+                      Get Started
+                      <EastIcon size="small" />
+                    </button>
+                  </div>
+                </div>
+                <div className="col-span-3 flex items-end">
+                  <img src={home} alt="" className="w-[130px] h-[130px]" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-span-6 m-5">
+            <div className="bg-[#FFF8F6] font-roboto p-14 rounded-lg">
+              <div className="grid sm:grid-cols-12">
+                <div className="col-span-9">
+                  <div className="flex flex-col gap-4">
+                    <h4 className="font-medium text-2xl">
+                      Want to sell your home?
+                    </h4>
+                    <p className="text-lg font-normal pe-20 text-justify">
+                      10 new offers every day. 350 offers on site, trusted by a
+                      community of thousands of users.
+                    </p>
+                    <button className="bg-[#1F4B43] rounded-lg text-white w-[150px] py-3 flex items-center justify-center gap-2 mt-8">
+                      Get Started
+                      <EastIcon size="small" />
+                    </button>
+                  </div>
+                </div>
+                <div className="col-span-3 flex items-end">
+                  <img src={house} alt="" className="w-[130px] h-[130px]" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Marquee />
     </Layout>
   );
 };

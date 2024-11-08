@@ -1,588 +1,619 @@
 import React, { useState } from "react";
 import { Layout } from "../../components/Layout";
-import PlaceIcon from "@mui/icons-material/Place";
-
-import ReactPlayer from "react-player";
-
 import gallery1 from "../../assets/img/gallery1.png";
 import gallery2 from "../../assets/img/gallery2.png";
 import gallery3 from "../../assets/img/gallery3.png";
-
-import flatamenity1 from "../../assets/img/gas-stove.png";
-import flatamenity2 from "../../assets/img/dish-washer.png";
-import flatamenity3 from "../../assets/img/air-conditioner.png";
-
-import location1 from "../../assets/img/subway.png";
-import location2 from "../../assets/img/hospital.png";
-import location3 from "../../assets/img/market.png";
-import location4 from "../../assets/img/atm-machine.png";
-import location5 from "../../assets/img/school.png";
-import location6 from "../../assets/img/airport.png";
-
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import DownloadIcon from "@mui/icons-material/Download";
-
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "./ProjectDetails.css";
+import { Link } from "react-router-dom";
+import { Card } from "../../components/Card";
+import { Marquee } from "../../components/Marquee";
+import ReactPlayer from "react-player";
+import Battery5BarIcon from "@mui/icons-material/Battery5Bar";
 import { Button } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { useFetchData } from "../../hooks/useFetchData";
-import Carousel from "../../components/Carousel";
-
+import DownloadIcon from "@mui/icons-material/Download";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import PoolIcon from "@mui/icons-material/Pool";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
+import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
+import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
+import { Calculator } from "../../components/Calculator";
 export const ProjectDetails = () => {
-  const { id } = useParams();
-  const apiUrl = `${process.env.BASE_URL}/api/v1/property/${id}`;
+  const images = [gallery1, gallery2, gallery3];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
 
-  const { data, loading, error, refetch } = useFetchData(apiUrl);
+  const handleNext = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setIsFading(false);
+    }, 500); // Fade duration in ms
+  };
 
-  const property = data.property;
+  const handlePrevious = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+      setIsFading(false);
+    }, 500);
+  };
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const [expandtext, setExpandText] = useState(false);
+  const toggleDescription = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const fullDescription = `Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Facilis velit voluptatem rerum molestiae. Debitis ab, aliquid quasi fugit animi repellendus deleniti maiores ullam accusamus
+    hic, exercitationem veniam soluta possimus sit minima excepturi maxime laboriosam sequi facilis? Maiores, obcaecati
+    perspiciatis. Quidem explicabo, molestias corrupti hic ex similique sequi illo cupiditate voluptatem officiis non
+    temporibus laborum iure deserunt nisi officia? Provident, excepturi corrupti doloremque nobis, perspiciatis quaerat
+    aliquid porro quidem aperiam minus dolorem ipsum eum. Eum, necessitatibus! Ducimus mollitia sed perspiciatis incidunt
+    sequi odio, repudiandae assumenda. Dolores ipsum magni aut iusto tempore aliquid laborum ut excepturi, labore perferendis
+    rem. Ea expedita architecto nisi quae dolorum possimus laboriosam autem. Optio possimus eos molestias impedit
+    aspernatur nesciunt earum, odio inventore sapiente praesentium quidem illo libero dolore perspiciatis quae ullam eum
+    doloremque sit id recusandae, non ipsum itaque excepturi eaque.`;
+
+  const truncatedDescription = fullDescription.slice(0, 200) + "...";
+
   return (
     <Layout>
-      {/* Project Details Hero  */}
-      <div className="detailsbanner flex items-center lg:ps-24">
+      {/* Project Details Hero */}
+      <div className="detailsbanner flex items-center justify-center">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 text-center lg:col-span-6 lg:text-left">
-            <h1 className="font-dmsans font-medium text-white text-5xl lg:text-[76.76px]">
+          <div className="col-span-12 text-center mt-20">
+            <h1 className="ffont-dmsans font-medium text-white text-5xl">
               Property Details
             </h1>
-            <p className="font-dmsans font-normal text-white text-xl py-4  lg:text-[22.39px] px-5 lg:px-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna
-            </p>
           </div>
         </div>
       </div>
 
-      {property && (
-        <div className="bg-[#eeeeee] grid sm:grid-cols-12">
-          <div className="col-span-8 m-5">
-            <div className="bg-white p-10">
-              <h1 className="font-bold text-4xl font-dmsans">
-                {property.name}
-              </h1>
-              <div className="flex justify-between items-center gap-3">
-                <div className="flex items-center gap-3">
-                  <PlaceIcon />
-                  <h3 className="py-5 text-xl">{property.city}</h3>
-                </div>
-                <div>
-                  <h3 className="font-bold text-2xl text-[#15123c]">
-                    1 Cr Onwards*
-                  </h3>
-                </div>
-              </div>
+      <div className="bg-gray-100 p-3">
+        <div className="grid sm:grid-cols-12 gap-10 max-w-[1280px] mt-8 mx-auto">
+          <div className="col-span-9 bg-white px-12 py-8">
+            <div className="grid sm:grid-cols-12 gap-3">
+              <div className="col-span-8">
+                <div
+                  id="controls-carousel"
+                  className="relative w-full h-[400px]"
+                >
+                  {/* Carousel Wrapper */}
+                  <div className="relative h-[400px] overflow-hidden rounded-lg">
+                    {/* Dynamic Carousel Item with fade effect */}
+                    <div
+                      className={`duration-700 ease-in-out h-[400px] transition-opacity ${
+                        isFading ? "opacity-0" : "opacity-100"
+                      }`}
+                    >
+                      <img
+                        src={images[currentIndex]}
+                        className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-[400px] rounded-lg object-cover object-top"
+                        alt="Carousel slide"
+                      />
+                    </div>
+                  </div>
 
-              <Carousel galleryImages={property.propertyImages} />
-
-              <div className="bg-[#15123c] text-white my-5 rounded-xl">
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3 flex flex-col gap-3 items-center border-r-2 border-white m-5">
-                    <h3 className="text-xl font-semibold uppercase">
-                      Unit Type
-                    </h3>
-                    <p className="text-lg">3 BHK</p>
-                  </div>
-                  <div className="col-span-3 flex flex-col gap-3 items-center border-r-2 border-white m-5">
-                    <h3 className="text-xl font-semibold uppercase">Area</h3>
-                    <p className="text-lg">1100 sqft</p>
-                  </div>
-                  <div className="col-span-3 flex flex-col gap-3 items-center border-r-2 border-white m-5">
-                    <h3 className="text-xl font-semibold uppercase">Furnish</h3>
-                    <p className="text-lg">{property.furnishType}</p>
-                  </div>
-                  <div className="col-span-3 flex flex-col gap-3 items-center m-5">
-                    <h3 className="text-xl font-semibold uppercase">Status</h3>
-                    <p className="text-lg">{property.constructionStatus}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Description */}
-              <div className="description">
-                <h1 className="py-5 text-2xl font-semibold text-[#1b1364] font-dmsans">
-                  Description
-                </h1>
-                <p className="text-justify font-dmsans leading-8">
-                  {property.description}{" "}
-                  <span className={expandtext ? "" : "hidden"}>
-                    Illo autem ullam aliquam ut voluptas sed similique nihil
-                    inventore! Culpa deserunt sed aliquam quaerat fugiat cumque
-                    quasi? Minima in, autem eos nesciunt consequuntur, expedita
-                    deleniti alias adipisci hic culpa animi itaque aliquam earum
-                    corrupti pariatur libero voluptas totam officia magnam
-                    consectetur eum a harum sed? Atque quos expedita incidunt,
-                    saepe, molestias iusto corrupti obcaecati enim esse quod
-                    veniam et laborum corporis maxime dolores cum voluptatum
-                    repudiandae nostrum quasi eius amet! Nulla vitae quis sequi
-                    iure deserunt odit neque quaerat, necessitatibus, libero
-                    quibusdam reiciendis illo maxime tempora ipsa dolorem rerum
-                    ad tenetur hic, provident voluptate? Dolores porro doloribus
-                    illo earum rerum dolorum voluptatibus nesciunt, sit odio
-                    itaque recusandae provident vitae eligendi eius dolore quia
-                    eum nihil incidunt numquam? Omnis delectus adipisci sunt
-                    quae esse fugiat tempora? Ex, quod quaerat facere
-                    consequatur quae adipisci impedit vitae soluta asperiores et
-                    dolorem rerum fuga, mollitia eum ipsa odio repellendus qui
-                    atque ducimus magnam minus. Qui repudiandae incidunt nam
-                    modi commodi impedit ex cupiditate consequatur consequuntur
-                    temporibus architecto eligendi, sit suscipit asperiores
-                    repellat porro, ipsa quo ad pariatur in perspiciatis dolores
-                    excepturi vero mollitia? Beatae deleniti delectus ut eos
-                    quos distinctio, quidem impedit modi quia asperiores soluta
-                    esse doloremque tempora placeat, quisquam minus voluptatem
-                    libero illum laborum ipsam exercitationem dignissimos?
-                    Doloribus similique velit nisi vero veniam.
-                  </span>
-                  <a
-                    onClick={() => setExpandText(!expandtext)}
-                    className="font-bold text-[#4a40d0] hover:cursor-pointer"
+                  {/* Slider Controls */}
+                  <button
+                    type="button"
+                    className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    onClick={handlePrevious}
                   >
-                    {expandtext ? "Read less" : "Read more"}
-                  </a>
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                      <svg
+                        className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 6 10"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 1 1 5l4 4"
+                        />
+                      </svg>
+                      <span className="sr-only">Previous</span>
+                    </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    onClick={handleNext}
+                  >
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                      <svg
+                        className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 6 10"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="m1 9 4-4-4-4"
+                        />
+                      </svg>
+                      <span className="sr-only">Next</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="col-span-4">
+                <div className="flex flex-col gap-3">
+                  <img
+                    src={gallery2}
+                    className="w-full h-[195px] rounded-lg"
+                    alt="Carousel slide"
+                  />
+                  <img
+                    src={gallery3}
+                    className="w-full h-[195px] rounded-lg"
+                    alt="Carousel slide"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between items-center m-3">
+              <div className="font-roboto mt-6">
+                <h1 className="font-medium text-4xl">CanterBury Lane</h1>
+                <p className="text-md mt-3">Noida, UP-201301</p>
+              </div>
+              <div className="flex gap-5">
+                <Button
+                  startIcon={<DownloadIcon />}
+                  variant="outlined"
+                  size="small"
+                  color="error"
+                  sx={{ textTransform: "none" }}
+                >
+                  Download PDF
+                </Button>
+                <Button
+                  startIcon={<WhatsAppIcon />}
+                  variant="outlined"
+                  size="small"
+                  color="success"
+                  sx={{ textTransform: "none" }}
+                >
+                  WhatsApp Message
+                </Button>
+              </div>
+              <div>
+                <h5 className="font-roboto font-semibold text-[#EB664E] text-4xl">
+                  ₹2.8Cr*
+                </h5>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-12 justify-start py-5 ps-2">
+              <div className="col-span-3">
+                <div className="flex items-center gap-2">
+                  <HomeOutlinedIcon color="secondary" />
+                  <p className="font-roboto">3 BHK</p>
+                </div>
+              </div>
+              <div className="col-span-3">
+                <div className="flex items-center gap-2">
+                  <ChairOutlinedIcon color="secondary" />
+                  <p className="font-roboto">Semi-furnsihed</p>
+                </div>
+              </div>
+              <div className="col-span-3">
+                <div className="flex items-center gap-2">
+                  <SpaceDashboardOutlinedIcon color="secondary" />
+                  <p className="font-roboto">1850 sqft</p>
+                </div>
+              </div>
+              <div className="col-span-3">
+                <div className="flex items-center gap-2">
+                  <CurrencyRupeeOutlinedIcon color="secondary" />
+                  <p className="font-roboto">10.6K per sqft</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="grid sm:grid-cols-12 mx-3 mt-8"
+              style={{ borderBottom: "3px solid lightgray" }}
+            >
+              <div className="col-span-3">
+                <h3 className="py-2 text-underline">Description</h3>
+              </div>
+              <div className="col-span-3">
+                <h3 className="py-2">Amenities</h3>
+              </div>
+              <div className="col-span-3">
+                <h3 className="py-2">Location</h3>
+              </div>
+              <div className="col-span-3">
+                <h3 className="py-2">Virtual Tour</h3>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-12 mx-3 mt-8 gap-8">
+              <div className="col-span-12">
+                <h3 className="text-xl font-poppins font-semibold">
+                  Description
+                </h3>
+                <div className="mt-4 text-md leading-9">
+                  {/* Container for description text with transition */}
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ease-in-out`}
+                    style={{
+                      maxHeight: isExpanded ? "none" : "200px", // Expand or collapse the text
+                    }}
+                  >
+                    <p>{isExpanded ? fullDescription : truncatedDescription}</p>
+                  </div>
+
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="small"
+                    sx={{
+                      borderRadius: "24px",
+                      textTransform: "none",
+                      display: "inline-block",
+                      marginTop: "10px",
+                    }}
+                    onClick={toggleDescription}
+                  >
+                    {isExpanded ? "Read Less" : "Read More"}
+                  </Button>
+                </div>
+              </div>
+              <div className="col-span-12">
+                <h3 className="text-xl font-poppins font-semibold pb-5">
+                  Amenities
+                </h3>
+
+                <div className="border-2 border-gray p-3 rounded-lg">
+                  <h3 className="text-xl text-center font-roboto font-medium ">
+                    Society Amenities
+                  </h3>
+                  <div className="grid sm:grid-cols-12 mt-5 gap-5">
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <PoolIcon size="large" />
+                        <p>Swimming pool</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-span-12">
+                <div className="border-2 border-gray p-3 rounded-lg">
+                  <h3 className="text-xl text-center font-roboto font-medium ">
+                    Flat Amenities
+                  </h3>
+                  <div className="grid sm:grid-cols-12 mt-5 gap-5">
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-span-12">
+                <h3 className="text-xl font-poppins font-semibold pb-5">
+                  Location
+                </h3>
+
+                <div className="border-2 border-gray p-3 rounded-lg">
+                  <h3 className="text-xl text-center font-roboto font-medium">
+                    Location Advantages
+                  </h3>
+                  <div className="grid sm:grid-cols-12 mt-5 gap-5">
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                    <div className="col-span-3">
+                      <div className="flex items-center gap-3 p-5">
+                        <Battery5BarIcon size="large" />
+                        <p>Power Backup</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-span-12">
+                <h3 className="text-xl font-poppins font-semibold ">
+                  Virtual Tour
+                </h3>
+                <div className="mt-5 rounded-lg">
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=4i0KLhtyEHU`}
+                    width="70%"
+                  />
+                </div>
+              </div>
+
+              <div className="col-span-12">
+                <h3 className="text-xl font-poppins font-semibold">Address</h3>
+                <p className="py-3 text-md">
+                  Tata Eureka Park, Sector-150, Noida, Uttar Pradesh - 201310
                 </p>
               </div>
 
-              {/* Parking and pricing  */}
-              <div className="parking pricing">
-                <h1 className="py-5 text-2xl font-semibold text-[#1b1364] font-dmsans">
-                  Parking and Pricing
-                </h1>
-                <div>
-                  <ul className="flex justify-around">
-                    <li className="text-lg">
-                      <strong>Parking: </strong>1
-                    </li>
-                    <li className="text-lg">
-                      <strong>Property Type: </strong>Sale
-                    </li>
-                    <li className="text-lg">
-                      <strong>Parking: </strong>1
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Amenities  */}
-              <div className="amenities">
-                <div className="society-amenities">
-                  <h1 className="py-5 text-2xl font-semibold text-[#1b1364] font-dmsans">
-                    Society Amenity
-                  </h1>
-
-                  <div className="grid sm:grid-cols-12">
-                    {property.amenities
-                      .filter((amenity) => amenity.type == "society_amenity")
-                      .map((amenity, index) => {
-                        return (
-                          <div key={index} className="col-span-3 my-8">
-                            <div className="flex items-center justify-center gap-3">
-                              <img
-                                src={`${process.env.BASE_URL}/${amenity.image}`}
-                                alt=""
-                                height={40}
-                                width={25}
-                              />
-                              <span className="text-lg">{amenity.name}</span>
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-                <div className="flat-amenities">
-                  <h1 className="py-5 text-2xl font-semibold text-[#1b1364] font-dmsans">
-                    Flat Amenity
-                  </h1>
-
-                  <div className="grid sm:grid-cols-12">
-                    {property.amenities
-                      .filter((amenity) => amenity.type == "flat_amenity")
-                      .map((amenity, index) => {
-                        return (
-                          <div key={index} className="col-span-3 my-8">
-                            <div className="flex items-center justify-center gap-3">
-                              <img
-                                src={`${process.env.BASE_URL}/${amenity.image}`}
-                                alt=""
-                                height={40}
-                                width={25}
-                              />
-                              <span className="text-lg">{amenity.name}</span>
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-                <div className="location-advantages">
-                  <h1 className="py-5 text-2xl font-semibold text-[#1b1364] font-dmsans">
-                    Location Advantages
-                  </h1>
-
-                  <div className="grid sm:grid-cols-12">
-                    {property.amenities
-                      .filter(
-                        (amenity) => amenity.type == "location_advantages"
-                      )
-                      .map((amenity, index) => {
-                        return (
-                          <div key={index} className="col-span-3 my-8">
-                            <div className="flex items-center justify-center gap-3">
-                              <img
-                                src={`${process.env.BASE_URL}${amenity.image}`}
-                                alt=""
-                                height={40}
-                                width={25}
-                              />
-                              <span className="text-lg">{amenity.name}</span>
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              </div>
-
-              {/* Address  */}
-              <div className="address">
-                <h1 className="py-5 text-2xl font-semibold font-dmsans text-[#1b1364]">
-                  Address
-                </h1>
-
-                <div>
-                  <ul className="font-dmsans flex flex-col gap-3">
-                    <li>
-                      <strong className="text-lg ">Address: </strong>
-                      {property.address}
-                    </li>
-                    <li>
-                      <strong className="text-lg ">City: </strong>
-                      {property.city}
-                    </li>
-                    <li>
-                      <strong className="text-lg ">State: </strong>
-                      {property.state}
-                    </li>
-                    <li>
-                      <strong className="text-lg ">Pincode: </strong>
-                      {property.pincode}
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Youtube Video  */}
-              <div className="youtube-video flex justify-center my-10">
-                <ReactPlayer
-                  controls={true}
-                  width="80%"
-                  height="500px"
-                  url={"https://www.youtube.com/watch?v=KvpInChjMq0"}
-                />
-              </div>
-
-              <div className="flex justify-around">
-                <Button
-                  variant="outlined"
-                  size="large"
-                  color="error"
-                  startIcon={<DownloadIcon />}
-                >
-                  Download Brochure
-                </Button>
-                <Button
-                  variant="contained"
-                  size="large"
-                  color="success"
-                  startIcon={<WhatsAppIcon />}
-                >
-                  Get Details on Whatsapp
-                </Button>
+              <div className="col-span-12">
+                <Calculator />
               </div>
             </div>
           </div>
-          <div className="col-span-4 ms-0 m-5">
-            <div className="bg-white p-5 rounded">
-              <h4 className="text-[#15123c] text-2xl font-bold">
-                Price on Request
-              </h4>
-              <div className="flex flex-col gap-4 my-4">
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
+
+          <div className="col-span-3 bg-gray-100">
+            <div className="flex flex-col gap-5">
+              <div className="bg-white px-5 py-8 rounded-lg">
+                <form>
+                  <h1 className="text-center text-xl font-medium font-roboto">
+                    Get Price on Request*
+                  </h1>
+                  <div className="grid sm:col-span-12 mt-4 gap-4">
+                    <div className="col-span-12">
+                      <label htmlFor="name" className="text-sm">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        className="border w-full py-1 px-2 rounded-lg outline-none"
+                      />
+                    </div>
+                    <div className="col-span-12">
+                      <label htmlFor="" className="text-sm">
+                        Email
+                      </label>
+                      <input
+                        type="text"
+                        className="border w-full py-1 px-2 rounded-lg outline-none"
+                      />
+                    </div>
+                    <div className="col-span-12">
+                      <label htmlFor="" className="text-sm">
+                        Phone
+                      </label>
+                      <input
+                        type="text"
+                        className="border w-full py-1 px-2 rounded-lg outline-none"
+                      />
+                    </div>
+                    <div className="col-span-12">
+                      <Button
+                        fullWidth
+                        sx={{
+                          textTransform: "none",
+                          backgroundColor: "#03002e",
+                          marginTop: "10px",
+                        }}
+                        variant="contained"
+                      >
+                        Submit
+                      </Button>
                     </div>
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
+                </form>
               </div>
 
-              <h4 className="text-[#15123c] text-2xl font-bold">
-                Recent Properties
-              </h4>
-              <div className="flex flex-col gap-4 my-4">
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
+              {/* Recent Property */}
+              <div className="bg-white p-5 rounded-lg sticky top-0 right-[200]">
+                <h1 className="text-xl font-medium">Recent Property</h1>
+                <div className="grid sm:grid-cols-12 gap-6 mt-5">
+                  <div className="col-span-12">
+                    <div className="flex gap-8">
+                      <img
+                        src={gallery1}
+                        alt=""
+                        className="h-[60px] w-[60px] rounded"
+                      />
+                      <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-md font-medium">CanterBury Lane</h1>
+                        <p className="text-sm">Posted on: 05/11/2024</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
+                  <div className="col-span-12">
+                    <div className="flex gap-8">
+                      <img
+                        src={gallery1}
+                        alt=""
+                        className="h-[60px] w-[60px] rounded"
+                      />
+                      <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-md font-medium">CanterBury Lane</h1>
+                        <p className="text-sm">Posted on: 05/11/2024</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
+                  <div className="col-span-12">
+                    <div className="flex gap-8">
+                      <img
+                        src={gallery1}
+                        alt=""
+                        className="h-[60px] w-[60px] rounded"
+                      />
+                      <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-md font-medium">CanterBury Lane</h1>
+                        <p className="text-sm">Posted on: 05/11/2024</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
+                  <div className="col-span-12">
+                    <div className="flex gap-8">
+                      <img
+                        src={gallery1}
+                        alt=""
+                        className="h-[60px] w-[60px] rounded"
+                      />
+                      <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-md font-medium">CanterBury Lane</h1>
+                        <p className="text-sm">Posted on: 05/11/2024</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
+                  <div className="col-span-12">
+                    <div className="flex gap-8">
+                      <img
+                        src={gallery1}
+                        alt=""
+                        className="h-[60px] w-[60px] rounded"
+                      />
+                      <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-md font-medium">CanterBury Lane</h1>
+                        <p className="text-sm">Posted on: 05/11/2024</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-12">
-                  <div className="col-span-3">
-                    <img
-                      src={gallery1}
-                      alt=""
-                      className="h-[60px] w-[60px] object-cover rounded"
-                    />
-                  </div>
-                  <div className="col-span-9">
-                    <div className="flex flex-col">
-                      <h5 className="text-lg font-semibold font-dmsans text-[#15123c]">
-                        Tata Eureka Park
-                      </h5>
-                      <p>10/8/2024</p>
+                  <div className="col-span-12">
+                    <div className="flex gap-8">
+                      <img
+                        src={gallery1}
+                        alt=""
+                        className="h-[60px] w-[60px] rounded"
+                      />
+                      <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-md font-medium">CanterBury Lane</h1>
+                        <p className="text-sm">Posted on: 05/11/2024</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -590,7 +621,28 @@ export const ProjectDetails = () => {
             </div>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Featured Projects  */}
+      <div className="bg-gray-100 p-3">
+        <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
+          Featured Projects
+        </h1>
+        <Card />
+
+        <div className="flex justify-center my-3">
+          <Link to={"/property/featured-projects"}>
+            <button
+              className="bg-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1 text-lg transition-colors duration-300 font-medium"
+              style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            >
+              View All
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      <Marquee />
     </Layout>
   );
 };

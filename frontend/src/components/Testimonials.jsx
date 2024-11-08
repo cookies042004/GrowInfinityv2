@@ -1,98 +1,76 @@
 import React from "react";
 import Testimonial1 from "../assets/img/testimonial1.jpeg";
 import Testimonial2 from "../assets/img/testimonial2.jpeg";
-
+import StarIcon from "@mui/icons-material/Star";
+import quote from "../assets/img/SVG.png"
 export const Testimonials = () => {
   return (
     <>
       {/* Testimonial  */}
-      <div>
-        <h1 className="text-4xl font-bold lg:text-6xl text-center lg:font-medium py-8">
-          Our Testimonial
-        </h1>
-
-        <div className="flex justify-center my-10 overflow-hidden">
-          <div className="border-[#03002E] border-4 border-dashed	w-[550px] h-[550px] rounded-[50%] flex items-center justify-center relative my-10">
-            <div className="border-[#03002E] border-4 border-dashed	w-[400px] h-[400px] rounded-[50%] flex items-center justify-center">
-              <img
-                src={Testimonial1}
-                alt=""
-                className="h-[360px] w-[360px] rounded-[50%] object-cover"
-              />
-            </div>
-
-            <div className="absolute right-[-45px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
-            </div>
-            <div className="absolute left-[-45px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
-            </div>
-            <div className="absolute top-[-45px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
-            </div>
-            <div className="absolute bottom-[-45px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
-            </div>
-            <div className="absolute right-[22px] top-[10px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
-            </div>
-            <div className="absolute left-[22px] top-[10px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
-            </div>
-            <div className="absolute left-[22px] bottom-[10px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
-            </div>
-            <div className="absolute right-[22px] bottom-[10px]">
-              <img
-                src={Testimonial2}
-                alt=""
-                className="w-[100px] h-[100px] object-cover object-top rounded-[50%] border-4 border-[#03002E]"
-              />
+      <div className="bg-[#FFF8F6] mt-8 py-8 px-16">
+        <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
+          <div className="col-span-6 flex justify-center">
+            <div className="m-5 px-10 py-16  font-roboto pe-32 ">
+              <h1 className="text-4xl text-[#1A1A1A] my-4 font-medium	">
+                What our customers are saying us?
+              </h1>
+              <p className="text-[#1A1A1A] text-lg text-justify my-5 pe-20">
+                Various versions have evolved over the years, sometimes by
+                accident, sometimes on purpose injected humour and the like.
+              </p>
+              <div className="flex gap-10">
+                <div className="flex-col mt-10">
+                  <h3 className="font-medium text-[#1A1A1A] text-2xl">10m+</h3>
+                  <p>Happy People</p>
+                </div>
+                <div className="flex-col mt-10">
+                  <h3 className="font-medium text-[#1A1A1A] text-2xl">4.88</h3>
+                  <p>Overall rating</p>
+                  <div className="flex mt-3">
+                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
+                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
+                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
+                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
+                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="max-w-[1200px] mx-auto py-10 font-poppins">
-          <h1 className="text-3xl lg:text-[54.95px] font-bold	text-[#03002E] text-center md:font-semibold ">Vipin</h1>
-          <p className="text-justify font-normal leading-9 text-lg lg:text-[20.61px] mt-8 px-5 lg:px-0">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </p>
+          <div className="col-span-6 flex justify-center">
+            <div className="m-5 px-10 py-16 font-roboto ps-26">
+              <div className="flex-col items-center gap-4">
+                <div className="flex items-center gap-5">
+                  <img
+                    src={Testimonial1}
+                    alt=""
+                    className="w-[90px] rounded-[50%] h-[90px] object-cover object-top"
+                  />
+                  <div className="flex-col justify-center gap-5">
+                    <h5 className="font-medium text-[#1A1A1A] text-lg">
+                      Cameron Williamson
+                    </h5>
+                    <p>Designer</p>
+                  </div>
+                  <div className="ms-32">
+                    <img src={quote} alt="" />
+                  </div>
+                </div>
+                <div className="mt-5">
+                  <p className="leading-10 text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
+                    Searches for multiplexes, property comparisons, and the loan
+                    estimator. Works great. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dores.
+                  </p>
+                </div>
+                <div className="flex gap-5 mt-8">
+                  <button className="border border-black px-7 py-2 rounded-[40px]">{"<"}</button>
+                  <button className="border border-black px-7 py-2 rounded-[40px]">{'>'} </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

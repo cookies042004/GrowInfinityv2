@@ -1,63 +1,14 @@
 import React from "react";
-import indiaoil from "../assets/img/indianoillogo.png";
-import amaravatitextile from "../assets/img/amaravathitextileslogo.png";
-import iodlogo from "../assets/img/iodlogo.png";
-import shemaroologo from "../assets/img/shemaroologo.png";
-
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-
+import "./Footer.css"
 export const Footer = () => {
   return (
-    <footer className="bg-[#03002E] text-white">
-      <div className="p-3">
-        <h3 className="text-2xl lg:text-3xl text-center py-6">
-          Trusted by the world’s leading organizations
-        </h3>
-        <div className="py-10 overflow-hidden">
-          <marquee behavior="scroll" direction="left" className="flex gap-4">
-            <div className="flex gap-12 lg:gap-48">
-              <div>
-                <img
-                  src={indiaoil}
-                  alt="brandlogo1"
-                  className="w-auto max-w-[200px]"
-                />
-              </div>
-              <div>
-                <img
-                  src={amaravatitextile}
-                  alt="brandlogo2"
-                  className="w-auto max-w-[200px]"
-                />
-              </div>
-              <div>
-                <img
-                  src={iodlogo}
-                  alt="brandlogo3"
-                  className="w-auto max-w-[200px]"
-                />
-              </div>
-              <div>
-                <img
-                  src={shemaroologo}
-                  alt="brandlogo4"
-                  className="w-auto max-w-[200px]"
-                />
-              </div>
-            </div>
-          </marquee>
-        </div>
-      </div>
-
-      <div className="my-4 pb-8">
-        <hr className="text-white opacity-100 p-2" />
-      </div>
-
-      <div className="grid sm:grid-cols-12 gap-4 px-8">
+    <footer className="bg-[#03002e] text-white mt-5">
+      <div className="grid sm:grid-cols-12 gap-4 px-8 mt-10">
         <div className="col-span-12 md:col-span-12 lg:col-span-3">
           <h2 className="font-poppins font-bold text-2xl uppercase">
             Grow Infinity Realtors

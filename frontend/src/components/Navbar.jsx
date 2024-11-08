@@ -3,19 +3,19 @@ import logo from "../assets/img/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
-export const Navbar = ({mobileMenu, setMobileMenu}) => {
+export const Navbar = ({ mobileMenu, setMobileMenu }) => {
   document.title = "Grow Infinity Realtors";
 
   // Function to handle link click
   const handleLinkClick = () => {
-    setMobileMenu(false); 
+    setMobileMenu(false);
   };
 
   return (
     <>
-      <nav className="block lg:hidden bg-white">
+      <nav className="block lg:hidden bg-white max-w-[1280px]">
         <div className="flex items-center justify-between m-3">
           <div>
             <Link to="/">
@@ -45,9 +45,9 @@ export const Navbar = ({mobileMenu, setMobileMenu}) => {
             </li>
             <li className="font-dmsans font-[12.49px]">
               <NavLink to="/about">About us</NavLink>
-            </li>
+            </li> 
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/projects">Projects</NavLink>
+              <NavLink to="/event">Events</NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
               <NavLink to="/services">Services</NavLink>
@@ -94,25 +94,39 @@ export const Navbar = ({mobileMenu, setMobileMenu}) => {
           </div>
           <ul className="flex flex-col ms-5 mt-10 gap-10">
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/" onClick={handleLinkClick}>Home</NavLink>
+              <NavLink to="/" onClick={handleLinkClick}>
+                Home
+              </NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/about" onClick={handleLinkClick}>About us</NavLink>
+              <NavLink to="/about" onClick={handleLinkClick}>
+                About us
+              </NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/projects" onClick={handleLinkClick}>Projects</NavLink>
+              <NavLink to="/projects" onClick={handleLinkClick}>
+                Projects
+              </NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/services" onClick={handleLinkClick}>Services</NavLink>
+              <NavLink to="/services" onClick={handleLinkClick}>
+                Services
+              </NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/news" onClick={handleLinkClick}>News</NavLink>
+              <NavLink to="/news" onClick={handleLinkClick}>
+                News
+              </NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/contact" onClick={handleLinkClick}>Contact us</NavLink>
+              <NavLink to="/contact" onClick={handleLinkClick}>
+                Contact us
+              </NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/brochure" onClick={handleLinkClick}>Brochure</NavLink>
+              <NavLink to="/brochure" onClick={handleLinkClick}>
+                Brochure
+              </NavLink>
             </li>
           </ul>
         </div>

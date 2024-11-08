@@ -4,7 +4,9 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 600px;
-    backdrop-filter: blur(10px)
+    height: 420px;
+    backdrop-filter: blur(10px);
 }
+
+
 

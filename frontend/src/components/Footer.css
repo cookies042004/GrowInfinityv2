@@ -1,0 +1,5 @@
+footer {
+    background: linear-gradient(rgba(29, 38, 113, 0.8), rgb(17, 16, 55)), url('../assets/img/footer.png');
+    background-size: cover;
+    background-position: top;
+}

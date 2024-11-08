@@ -3,61 +3,90 @@ import VerifyTick from "../assets/img/tick.png";
 import PiggyBank from "../assets/img/piggybank.png";
 import Wrench from "../assets/img/Wrench.png";
 
+import "./Choose.css";
+import Trust from "../assets/img/TRUST.svg";
+import Finance from "../assets/img/FINANCE.svg";
+import CustomerSupport from "../assets/img/customer-support.png";
 export const Choose = () => {
   return (
     <>
       {/* Why choose us?  */}
-      <div className="my-10">
-        <h1 className="text-4xl font-bold lg:text-6xl pt-10 font-dmsans lg:font-medium text-black text-center">
+      <div className="my-10 max-w-[1280px] mx-auto">
+        <h1 className="text-4xl font-bold pt-6 font-roboto lg:font-medium text-black text-center">
           Why Choose us?
         </h1>
 
-        <div className="grid sm:grid-cols-12 my-10">
-          <div className="col-span-12 md:col-span-6 lg:col-span-4">
-            <div className="bg-[#F2F2F2] border border-[#03002E] rounded-[15.82px] p-5 m-5">
-              <div className="flex items-center justify-around">
-                <h3 className="font-bold font-poppins text-2xl lg:text-3xl">
-                  Trusted By Thousands
-                </h3>
-                <img src={VerifyTick} alt="" />
+        <div className="grid sm:grid-cols-12 my-10 gap-8">
+          <div className="col-span-4">
+            <div className="service-info-2 df-box">
+              <div className="number">01</div>
+              <div className="icon">
+                <img
+                  src={Trust}
+                  style={{ width: "70px" }}
+                  className="laticon-apartment"
+                  alt=""
+                />
+                {/* <!-- <i className="flaticon-apartment"></i> --> */}
               </div>
-
-              <p className="text-xl leading-9 text-justify">
-                With a proven track record of excellence, our real estate
-                services have earned the trust of thousands of satisfied
-                clients, as we are dedicated to providing solutions to your unique needs.
-              </p>
+              <div className="detail">
+                <h5 className="text-2xl font-semibold">
+                  <a href="#">Trusted By Thousands</a>
+                </h5>
+                <p>
+                  With a proven track record of excellence, our real estate
+                  services have earned the trust of thousands of satisfied
+                  clients.
+                </p>
+              </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4">
-            <div className="bg-[#F2F2F2] border border-[#03002E] rounded-[15.82px] p-5 m-5">
-              <div className="flex items-center justify-around">
-                <h3 className="font-bold font-poppins text-2xl lg:text-3xl">
-                  Financing Made Easy
-                </h3>
-                <img src={PiggyBank} alt="" />
+          <div className="col-span-4">
+            <div className="service-info-2 df-box">
+              <div className="number">02</div>
+              <div className="icon">
+                <img
+                  src={Finance}
+                  style={{ width: "70px" }}
+                  className="laticon-apartment"
+                  alt=""
+                />
+                {/* <!-- <i className="flaticon-apartment"></i> --> */}
               </div>
-
-              <p className="text-xl leading-9 text-justify">
-                Our simplified financing solution make securing your dream home
-                a breeze. Say goodbye to complexity and hello to easy,
-                hassale-free financing options.
-              </p>
+              <div className="detail">
+                <h5 className="text-2xl font-semibold">
+                  <a href="#">Financing Made Easy</a>
+                </h5>
+                <p>
+                  Our simplified financing solution make securing your dream
+                  home a breeze. Say goodbye to complexity and hello to easy,
+                  hassale-free financing options.
+                </p>
+              </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4">
-            <div className="bg-[#F2F2F2] border border-[#03002E] rounded-[15.82px] p-5 m-5">
-              <div className="flex items-center justify-around">
-                <h3 className="font-bold font-poppins text-2xl lg:text-3xl ">
-                  Support 24/7
-                </h3>
-                <img src={Wrench} alt="" />
+          <div className="col-span-4">
+            <div className="service-info-2 df-box">
+              <div className="number">03</div>
+              <div className="icon">
+                <img
+                  src={CustomerSupport}
+                  style={{ width: "70px" }}
+                  className="laticon-apartment"
+                  alt=""
+                />
+                {/* <!-- <i className="flaticon-apartment"></i> --> */}
               </div>
-              <p className="text-xl leading-9 text-justify">
-                Our dedicated team is here for you 24/7, ensuring you have
-                support you need, whether you have questions about propertied,
-                transactions, or market trends.
-              </p>
+              <div className="detail">
+                <h5 className="text-2xl font-semibold">
+                  <a href="#">Support 24/7</a>
+                </h5>
+                <p>
+                  Our dedicated team is here for you 24/7, ensuring you have
+                  support you need, whether you have questions about propertied,
+                  transactions, or market trends.
+                </p>
+              </div>
             </div>
           </div>
         </div>

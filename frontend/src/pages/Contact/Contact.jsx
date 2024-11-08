@@ -9,6 +9,15 @@ import contactImg from "../../assets/img/aboutImg2.png";
 import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
 
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import EmailIcon from "@mui/icons-material/Email";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
+import { Button } from "@mui/material";
+
 export const Contact = () => {
   const apiUrl = `${process.env.BASE_URL}/api/v1/contact`;
   const [formData, setFormData] = useState({
@@ -58,143 +67,171 @@ export const Contact = () => {
       <ToastContainer />
       <Layout>
         {/* Contact Hero  */}
-        <div className="contactbanner flex items-center lg:ps-24">
+        <div className="contactbanner flex items-center justify-center">
           <div className="grid sm:grid-cols-12">
-            <div className="col-span-12 text-center lg:col-span-6 lg:text-left">
-              <h1 className="font-dmsans font-medium text-white text-5xl lg:text-[86.76px]">
+            <div className="col-span-12 text-center mt-20">
+              <h1 className="font-dmsans font-medium text-white text-5xl">
                 Contact Us
               </h1>
-              <p className="font-dmsans font-normal text-white text-xl py-4  lg:text-[22.39px] px-5 lg:px-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna
-              </p>
             </div>
           </div>
         </div>
 
-        {/* Contact Form  */}
-        <h1 className="font-inter text-center text-2xl font-bold lg:font-medium lg:text-[45px] py-10">
-          LET’S ANSWER YOUR QUERIES
-        </h1>
-        <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 lg:col-span-6 mx-8 lg:mx-16">
-            <form onSubmit={handleSubmit}>
-              <div className="flex flex-col gap-3 lg:gap-5 my-5">
-                <label
-                  htmlFor="name"
-                  className="text-[#03002E] font-medium text-lg lg:text-[20px] "
-                >
-                  NAME
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="border border-[#03002E] outline-none p-2"
-                  required
-                />
-              </div>
-              <div className="flex flex-col gap-3 lg:gap-5 my-5">
-                <label
-                  htmlFor="emaail"
-                  className="text-[#03002E] font-medium text-lg lg:text-[20px] "
-                >
-                  E-MAIL
-                </label>
-                <input
-                  type="text"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="border border-[#03002E] outline-none p-2"
-                  required
-                />
-              </div>
-              <div className="flex flex-col gap-3 lg:gap-5 my-5">
-                <label
-                  htmlFor="mobile"
-                  className="text-[#03002E] font-medium text-lg lg:text-[20px]"
-                  required
-                >
-                  PHONE NUMBER
-                </label>
-                <input
-                  type="number"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  maxLength={10}
-                  minLength={10}
-                  className="border border-[#03002E] outline-none p-2"
-                />
-              </div>
-              <div className="flex flex-col gap-3 lg:gap-5 my-5">
-                <label
-                  htmlFor="budget"
-                  className="text-[#03002E] font-medium text-lg lg:text-[20px]"
-                  required
-                >
-                  BUDGET
-                </label>
-                <input
-                  type="text"
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className="border border-[#03002E] outline-none p-2"
-                />
-              </div>
+        <div className="bg-gray-200">
+          <div className="max-w-[1280px] mx-auto">
+            <div className="grid sm:grid-cols-12 py-10">
+              <div className="col-span-4 flex justify-center bg-white m-5 px-5 py-8 rounded-[24px] shadow-lg">
+                <div className="flex flex-col gap-5 justify-center items-center">
+                  <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
+                    <EmailIcon sx={{ fontSize: "40px", color: "white" }} />
+                  </div>
 
-              <div className="flex flex-col gap-3 lg:gap-5 my-5">
-                <label
-                  htmlFor="mobile"
-                  className="text-[#03002E] font-medium text-lg lg:text-[20px]"
-                  required
-                >
-                  MESSAGE
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="border border-[#03002E] outline-none p-2"
-                ></textarea>
-              </div>
+                  <p className="font-dmsans font-semibold text-lg">
+                    Chat to us
+                  </p>
 
-              <div className="flex flex-col gap-5 my-5">
-                <button
-                  type="submit"
-                  className="bg-[#03002E] text-white p-3 rounded-[16.72px]"
-                  style={{ boxShadow: "0px 3.34px 3.34px 0px #00000040" }}
-                >
-                  SUBMIT
-                </button>
+                  <p className="font-roboto text-lg text-[#5046e5]">
+                    Our friendly team is here to help.
+                  </p>
+                  <p className="font-roboto text-md text-center">
+                    growinfinityrealtor1@gmail.com, info@growinfinityrealtors.in
+                  </p>
+                </div>
               </div>
-            </form>
-          </div>
-          <div className="col-span-12 lg:col-span-6 mx-8 lg:mx-16 flex items-center justify-center">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14016.248411720519!2d77.3950231!3d28.5678978!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2f7b6f8aa4bbbca1%3A0xcd4a6a4f021202d4!2sGrow%20Infinity%20Realtors!5e0!3m2!1sen!2sin!4v1728113311126!5m2!1sen!2sin"
-              height="600"
-              style={{ border: "0" }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full"
-            ></iframe>
+              <div className="col-span-4 flex justify-center bg-white m-5 px-5 py-8 rounded-[24px] shadow-lg">
+                <div className="flex flex-col gap-5 justify-center items-center">
+                  <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
+                    <LocationOnIcon sx={{ fontSize: "40px", color: "white" }} />
+                  </div>
+
+                  <p className="font-dmsans font-semibold text-lg">Office</p>
+                  <p className="font-roboto text-lg text-[#5046e5]">
+                    Come say hello at our office HQ.
+                  </p>
+                  <p className="font-roboto text-md text-center">
+                    Plot No. BL-34, II Floor, Near Fitness Gym, Sector-116,
+                    Noida, Uttar Pradesh-201305
+                  </p>
+                </div>
+              </div>
+              <div className="col-span-4 flex justify-center bg-white m-5 px-5 py-8 rounded-[24px] shadow-lg">
+                <div className="flex flex-col gap-5 justify-center items-center">
+                  <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
+                    <LocalPhoneIcon sx={{ fontSize: "40px", color: "white" }} />
+                  </div>
+
+                  <p className="font-dmsans font-semibold text-lg">Phone</p>
+
+                  <p className="font-roboto text-lg text-[#5046e5]">
+                    Mon-Sun from 8am to 6pm
+                  </p>
+                  <p className="font-roboto text-md">+91-9990052554</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div className="max-w-[1280px] mx-auto">
+          <div className="grid sm:grid-cols-12 my-10">
+            <div className="col-span-6 p-3">
+              <h1 className="text-4xl font-medium font-roboto text-center">
+                Let's Get In Touch
+              </h1>
+              <p className="text-center text-lg font-roboto py-3">
+                Or just reach manually to{" "}
+                <span className="text-[#918bed]">
+                  info@growinfinityrealtors.in
+                </span>
+              </p>
 
-        {/* Contact Image  */}
-        <div className="grid grid-cols-1 my-5 mx-6 lg:mx-10">
-          <div>
-            <img
-              src={contactImg}
-              alt=""
-              className="w-full border-4 border-[#03002E] rounded-[26px] h-[454px] object-cover"
-            />
+              <form className="mt-5">
+                <div className="grid sm:grid-cols-12 font-roboto gap-5">
+                  <div className="col-span-12">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className="ps-2">
+                        Full Name
+                      </label>
+                      <div className="flex items-center border rounded-[24px] ">
+                        <PersonOutlineOutlinedIcon
+                          sx={{ marginLeft: "15px" }}
+                        />
+                        <input
+                          type="text"
+                          placeholder="Enter your full name..."
+                          className="p-3 outline-none w-[90%]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-12">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className="ps-2">
+                        Email Address
+                      </label>
+                      <div className="flex items-center border rounded-[24px] ">
+                        <MailOutlinedIcon sx={{ marginLeft: "15px" }} />
+                        <input
+                          type="text"
+                          placeholder="Enter your email address..."
+                          className="p-3 outline-none w-[90%]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-12">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className="ps-2">
+                        Phone Number
+                      </label>
+                      <div className="flex items-center border rounded-[24px] ">
+                        <LocalPhoneOutlinedIcon sx={{ marginLeft: "15px" }} />
+                        <input
+                          type="text"
+                          placeholder="Enter your phone number..."
+                          className="p-3 outline-none w-[90%]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-12">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className="ps-2">
+                        Message
+                      </label>
+                      <textarea
+                        rows={5}
+                        type="text"
+                        placeholder="Enter your message here..."
+                        className="p-3 outline-none  border rounded-[24px]"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div className="col-span-12 flex justify-center">
+                    <Button
+                      endIcon={<EastOutlinedIcon />}
+                      variant="contained"
+                      size="large"
+                      sx={{
+                        borderRadius: "24px",
+                        textTransform: "none",
+                        backgroundColor: "#5046e5",
+                      }}
+                    >
+                      Submit Form
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="col-span-6 flex items-center justify-center p-3">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14016.248411720519!2d77.3950231!3d28.5678978!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2f7b6f8aa4bbbca1%3A0xcd4a6a4f021202d4!2sGrow%20Infinity%20Realtors!5e0!3m2!1sen!2sin!4v1730825249194!5m2!1sen!2sin"
+                height="500"
+                style={{ border: "0", width: "100%" }}
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
       </Layout>
