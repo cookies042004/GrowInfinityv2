@@ -20,8 +20,8 @@ export const Services = () => {
         {/* Service Hero  */}
         <div className="servicebanner flex items-center justify-center">
           <div className="grid sm:grid-cols-12">
-            <div className="col-span-12 text-center mt-20">
-              <h1 className="font-dmsans font-medium text-white text-5xl">
+            <div className="col-span-12 text-center lg:mt-20">
+              <h1 className="font-dmsans font-medium text-white text-3xl lg:text-4xl">
                 Services
               </h1>
             </div>
@@ -32,12 +32,12 @@ export const Services = () => {
 
         {/* Our Services  */}
         <div className="my-5 max-w-[1280px] mx-auto">
-          <h1 className="font-roboto py-8 text-4xl font-medium text-center">
+          <h1 className="font-roboto py-3 lg:py-8 text-3xl lg:text-4xl font-medium text-center">
             Our Services
           </h1>
 
-          <div className="grid sm:grid-cols-12 gap-8">
-            <div className="col-span-4">
+          <div className="grid sm:grid-cols-12">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border text-center flex flex-col gap-2">
                 <i>
                   <ApartmentIcon sx={{ fontSize: "50px" }} />
@@ -53,7 +53,7 @@ export const Services = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2">
                 <i>
                   <StorefrontIcon sx={{ fontSize: "50px" }} />
@@ -70,7 +70,7 @@ export const Services = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2">
                 <i>
                   <HomeWorkIcon sx={{ fontSize: "50px" }} />
@@ -87,7 +87,7 @@ export const Services = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2">
                 <i>
                   <CreditScoreIcon sx={{ fontSize: "50px" }} />
@@ -103,7 +103,7 @@ export const Services = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2">
                 <i>
                   <AutoGraphIcon sx={{ fontSize: "50px" }} />
@@ -119,7 +119,7 @@ export const Services = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2">
                 <i>
                   <PhoneCallbackIcon sx={{ fontSize: "50px" }} />

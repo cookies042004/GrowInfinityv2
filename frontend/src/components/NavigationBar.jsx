@@ -6,7 +6,7 @@ export const NavigationBar = () => {
   const path = location.pathname; // Get the full path (e.g., '/about')
 
   return (
-    <div className="max-w-[1280px] mx-auto my-10">
+    <div className="max-w-[1280px] mx-5 lg:mx-auto my-10">
       <div className="bg-gray-100 p-5 shadow-lg capitalize rounded-lg">
         Home{' '}
         {path.split("/").filter(Boolean).map((item, index) => (

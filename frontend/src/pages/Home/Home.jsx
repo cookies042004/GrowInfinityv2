@@ -183,7 +183,7 @@ export const Home = () => {
             seamless experience to customers to secure their dream homes.
           </p>
           <div className="grid sm:grid-cols-12">
-            <div className="col-span-3 rounded-[17.07px] m-8  hover:text-white transition-all ease-in-out experience-card">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <ApartmentIcon
                   sx={{
@@ -209,7 +209,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-3  rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3  rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <EmojiEmotionsIcon
                   sx={{
@@ -237,7 +237,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <AspectRatioIcon
                   sx={{
@@ -266,7 +266,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <AccessibilityNewIcon
                   sx={{
@@ -333,7 +333,7 @@ export const Home = () => {
 
       <div className="mx-auto max-w-[1280px] my-10">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-7">
+          <div className="hidden lg:flex col-span-12 lg:col-span-7 justify-center">
             <div className="grid sm:grid-cols-12">
               <div className="col-span-12">
                 <div className="grid sm:grid-cols-12">
@@ -366,8 +366,8 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-5 flex flex-col justify-center ps-14">
-            <h1 className="text-[#1A1A1A] font-roboto text-4xl font-medium">
+          <div className="col-span-12 lg:col-span-5 flex flex-col justify-center ps-14">
+            <h1 className="text-[#1A1A1A] font-roboto text-4xl font-medium text-center lg:text-start">
               How It works? <br />
               Find a perfect home
             </h1>
@@ -439,10 +439,10 @@ export const Home = () => {
 
       <div className="max-w-[1280px] mx-auto my-10">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-6 m-5">
+          <div className="col-span-12 lg:col-span-6 m-5">
             <div className="bg-[#F9F9F9] font-roboto p-14 rounded-lg">
               <div className="grid sm:grid-cols-12">
-                <div className="col-span-9">
+                <div className="col-span-12 lg:col-span-9">
                   <div className="flex flex-col gap-4">
                     <h4 className="font-medium text-2xl">
                       Looking for the new home?
@@ -457,16 +457,16 @@ export const Home = () => {
                     </button>
                   </div>
                 </div>
-                <div className="col-span-3 flex items-end">
+                <div className="col-span-12 lg:col-span-3 hidden lg:flex items-end">
                   <img src={home} alt="" className="w-[130px] h-[130px]" />
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-span-6 m-5">
+          <div className="col-span-12 lg:col-span-6 m-5">
             <div className="bg-[#FFF8F6] font-roboto p-14 rounded-lg">
               <div className="grid sm:grid-cols-12">
-                <div className="col-span-9">
+                <div className="col-span-12 lg:col-span-9">
                   <div className="flex flex-col gap-4">
                     <h4 className="font-medium text-2xl">
                       Want to sell your home?
@@ -481,7 +481,7 @@ export const Home = () => {
                     </button>
                   </div>
                 </div>
-                <div className="col-span-3 flex items-end">
+                <div className="col-span-12 lg:col-span-3 hidden lg:flex items-end">
                   <img src={house} alt="" className="w-[130px] h-[130px]" />
                 </div>
               </div>

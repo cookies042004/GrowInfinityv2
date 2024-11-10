@@ -9,16 +9,16 @@ export const Testimonials = () => {
       {/* Testimonial  */}
       <div className="bg-[#FFF8F6] mt-8 py-8 px-16">
         <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
-          <div className="col-span-6 flex justify-center">
-            <div className="m-5 px-10 py-16  font-roboto pe-32 ">
-              <h1 className="text-4xl text-[#1A1A1A] my-4 font-medium	">
+          <div className="col-span-12 lg:col-span-6 flex justify-center">
+            <div className="m-5 lg:px-10 py-16 font-roboto lg:pe-32 flex flex-col items-center ">
+              <h1 className="text-4xl text-[#1A1A1A] my-4 font-medium">
                 What our customers are saying us?
               </h1>
-              <p className="text-[#1A1A1A] text-lg text-justify my-5 pe-20">
+              <p className="text-[#1A1A1A] text-lg text-justify my-5 lg:pe-20">
                 Various versions have evolved over the years, sometimes by
                 accident, sometimes on purpose injected humour and the like.
               </p>
-              <div className="flex gap-10">
+              <div className="flex justify-center gap-10">
                 <div className="flex-col mt-10">
                   <h3 className="font-medium text-[#1A1A1A] text-2xl">10m+</h3>
                   <p>Happy People</p>
@@ -37,8 +37,8 @@ export const Testimonials = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-6 flex justify-center">
-            <div className="m-5 px-10 py-16 font-roboto ps-26">
+          <div className="col-span-12 lg:col-span-6 flex justify-center">
+            <div className="m-5 lg:px-10 py-16 font-roboto lg:ps-26">
               <div className="flex-col items-center gap-4">
                 <div className="flex items-center gap-5">
                   <img

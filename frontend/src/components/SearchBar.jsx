@@ -39,8 +39,8 @@ export const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSearch}>
-      <div className="grid sm:grid-cols-12 ">
+    <form onSubmit={handleSearch} className="w-[80%]">
+      <div className="grid sm:grid-cols-12">
         <div
           className="col-span-12 lg:col-span-10 bg-white h-[300] w-[100%] rounded-[13.27px]"
           style={{ boxShadow: "0px 16.39px 33.56px 0px #0000001A" }}
@@ -186,12 +186,12 @@ export const SearchBar = () => {
                 </button>
               </div>
             </div>
-            <div className="col-span-2">
+            <div className="col-span-2 lg:col-span-2">
               <button className="bg-[#f4f4f4] w-full py-2 rounded-2xl text-[#03002e] font-medium">
                 Price (₹)
               </button>
             </div>
-            <div className="col-span-6 flex justify-center mx-8 items-center">
+            <div className="col-span-10 lg:col-span-6 flex justify-center mx-8 items-center">
               <Slider
                 value={value}
                 onChange={handleChange}
@@ -210,26 +210,28 @@ export const SearchBar = () => {
                 ]}
               />
             </div>
-            <div className="col-span-4 flex gap-3 items-center">
-              <div>
-                <p className="text-xs text-gray-700 font-roboto font-medium">
-                  Price Range Selected From:
-                </p>
-                <p className="text-md text-center  font-roboto font-medium">
-                  {value[0] < 100
-                    ? `₹ ${value[0]} Lac`
-                    : `₹ ${(value[0] / 100).toFixed(2)} Cr`}
-                </p>
-              </div>
-              <div>
-                <p className="text-xs text-gray-700 font-roboto font-medium">
-                  Price Range Selected To:
-                </p>
-                <p className="text-md text-center  font-roboto font-medium">
-                  {value[1] < 100
-                    ? `₹ ${value[1]} Lac`
-                    : `₹ ${(value[1] / 100).toFixed(2)} Cr`}
-                </p>
+            <div className="col-span-12 lg:col-span-4">
+              <div className="grid sm:grid-cols-12 gap-3">
+                <div className="col-span-6">
+                  <p className="text-xs text-center text-gray-700 font-roboto font-medium">
+                    Price Range Selected From:
+                  </p>
+                  <p className="text-md text-center  font-roboto font-medium">
+                    {value[0] < 100
+                      ? `₹ ${value[0]} Lac`
+                      : `₹ ${(value[0] / 100).toFixed(2)} Cr`}
+                  </p>
+                </div>
+                <div className="col-span-6">
+                  <p className="text-xs text-center text-gray-700 font-roboto font-medium">
+                    Price Range Selected To:
+                  </p>
+                  <p className="text-md text-center  font-roboto font-medium">
+                    {value[1] < 100
+                      ? `₹ ${value[1]} Lac`
+                      : `₹ ${(value[1] / 100).toFixed(2)} Cr`}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

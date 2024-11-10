@@ -46,7 +46,7 @@ export const Card = () => {
   return (
     <div className="max-w-[1280px] mx-auto">
       <div className="grid sm:grid-cols-12">
-        <div className="col-span-3 m-3">
+        <div className="col-span-12 md:col-span-6 lg:col-span-3 m-3">
           <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
             <div className="flex justify-center">
               <img
@@ -97,7 +97,7 @@ export const Card = () => {
                   </Button>
                 </Link>
               </div>
-              <div className='flex-1'>
+              <div className="flex-1">
                 <Button
                   onClick={handleOpen}
                   fullWidth
@@ -285,7 +285,7 @@ export const Card = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-3 m-3">
+        <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden md:block lg:block m-3">
           <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
             <div className="flex justify-center">
               <img
@@ -356,7 +356,7 @@ export const Card = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-3 m-3">
+        <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden lg:block m-3">
           <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
             <div className="flex justify-center">
               <img
@@ -427,7 +427,7 @@ export const Card = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-3 m-3">
+        <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden lg:block m-3">
           <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
             <div className="flex justify-center">
               <img

@@ -8,5 +8,11 @@
     backdrop-filter: blur(10px);
 }
 
+@media screen and (max-width: 768px) {
+    .aboutbanner {
+        height: 300px !important;
+    }
+}
+
 
 

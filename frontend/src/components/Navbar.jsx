@@ -45,7 +45,7 @@ export const Navbar = ({ mobileMenu, setMobileMenu }) => {
             </li>
             <li className="font-dmsans font-[12.49px]">
               <NavLink to="/about">About us</NavLink>
-            </li> 
+            </li>
             <li className="font-dmsans font-[12.49px]">
               <NavLink to="/event">Events</NavLink>
             </li>
@@ -94,34 +94,22 @@ export const Navbar = ({ mobileMenu, setMobileMenu }) => {
           </div>
           <ul className="flex flex-col ms-5 mt-10 gap-10">
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/" onClick={handleLinkClick}>
-                Home
-              </NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/about" onClick={handleLinkClick}>
-                About us
-              </NavLink>
+              <NavLink to="/about">About us</NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/projects" onClick={handleLinkClick}>
-                Projects
-              </NavLink>
+              <NavLink to="/event">Events</NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/services" onClick={handleLinkClick}>
-                Services
-              </NavLink>
+              <NavLink to="/services">Services</NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/news" onClick={handleLinkClick}>
-                News
-              </NavLink>
+              <NavLink to="/news">News</NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
-              <NavLink to="/contact" onClick={handleLinkClick}>
-                Contact us
-              </NavLink>
+              <NavLink to="/contact">Contact us</NavLink>
             </li>
             <li className="font-dmsans font-[12.49px]">
               <NavLink to="/brochure" onClick={handleLinkClick}>

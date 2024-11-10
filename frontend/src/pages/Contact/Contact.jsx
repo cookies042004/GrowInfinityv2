@@ -69,8 +69,8 @@ export const Contact = () => {
         {/* Contact Hero  */}
         <div className="contactbanner flex items-center justify-center">
           <div className="grid sm:grid-cols-12">
-            <div className="col-span-12 text-center mt-20">
-              <h1 className="font-dmsans font-medium text-white text-5xl">
+            <div className="col-span-12 text-center lg:mt-20 flex justify-center items-center">
+              <h1 className="font-dmsans  text-3xl lg:text-4xl font-medium text-white">
                 Contact Us
               </h1>
             </div>
@@ -80,7 +80,7 @@ export const Contact = () => {
         <div className="bg-gray-200">
           <div className="max-w-[1280px] mx-auto">
             <div className="grid sm:grid-cols-12 py-10">
-              <div className="col-span-4 flex justify-center bg-white m-5 px-5 py-8 rounded-[24px] shadow-lg">
+              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-5 py-4 lg:py-8 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
                   <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
                     <EmailIcon sx={{ fontSize: "40px", color: "white" }} />
@@ -98,7 +98,7 @@ export const Contact = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-span-4 flex justify-center bg-white m-5 px-5 py-8 rounded-[24px] shadow-lg">
+              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-5 py-4 lg:py-8 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
                   <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
                     <LocationOnIcon sx={{ fontSize: "40px", color: "white" }} />
@@ -114,7 +114,7 @@ export const Contact = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-span-4 flex justify-center bg-white m-5 px-5 py-8 rounded-[24px] shadow-lg">
+              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-5 py-4 lg:py-8 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
                   <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
                     <LocalPhoneIcon sx={{ fontSize: "40px", color: "white" }} />
@@ -133,8 +133,8 @@ export const Contact = () => {
         </div>
         <div className="max-w-[1280px] mx-auto">
           <div className="grid sm:grid-cols-12 my-10">
-            <div className="col-span-6 p-3">
-              <h1 className="text-4xl font-medium font-roboto text-center">
+            <div className="col-span-12 lg:col-span-6 p-3 m-5">
+              <h1 className="text-3xl lg:text-4xl font-medium font-roboto text-center">
                 Let's Get In Touch
               </h1>
               <p className="text-center text-lg font-roboto py-3">
@@ -223,7 +223,7 @@ export const Contact = () => {
                 </div>
               </form>
             </div>
-            <div className="col-span-6 flex items-center justify-center p-3">
+            <div className="col-span-12 lg:col-span-6 flex items-center justify-center p-3">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14016.248411720519!2d77.3950231!3d28.5678978!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2f7b6f8aa4bbbca1%3A0xcd4a6a4f021202d4!2sGrow%20Infinity%20Realtors!5e0!3m2!1sen!2sin!4v1730825249194!5m2!1sen!2sin"
                 height="500"

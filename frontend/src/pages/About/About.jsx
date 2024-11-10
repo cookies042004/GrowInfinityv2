@@ -21,8 +21,8 @@ export const About = () => {
       {/* About Hero  */}
       <div className="aboutbanner flex items-center justify-center">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 text-center mt-20">
-            <h1 className="font-dmsans text-center font-medium text-white text-5xl">
+          <div className="col-span-12 text-center lg:mt-20">
+            <h1 className="font-dmsans text-center font-medium text-white text-3xl lg:text-4xl">
               About Us
             </h1>
           </div>
@@ -33,14 +33,14 @@ export const About = () => {
 
       {/* welcome to grow infinity  */}
       <div className="my-8 mx-auto max-w-[1280px]">
-        <h1 className="font-roboto text-4xl text-center font-medium lg:mt-16">
+        <h1 className="font-roboto text-3xl lg:text-4xl text-center font-medium lg:mt-16">
           <span className="text-gray-500">Welcome To </span>
           Grow Infinity Realtors
         </h1>
 
         <div className="grid sm:grid-cols-12 my-8">
           <div className="col-span-12 lg:col-span-6 flex items-center justify-start">
-            <p className="font-poppins text-2xl leading-9 text-justify text-gray-700">
+            <p className="font-poppins text-lg lg:text-2xl leading-9 text-justify text-gray-700 px-5">
               Grow infinity is an accomplished real estate agent firm. Drawing
               from their years of experience they brings a strategic yet
               personal approach to the home buying, selling, and renting
@@ -50,7 +50,7 @@ export const About = () => {
             </p>
           </div>
 
-          <div className="col-span-12 lg:col-span-6 flex justify-end ">
+          <div className="col-span-12 lg:col-span-6 flex justify-center mt-8 lg:mt-0 lg:justify-end ">
             <img
               src={aboutImg}
               alt="about-welcome-image"
@@ -61,11 +61,11 @@ export const About = () => {
       </div>
 
       <div className="my-5 max-w-[1280px] mx-auto">
-        <h1 className="text-center text-4xl font-roboto font-medium py-8">
+        <h1 className="text-center text-3xl lg:text-4xl font-roboto font-medium py-8">
           <span className="text-gray-500">Stress-Free</span> Step to Your Dream
           Home
         </h1>
-        <div className="grid sm:grid-cols-12 mt-10 gap-28">
+        <div className="grid sm:grid-cols-12 mt-10">
           {[
             {
               number: "01",
@@ -102,7 +102,7 @@ export const About = () => {
                 "Celebrate your new beginning and settle in comfortably",
             },
           ].map((item, index) => (
-            <div className="col-span-4" key={item.number}>
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5" key={item.number}>
               <div
                 className={`bg-gray-600 text-white rounded-[64px] p-8 font-roboto h-[200px] text-center relative`}
               >
@@ -124,11 +124,11 @@ export const About = () => {
           What we do?
         </h2>
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-6 flex justify-center">
+          <div className="col-span-12 lg:col-span-6 flex justify-center">
             <img src={whatwedo} alt="" className="w-[500px]" />
           </div>
-          <div className="col-span-6 flex flex-col justify-center">
-            <p className="font-poppins text-2xl leading-9 text-justify text-gray-700">
+          <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
+            <p className="font-poppins text-lg px-5 lg:text-2xl leading-9 text-justify text-gray-700">
               At Grow Infinity Realtors, we pride ourselves on our commitment to
               delivering personalized solutions that cater to your unique needs
               and preferences. Our extensive network and market knowledge enable
@@ -168,12 +168,12 @@ export const About = () => {
 
       {/* Meet our directors  */}
       <div className="my-5 mx-auto max-w-[1280px]">
-        <h1 className="text-center text-[#03002e] text-4xl font-medium pb-10">
+        <h1 className="text-center text-[#03002e] text-3xl lg:text-4xl font-medium pb-10">
           Get to Know Our Team
         </h1>
 
-        <div className="grid sm:grid-cols-12 max-w-[1100px] mx-auto gap-10">
-          <div className="col-span-4 m-5">
+        <div className="grid sm:grid-cols-12 max-w-[1100px] mx-auto">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
             <div className="director-card">
               <div>
                 <img
@@ -192,7 +192,7 @@ export const About = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
             <div className="director-card">
               <div>
                 <img
@@ -211,7 +211,7 @@ export const About = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
             <div className="director-card">
               <div>
                 <img

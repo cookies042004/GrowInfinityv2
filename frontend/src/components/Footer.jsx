@@ -7,7 +7,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import "./Footer.css"
 export const Footer = () => {
   return (
-    <footer className="bg-[#03002e] text-white mt-5">
+    <footer className="bg-[#03002e] text-white pt-5">
       <div className="grid sm:grid-cols-12 gap-4 px-8 mt-10">
         <div className="col-span-12 md:col-span-12 lg:col-span-3">
           <h2 className="font-poppins font-bold text-2xl uppercase">
