@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import Testimonial1 from "../assets/img/testimonial1.jpeg";
 import Testimonial2 from "../assets/img/testimonial2.jpeg";
 import StarIcon from "@mui/icons-material/Star";
-import quote from "../assets/img/SVG.png"
+import quote from "../assets/img/SVG.png";
+
+const testimonials = [
+  {
+    name: "Cameron Williamson",
+    role: "Designer",
+    image: Testimonial1,
+    text: "Searches for multiplexes, property comparisons, and the loan estimator. Works great. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dores.",
+  },
+  {
+    name: "Sarah Lee",
+    role: "Developer",
+    image: "https://images.unsplash.com/photo-1645800803579-9cdc733f3bfc?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Another testimonial image
+    text: "Amazing platform to compare properties. It really helped me make the right decisions for my projects! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dores.",
+  },
+  {
+    name: "John Doe",
+    role: "Product Manager",
+    image: "https://images.unsplash.com/photo-1617724748068-691efeeaf542?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Another testimonial image
+    text: "The loan estimator tool saved me so much time. Excellent features and user-friendly interface.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dores.",
+  },
+];
+
 export const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("next"); // Determines animation direction
+
+  const handlePrev = () => {
+    setDirection("prev");
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setDirection("next");
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const currentTestimonial = testimonials[currentIndex];
+
   return (
     <>
       {/* Testimonial  */}
@@ -18,7 +59,7 @@ export const Testimonials = () => {
                 Various versions have evolved over the years, sometimes by
                 accident, sometimes on purpose injected humour and the like.
               </p>
-              <div className="flex justify-center gap-10">
+              <div className="flex justify-center lg:justify-start gap-10">
                 <div className="flex-col mt-10">
                   <h3 className="font-medium text-[#1A1A1A] text-2xl">10m+</h3>
                   <p>Happy People</p>
@@ -37,36 +78,52 @@ export const Testimonials = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-6 flex justify-center">
+          <div className="col-span-12 lg:col-span-6 flex justify-center testimonial-container">
             <div className="m-5 lg:px-10 py-16 font-roboto lg:ps-26">
-              <div className="flex-col items-center gap-4">
+              <div
+                className={`flex-col items-center gap-4 testimonial-item 
+          ${
+            direction === "next"
+              ? "slide-in"
+              : direction === "prev"
+              ? "slide-out-prev"
+              : ""
+          }`}
+              >
                 <div className="flex items-center gap-5">
                   <img
-                    src={Testimonial1}
-                    alt=""
+                    src={currentTestimonial.image}
+                    alt={currentTestimonial.name}
                     className="w-[90px] rounded-[50%] h-[90px] object-cover object-top"
                   />
                   <div className="flex-col justify-center gap-5">
                     <h5 className="font-medium text-[#1A1A1A] text-lg">
-                      Cameron Williamson
+                      {currentTestimonial.name}
                     </h5>
-                    <p>Designer</p>
+                    <p>{currentTestimonial.role}</p>
                   </div>
                   <div className="ms-32">
-                    <img src={quote} alt="" />
+                    <img src={quote} alt="quote" />
                   </div>
                 </div>
                 <div className="mt-5">
                   <p className="leading-10 text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
-                    Searches for multiplexes, property comparisons, and the loan
-                    estimator. Works great. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dores.
+                    {currentTestimonial.text}
                   </p>
                 </div>
                 <div className="flex gap-5 mt-8">
-                  <button className="border border-black px-7 py-2 rounded-[40px]">{"<"}</button>
-                  <button className="border border-black px-7 py-2 rounded-[40px]">{'>'} </button>
+                  <button
+                    onClick={handlePrev}
+                    className="border border-black px-7 py-2 rounded-[40px]"
+                  >
+                    {"<"}
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="border border-black px-7 py-2 rounded-[40px]"
+                  >
+                    {">"}
+                  </button>
                 </div>
               </div>
             </div>

@@ -214,7 +214,7 @@ export const SearchBar = () => {
               <div className="grid sm:grid-cols-12 gap-3">
                 <div className="col-span-6">
                   <p className="text-xs text-center text-gray-700 font-roboto font-medium">
-                    Price Range Selected From:
+                    Price Range From:
                   </p>
                   <p className="text-md text-center  font-roboto font-medium">
                     {value[0] < 100
@@ -224,7 +224,7 @@ export const SearchBar = () => {
                 </div>
                 <div className="col-span-6">
                   <p className="text-xs text-center text-gray-700 font-roboto font-medium">
-                    Price Range Selected To:
+                    Price Range To:
                   </p>
                   <p className="text-md text-center  font-roboto font-medium">
                     {value[1] < 100

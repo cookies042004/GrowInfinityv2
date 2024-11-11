@@ -65,8 +65,8 @@ export const ProjectDetails = () => {
       {/* Project Details Hero */}
       <div className="detailsbanner flex items-center justify-center">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 text-center mt-20">
-            <h1 className="ffont-dmsans font-medium text-white text-5xl">
+          <div className="col-span-12 text-center lg:mt-20">
+            <h1 className="ffont-dmsans font-medium text-white text-3xl lg:text-4xl">
               Property Details
             </h1>
           </div>
@@ -74,25 +74,25 @@ export const ProjectDetails = () => {
       </div>
 
       <div className="bg-gray-100 p-3">
-        <div className="grid sm:grid-cols-12 gap-10 max-w-[1280px] mt-8 mx-auto">
-          <div className="col-span-9 bg-white px-12 py-8">
+        <div className="grid sm:grid-cols-12 gap-10 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
+          <div className="col-span-12 lg:col-span-9 bg-white px-5 lg:px-12 py-4 lg:py-8">
             <div className="grid sm:grid-cols-12 gap-3">
-              <div className="col-span-8">
+              <div className="col-span-12 lg:col-span-8">
                 <div
                   id="controls-carousel"
-                  className="relative w-full h-[400px]"
+                  className="relative w-full h-[400px] md:h-[500px] lg:h-[400px]"
                 >
                   {/* Carousel Wrapper */}
-                  <div className="relative h-[400px] overflow-hidden rounded-lg">
+                  <div className="relative h-full overflow-hidden rounded-lg">
                     {/* Dynamic Carousel Item with fade effect */}
                     <div
-                      className={`duration-700 ease-in-out h-[400px] transition-opacity ${
+                      className={`duration-700 ease-in-out h-full transition-opacity ${
                         isFading ? "opacity-0" : "opacity-100"
                       }`}
                     >
                       <img
                         src={images[currentIndex]}
-                        className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-[400px] rounded-lg object-cover object-top"
+                        className="absolute block w-full h-full object-cover object-center rounded-lg"
                         alt="Carousel slide"
                       />
                     </div>
@@ -151,7 +151,7 @@ export const ProjectDetails = () => {
                 </div>
               </div>
 
-              <div className="col-span-4">
+              <div className="hidden lg:block col-span-12 lg:col-span-4">
                 <div className="flex flex-col gap-3">
                   <img
                     src={gallery2}
@@ -166,7 +166,7 @@ export const ProjectDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between items-center m-3">
+            <div className="flex flex-col lg:flex-row gap-8 justify-between lg:items-center m-3">
               <div className="font-roboto mt-6">
                 <h1 className="font-medium text-4xl">CanterBury Lane</h1>
                 <p className="text-md mt-3">Noida, UP-201301</p>
@@ -191,60 +191,72 @@ export const ProjectDetails = () => {
                   WhatsApp Message
                 </Button>
               </div>
-              <div>
+              <div className="flex justify-end">
                 <h5 className="font-roboto font-semibold text-[#EB664E] text-4xl">
                   ₹2.8Cr*
                 </h5>
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-12 justify-start py-5 ps-2">
+            <div className="flex flex-wrap items-center gap-10 lg:grid sm:grid-cols-12 justify-center lg:justify-start py-5 ps-2">
               <div className="col-span-3">
                 <div className="flex items-center gap-2">
-                  <HomeOutlinedIcon color="secondary" />
-                  <p className="font-roboto">3 BHK</p>
+                  <HomeOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                  <p className="font-roboto text-sm lg:text-lg">3 BHK</p>
                 </div>
               </div>
               <div className="col-span-3">
                 <div className="flex items-center gap-2">
-                  <ChairOutlinedIcon color="secondary" />
-                  <p className="font-roboto">Semi-furnsihed</p>
+                  <ChairOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                  <p className="font-roboto text-sm lg:text-lg">
+                    Semi-furnsihed
+                  </p>
                 </div>
               </div>
               <div className="col-span-3">
                 <div className="flex items-center gap-2">
-                  <SpaceDashboardOutlinedIcon color="secondary" />
-                  <p className="font-roboto">1850 sqft</p>
+                  <SpaceDashboardOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                  <p className="font-roboto text-sm lg:text-lg">1850 sqft</p>
                 </div>
               </div>
               <div className="col-span-3">
                 <div className="flex items-center gap-2">
-                  <CurrencyRupeeOutlinedIcon color="secondary" />
-                  <p className="font-roboto">10.6K per sqft</p>
+                  <CurrencyRupeeOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                  <p className="font-roboto text-sm lg:text-lg">
+                    10.6K per sqft
+                  </p>
                 </div>
               </div>
             </div>
 
             <div
-              className="grid sm:grid-cols-12 mx-3 mt-8"
+              className="flex flex-wrap items-center gap-10 lg:grid sm:grid-cols-12 mx-3 mt-8"
               style={{ borderBottom: "3px solid lightgray" }}
             >
               <div className="col-span-3">
-                <h3 className="py-2 text-underline">Description</h3>
+                <h3 className="py-2">
+                  <a href="#description">Description</a>
+                </h3>
               </div>
               <div className="col-span-3">
-                <h3 className="py-2">Amenities</h3>
+                <h3 className="py-2">
+                  <a href="#amenities">Amenities</a>
+                </h3>
               </div>
               <div className="col-span-3">
-                <h3 className="py-2">Location</h3>
+                <h3 className="py-2">
+                  <a href="#location">Location</a>
+                </h3>
               </div>
               <div className="col-span-3">
-                <h3 className="py-2">Virtual Tour</h3>
+                <h3 className="py-2">
+                  <a href="#youtube">Virtual Tour</a>
+                </h3>
               </div>
             </div>
 
             <div className="grid sm:grid-cols-12 mx-3 mt-8 gap-8">
-              <div className="col-span-12">
+              <div className="col-span-12" id="description">
                 <h3 className="text-xl font-poppins font-semibold">
                   Description
                 </h3>
@@ -268,6 +280,7 @@ export const ProjectDetails = () => {
                       textTransform: "none",
                       display: "inline-block",
                       marginTop: "10px",
+                      backgroundColor: "#5BC0EB",
                     }}
                     onClick={toggleDescription}
                   >
@@ -275,7 +288,7 @@ export const ProjectDetails = () => {
                   </Button>
                 </div>
               </div>
-              <div className="col-span-12">
+              <div className="col-span-12" id="amenities">
                 <h3 className="text-xl font-poppins font-semibold pb-5">
                   Amenities
                 </h3>
@@ -284,52 +297,73 @@ export const ProjectDetails = () => {
                   <h3 className="text-xl text-center font-roboto font-medium ">
                     Society Amenities
                   </h3>
-                  <div className="grid sm:grid-cols-12 mt-5 gap-5">
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                  <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <PoolIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <PoolIcon size="large" sx={{ color: "#5BC0EB" }} />
                         <p>Swimming pool</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
@@ -342,52 +376,76 @@ export const ProjectDetails = () => {
                   <h3 className="text-xl text-center font-roboto font-medium ">
                     Flat Amenities
                   </h3>
-                  <div className="grid sm:grid-cols-12 mt-5 gap-5">
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                  <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3  p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
@@ -395,7 +453,7 @@ export const ProjectDetails = () => {
                 </div>
               </div>
 
-              <div className="col-span-12">
+              <div className="col-span-12" id="location">
                 <h3 className="text-xl font-poppins font-semibold pb-5">
                   Location
                 </h3>
@@ -404,52 +462,76 @@ export const ProjectDetails = () => {
                   <h3 className="text-xl text-center font-roboto font-medium">
                     Location Advantages
                   </h3>
-                  <div className="grid sm:grid-cols-12 mt-5 gap-5">
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                  <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
-                    <div className="col-span-3">
-                      <div className="flex items-center gap-3 p-5">
-                        <Battery5BarIcon size="large" />
+                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                      <div className="flex items-center gap-3 p-3 lg:p-5">
+                        <Battery5BarIcon
+                          size="large"
+                          sx={{ color: "#5BC0EB" }}
+                        />
                         <p>Power Backup</p>
                       </div>
                     </div>
@@ -457,14 +539,14 @@ export const ProjectDetails = () => {
                 </div>
               </div>
 
-              <div className="col-span-12">
+              <div className="col-span-12" id="youtube">
                 <h3 className="text-xl font-poppins font-semibold ">
                   Virtual Tour
                 </h3>
                 <div className="mt-5 rounded-lg">
                   <ReactPlayer
                     url={`https://www.youtube.com/watch?v=4i0KLhtyEHU`}
-                    width="70%"
+                    width="100%"
                   />
                 </div>
               </div>
@@ -482,7 +564,7 @@ export const ProjectDetails = () => {
             </div>
           </div>
 
-          <div className="col-span-3 bg-gray-100">
+          <div className="col-span-12 lg:col-span-3 bg-gray-100">
             <div className="flex flex-col gap-5">
               <div className="bg-white px-5 py-8 rounded-lg">
                 <form>

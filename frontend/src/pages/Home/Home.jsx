@@ -367,7 +367,7 @@ export const Home = () => {
             </div>
           </div>
           <div className="col-span-12 lg:col-span-5 flex flex-col justify-center ps-14">
-            <h1 className="text-[#1A1A1A] font-roboto text-4xl font-medium text-center lg:text-start">
+            <h1 className="text-[#1A1A1A] font-roboto  text-3xl lg:text-4xl font-medium text-center lg:text-start">
               How It works? <br />
               Find a perfect home
             </h1>
