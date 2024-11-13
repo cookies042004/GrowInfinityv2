@@ -6,6 +6,14 @@
   height: 600px;
 }
 
+
+@media screen and (max-width: 768px) {
+  .homeBanner {
+      height: 550px !important;
+  }
+}
+
+
 .experience-card:hover .experience-icon {
   color: white !important;
 }
