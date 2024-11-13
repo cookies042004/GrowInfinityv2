@@ -39,7 +39,7 @@ export const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="w-[80%]">
+    <form onSubmit={handleSearch} className="w-[90%] lg:w-[80%]">
       <div className="grid sm:grid-cols-12">
         <div
           className="col-span-12 lg:col-span-10 bg-white h-[300] w-[100%] rounded-[13.27px]"
