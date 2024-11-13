@@ -46,7 +46,7 @@ export const SearchBar = () => {
           style={{ boxShadow: "0px 16.39px 33.56px 0px #0000001A" }}
         >
           <div className="grid sm:grid-cols-12 p-5 items-center gap-5">
-            <div className="col-span-12 lg:col-span-2 md:col-span-3">
+            <div className="col-span-6 lg:col-span-2 md:col-span-3">
               <button
                 id="dropdownDefaultButton"
                 data-dropdown-toggle="dropdown"
@@ -105,20 +105,7 @@ export const SearchBar = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-6 md:col-span-6">
-              <div className="lg:mx-4 mx-0">
-                <input
-                  type="text"
-                  placeholder="Your desired location, project, city goes here"
-                  className="bg-[#F4F4F4] rounded-[17.56px] p-3 w-full outline-none"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            {/* BHK Dropdown */}
-            <div className="col-span-12 lg:col-span-2 md:col-span-3">
+            <div className="block lg:hidden col-span-6 lg:col-span-2 md:col-span-3">
               <button
                 id="dropdownBhkButton"
                 data-dropdown-toggle="dropdownBhk"
@@ -175,7 +162,77 @@ export const SearchBar = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-2 md:col-span-12">
+            <div className="col-span-12 lg:col-span-6 md:col-span-6">
+              <div className="lg:mx-4 mx-0">
+                <input
+                  type="text"
+                  placeholder="Your desired location, project, city goes here"
+                  className="bg-[#F4F4F4] rounded-[17.56px] p-3 w-full outline-none"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            {/* BHK Dropdown */}
+            <div className="hidden lg:block col-span-6 lg:col-span-2 md:col-span-3">
+              <button
+                id="dropdownBhkButton"
+                data-dropdown-toggle="dropdownBhk"
+                className="text-black w-full bg-[#F4F4F4] font-medium text-sm px-5 py-2.5 text-center inline-flex justify-between lg:justify-start items-center rounded-[17.56px]"
+                type="button"
+                onClick={() => setBhk(!bhk)}
+              >
+                <HomeIcon sx={{ color: "#03002E", paddingRight: "5px" }} />{" "}
+                {bhkValue}{" "}
+                <svg
+                  className="w-2.5 h-2.5 ms-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+
+              {/* BHK Dropdown Menu */}
+              <div
+                id="dropdownBhk"
+                className={
+                  bhk
+                    ? "absolute mt-3 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                    : "hidden"
+                }
+              >
+                <ul
+                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdownBhkButton"
+                >
+                  {bhkOptions.map((option) => (
+                    <li key={option}>
+                      <a
+                        onClick={() => handleBhkClick(option)}
+                        className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${
+                          bhkValue === option
+                            ? "bg-gray-200 dark:bg-gray-500"
+                            : ""
+                        }`}
+                      >
+                        {option}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="hidden lg:block col-span-12 lg:col-span-2 md:col-span-12">
               <div>
                 <button
                   type="submit"
@@ -187,7 +244,7 @@ export const SearchBar = () => {
               </div>
             </div>
             <div className="col-span-2 lg:col-span-2">
-              <button className="bg-[#f4f4f4] w-full py-2 rounded-2xl text-[#03002e] font-medium">
+              <button className="bg-[#f4f4f4] w-full py-2 text-sm px-2 lg:text-lg rounded-2xl text-[#03002e] font-medium">
                 Price (₹)
               </button>
             </div>
@@ -210,9 +267,9 @@ export const SearchBar = () => {
                 ]}
               />
             </div>
-            <div className="col-span-12 lg:col-span-4">
+            <div className="hidden lg:block col-span-12 lg:col-span-4">
               <div className="grid sm:grid-cols-12 gap-3">
-                <div className="col-span-6">
+                <div className="col-span-6 lg:col-span-6">
                   <p className="text-xs text-center text-gray-700 font-roboto font-medium">
                     Price Range From:
                   </p>
@@ -222,7 +279,7 @@ export const SearchBar = () => {
                       : `₹ ${(value[0] / 100).toFixed(2)} Cr`}
                   </p>
                 </div>
-                <div className="col-span-6">
+                <div className="col-span-6 lg:col-span-6">
                   <p className="text-xs text-center text-gray-700 font-roboto font-medium">
                     Price Range To:
                   </p>
@@ -232,6 +289,17 @@ export const SearchBar = () => {
                       : `₹ ${(value[1] / 100).toFixed(2)} Cr`}
                   </p>
                 </div>
+              </div>
+            </div>
+            <div className="block lg:hidden col-span-12 lg:col-span-2 md:col-span-12">
+              <div>
+                <button
+                  type="submit"
+                  className="text-white bg-[#03002E]  w-full rounded-[8.59px] py-2 px-10"
+                  style={{ boxShadow: "0px 5.46px 13.27px 0px #03002E80" }}
+                >
+                  Search
+                </button>
               </div>
             </div>
           </div>

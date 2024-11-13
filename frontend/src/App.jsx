@@ -30,12 +30,14 @@ import { Search } from "./pages/Search/Search.jsx";
 import { ProjectDetails } from "./pages/ProjectDetails/ProjectDetails.jsx";
 import { SingleProject } from "./pages/SingleProject/SingleProject.jsx";
 import { ViewPropertyEnquiry } from "./admin/pages/propertyEnquiry/ViewPropertyEnquiry.jsx";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/event" element={<Event />} />
       <Route path="/event/:id" element={<SingleEvent />} />
       <Route path="/project/:id" element={<ProjectDetails />} />

@@ -31,7 +31,7 @@ export const Brochure = () => {
         </h1>
 
         <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
-          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-10">
             <div className="relative group border flex flex-col items-center hover:shadow-lg rounded-lg">
               {/* Overlay background */}
               <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -45,15 +45,16 @@ export const Brochure = () => {
 
               {/* Hover content: Download button */}
               <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                <DownloadIcon className="mr-2 w-6 h-6" />
-                Download
+                {/* <DownloadIcon className="mr-2 w-6 h-6" />
+                Download */}
+                Coming soon
               </button>
 
               {/* Title */}
               <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-10">
             <div className="relative group border flex flex-col items-center hover:shadow-lg rounded-lg">
               {/* Overlay background */}
               <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -67,15 +68,16 @@ export const Brochure = () => {
 
               {/* Hover content: Download button */}
               <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                <DownloadIcon className="mr-2 w-6 h-6" />
-                Download
+                 {/* <DownloadIcon className="mr-2 w-6 h-6" />
+                Download */}
+                Coming soon
               </button>
 
               {/* Title */}
               <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-10">
             <div className="relative group border flex flex-col items-center hover:shadow-lg rounded-lg">
               {/* Overlay background */}
               <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -89,15 +91,16 @@ export const Brochure = () => {
 
               {/* Hover content: Download button */}
               <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                <DownloadIcon className="mr-2 w-6 h-6" />
-                Download
+                 {/* <DownloadIcon className="mr-2 w-6 h-6" />
+                Download */}
+                Coming soon
               </button>
 
               {/* Title */}
               <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-10">
             <div className="relative group border flex flex-col items-center hover:shadow-lg rounded-lg">
               {/* Overlay background */}
               <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -111,15 +114,16 @@ export const Brochure = () => {
 
               {/* Hover content: Download button */}
               <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                <DownloadIcon className="mr-2 w-6 h-6" />
-                Download
+                  {/* <DownloadIcon className="mr-2 w-6 h-6" />
+                Download */}
+                Coming soon
               </button>
 
               {/* Title */}
               <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-10">
             <div className="relative group border flex flex-col items-center hover:shadow-lg rounded-lg">
               {/* Overlay background */}
               <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -133,8 +137,9 @@ export const Brochure = () => {
 
               {/* Hover content: Download button */}
               <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                <DownloadIcon className="mr-2 w-6 h-6" />
-                Download
+                  {/* <DownloadIcon className="mr-2 w-6 h-6" />
+                Download */}
+                Coming soon
               </button>
 
               {/* Title */}

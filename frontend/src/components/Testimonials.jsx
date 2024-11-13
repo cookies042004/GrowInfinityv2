@@ -48,11 +48,11 @@ export const Testimonials = () => {
   return (
     <>
       {/* Testimonial  */}
-      <div className="bg-[#FFF8F6] mt-8 py-8 px-16">
+      <div className="bg-[#FFF8F6] mt-8 lg:py-8 lg:px-16">
         <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
           <div className="col-span-12 lg:col-span-6 flex justify-center">
-            <div className="m-5 lg:px-10 py-16 font-roboto lg:pe-32 flex flex-col items-center ">
-              <h1 className="text-4xl text-[#1A1A1A] my-4 font-medium">
+            <div className="m-5 lg:px-10 lg:py-16 font-roboto lg:pe-32 flex flex-col items-center ">
+              <h1 className="text-xl lg:text-4xl text-[#1A1A1A] my-4 font-medium">
                 What our customers are saying us?
               </h1>
               <p className="text-[#1A1A1A] text-lg text-justify my-5 lg:pe-20">
@@ -61,13 +61,13 @@ export const Testimonials = () => {
               </p>
               <div className="flex justify-center lg:justify-start gap-10">
                 <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-2xl">10m+</h3>
+                  <h3 className="font-medium text-[#1A1A1A] text-xl lg:text-2xl">10m+</h3>
                   <p>Happy People</p>
                 </div>
                 <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-2xl">4.88</h3>
-                  <p>Overall rating</p>
-                  <div className="flex mt-3">
+                  <h3 className="font-medium text-[#1A1A1A] text-xl lg:text-2xl">4.88</h3>
+                  <p className="text-lg">Overall rating</p>
+                  <div className="hidden lg:flex mt-3">
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
@@ -94,33 +94,33 @@ export const Testimonials = () => {
                   <img
                     src={currentTestimonial.image}
                     alt={currentTestimonial.name}
-                    className="w-[90px] rounded-[50%] h-[90px] object-cover object-top"
+                    className="w-[50px] lg:w-[90px] rounded-[50%] h-[50px] lg:h-[90px] object-cover object-top"
                   />
                   <div className="flex-col justify-center gap-5">
-                    <h5 className="font-medium text-[#1A1A1A] text-lg">
+                    <h5 className="font-medium text-[#1A1A1A] text-sm lg:text-lg">
                       {currentTestimonial.name}
                     </h5>
-                    <p>{currentTestimonial.role}</p>
+                    <p className="text-sm lg:text-lg">{currentTestimonial.role}</p>
                   </div>
                   <div className="ms-32">
                     <img src={quote} alt="quote" />
                   </div>
                 </div>
                 <div className="mt-5">
-                  <p className="leading-10 text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
+                  <p className="leading-10 text-md lg:text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
                     {currentTestimonial.text}
                   </p>
                 </div>
                 <div className="flex gap-5 mt-8">
                   <button
                     onClick={handlePrev}
-                    className="border border-black px-7 py-2 rounded-[40px]"
+                    className="border border-black px-5 py-1 lg:px-7 lg:py-2 rounded-[40px]"
                   >
                     {"<"}
                   </button>
                   <button
                     onClick={handleNext}
-                    className="border border-black px-7 py-2 rounded-[40px]"
+                    className="border border-black px-5 py-1 lg:px-7 lg:py-2 rounded-[40px]"
                   >
                     {">"}
                   </button>

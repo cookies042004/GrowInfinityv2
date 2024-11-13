@@ -12,12 +12,12 @@ export const Choose = () => {
     <>
       {/* Why choose us?  */}
       <div className="my-10 max-w-[1280px] mx-auto">
-        <h1 className="text-4xl font-bold pt-6 font-roboto lg:font-medium text-black text-center">
+        <h1 className="text-3xl lg:text-4xl font-bold pt-6 font-roboto lg:font-medium text-black text-center">
           Why Choose us?
         </h1>
 
         <div className="grid sm:grid-cols-12 my-10 gap-8">
-          <div className="col-span-12 md:col-span-6 lg:col-span-4">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 mx-8">
             <div className="service-info-2 df-box">
               <div className="number">01</div>
               <div className="icon">
@@ -41,7 +41,7 @@ export const Choose = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 mx-8">
             <div className="service-info-2 df-box">
               <div className="number">02</div>
               <div className="icon">
@@ -65,7 +65,7 @@ export const Choose = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 mx-8">
             <div className="service-info-2 df-box">
               <div className="number">03</div>
               <div className="icon">

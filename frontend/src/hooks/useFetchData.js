@@ -13,6 +13,7 @@ export const useFetchData = (url) => {
       if (response.data.success) {
         setData(response.data || []); // Set data as an array or default to []
       } else {
+        console.log(response);
         setError("Failed to fetch data");
       }
     } catch (err) {

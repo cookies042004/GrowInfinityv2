@@ -17,6 +17,9 @@ export const News = () => {
       ? data.news.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       : [];
 
+
+  
+
   return (
     <Layout>
       {/* News Hero  */}
@@ -40,7 +43,7 @@ export const News = () => {
 
         <div className="grid sm:grid-cols-12 my-3 lg:my-5 max-w-[1280px] mx-auto">
           {loading && <p>Loading...</p>}
-          {error && <p>{error}</p>}3
+          {error && <p>{error}</p>}
           {news?.map((item) => {
             return (
               <div

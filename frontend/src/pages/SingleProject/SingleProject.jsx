@@ -15,8 +15,8 @@ export const SingleProject = () => {
     <Layout>
       <div className="projectbanner flex justify-center items-center">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 text-center mt-20">
-            <h1 className="font-dmsans font-medium text-white text-5xl capitalize">
+          <div className="col-span-12 text-center lg:mt-20">
+            <h1 className="font-dmsans font-medium text-white text-3xl lg:text-4xl capitalize">
               {id.replace("-", " ")}
             </h1>
           </div>

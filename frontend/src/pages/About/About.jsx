@@ -33,14 +33,14 @@ export const About = () => {
 
       {/* welcome to grow infinity  */}
       <div className="my-8 mx-auto max-w-[1280px]">
-        <h1 className="font-roboto text-3xl lg:text-4xl text-center font-medium lg:mt-16">
+        <h1 className="font-roboto text-xl lg:text-4xl text-center font-medium lg:mt-16">
           <span className="text-gray-500">Welcome To </span>
           Grow Infinity Realtors
         </h1>
 
         <div className="grid sm:grid-cols-12 my-8">
           <div className="col-span-12 lg:col-span-6 flex items-center justify-start">
-            <p className="font-poppins text-lg lg:text-2xl leading-9 text-justify text-gray-700 px-5">
+            <p className="font-poppins text-sm lg:text-2xl leading-9 text-justify text-gray-700 px-5">
               Grow infinity is an accomplished real estate agent firm. Drawing
               from their years of experience they brings a strategic yet
               personal approach to the home buying, selling, and renting
@@ -54,18 +54,18 @@ export const About = () => {
             <img
               src={aboutImg}
               alt="about-welcome-image"
-              className="h-[300px] w-[480px] rounded-[13px]"
+              className="h-[300px] w-[480px] rounded-[13px] mx-5"
             />
           </div>
         </div>
       </div>
 
       <div className="my-5 max-w-[1280px] mx-auto">
-        <h1 className="text-center text-3xl lg:text-4xl font-roboto font-medium py-8">
+        <h1 className="text-center text-xl lg:text-4xl font-roboto font-medium py-8">
           <span className="text-gray-500">Stress-Free</span> Step to Your Dream
           Home
         </h1>
-        <div className="grid sm:grid-cols-12 mt-10">
+        <div className="grid sm:grid-cols-12 mt-4 lg:mt-10">
           {[
             {
               number: "01",
@@ -102,15 +102,18 @@ export const About = () => {
                 "Celebrate your new beginning and settle in comfortably",
             },
           ].map((item, index) => (
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5" key={item.number}>
+            <div
+              className="col-span-12 md:col-span-6 lg:col-span-4 m-5"
+              key={item.number}
+            >
               <div
-                className={`bg-gray-600 text-white rounded-[64px] p-8 font-roboto h-[200px] text-center relative`}
+                className={`bg-gray-600 text-white rounded-[64px] p-4 mx-8 lg:p-8 font-roboto h-[150px] lg:h-[200px] text-center relative`}
               >
                 <div className="absolute bg-green-400 text-white flex justify-center items-center rounded-[50%] h-[60px] w-[60px] right-[-12px] top-[-20px] circle">
-                  <h5 className="text-2xl font-medium">{item.number}</h5>
+                  <h5 className="text-xl lg:text-2xl font-medium">{item.number}</h5>
                 </div>
-                <h3 className="text-2xl py-5">{item.title}</h3>
-                <p className="text-lg text-center text-gray-300 ">
+                <h3 className="text-lg lg:text-2xl py-5">{item.title}</h3>
+                <p className="text-md lg:text-lg text-center text-gray-300 ">
                   {item.description}
                 </p>
               </div>
@@ -120,15 +123,15 @@ export const About = () => {
       </div>
       {/* What we do?  */}
       <div className="my-10 max-w-[1280px] mx-auto">
-        <h2 className="font-roboto font-medium text-center text-4xl pt-8">
+        <h2 className="font-roboto font-medium text-center text-3xl lg:text-4xl pt-8">
           What we do?
         </h2>
         <div className="grid sm:grid-cols-12">
           <div className="col-span-12 lg:col-span-6 flex justify-center">
-            <img src={whatwedo} alt="" className="w-[500px]" />
+            <img src={whatwedo} alt="" className="w-[300px] lg:w-[500px]" />
           </div>
           <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
-            <p className="font-poppins text-lg px-5 lg:text-2xl leading-9 text-justify text-gray-700">
+            <p className="font-poppins text-sm px-5 lg:text-2xl leading-9 text-justify text-gray-700">
               At Grow Infinity Realtors, we pride ourselves on our commitment to
               delivering personalized solutions that cater to your unique needs
               and preferences. Our extensive network and market knowledge enable
@@ -139,13 +142,13 @@ export const About = () => {
         </div>
       </div>
       {/* Mission  */}
-      <div className="bg-gradient-to-r from-[#03002E] to-[#0a0a60] text-white  mt-10 mb-10 p-10">
+      <div className="bg-gradient-to-r from-[#03002E] to-[#0a0a60] text-white  mt-10 mb-10 p-8">
         <div className="grid sm:grid-cols-12 flex-col-reverse max-w-[1280px] mx-auto">
           <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
-            <h2 className="font-inter font-bold text-center text-3xl lg:text-left lg:text-[36px] mb-4 flex items-center justify-center lg:justify-start">
+            <h2 className="font-inter font-semibold text-center text-3xl lg:text-left lg:text-4xl mb-4 flex items-center justify-center lg:justify-start">
               OUR MISSION
             </h2>
-            <p className="font-inter font-normal text-xl lg:text-[22px] leading-9 my-3 text-justify px-2">
+            <p className="font-inter font-normal text-sm lg:text-lg leading-9 my-3 text-justify">
               Our mission is to create seamless and rewarding experiences for
               all our clients, ensuring that each transaction is smooth,
               transparent, and successful. Trust, integrity, and professionalism
@@ -172,61 +175,46 @@ export const About = () => {
           Get to Know Our Team
         </h1>
 
-        <div className="grid sm:grid-cols-12 max-w-[1100px] mx-auto">
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
+        <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
+          <div className="col-span-12 md:col-span-6 lg:col-span-6 m-5">
             <div className="director-card">
-              <div>
-                <img
-                  src={directorImg}
-                  alt=""
-                  className="rounded-3xl h-[300px] w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-center text-2xl py-3 font-medium font-roboto">
-                  Alex Tucker
-                </h3>
-                <h5 className="text-center text-md pb-3 text-gray-500 font-roboto">
-                  Chief Architect
-                </h5>
+              <div className="flex items-center gap-8">
+                <div>
+                  <img
+                    src={directorImg}
+                    alt=""
+                    className="rounded-3xl h-[300px] w-[300px] object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-center text-lg lg:text-2xl py-3 font-medium font-roboto">
+                    Alex Tucker
+                  </h3>
+                  <h5 className="text-center text-sm lg:text-md pb-3 text-gray-500 font-roboto">
+                    Chief Architect
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
+          <div className="col-span-12 md:col-span-6 lg:col-span-6 m-5">
             <div className="director-card">
-              <div>
-                <img
-                  src={directorImg}
-                  alt=""
-                  className="rounded-3xl h-[300px] w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-center text-2xl py-3 font-medium font-roboto">
-                  Alex Tucker
-                </h3>
-                <h5 className="text-center text-md pb-3 text-gray-500 font-roboto">
-                  Chief Architect
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="director-card">
-              <div>
-                <img
-                  src={directorImg}
-                  alt=""
-                  className="rounded-3xl h-[300px] w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-center text-2xl py-3 font-medium font-roboto">
-                  Alex Tucker
-                </h3>
-                <h5 className="text-center text-md pb-3 text-gray-500 font-roboto">
-                  Chief Architect
-                </h5>
+              <div className="flex flex-row-reverse items-center gap-8">
+                <div>
+                  <img
+                    src={directorImg}
+                    alt=""
+                    className="rounded-3xl h-[300px] w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-center text-lg lg:text-2xl py-3 font-medium font-roboto">
+                    Alex Tucker
+                  </h3>
+                  <h5 className="text-center text-sm lg:text-md  pb-3 text-gray-500 font-roboto">
+                    Chief Architect
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
@@ -234,66 +222,6 @@ export const About = () => {
       </div>
 
       <Testimonials />
-
-      {/* Gallery  */}
-      <div className="my-10 mx-auto max-w-[1280px]">
-        <h1 className="font-roboto font-medium text-4xl pb-8 text-center">
-          Gallery
-        </h1>
-
-        <div className="grid sm:grid-cols-12">
-          <div className="col-span-3">
-            <img
-              src={aboutImg}
-              alt=""
-              className="h-[229px] w-full object-cover"
-            />
-          </div>
-          <div className="col-span-3">
-            <img
-              src={gallery3}
-              alt=""
-              className="h-[229px] w-full object-cover"
-            />
-          </div>
-          <div className="col-span-3">
-            {" "}
-            <img
-              src={gallery2}
-              alt=""
-              className="h-[229px] w-full object-cover"
-            />
-          </div>
-          <div className="col-span-3">
-            <img src={gallery1} alt="" className="h-[229px] w-full " />
-          </div>
-          <div className="col-span-3">
-            <img
-              src={aboutImg2}
-              alt=""
-              className="h-[229px] w-full object-cover "
-            />
-          </div>
-          <div className="col-span-3">
-            {" "}
-            <img
-              src={gallery2}
-              alt=""
-              className="h-[229px] w-full object-cover"
-            />
-          </div>
-          <div className="col-span-3">
-            <img src={gallery1} alt="" className="h-[229px] w-full " />
-          </div>
-          <div className="col-span-3">
-            <img
-              src={aboutImg2}
-              alt=""
-              className="h-[229px] w-full object-cover "
-            />
-          </div>
-        </div>
-      </div>
     </Layout>
   );
 };

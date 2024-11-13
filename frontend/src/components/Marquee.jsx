@@ -41,7 +41,7 @@ export const Marquee = () => {
                   <img
                     src={brand}
                     alt={`brandlogo${index + 1}`}
-                    className="w-[160px] max-w-[200px]  mx-8"
+                    className="w-[140px] lg:w-[160px] max-w-[200px] mx-8"
                   />
                 </div>
               ))}
@@ -69,7 +69,7 @@ export const Marquee = () => {
                   <img
                     src={brand}
                     alt={`brandlogo${index + 1}`}
-                    className="w-[160px] max-w-[200px] mx-8"
+                    className="w-[140px] lg:w-[160px] max-w-[200px] mx-8"
                   />
                 </div>
               ))}

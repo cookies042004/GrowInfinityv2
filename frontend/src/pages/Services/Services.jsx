@@ -46,7 +46,7 @@ export const Services = () => {
                 <p className="px-5 text-center">
                   These services focus on buying and selling homes, condos,
                   apartments, and other residential properties. They cater to
-                  individuals and families looking for a place to live.
+                  individuals and families for a place to live.
                 </p>
                 <Link to="/contact" className="read-more">
                   Contact us
@@ -96,7 +96,7 @@ export const Services = () => {
                 <p className="px-5 text-center">
                   We offer a comprehensive suite of loan services to make your
                   home buying journey seamless. In addition to helping you find
-                  the perfect property, we provide expert home loan services.
+                  the perfect property, expert home loan services.
                 </p>
                 <Link to="/contact" className="read-more">
                   Contact us

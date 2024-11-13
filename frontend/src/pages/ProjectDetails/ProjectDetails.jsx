@@ -83,18 +83,26 @@ export const ProjectDetails = () => {
                   className="relative w-full h-[400px] md:h-[500px] lg:h-[400px]"
                 >
                   {/* Carousel Wrapper */}
-                  <div className="relative h-full overflow-hidden rounded-lg">
-                    {/* Dynamic Carousel Item with fade effect */}
+                  <div className="relative h-full overflow-hidden">
+                    {/* Dynamic Carousel Item with swipe effect */}
                     <div
-                      className={`duration-700 ease-in-out h-full transition-opacity ${
-                        isFading ? "opacity-0" : "opacity-100"
-                      }`}
+                      className="flex transition-transform duration-700 ease-in-out"
+                      style={{
+                        transform: `translateX(-${currentIndex * 100}%)`, // Move the images horizontally
+                      }}
                     >
-                      <img
-                        src={images[currentIndex]}
-                        className="absolute block w-full h-full object-cover object-center rounded-lg"
-                        alt="Carousel slide"
-                      />
+                      {images.map((image, index) => (
+                        <div
+                          key={index}
+                          className="w-full h-full flex-shrink-0"
+                        >
+                          <img
+                            src={image}
+                            className="block w-full h-full object-cover object-center"
+                            alt={`Carousel slide ${index}`}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
 
@@ -155,12 +163,12 @@ export const ProjectDetails = () => {
                 <div className="flex flex-col gap-3">
                   <img
                     src={gallery2}
-                    className="w-full h-[195px] rounded-lg"
+                    className="w-full h-[195px]"
                     alt="Carousel slide"
                   />
                   <img
                     src={gallery3}
-                    className="w-full h-[195px] rounded-lg"
+                    className="w-full h-[195px]"
                     alt="Carousel slide"
                   />
                 </div>
@@ -168,7 +176,9 @@ export const ProjectDetails = () => {
             </div>
             <div className="flex flex-col lg:flex-row gap-8 justify-between lg:items-center m-3">
               <div className="font-roboto mt-6">
-                <h1 className="font-medium text-4xl">CanterBury Lane</h1>
+                <h1 className="font-medium text-3xl lg:text-4xl">
+                  CanterBury Lane
+                </h1>
                 <p className="text-md mt-3">Noida, UP-201301</p>
               </div>
               <div className="flex gap-5">
@@ -181,15 +191,20 @@ export const ProjectDetails = () => {
                 >
                   Download PDF
                 </Button>
-                <Button
-                  startIcon={<WhatsAppIcon />}
-                  variant="outlined"
-                  size="small"
-                  color="success"
-                  sx={{ textTransform: "none" }}
+                <a
+                  href={`https://wa.me/+918750238581?text=Hi I am interested in Max Estate 128, Please share the details.`}
+                  target="_blank"
                 >
-                  WhatsApp Message
-                </Button>
+                  <Button
+                    startIcon={<WhatsAppIcon />}
+                    variant="outlined"
+                    size="small"
+                    color="success"
+                    sx={{ textTransform: "none" }}
+                  >
+                    WhatsApp Message
+                  </Button>
+                </a>
               </div>
               <div className="flex justify-end">
                 <h5 className="font-roboto font-semibold text-[#EB664E] text-4xl">
@@ -265,7 +280,7 @@ export const ProjectDetails = () => {
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out`}
                     style={{
-                      maxHeight: isExpanded ? "none" : "200px", // Expand or collapse the text
+                      maxHeight: isExpanded ? "9999px" : "200px", // Use a large value for expanded state
                     }}
                   >
                     <p>{isExpanded ? fullDescription : truncatedDescription}</p>
@@ -288,6 +303,7 @@ export const ProjectDetails = () => {
                   </Button>
                 </div>
               </div>
+
               <div className="col-span-12" id="amenities">
                 <h3 className="text-xl font-poppins font-semibold pb-5">
                   Amenities
@@ -543,11 +559,8 @@ export const ProjectDetails = () => {
                 <h3 className="text-xl font-poppins font-semibold ">
                   Virtual Tour
                 </h3>
-                <div className="mt-5 rounded-lg">
-                  <ReactPlayer
-                    url={`https://www.youtube.com/watch?v=4i0KLhtyEHU`}
-                    width="100%"
-                  />
+                <div className="flex items-center justify-center">
+                  <h1 className="text-3xl py-8">Coming Soon</h1>
                 </div>
               </div>
 
@@ -563,7 +576,6 @@ export const ProjectDetails = () => {
               </div>
             </div>
           </div>
-
           <div className="col-span-12 lg:col-span-3 bg-gray-100">
             <div className="flex flex-col gap-5">
               <div className="bg-white px-5 py-8 rounded-lg">

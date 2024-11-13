@@ -80,7 +80,7 @@ export const Contact = () => {
         <div className="bg-gray-200">
           <div className="max-w-[1280px] mx-auto">
             <div className="grid sm:grid-cols-12 py-10">
-              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-5 py-4 lg:py-8 rounded-[24px] shadow-lg">
+              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
                   <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
                     <EmailIcon sx={{ fontSize: "40px", color: "white" }} />
@@ -98,7 +98,7 @@ export const Contact = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-5 py-4 lg:py-8 rounded-[24px] shadow-lg">
+              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
                   <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
                     <LocationOnIcon sx={{ fontSize: "40px", color: "white" }} />
@@ -114,7 +114,7 @@ export const Contact = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-5 py-4 lg:py-8 rounded-[24px] shadow-lg">
+              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
                   <div className="flex items-center justify-center p-5 bg-[#5046e5] rounded-[50%] h-[70px] w-[70px]">
                     <LocalPhoneIcon sx={{ fontSize: "40px", color: "white" }} />

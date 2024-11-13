@@ -29,13 +29,13 @@ export const Card = () => {
     // setFormData({ name: '', mobile: '', message: '', property: id }); // Reset form
     // setError('');
   };
-
   const style = {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 600,
+    width: "90%", // 90% of the screen width
+    maxWidth: 600, // Maximum width of 600px
     bgcolor: "#f3f3fe",
     borderRadius: "40px",
     boxShadow: 24,
@@ -47,7 +47,7 @@ export const Card = () => {
     <div className="max-w-[1280px] mx-auto">
       <div className="grid sm:grid-cols-12">
         <div className="col-span-12 md:col-span-6 lg:col-span-3 m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
+          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
             <div className="flex justify-center">
               <img
                 src={propertycard}
@@ -120,16 +120,16 @@ export const Card = () => {
                 }}
               >
                 <Box sx={style}>
-                  <h1 className="font-roboto text-center text-4xl py-2">
+                  <h1 className="font-roboto text-center text-2xl lg:text-4xl py-2">
                     Contact Us
                   </h1>
-                  <p className="font-roboto text-center text-lg">
+                  <p className="font-roboto text-center text-sm lg:text-lg">
                     We will get back to you asap!
                   </p>
                   {/* {error && <Typography color="error">{error}</Typography>} */}
                   <form className="mx-8 mt-6">
-                    <div className="grid sm:grid-cols-12 gap-3">
-                      <div className="col-span-6">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
+                      <div className="col-span-1">
                         <div className="flex border rounded-lg items-center bg-white">
                           <div className="flex justify-center ps-3">
                             <PersonIcon size="large" sx={{ color: "gray" }} />
@@ -141,7 +141,7 @@ export const Card = () => {
                           />
                         </div>
                       </div>
-                      <div className="col-span-6">
+                      <div className="col-span-1 hidden lg:block">
                         <div className="flex border rounded-lg items-center bg-white">
                           <input
                             type="text"
@@ -150,12 +150,11 @@ export const Card = () => {
                           />
                         </div>
                       </div>
-                      <div className="col-span-12">
+                      <div className="col-span-1">
                         <div className="flex border rounded-lg items-center bg-white">
                           <div className="flex justify-center ps-3">
                             <MarkunreadIcon sx={{ color: "gray" }} />
                           </div>
-
                           <input
                             type="text"
                             className="outline-none p-3 rounded-lg w-full"
@@ -163,7 +162,7 @@ export const Card = () => {
                           />
                         </div>
                       </div>
-                      <div className="col-span-12">
+                      <div className="col-span-1">
                         <div className="flex border rounded-lg items-center bg-white">
                           <div className="flex justify-center ps-3">
                             <LocalPhoneIcon sx={{ color: "gray" }} />
@@ -175,12 +174,8 @@ export const Card = () => {
                           />
                         </div>
                       </div>
-                      <div className="col-span-6">
-                        <FormLabel
-                          size="small"
-                          id="demo-row-radio-buttons-group-label"
-                          sx={{ fontWeight: "bold" }}
-                        >
+                      <div className="col-span-1">
+                        <FormLabel size="small" sx={{ fontWeight: "bold" }}>
                           Your reason to buy is?
                         </FormLabel>
                         <RadioGroup
@@ -196,18 +191,15 @@ export const Card = () => {
                             label="Investment"
                           />
                           <FormControlLabel
-                            value="business"
                             size="small"
+                            value="business"
                             control={<Radio size="small" />}
                             label="Business use"
                           />
                         </RadioGroup>
                       </div>
-                      <div className="col-span-6">
-                        <FormLabel
-                          id="demo-row-radio-buttons-group-label"
-                          sx={{ fontWeight: "bold" }}
-                        >
+                      <div className="col-span-1">
+                        <FormLabel sx={{ fontWeight: "bold" }}>
                           Are you a property dealer?
                         </FormLabel>
                         <RadioGroup
@@ -217,10 +209,10 @@ export const Card = () => {
                           size="small"
                         >
                           <FormControlLabel
+                            size="small"
                             value="yes"
                             control={<Radio size="small" />}
                             label="Yes"
-                            size="small"
                           />
                           <FormControlLabel
                             size="small"
@@ -230,7 +222,7 @@ export const Card = () => {
                           />
                         </RadioGroup>
                       </div>
-                      <div className="col-span-12">
+                      <div className="col-span-1">
                         <FormControlLabel
                           control={<Checkbox size="small" defaultChecked />}
                           label={
@@ -244,12 +236,8 @@ export const Card = () => {
                           }
                         />
                       </div>
-                      <input
-                        type="hidden"
-                        name="propertyName"
-                        // value={formData.propertyName}
-                      />
-                      <div className="col-span-12">
+                      <input type="hidden" name="propertyName" />
+                      <div className="col-span-1">
                         <Button
                           variant="contained"
                           sx={{
@@ -259,7 +247,7 @@ export const Card = () => {
                             marginTop: "5px",
                             marginBottom: "15px",
                           }}
-                          size="large"
+                          size="small"
                           fullWidth
                           type="submit"
                         >
@@ -286,7 +274,7 @@ export const Card = () => {
           </div>
         </div>
         <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden md:block lg:block m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
+          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
             <div className="flex justify-center">
               <img
                 src={propertycard}
@@ -357,7 +345,7 @@ export const Card = () => {
           </div>
         </div>
         <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden lg:block m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
+          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
             <div className="flex justify-center">
               <img
                 src={propertycard}
@@ -428,7 +416,7 @@ export const Card = () => {
           </div>
         </div>
         <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden lg:block m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white">
+          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
             <div className="flex justify-center">
               <img
                 src={propertycard}
