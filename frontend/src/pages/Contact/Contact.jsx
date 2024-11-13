@@ -158,7 +158,7 @@ export const Contact = () => {
                         <input
                           type="text"
                           placeholder="Enter your full name..."
-                          className="p-3 outline-none w-[90%]"
+                          className="p-3 outline-none w-[80%] lg:w-[90%]"
                         />
                       </div>
                     </div>
@@ -173,7 +173,7 @@ export const Contact = () => {
                         <input
                           type="text"
                           placeholder="Enter your email address..."
-                          className="p-3 outline-none w-[90%]"
+                          className="p-3 outline-none w-[80%] lg:w-[90%]"
                         />
                       </div>
                     </div>
@@ -188,7 +188,7 @@ export const Contact = () => {
                         <input
                           type="text"
                           placeholder="Enter your phone number..."
-                          className="p-3 outline-none w-[90%]"
+                          className="p-3 outline-none w-[80%] lg:w-[90%]"
                         />
                       </div>
                     </div>

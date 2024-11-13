@@ -19,6 +19,7 @@ import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import { Calculator } from "../../components/Calculator";
+
 export const ProjectDetails = () => {
   const images = [gallery1, gallery2, gallery3];
   const [currentIndex, setCurrentIndex] = useState(0);
