@@ -32,7 +32,7 @@ export const Services = () => {
 
         {/* Our Services  */}
         <div className="my-5 max-w-[1280px] mx-auto">
-          <h1 className="font-roboto py-3 lg:py-8 text-3xl lg:text-4xl font-medium text-center">
+          <h1 className="font-roboto py-3 lg:py-8 text-2xl lg:text-4xl font-medium text-center">
             Our Services
           </h1>
 

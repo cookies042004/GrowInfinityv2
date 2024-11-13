@@ -134,13 +134,15 @@ export const Contact = () => {
         <div className="max-w-[1280px] mx-auto">
           <div className="grid sm:grid-cols-12 my-10">
             <div className="col-span-12 lg:col-span-6 p-3 m-5">
-              <h1 className="text-3xl lg:text-4xl font-medium font-roboto text-center">
+              <h1 className="text-2xl lg:text-4xl font-medium font-roboto text-center">
                 Let's Get In Touch
               </h1>
               <p className="text-center text-lg font-roboto py-3">
                 Or just reach manually to{" "}
                 <span className="text-[#918bed]">
-                  info@growinfinityrealtors.in
+                  <a href="mailto:info@growinfinityrealtors.in">
+                    info@growinfinityrealtors.in
+                  </a>
                 </span>
               </p>
 

@@ -182,7 +182,7 @@ export const Home = () => {
             Over the years, Grow infinity has built a reputation for providing a
             seamless experience to customers to secure their dream homes.
           </p>
-          <div className="grid sm:grid-cols-12">
+          <div className="flex flex-wrap justify-center lg:grid sm:grid-cols-12">
             <div className="col-span-6 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <ApartmentIcon
