@@ -70,7 +70,7 @@ export const Navbar = ({ mobileMenu, setMobileMenu }) => {
       </nav>
 
       <nav
-        className={`absolute z-10 h-screen bg-[#FFFFFF] w-[70%] text-black transform transition-transform duration-300 ease-in-out ${
+        className={`absolute z-[100] h-screen bg-[#FFFFFF] w-[70%] text-black transform transition-transform duration-300 ease-in-out ${
           mobileMenu ? "translate-x-0" : "translate-x-[-100%]"
         }`}
       >

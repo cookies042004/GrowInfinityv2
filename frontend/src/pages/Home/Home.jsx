@@ -34,6 +34,7 @@ import { LatestNews } from "../../components/LatestNews";
 import { Calculator } from "../../components/Calculator";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import { SearchBar } from "../../components/SearchBar";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export const Home = () => {
   useEffect(() => {
@@ -71,17 +72,17 @@ export const Home = () => {
         <SearchBar />
 
         <div
-          className={`absolute right-0 top-[24%] rounded-lg transition-transform duration-500 ease-in-out ${
+          className={`hidden lg:block absolute right-0 top-[24%] rounded-lg transition-transform duration-500 ease-in-out ${
             calculator ? "translate-x-[0]" : "translate-x-[94%]"
           }`}
         >
-          <div
-            className="flex justify-center items-center cursor-pointer"
-            onClick={() => {
-              setCalculator(!calculator);
-            }}
-          >
-            <div className="bg-white rounded-s-lg">
+          <div className="flex justify-center items-center cursor-pointer">
+            <div
+              className="bg-white rounded-s-lg"
+              onClick={() => {
+                setCalculator(!calculator);
+              }}
+            >
               <p
                 className="font-medium uppercase py-4 px-2"
                 style={{
@@ -89,19 +90,27 @@ export const Home = () => {
                   transform: "rotate(180deg)",
                 }}
               >
-                Calculate EMI
+                {calculator ? "Close" : `Calculate EMI`}
               </p>
-              <CalculateIcon sx={{ fontSize: "50px", color: "#03002e" }} />
+              {calculator ? (
+                <CancelIcon color="error" sx={{ fontSize: "35px" }} />
+              ) : (
+                <CalculateIcon sx={{ fontSize: "50px", color: "#03002e" }} />
+              )}
             </div>
             <Calculator />
           </div>
         </div>
       </div>
 
+      <div className="block lg:hidden p-5">
+        <Calculator />
+      </div>
+
       {/* Featured Projects  */}
       <div className="bg-white">
         <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
-          Featured Projects
+          New Launches
         </h1>
         {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
           {properties &&
@@ -127,12 +136,18 @@ export const Home = () => {
 
         <div className="flex justify-center my-3">
           <Link to={"/property/featured-projects"}>
-            <button
-              className="bg-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1  text-sm lg:text-lg transition-colors duration-300 font-medium"
-              style={{ boxShadow: "0px 9.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            <Button
+              size="large"
+              variant="contained"
+              endIcon={<EastIcon />}
+              sx={{
+                backgroundColor: "#03002e",
+                color: "white",
+                textTransform: "none",
+              }}
             >
-              View All
-            </button>
+              View all
+            </Button>
           </Link>
         </div>
       </div>
@@ -140,7 +155,7 @@ export const Home = () => {
       {/* Luxury Project */}
       <div className="bg-white">
         <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
-          Our Luxury Projects
+          Luxury Living
         </h1>
         {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
           {properties &&
@@ -162,12 +177,18 @@ export const Home = () => {
         <Card />
         <div className="flex justify-center my-3">
           <Link to={"/property/featured-projects"}>
-            <button
-              className="bg-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1  text-sm lg:text-lg  transition-colors duration-300 font-medium"
-              style={{ boxShadow: "0px 9.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            <Button
+              size="large"
+              variant="contained"
+              endIcon={<EastIcon />}
+              sx={{
+                backgroundColor: "#03002e",
+                color: "white",
+                textTransform: "none",
+              }}
             >
-              View All
-            </button>
+              View all
+            </Button>
           </Link>
         </div>
       </div>
@@ -178,7 +199,7 @@ export const Home = () => {
           <h1 className="text-2xl text-center lg:text-4xl font-poppins font-bold py-4">
             More than 10 Years of Experience
           </h1>
-          <p className="text-lg py-5 text-center lg:text-lg font-poppins font-medium lg:me-10 me-0 px-3 lg:px-0">
+          <p className="text-lg py-3 lg:py-5 text-center lg:text-lg font-poppins font-medium lg:me-10 me-0 px-3 lg:px-0">
             Over the years, Grow infinity has built a reputation for providing a
             seamless experience to customers to secure their dream homes.
           </p>
@@ -191,9 +212,11 @@ export const Home = () => {
                     paddingTop: "10px",
                     paddingBottom: "10px",
                     transition: "color 0.3s ease-in-out",
-                    [(theme) => theme.breakpoints.down("sm")]: {
-                      fontSize: 50, // Smaller font size for screens below 600px (small screens)
-                    },
+                    ...(theme) => ({
+                      [theme.breakpoints.down("sm")]: {
+                        fontSize: 50, // Smaller font size for screens below 600px (small screens)
+                      },
+                    }),
                   }}
                   className="experience-icon"
                 />
@@ -314,8 +337,8 @@ export const Home = () => {
 
       {/* Top Properties  */}
       <div className="bg-white">
-        <h1 className="text-center text-black  text-3xl lg:text-4xl font-bold py-3 lg:font-medium">
-          Top Properties
+        <h1 className="text-center text-black  text-3xl lg:text-4xl font-bold py-8 lg:font-medium">
+          Affordable Living
         </h1>
         {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
           {properties &&
@@ -337,12 +360,18 @@ export const Home = () => {
         <Card />
         <div className="flex justify-center my-3">
           <Link to={"/property/top-properties"}>
-            <button
-              className="bg-[#03002E] hover:bg-white hover:text-[#03002E] border-2 border-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1 text-sm lg:text-lg transition-colors duration-300 font-medium"
-              style={{ boxShadow: "0px 9.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+            <Button
+              size="large"
+              variant="contained"
+              endIcon={<EastIcon />}
+              sx={{
+                backgroundColor: "#03002e",
+                color: "white",
+                textTransform: "none",
+              }}
             >
-              View All
-            </button>
+              View all
+            </Button>
           </Link>
         </div>
       </div>
@@ -357,7 +386,7 @@ export const Home = () => {
                     <img
                       src={gallery2}
                       alt=""
-                      className="rounded-lg h-[260px] w-[100%] "
+                      className="rounded-lg h-[210px] w-[100%] "
                     />
                   </div>
                 </div>
@@ -368,14 +397,14 @@ export const Home = () => {
                     <img
                       src={gallery3}
                       alt=""
-                      className="rounded-lg h-[280px] w-full"
+                      className="rounded-lg h-[200px] w-full"
                     />
                   </div>
                   <div className="col-span-6">
                     <img
                       src={gallery1}
                       alt=""
-                      className="rounded-lg h-[450px] w-full"
+                      className="rounded-lg h-[400px] w-full"
                     />
                   </div>
                 </div>
@@ -467,9 +496,9 @@ export const Home = () => {
                       10 new offers every day. 350 offers on site, trusted by a
                       community of thousands of users.
                     </p>
-                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm lg:text-lg py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
+                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-3 flex items-center justify-center gap-2 mt-8">
                       Get Started
-                      <EastIcon size="small" />
+                      <EastIcon size="small" sx={{ fontSize: "15px" }} />
                     </button>
                   </div>
                 </div>
@@ -491,9 +520,9 @@ export const Home = () => {
                       10 new offers every day. 350 offers on site, trusted by a
                       community of thousands of users.
                     </p>
-                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm lg:text-lg py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
+                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-3 flex items-center justify-center gap-2 mt-8">
                       Get Started
-                      <EastIcon size="small" />
+                      <EastIcon size="small" sx={{ fontSize: "15px" }} />
                     </button>
                   </div>
                 </div>

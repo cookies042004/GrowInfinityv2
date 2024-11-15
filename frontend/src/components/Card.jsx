@@ -17,8 +17,13 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import FormControlLabel from "@mui/material/FormControlLabel";
-// import FormControl from '@mui/material/FormControl';
-// import FormLabel from '@mui/material/FormLabel';
+
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import "./Card.css"
 
 export const Card = () => {
   const [open, setOpen] = useState(false);
@@ -43,448 +48,2004 @@ export const Card = () => {
     px: 1,
   };
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 786,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="max-w-[1280px] mx-auto">
       <div className="grid sm:grid-cols-12">
-        <div className="col-span-12 md:col-span-6 lg:col-span-3 m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
-            <div className="flex justify-center">
-              <img
-                src={propertycard}
-                alt=""
-                className="h-[200px] w-[100%] rounded-lg"
-              />
-            </div>
-            <div className="mt-3 font-roboto text-sm flex justify-between">
-              <p>
-                Skyper Pool Apartment <br />{" "}
-                <span className="text-gray-700 text-sm">By Max Estates</span>
-              </p>
-              <p className="font-semibold text-[#EB664E] text-xl">₹2.8Cr*</p>
-            </div>
-            <div className="flex items-center mt-3">
-              <LocationOnIcon sx={{ color: "darkblue" }} />
-              <p className="text-sm">1020 Bloomingdale Ave</p>
-            </div>
-            <div className="flex gap-3 justify-between mt-5 font-roboto">
-              <div className="flex gap-1 items-center">
-                <HomeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">4BHK</p>
+        <div className="col-span-12">
+          <Slider {...settings}>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
               </div>
-              <div className="flex gap-1 items-center">
-                <SquareFootIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">1800 sq.ft</p>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
               </div>
-              <div className="flex gap-1 items-center">
-                <CurrencyRupeeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">10.6k / sq.ft.</p>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
               </div>
-            </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
 
-            <div className="mt-5 flex gap-3">
-              <div className="flex-1">
-                <Link to="/project/abc">
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
                   <Button
+                    onClick={handleOpen}
                     fullWidth
-                    variant="outlined"
-                    sx={{
-                      backgroundColor: "#03002e",
-                      color: "#fff",
-                      textTransform: "none",
-                    }}
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
                   >
-                    View Details
+                    Enquiry
                   </Button>
-                </Link>
+                </div>
+
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
+
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
+                        />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </Box>
+                </Modal>
               </div>
-              <div className="flex-1">
+
+              <div className="absolute top-[20px]">
                 <Button
-                  onClick={handleOpen}
-                  fullWidth
+                  endIcon={<DoneIcon />}
+                  size="small"
                   variant="contained"
                   color="success"
-                  startIcon={<CallIcon />}
-                  sx={{ color: "#fff", textTransform: "none" }}
+                  sx={{ borderRadius: "0px", height: "25px" }}
                 >
-                  Enquiry
+                  RERA
                 </Button>
               </div>
+            </div>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
+              </div>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
+              </div>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
+              </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
 
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                sx={{
-                  borderRadius: "40px",
-                }}
-              >
-                <Box sx={style}>
-                  <h1 className="font-roboto text-center text-2xl lg:text-4xl py-2">
-                    Contact Us
-                  </h1>
-                  <p className="font-roboto text-center text-sm lg:text-lg">
-                    We will get back to you asap!
-                  </p>
-                  {/* {error && <Typography color="error">{error}</Typography>} */}
-                  <form className="mx-8 mt-6">
-                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
-                      <div className="col-span-1">
-                        <div className="flex border rounded-lg items-center bg-white">
-                          <div className="flex justify-center ps-3">
-                            <PersonIcon size="large" sx={{ color: "gray" }} />
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    onClick={handleOpen}
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
+                  >
+                    Enquiry
+                  </Button>
+                </div>
+
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
                           </div>
-                          <input
-                            type="text"
-                            className="outline-none p-3 rounded-lg w-full"
-                            placeholder="First Name"
-                          />
                         </div>
-                      </div>
-                      <div className="col-span-1 hidden lg:block">
-                        <div className="flex border rounded-lg items-center bg-white">
-                          <input
-                            type="text"
-                            className="outline-none p-3 rounded-lg w-full"
-                            placeholder="Last Name"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-span-1">
-                        <div className="flex border rounded-lg items-center bg-white">
-                          <div className="flex justify-center ps-3">
-                            <MarkunreadIcon sx={{ color: "gray" }} />
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
                           </div>
-                          <input
-                            type="text"
-                            className="outline-none p-3 rounded-lg w-full"
-                            placeholder="Email Address"
-                          />
                         </div>
-                      </div>
-                      <div className="col-span-1">
-                        <div className="flex border rounded-lg items-center bg-white">
-                          <div className="flex justify-center ps-3">
-                            <LocalPhoneIcon sx={{ color: "gray" }} />
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
+
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
                           </div>
-                          <input
-                            type="text"
-                            className="outline-none p-3 rounded-lg w-full"
-                            placeholder="Phone"
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
                           />
                         </div>
-                      </div>
-                      <div className="col-span-1">
-                        <FormLabel size="small" sx={{ fontWeight: "bold" }}>
-                          Your reason to buy is?
-                        </FormLabel>
-                        <RadioGroup
-                          row
-                          aria-labelledby="demo-row-radio-buttons-group-label"
-                          name="row-radio-buttons-group"
-                          size="small"
-                        >
-                          <FormControlLabel
-                            size="small"
-                            value="investment"
-                            control={<Radio size="small" />}
-                            label="Investment"
-                          />
-                          <FormControlLabel
-                            size="small"
-                            value="business"
-                            control={<Radio size="small" />}
-                            label="Business use"
-                          />
-                        </RadioGroup>
-                      </div>
-                      <div className="col-span-1">
-                        <FormLabel sx={{ fontWeight: "bold" }}>
-                          Are you a property dealer?
-                        </FormLabel>
-                        <RadioGroup
-                          row
-                          aria-labelledby="demo-row-radio-buttons-group-label"
-                          name="row-radio-buttons-group"
-                          size="small"
-                        >
-                          <FormControlLabel
-                            size="small"
-                            value="yes"
-                            control={<Radio size="small" />}
-                            label="Yes"
-                          />
-                          <FormControlLabel
-                            size="small"
-                            value="no"
-                            control={<Radio size="small" />}
-                            label="No"
-                          />
-                        </RadioGroup>
-                      </div>
-                      <div className="col-span-1">
-                        <FormControlLabel
-                          control={<Checkbox size="small" defaultChecked />}
-                          label={
-                            <Typography
-                              variant="body2"
-                              sx={{ fontSize: "0.78rem" }}
-                            >
-                              I agree to be contacted by Grow infinity agents
-                              via whatsapp, SMS, Call, Email etc.
-                            </Typography>
-                          }
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
                         />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
                       </div>
-                      <input type="hidden" name="propertyName" />
-                      <div className="col-span-1">
-                        <Button
-                          variant="contained"
-                          sx={{
-                            background: "#03002E",
-                            textTransform: "none",
-                            padding: "10px",
-                            marginTop: "5px",
-                            marginBottom: "15px",
-                          }}
-                          size="small"
-                          fullWidth
-                          type="submit"
-                        >
-                          Send
-                        </Button>
+                    </form>
+                  </Box>
+                </Modal>
+              </div>
+
+              <div className="absolute top-[20px]">
+                <Button
+                  endIcon={<DoneIcon />}
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "0px", height: "25px" }}
+                >
+                  RERA
+                </Button>
+              </div>
+            </div>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
+              </div>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
+              </div>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
+              </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    onClick={handleOpen}
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
+                  >
+                    Enquiry
+                  </Button>
+                </div>
+
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
+
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
+                        />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </form>
-                </Box>
-              </Modal>
-            </div>
+                    </form>
+                  </Box>
+                </Modal>
+              </div>
 
-            <div className="absolute top-[20px]">
-              <Button
-                endIcon={<DoneIcon />}
-                size="small"
-                variant="contained"
-                color="success"
-                sx={{ borderRadius: "0px", height: "25px" }}
-              >
-                RERA
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden md:block lg:block m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
-            <div className="flex justify-center">
-              <img
-                src={propertycard}
-                alt=""
-                className="h-[200px] w-[100%] rounded-lg"
-              />
-            </div>
-            <div className="mt-3 font-roboto text-sm flex justify-between">
-              <p>
-                Skyper Pool Apartment <br />{" "}
-                <span className="text-gray-700 text-sm">By Max Estates</span>
-              </p>
-              <p className="font-semibold text-[#EB664E] text-xl">₹2.8Cr*</p>
-            </div>
-            <div className="flex items-center mt-3">
-              <LocationOnIcon sx={{ color: "darkblue" }} />
-              <p className="text-sm">1020 Bloomingdale Ave</p>
-            </div>
-            <div className="flex gap-3 justify-between mt-5 font-roboto">
-              <div className="flex gap-1 items-center">
-                <HomeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">4BHK</p>
-              </div>
-              <div className="flex gap-1 items-center">
-                <SquareFootIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">1800 sq.ft</p>
-              </div>
-              <div className="flex gap-1 items-center">
-                <CurrencyRupeeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">10.6k / sq.ft.</p>
+              <div className="absolute top-[20px]">
+                <Button
+                  endIcon={<DoneIcon />}
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "0px", height: "25px" }}
+                >
+                  RERA
+                </Button>
               </div>
             </div>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
+              </div>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
+              </div>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
+              </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
 
-            <div className="mt-5 flex gap-3">
-              <Button
-                fullWidth
-                variant="outlined"
-                sx={{
-                  backgroundColor: "#03002e",
-                  color: "#fff",
-                  textTransform: "none",
-                }}
-              >
-                View Details
-              </Button>
-              <Button
-                fullWidth
-                variant="contained"
-                color="success"
-                startIcon={<CallIcon />}
-                sx={{ color: "#fff", textTransform: "none" }}
-              >
-                Enquiry
-              </Button>
-            </div>
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    onClick={handleOpen}
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
+                  >
+                    Enquiry
+                  </Button>
+                </div>
 
-            <div className="absolute top-[20px]">
-              <Button
-                endIcon={<DoneIcon />}
-                size="small"
-                variant="contained"
-                color="success"
-                sx={{ borderRadius: "0px", height: "25px" }}
-              >
-                RERA
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden lg:block m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
-            <div className="flex justify-center">
-              <img
-                src={propertycard}
-                alt=""
-                className="h-[200px] w-[100%] rounded-lg"
-              />
-            </div>
-            <div className="mt-3 font-roboto text-sm flex justify-between">
-              <p>
-                Skyper Pool Apartment <br />{" "}
-                <span className="text-gray-700 text-sm">By Max Estates</span>
-              </p>
-              <p className="font-semibold text-[#EB664E] text-xl">₹2.8Cr*</p>
-            </div>
-            <div className="flex items-center mt-3">
-              <LocationOnIcon sx={{ color: "darkblue" }} />
-              <p className="text-sm">1020 Bloomingdale Ave</p>
-            </div>
-            <div className="flex gap-3 justify-between mt-5 font-roboto">
-              <div className="flex gap-1 items-center">
-                <HomeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">4BHK</p>
-              </div>
-              <div className="flex gap-1 items-center">
-                <SquareFootIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">1800 sq.ft</p>
-              </div>
-              <div className="flex gap-1 items-center">
-                <CurrencyRupeeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">10.6k / sq.ft.</p>
-              </div>
-            </div>
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
 
-            <div className="mt-5 flex gap-3">
-              <Button
-                fullWidth
-                variant="outlined"
-                sx={{
-                  backgroundColor: "#03002e",
-                  color: "#fff",
-                  textTransform: "none",
-                }}
-              >
-                View Details
-              </Button>
-              <Button
-                fullWidth
-                variant="contained"
-                color="success"
-                startIcon={<CallIcon />}
-                sx={{ color: "#fff", textTransform: "none" }}
-              >
-                Enquiry
-              </Button>
-            </div>
-
-            <div className="absolute top-[20px]">
-              <Button
-                endIcon={<DoneIcon />}
-                size="small"
-                variant="contained"
-                color="success"
-                sx={{ borderRadius: "0px", height: "25px" }}
-              >
-                RERA
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-3 hidden lg:block m-3">
-          <div className="border relative p-2 rounded-lg hover:shadow-2xl bg-white mx-5 lg:mx-0">
-            <div className="flex justify-center">
-              <img
-                src={propertycard}
-                alt=""
-                className="h-[200px] w-[100%] rounded-lg"
-              />
-            </div>
-            <div className="mt-3 font-roboto text-sm flex justify-between">
-              <p>
-                Skyper Pool Apartment <br />{" "}
-                <span className="text-gray-700 text-sm">By Max Estates</span>
-              </p>
-              <p className="font-semibold text-[#EB664E] text-xl">₹2.8Cr*</p>
-            </div>
-            <div className="flex items-center mt-3">
-              <LocationOnIcon sx={{ color: "darkblue" }} />
-              <p className="text-sm">1020 Bloomingdale Ave</p>
-            </div>
-            <div className="flex gap-3 justify-between mt-5 font-roboto">
-              <div className="flex gap-1 items-center">
-                <HomeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">4BHK</p>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
+                        />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </Box>
+                </Modal>
               </div>
-              <div className="flex gap-1 items-center">
-                <SquareFootIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">1800 sq.ft</p>
-              </div>
-              <div className="flex gap-1 items-center">
-                <CurrencyRupeeIcon sx={{ color: "darkblue" }} />
-                <p className="text-[12px]">10.6k / sq.ft.</p>
-              </div>
-            </div>
 
-            <div className="mt-5 flex gap-3">
-              <Button
-                fullWidth
-                variant="outlined"
-                sx={{
-                  backgroundColor: "#03002e",
-                  color: "#fff",
-                  textTransform: "none",
-                }}
-              >
-                View Details
-              </Button>
-              <Button
-                fullWidth
-                variant="contained"
-                color="success"
-                startIcon={<CallIcon />}
-                sx={{ color: "#fff", textTransform: "none" }}
-              >
-                Enquiry
-              </Button>
+              <div className="absolute top-[20px]">
+                <Button
+                  endIcon={<DoneIcon />}
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "0px", height: "25px" }}
+                >
+                  RERA
+                </Button>
+              </div>
             </div>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
+              </div>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
+              </div>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
+              </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
 
-            <div className="absolute top-[20px]">
-              <Button
-                endIcon={<DoneIcon />}
-                size="small"
-                variant="contained"
-                color="success"
-                sx={{ borderRadius: "0px", height: "25px" }}
-              >
-                RERA
-              </Button>
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    onClick={handleOpen}
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
+                  >
+                    Enquiry
+                  </Button>
+                </div>
+
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
+
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
+                        />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </Box>
+                </Modal>
+              </div>
+
+              <div className="absolute top-[20px]">
+                <Button
+                  endIcon={<DoneIcon />}
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "0px", height: "25px" }}
+                >
+                  RERA
+                </Button>
+              </div>
             </div>
-          </div>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
+              </div>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
+              </div>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
+              </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    onClick={handleOpen}
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
+                  >
+                    Enquiry
+                  </Button>
+                </div>
+
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
+
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
+                        />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </Box>
+                </Modal>
+              </div>
+
+              <div className="absolute top-[20px]">
+                <Button
+                  endIcon={<DoneIcon />}
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "0px", height: "25px" }}
+                >
+                  RERA
+                </Button>
+              </div>
+            </div>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
+              </div>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
+              </div>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
+              </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    onClick={handleOpen}
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
+                  >
+                    Enquiry
+                  </Button>
+                </div>
+
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
+
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
+                        />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </Box>
+                </Modal>
+              </div>
+
+              <div className="absolute top-[20px]">
+                <Button
+                  endIcon={<DoneIcon />}
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "0px", height: "25px" }}
+                >
+                  RERA
+                </Button>
+              </div>
+            </div>
+            <div className="border relative p-2 hover:shadow-2xl bg-white mx-8 lg:mx-0">
+              <div className="flex justify-center">
+                <img src={propertycard} alt="" className="h-[230px] w-[100%]" />
+              </div>
+              <div className="mt-3 font-roboto text-sm flex justify-between">
+                <p className="font-semibold ps-3 text-sm">
+                  Skyper Pool Apartment <br />{" "}
+                  <span className="text-gray-700 font-normal text-xs">
+                    By Max Estates
+                  </span>
+                </p>
+                <p className="font-semibold text-[#EB664E] text-lg">₹2.8Cr*</p>
+              </div>
+              <div className="flex items-center mt-3">
+                <LocationOnIcon
+                  sx={{
+                    color: "darkblue",
+                    fontSize: "18px",
+                    paddingBottom: "3px",
+                  }}
+                />
+                <p className="text-xs">1020 Bloomingdale Ave</p>
+              </div>
+              <div className="flex gap-3 justify-between mt-5 font-roboto">
+                <div className="flex gap-1 items-center">
+                  <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+                  <p className="text-xs">4BHK</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <SquareFootIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">1800 sq.ft</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <CurrencyRupeeIcon
+                    sx={{ color: "darkblue", fontSize: "18px" }}
+                  />
+                  <p className="text-xs">10.6k / sq.ft.</p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex gap-3">
+                <div className="flex-1">
+                  <Link to="/project/abc">
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        backgroundColor: "#03002e",
+                        color: "#fff",
+                        textTransform: "none",
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    onClick={handleOpen}
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    startIcon={<CallIcon />}
+                    sx={{ color: "#fff", textTransform: "none" }}
+                  >
+                    Enquiry
+                  </Button>
+                </div>
+
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  sx={{
+                    borderRadius: "40px",
+                  }}
+                >
+                  <Box sx={style}>
+                    <h1 className="font-roboto text-center text-4xl py-2">
+                      Contact Us
+                    </h1>
+                    <p className="font-roboto text-center text-lg">
+                      We will get back to you asap!
+                    </p>
+                    {/* {error && <Typography color="error">{error}</Typography>} */}
+                    <form className="mx-8 mt-6">
+                      <div className="grid sm:grid-cols-12 gap-3">
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <PersonIcon size="large" sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="First Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <MarkunreadIcon sx={{ color: "gray" }} />
+                            </div>
+
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Email Address"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-12">
+                          <div className="flex border rounded-lg items-center bg-white">
+                            <div className="flex justify-center ps-3">
+                              <LocalPhoneIcon sx={{ color: "gray" }} />
+                            </div>
+                            <input
+                              type="text"
+                              className="outline-none p-3 rounded-lg w-full"
+                              placeholder="Phone"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            size="small"
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Your reason to buy is?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              size="small"
+                              value="investment"
+                              control={<Radio size="small" />}
+                              label="Investment"
+                            />
+                            <FormControlLabel
+                              value="business"
+                              size="small"
+                              control={<Radio size="small" />}
+                              label="Business use"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-6">
+                          <FormLabel
+                            id="demo-row-radio-buttons-group-label"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            Are you a property dealer?
+                          </FormLabel>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            size="small"
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio size="small" />}
+                              label="Yes"
+                              size="small"
+                            />
+                            <FormControlLabel
+                              size="small"
+                              value="no"
+                              control={<Radio size="small" />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </div>
+                        <div className="col-span-12">
+                          <FormControlLabel
+                            control={<Checkbox size="small" defaultChecked />}
+                            label={
+                              <Typography
+                                variant="body2"
+                                sx={{ fontSize: "0.78rem" }}
+                              >
+                                I agree to be contacted by Grow infinity agents
+                                via whatsapp, SMS, Call, Email etc.
+                              </Typography>
+                            }
+                          />
+                        </div>
+                        <input
+                          type="hidden"
+                          name="propertyName"
+                          // value={formData.propertyName}
+                        />
+                        <div className="col-span-12">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              background: "#03002E",
+                              textTransform: "none",
+                              padding: "10px",
+                              marginTop: "5px",
+                              marginBottom: "15px",
+                            }}
+                            size="large"
+                            fullWidth
+                            type="submit"
+                          >
+                            Send
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </Box>
+                </Modal>
+              </div>
+
+              <div className="absolute top-[20px]">
+                <Button
+                  endIcon={<DoneIcon />}
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "0px", height: "25px" }}
+                >
+                  RERA
+                </Button>
+              </div>
+            </div>
+          </Slider>
         </div>
       </div>
     </div>

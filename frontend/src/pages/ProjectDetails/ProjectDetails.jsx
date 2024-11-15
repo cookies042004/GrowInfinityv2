@@ -578,7 +578,7 @@ export const ProjectDetails = () => {
             </div>
           </div>
           <div className="col-span-12 lg:col-span-3 bg-gray-100">
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 sticky top-0">
               <div className="bg-white px-5 py-8 rounded-lg">
                 <form>
                   <h1 className="text-center text-xl font-medium font-roboto">
@@ -630,7 +630,7 @@ export const ProjectDetails = () => {
               </div>
 
               {/* Recent Property */}
-              <div className="bg-white p-5 rounded-lg sticky top-0 right-[200]">
+              <div className="bg-white p-5 rounded-lg">
                 <h1 className="text-xl font-medium">Recent Property</h1>
                 <div className="grid sm:grid-cols-12 gap-6 mt-5">
                   <div className="col-span-12">

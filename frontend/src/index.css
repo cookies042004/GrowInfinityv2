@@ -23,3 +23,7 @@
   color: #03002E;
   font-weight: bold;
 }
+
+.slick-slide > div{
+  margin: 0 8px;
+}

@@ -35,7 +35,7 @@ img {
 }
 
 .service-info-2 .number {
-  font-size: 120px;
+  font-size: 75px;
   line-height: 1;
   color: #3a30301c;
   display: inline-block;
@@ -134,7 +134,7 @@ p {
 }
 
 .service-info-2 {
-  height: 18em;
+  height: 15em;
 }
 
 .service-info-2 p {

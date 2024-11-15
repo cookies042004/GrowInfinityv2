@@ -19,7 +19,7 @@
 }
 
 .experience {
-  background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)),
+  background: linear-gradient(#0e1d3499, #0e1d34cc),
     url("../../assets/img/img4.jpg");
   background-position: center;
   background-attachment: fixed;

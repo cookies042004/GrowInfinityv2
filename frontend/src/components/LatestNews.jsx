@@ -5,39 +5,93 @@ import "./LatestNews.css";
 import { Button } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import bgImage from "../assets/img/img4.jpg";
 
 export const LatestNews = () => {
   const apiUrl = `${process.env.BASE_URL}/api/v1/news`;
   const { data, loading, error, refetch } = useFetchData(apiUrl);
-  const news =
-    data && data.news
-      ? data.news
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .slice(0, 4)
-      : [];
+
+  const news = data?.news
+    ? data.news.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    : [];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 786,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
-    <div className="bg-latest">
+    <div
+      className="bg-latest"
+      style={{
+        background: `linear-gradient(#0e1d3499, #0e1d34cc), url(${bgImage})`,
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <div className="my-5 py-10">
         <h1 className="font-roboto text-3xl lg:text-4xl font-bold lg:font-medium text-white text-center py-8">
           Latest News
         </h1>
-
         <div className="grid sm:grid-cols-12 my-5 max-w-[1280px] mx-auto gap-5">
           {loading && <p>Loading...</p>}
-          {error && <p>{error}</p>}
-          {news?.map((item) => {
-            return (
-              <div
-                key={item._id}
-                className="col-span-12 md:col-span-6 lg:col-span-3"
-              >
-                <a href={item.url} target="_blank">
-                  <NewsCard item={item} />
-                </a>
-              </div>
-            );
-          })}
+          {error && (
+            <div>
+              <p>Something went wrong while loading the news.</p>
+              <Button onClick={refetch} variant="contained" color="primary">
+                Retry
+              </Button>
+            </div>
+          )}
+          <div className="col-span-12">
+            {!loading && !error && (
+              <Slider {...settings}>
+                {news.map((item) => (
+                  <div key={item._id}>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <NewsCard item={item} />
+                    </a>
+                  </div>
+                ))}
+              </Slider>
+            )}
+          </div>
 
           <div className="col-span-12">
             <div className="flex justify-center mt-10">

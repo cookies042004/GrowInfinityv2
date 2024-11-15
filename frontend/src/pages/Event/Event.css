@@ -146,6 +146,15 @@
 }
 
 .copy {
+    margin-top: 42px;
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.35;
+}
+
+.copy-1 {
+    margin-top: 28px;
     font-family: var(--font-serif);
     font-size: 1.125rem;
     font-style: italic;
@@ -154,7 +163,7 @@
 
 .btn {
     cursor: pointer;
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     padding: 0.75rem 1.5rem;
     font-size: 0.65rem;
     font-weight: bold;

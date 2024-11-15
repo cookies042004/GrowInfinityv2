@@ -5,15 +5,18 @@ import "./About.css";
 
 import aboutImg from "../../assets/img/aboutImg.png";
 import aboutImg2 from "../../assets/img/aboutImg2.png";
-import gallery1 from "../../assets/img/gallery1.png";
-import gallery2 from "../../assets/img/gallery2.png";
-import gallery3 from "../../assets/img/gallery3.png";
 import { Choose } from "../../components/Choose";
 import { Testimonials } from "../../components/Testimonials";
 
 import directorImg from "../../assets/img/director1.webp";
 import whatwedo from "../../assets/img/17.png";
 import { NavigationBar } from "../../components/NavigationBar";
+import { AwardComponent } from "../../components/AwardComponent";
+import { Button } from "@mui/material";
+import EastIcon from "@mui/icons-material/East";
+import { Link } from "react-router-dom";
+
+import bgImage from "../../assets/img/img4.jpg";
 
 export const About = () => {
   return (
@@ -38,15 +41,27 @@ export const About = () => {
           Grow Infinity Realtors
         </h1>
 
-        <div className="grid sm:grid-cols-12 my-8">
-          <div className="col-span-12 lg:col-span-6 flex items-center justify-start">
-            <p className="font-poppins text-sm lg:text-2xl leading-9 text-justify text-gray-700 px-5">
-              Grow infinity is an accomplished real estate agent firm. Drawing
-              from their years of experience they brings a strategic yet
-              personal approach to the home buying, selling, and renting
-              process. Over the years, Grow infinity has built a reputation for
-              providing a seamless experience to customers to secure their dream
-              homes.
+        <div className="grid sm:grid-cols-12 my-6">
+          <div className="col-span-12 lg:col-span-6 flex flex-col mt-6 items-start gap-3">
+            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-5">
+              Grow Infinity Realtors is a highly regarded and accomplished real
+              estate agency with a proven track record of success. Leveraging
+              years of experience in the industry, the firm combines a strategic
+              approach with a personalized touch to guide clients through every
+              step of the home buying, and selling process. Whether clients are
+              looking to purchase their first home or sell an existing property,
+              Grow Infinity Realtors takes the time to understand their unique
+              needs and aspirations.
+            </p>
+            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-5">
+              Grow Infinity Realtors is a highly regarded and accomplished real
+              estate agency with a proven track record of success. Leveraging
+              years of experience in the industry
+            </p>
+            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-5">
+              Grow Infinity Realtors is a highly regarded and accomplished real
+              estate agency with a proven track record of success. Leveraging
+              years of experience in the industry
             </p>
           </div>
 
@@ -54,7 +69,7 @@ export const About = () => {
             <img
               src={aboutImg}
               alt="about-welcome-image"
-              className="h-[300px] w-[480px] rounded-[13px] mx-5"
+              className="h-[400px] w-[480px] mx-5"
             />
           </div>
         </div>
@@ -65,7 +80,7 @@ export const About = () => {
           <span className="text-gray-500">Stress-Free</span> Step to Your Dream
           Home
         </h1>
-        <div className="grid sm:grid-cols-12 mt-4 lg:mt-10">
+        <div className="grid sm:grid-cols-12 mt-4 lg:mt-10 gap-5">
           {[
             {
               number: "01",
@@ -103,19 +118,17 @@ export const About = () => {
             },
           ].map((item, index) => (
             <div
-              className="col-span-12 md:col-span-6 lg:col-span-4 m-5"
+              className="col-span-12 md:col-span-6 lg:col-span-4 p-5"
               key={item.number}
             >
-              <div
-                className={`bg-gray-600 text-white rounded-[64px] p-4 mx-8 lg:p-8 font-roboto h-[150px] lg:h-[200px] text-center relative`}
-              >
-                <div className="absolute bg-green-400 text-white flex justify-center items-center rounded-[50%] h-[60px] w-[60px] right-[-12px] top-[-20px] circle">
-                  <h5 className="text-xl lg:text-2xl font-medium">{item.number}</h5>
-                </div>
-                <h3 className="text-lg lg:text-2xl py-5">{item.title}</h3>
-                <p className="text-md lg:text-lg text-center text-gray-300 ">
-                  {item.description}
-                </p>
+              <div className="text-[#2f31c0] hover:text-white p-6 lg:p-10 font-roboto min-h-[250px] text-center border-2 border-blue-600 rounded-xl flex flex-col items-center justify-center cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-2xl hover:bg-gradient-to-r from-[#2f31c0] to-[#4a51f0]">
+                <h5 className="text-2xl lg:text-4xl font-bold mb-2">
+                  {item.number}
+                </h5>
+                <h3 className="text-xl lg:text-2xl py-3 font-semibold">
+                  {item.title}
+                </h3>
+                <p className="text-sm lg:text-lg">{item.description}</p>
               </div>
             </div>
           ))}
@@ -128,40 +141,66 @@ export const About = () => {
         </h2>
         <div className="grid sm:grid-cols-12">
           <div className="col-span-12 lg:col-span-6 flex justify-center">
-            <img src={whatwedo} alt="" className="w-[300px] lg:w-[500px]" />
+            <img
+              src={whatwedo}
+              alt=""
+              className="w-[300px] lg:w-[600px] border"
+            />
           </div>
           <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
-            <p className="font-poppins text-sm px-5 lg:text-2xl leading-9 text-justify text-gray-700">
-              At Grow Infinity Realtors, we pride ourselves on our commitment to
-              delivering personalized solutions that cater to your unique needs
-              and preferences. Our extensive network and market knowledge enable
-              us to offer a diverse range of properties, from luxurious estates
-              to cozy family homes and prime commercial spaces.
+            <p className="font-poppins text-sm px-5 lg:text-xl leading-9 text-justify text-gray-700">
+              At Grow Infinity Realtors, we take immense pride in our unwavering
+              commitment to providing personalized real estate solutions
+              tailored specifically to meet the unique needs and preferences of
+              each client. We understand that every individual or family has
+              distinct goals and desires when it comes to finding the perfect
+              property, and we work diligently to ensure that those needs are
+              not only met but exceeded. Our team’s deep market knowledge,
+              combined with a robust network of industry connections, allows us
+              to offer a wide variety of properties that cater to diverse tastes
+              and requirements. Whether you're seeking a luxurious estate, a
+              cozy family home, or a prime commercial space for your business,
+              Grow Infinity has the expertise and resources to guide you to the
+              ideal property. Our approach goes beyond simply facilitating a
+              transaction; we focus on building long-term relationships and
+              ensuring that each client’s experience is seamless, enjoyable, and
+              rewarding.
             </p>
           </div>
         </div>
       </div>
       {/* Mission  */}
-      <div className="bg-gradient-to-r from-[#03002E] to-[#0a0a60] text-white  mt-10 mb-10 p-8">
-        <div className="grid sm:grid-cols-12 flex-col-reverse max-w-[1280px] mx-auto">
-          <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
+      <div className="bg-gradient-to-r from-[#0e1d3499] to-[#0e1d34cc] text-white mt-10 mb-10 p-8">
+        <div className="grid sm:grid-cols-12 flex-col-reverse max-w-[1280px] mx-auto my-8">
+          <div className="col-span-12 lg:col-span-6 flex flex-col justify-start">
             <h2 className="font-inter font-semibold text-center text-3xl lg:text-left lg:text-4xl mb-4 flex items-center justify-center lg:justify-start">
-              OUR MISSION
+              Our Mission
             </h2>
             <p className="font-inter font-normal text-sm lg:text-lg leading-9 my-3 text-justify">
-              Our mission is to create seamless and rewarding experiences for
-              all our clients, ensuring that each transaction is smooth,
-              transparent, and successful. Trust, integrity, and professionalism
-              form the core values of our company, and we strive to exceed
-              expectations, building long-lasting relationships with our
-              clients.
+              Our mission is to deliver seamless, rewarding experiences for
+              every client, ensuring that each real estate transaction is not
+              only smooth but also transparent and successful. We believe that
+              buying, selling, or renting a property should be an exciting and
+              stress-free journey, which is why we go above and beyond to make
+              the process as effortless as possible. Trust, integrity, and
+              professionalism are the foundation of our company, and these core
+              values guide everything we do.
+            </p>
+            <p className="font-inter font-normal text-sm lg:text-lg leading-9 my-3 text-justify">
+              We prioritize building meaningful, long-term relationships with
+              our clients, ensuring that their needs are always met with honesty
+              and respect. By maintaining an unwavering commitment to excellence
+              and exceeding expectations at every turn, we aim to foster lasting
+              connections that continue well beyond a single transaction. Our
+              ultimate goal is to be the trusted partner clients can rely on for
+              all their real estate needs, today and in the future.
             </p>
           </div>
-          <div className="col-span-12 lg:col-span-6 lg:flex justify-end">
+          <div className="col-span-12 lg:col-span-6 lg:flex items-center justify-end">
             <img
               src={aboutImg2}
               alt="About us"
-              className="h-[400px] w-full lg:w-[503px] border-4 border-white rounded-[28px] shadow-lg transition-transform transform hover:scale-105"
+              className="h-[400px] w-full lg:w-[503px] border-4 border-white shadow-lg transition-transform transform hover:scale-105"
             />
           </div>
         </div>
@@ -170,53 +209,123 @@ export const About = () => {
       <Choose />
 
       {/* Meet our directors  */}
-      <div className="my-5 mx-auto max-w-[1280px]">
-        <h1 className="text-center text-[#03002e] text-3xl lg:text-4xl font-medium pb-10">
-          Get to Know Our Team
-        </h1>
+      <div className="bg-[#fff8f6] py-8">
+        <div className="my-5 mx-auto max-w-[1280px]">
+          <h1 className="text-center text-[#03002e] text-3xl lg:text-4xl font-bold pb-10">
+            Get to Know Our Team
+          </h1>
 
-        <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 m-5">
-            <div className="director-card">
-              <div className="flex items-center gap-8">
-                <div>
-                  <img
-                    src={directorImg}
-                    alt=""
-                    className="rounded-3xl h-[300px] w-[300px] object-cover"
-                  />
+          <div className="grid sm:grid-cols-12 gap-8 mx-auto">
+            {[
+              {
+                name: "Alex Tucker",
+                role: "Chief Architect",
+                image: directorImg,
+              },
+              {
+                name: "Taylor Smith",
+                role: "Senior Designer",
+                image: directorImg,
+              },
+            ].map((member, index) => (
+              <div
+                className="col-span-12 md:col-span-6 lg:col-span-6 p-5"
+                key={index}
+              >
+                <div className="director-card bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                  <div
+                    className={`flex items-center ${
+                      index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                    } gap-8 p-6`}
+                  >
+                    {/* Image Section */}
+                    <div className="relative">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="rounded-3xl h-[400px] w-[250px] max-w-full object-cover transform hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 hover:opacity-30 rounded-3xl transition-opacity duration-300"></div>
+                    </div>
+
+                    {/* Text Section */}
+                    <div className="flex-1">
+                      <h3 className="text-[#03002e] text-lg lg:text-2xl py-3 font-bold font-roboto text-center lg:text-left">
+                        {member.name}
+                      </h3>
+                      <h5 className="text-gray-500 text-center lg:text-left text-sm lg:text-md pb-3 font-roboto">
+                        {member.role}
+                      </h5>
+                      <p className="text-gray-600 text-center lg:text-left text-sm lg:text-md font-light">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Curabitur vel turpis nec leo aliquam viverra.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-center text-lg lg:text-2xl py-3 font-medium font-roboto">
-                    Alex Tucker
-                  </h3>
-                  <h5 className="text-center text-sm lg:text-md pb-3 text-gray-500 font-roboto">
-                    Chief Architect
-                  </h5>
-                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="bg-latest py-10"
+        style={{
+          background: `linear-gradient(#0e1d3499, #0e1d34cc), url(${bgImage})`,
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <h1 className="text-center text-3xl lg:text-4xl text-white font-medium">
+            Awards
+          </h1>
+          <div className="grid sm:grid-cols-12">
+            <div className="col-span-6 flex justify-start">
+              <AwardComponent />
+            </div>
+            <div className="col-span-6  flex items-center ">
+              <div className="text-white text-lg text-justify">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+                  voluptatem praesentium quibusdam ipsam odit alias consequuntur
+                  nostrum, ad quidem libero pariatur commodi quia fuga
+                  architecto reiciendis necessitatibus modi mollitia atque
+                  accusamus iste similique tempora. Accusamus illum dicta, modi
+                  officiis provident eaque pariatur maiores facilis eum quisquam
+                  ea vel quaerat totam, itaque, quia est aliquid. Provident,
+                  distinctio vero recusandae deleniti similique est velit soluta
+                  facilis perspiciatis, accusamus dicta ipsa et consequuntur, in
+                  voluptates sed porro nulla animi enim laudantium nesciunt
+                  excepturi veritatis. Beatae accusantium at fuga possimus.
+                  Similique itaque delectus doloremque sunt alias quae magni
+                  provident aliquid, quasie vitae iusto repudiandae! Ad vel
+                  repellat ex beatae ea similique itaque dignissimos quibusdam?
+                  Fugit vel neque, tempora eum veniam sed voluptatibus
+                  dignissimos, excepturi consectetur laudantium assumenda hic
+                  accusantium officiis. Non dolores voluptate ex tenetur ad,
+                  voluptates autem.
+                </p>
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 m-5">
-            <div className="director-card">
-              <div className="flex flex-row-reverse items-center gap-8">
-                <div>
-                  <img
-                    src={directorImg}
-                    alt=""
-                    className="rounded-3xl h-[300px] w-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-center text-lg lg:text-2xl py-3 font-medium font-roboto">
-                    Alex Tucker
-                  </h3>
-                  <h5 className="text-center text-sm lg:text-md  pb-3 text-gray-500 font-roboto">
-                    Chief Architect
-                  </h5>
-                </div>
-              </div>
-            </div>
+
+          <div className="flex justify-center">
+            <Link to="/awards">
+              <Button
+                size="large"
+                variant="contained"
+                endIcon={<EastIcon />}
+                sx={{
+                  backgroundColor: "white",
+                  color: "#03002e",
+                  textTransform: "none",
+                }}
+              >
+                View all
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

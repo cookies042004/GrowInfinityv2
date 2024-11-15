@@ -31,6 +31,7 @@ import { ProjectDetails } from "./pages/ProjectDetails/ProjectDetails.jsx";
 import { SingleProject } from "./pages/SingleProject/SingleProject.jsx";
 import { ViewPropertyEnquiry } from "./admin/pages/propertyEnquiry/ViewPropertyEnquiry.jsx";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
+import { Awards } from "./pages/Awards/Awards.jsx";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
       <Route path="/project/:id" element={<ProjectDetails />} />
       <Route path="/services" element={<Services />} />
       <Route path="/news" element={<News />} />
+      <Route path="/awards" element={<Awards />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/brochure" element={<Brochure />} />
       <Route path="/search/:id" element={<Search />} />

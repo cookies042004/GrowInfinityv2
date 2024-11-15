@@ -1,6 +1,8 @@
-.bg-latest {
-  background:  linear-gradient(rgba(14, 29, 52, 0.801), rgba(14, 29, 52, 0.714)),
-    url("../assets/img/img4.jpg");
-  background-position: center;
-  background-attachment: fixed;
+.slick-dots li button:before {
+  color: white !important;
+  font-size: 9px !important;
+}
+
+.slick-next:before, .slick-prev::before{
+  display: none;
 }
