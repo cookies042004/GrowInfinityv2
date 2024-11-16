@@ -51,7 +51,7 @@ export const Home = () => {
   return (
     <Layout>
       {/* Hero  */}
-      <div className="homeBanner relative h-screen flex flex-col items-center lg:items-start justify-center lg:ps-24 ">
+      <div className="homeBanner overflow-hidden relative h-screen flex flex-col items-center lg:items-start justify-center lg:ps-24 ">
         <div className="text-center">
           <h1 className="text-2xl lg:text-4xl font-medium lg:mt-24">
             Find your next{" "}
