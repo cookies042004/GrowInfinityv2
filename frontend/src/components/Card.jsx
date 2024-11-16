@@ -83,7 +83,7 @@ export const Card = () => {
   };
 
   return (
-    <div className="max-w-[1280px] mx-auto">
+    <div className="max-w-[1280px] mx-auto overflow-hidden">
       <Slider {...settings}>
         <div className="border relative p-2 hover:shadow-2xl bg-white">
           <div className="flex justify-center">

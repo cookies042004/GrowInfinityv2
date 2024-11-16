@@ -9,7 +9,7 @@ export const Layout = ({ children }) => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden">
+    <div className="flex flex-col min-h-screen">
       {/* Navbar */}
       <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
 
