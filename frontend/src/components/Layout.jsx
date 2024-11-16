@@ -9,7 +9,7 @@ export const Layout = ({ children }) => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-hidden">
       {/* Navbar */}
       <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
 
@@ -30,7 +30,7 @@ export const Layout = ({ children }) => {
           <img
             src={googlereview}
             alt="Google Review Button"
-            className="w-60 cursor-pointer animated-button"
+            className="w-[120px] lg:w-[150px] cursor-pointer animated-button"
           />
         </a>
       </div>
@@ -42,7 +42,7 @@ export const Layout = ({ children }) => {
           <img
             src={whatsappfloat}
             alt="Whatsapp Button"
-            className="w-[70px] h-[70px] cursor-pointer animated-button"
+            className="w-[45px] h-[45px] lg:w-[70px] lg:h-[70px] cursor-pointer animated-button"
           />
         </a>
       </div>

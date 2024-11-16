@@ -42,22 +42,22 @@ export const AwardComponent = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={award1} className="h-[500px] w-[450px]" />
+          <img src={award1} className="h-[300px] w-[300px] lg:h-[500px] lg:w-[450px]" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={award2} className="h-[500px] w-[450px]" />
+          <img src={award2} className="h-[300px] w-[300px] lg:h-[500px] lg:w-[450px]" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={award3} className="h-[500px] w-[450px]" />
+          <img src={award3} className="h-[300px] w-[300px] lg:h-[500px] lg:w-[450px]" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={award4} className="h-[500px] w-[450px]" />
+          <img src={award4} className="h-[300px] w-[300px] lg:h-[500px] lg:w-[450px]" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={award5} className="h-[500px] w-[450px]" />
+          <img src={award5} className="h-[300px] w-[300px] lg:h-[500px] lg:w-[450px]" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={award5} className="h-[500px] w-[450px]" />
+          <img src={award5} className="h-[300px] w-[300px] lg:h-[500px] lg:w-[450px]" />
         </SwiperSlide>
       </Swiper>
     </div>

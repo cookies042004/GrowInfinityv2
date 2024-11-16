@@ -53,7 +53,7 @@ export const Home = () => {
       {/* Hero  */}
       <div className="homeBanner relative h-screen flex flex-col items-center lg:items-start justify-center lg:ps-24 overflow-hidden">
         <div className="text-center">
-          <h1 className="text-3xl lg:text-4xl font-medium lg:mt-24">
+          <h1 className="text-2xl lg:text-4xl font-medium lg:mt-24">
             Find your next{" "}
             <Typewriter
               words={["best cozy place", "dream home", "office"]}
@@ -63,7 +63,7 @@ export const Home = () => {
           </h1>
         </div>
         <div className="my-10">
-          <p className="font-dmsans text-center font-normal text-lg lg:text-lg lg:text-left px-5 lg:px-0">
+          <p className="font-dmsans text-center font-normal text-sm lg:text-lg lg:text-left px-5 lg:px-0">
             Find the best places around you at the cheapest and affordable
             prices.
           </p>
@@ -73,7 +73,7 @@ export const Home = () => {
 
         <div
           className={`hidden lg:block absolute right-0 top-[24%] rounded-lg transition-transform duration-500 ease-in-out ${
-            calculator ? "translate-x-[0]" : "translate-x-[94%]"
+            calculator ? "translate-x-[0]" : "translate-x-[90%]"
           }`}
         >
           <div className="flex justify-center items-center cursor-pointer">
@@ -109,7 +109,7 @@ export const Home = () => {
 
       {/* Featured Projects  */}
       <div className="bg-white">
-        <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
+        <h1 className="text-center text-black lg:text-4xl text-2xl font-bold py-8 lg:font-medium">
           New Launches
         </h1>
         {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
@@ -154,7 +154,7 @@ export const Home = () => {
 
       {/* Luxury Project */}
       <div className="bg-white">
-        <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
+        <h1 className="text-center text-black lg:text-4xl text-2xl font-bold py-8 lg:font-medium">
           Luxury Living
         </h1>
         {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
@@ -196,10 +196,10 @@ export const Home = () => {
       {/* More than 10 years of experience  */}
       <div className="bg-[#03002e] text-white my-10 experience">
         <div className="max-w-[1280px] mx-auto py-10">
-          <h1 className="text-2xl text-center lg:text-4xl font-poppins font-bold py-4">
+          <h1 className="text-xl text-center lg:text-4xl font-poppins font-bold py-4">
             More than 10 Years of Experience
           </h1>
-          <p className="text-lg py-3 lg:py-5 text-center lg:text-lg font-poppins font-medium lg:me-10 me-0 px-3 lg:px-0">
+          <p className="text-sm py-3 lg:py-5 text-center lg:text-lg font-poppins font-medium lg:me-10 me-0 px-3 lg:px-0">
             Over the years, Grow infinity has built a reputation for providing a
             seamless experience to customers to secure their dream homes.
           </p>
@@ -208,15 +208,10 @@ export const Home = () => {
               <div className="flex flex-col items-center justify-center">
                 <ApartmentIcon
                   sx={{
-                    fontSize: 100,
+                    fontSize: { xs: 50, sm: 75, md: 100 },
                     paddingTop: "10px",
                     paddingBottom: "10px",
                     transition: "color 0.3s ease-in-out",
-                    ...(theme) => ({
-                      [theme.breakpoints.down("sm")]: {
-                        fontSize: 50, // Smaller font size for screens below 600px (small screens)
-                      },
-                    }),
                   }}
                   className="experience-icon"
                 />
@@ -241,13 +236,10 @@ export const Home = () => {
               <div className="flex flex-col items-center justify-center">
                 <EmojiEmotionsIcon
                   sx={{
-                    fontSize: 100,
+                    fontSize: { xs: 50, sm: 75, md: 100 },
                     paddingTop: "10px",
                     paddingBottom: "10px",
                     transition: "color 0.3s ease-in-out",
-                    [(theme) => theme.breakpoints.down("sm")]: {
-                      fontSize: 50, // Smaller font size for screens below 600px (small screens)
-                    },
                   }}
                   className="experience-icon"
                 />
@@ -272,13 +264,10 @@ export const Home = () => {
               <div className="flex flex-col items-center justify-center">
                 <AspectRatioIcon
                   sx={{
-                    fontSize: 100,
+                    fontSize: { xs: 50, sm: 75, md: 100 },
                     paddingTop: "10px",
                     paddingBottom: "10px",
                     transition: "color 0.3s ease-in-out",
-                    [(theme) => theme.breakpoints.down("sm")]: {
-                      fontSize: 50, // Smaller font size for screens below 600px (small screens)
-                    },
                   }}
                   className="experience-icon"
                 />
@@ -304,13 +293,10 @@ export const Home = () => {
               <div className="flex flex-col items-center justify-center">
                 <AccessibilityNewIcon
                   sx={{
-                    fontSize: 100,
+                    fontSize: { xs: 50, sm: 75, md: 100 },
                     paddingTop: "10px",
                     paddingBottom: "10px",
                     transition: "color 0.3s ease-in-out",
-                    [(theme) => theme.breakpoints.down("sm")]: {
-                      fontSize: 50, // Smaller font size for screens below 600px (small screens)
-                    },
                   }}
                   className="experience-icon"
                 />
@@ -337,7 +323,7 @@ export const Home = () => {
 
       {/* Top Properties  */}
       <div className="bg-white">
-        <h1 className="text-center text-black  text-3xl lg:text-4xl font-bold py-8 lg:font-medium">
+        <h1 className="text-center text-black  text-2xl lg:text-4xl font-bold py-8 lg:font-medium">
           Affordable Living
         </h1>
         {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
@@ -412,11 +398,11 @@ export const Home = () => {
             </div>
           </div>
           <div className="col-span-12 lg:col-span-5 flex flex-col justify-center lg:ps-14">
-            <h1 className="text-[#1A1A1A] font-roboto  text-2xl lg:text-4xl font-medium text-center lg:text-start">
+            <h1 className="text-[#1A1A1A] font-roboto  text-2xl lg:text-4xl font-medium text-center lg:text-start mt-4 lg:mt-0">
               How It works? <br />
               Find a perfect home
             </h1>
-            <p className="font-roboto text-lg text-[#1A1A1A] px-5 mt-5">
+            <p className="font-roboto text-md lg:text-lg text-[#1A1A1A] px-5 mt-5">
               Pellentesque egestas elementum egestas faucibus sem. Velit nunc
               egestas ut morbi. Leo diam diam.
             </p>

@@ -25,6 +25,12 @@
   background-attachment: fixed;
 }
 
+@media screen and (max-width: 425px){
+  .experience{
+    background-attachment: scroll;
+  }
+}
+
 img {
   vertical-align: middle;
 }

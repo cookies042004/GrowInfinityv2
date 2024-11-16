@@ -1,23 +1,22 @@
 .testimonial-container {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .testimonial-item {
-    position: absolute;
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .testimonial-item.slide-in {
-    transform: translateX(0);
-  }
-  
-  .testimonial-item.slide-out-prev {
-    transform: translateX(-100%);
-  }
-  
-  .testimonial-item.slide-out-next {
-    transform: translateX(100%);
-  }
-  
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-item {
+  position: absolute;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-item.slide-in {
+  transform: translateX(0);
+}
+
+.testimonial-item.slide-out-prev {
+  transform: translateX(-100%);
+}
+
+.testimonial-item.slide-out-next {
+  transform: translateX(100%);
+}

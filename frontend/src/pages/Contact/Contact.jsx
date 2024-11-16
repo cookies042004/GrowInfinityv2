@@ -82,7 +82,7 @@ export const Contact = () => {
             <div className="grid sm:grid-cols-12 py-10">
               <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
-                  <div className="flex items-center justify-center p-5 bg-[#0597ff] rounded-[50%] h-[70px] w-[70px]">
+                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[70px] w-[70px]">
                     <EmailIcon sx={{ fontSize: "40px", color: "white" }} />
                   </div>
 
@@ -90,7 +90,7 @@ export const Contact = () => {
                     Chat to us
                   </p>
 
-                  <p className="font-roboto text-lg text-[#0597ff]">
+                  <p className="font-roboto text-lg text-[#0529ff]">
                     Our friendly team is here to help.
                   </p>
                   <p className="font-roboto text-md text-center">
@@ -100,12 +100,12 @@ export const Contact = () => {
               </div>
               <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
-                  <div className="flex items-center justify-center p-5 bg-[#0597ff] rounded-[50%] h-[70px] w-[70px]">
+                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[70px] w-[70px]">
                     <LocationOnIcon sx={{ fontSize: "40px", color: "white" }} />
                   </div>
 
                   <p className="font-dmsans font-semibold text-lg">Office</p>
-                  <p className="font-roboto text-lg text-[#0597ff]">
+                  <p className="font-roboto text-lg text-[#0529ff]">
                     Come say hello at our office HQ.
                   </p>
                   <p className="font-roboto text-md text-center">
@@ -116,13 +116,13 @@ export const Contact = () => {
               </div>
               <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
                 <div className="flex flex-col gap-5 justify-center items-center">
-                  <div className="flex items-center justify-center p-5 bg-[#0597ff] rounded-[50%] h-[70px] w-[70px]">
+                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[70px] w-[70px]">
                     <LocalPhoneIcon sx={{ fontSize: "40px", color: "white" }} />
                   </div>
 
                   <p className="font-dmsans font-semibold text-lg">Phone</p>
 
-                  <p className="font-roboto text-lg text-[#0597ff]">
+                  <p className="font-roboto text-lg text-[#0529ff]">
                     Mon-Sun from 8am to 6pm
                   </p>
                   <p className="font-roboto text-md">+91-9990052554</p>
@@ -139,7 +139,7 @@ export const Contact = () => {
               </h1>
               <p className="text-center text-lg font-roboto py-3">
                 Or just reach manually to{" "}
-                <span className="text-[#0597ff]">
+                <span className="text-[#0529ff]">
                   <a href="mailto:info@growinfinityrealtors.in">
                     info@growinfinityrealtors.in
                   </a>
@@ -216,7 +216,7 @@ export const Contact = () => {
                       sx={{
                         borderRadius: "24px",
                         textTransform: "none",
-                        backgroundColor: "#0597ff",
+                        backgroundColor: "#0529ff",
                       }}
                     >
                       Submit Form

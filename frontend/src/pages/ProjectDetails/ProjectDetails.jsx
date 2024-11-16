@@ -74,7 +74,7 @@ export const ProjectDetails = () => {
         </div>
       </div>
 
-      <div className="bg-gray-100 p-3">
+      <div className="bg-gray-100 lg:p-3" style={{ scrollBehavior: "smooth" }}>
         <div className="grid sm:grid-cols-12 gap-10 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
           <div className="col-span-12 lg:col-span-9 bg-white px-5 lg:px-12 py-4 lg:py-8">
             <div className="grid sm:grid-cols-12 gap-3">
@@ -176,11 +176,18 @@ export const ProjectDetails = () => {
               </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-8 justify-between lg:items-center m-3">
-              <div className="font-roboto mt-6">
-                <h1 className="font-medium text-3xl lg:text-4xl">
-                  CanterBury Lane
-                </h1>
-                <p className="text-md mt-3">Noida, UP-201301</p>
+              <div className="font-roboto mt-6 flex justify-between">
+                <div>
+                  <h1 className="font-medium text-2xl lg:text-4xl">
+                    CanterBury Lane
+                  </h1>
+                  <p className="text-md mt-3">Noida, UP-201301</p>
+                </div>
+                <div className='block lg:hidden'>
+                  <h5 className="font-roboto font-semibold text-[#EB664E] text-2xl lg:text-4xl">
+                    ₹2.8Cr*
+                  </h5>
+                </div>
               </div>
               <div className="flex gap-5">
                 <Button
@@ -207,14 +214,14 @@ export const ProjectDetails = () => {
                   </Button>
                 </a>
               </div>
-              <div className="flex justify-end">
-                <h5 className="font-roboto font-semibold text-[#EB664E] text-4xl">
+              <div className="hidden justify-end  lg:flex">
+                <h5 className="font-roboto font-semibold text-[#EB664E] text-2xl lg:text-4xl">
                   ₹2.8Cr*
                 </h5>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-10 lg:grid sm:grid-cols-12 justify-center lg:justify-start py-5 ps-2">
+            <div className="hidden gap-10 lg:grid sm:grid-cols-12 justify-center lg:justify-start py-5 ps-2">
               <div className="col-span-3">
                 <div className="flex items-center gap-2">
                   <HomeOutlinedIcon sx={{ color: "#5BC0EB" }} />
@@ -246,7 +253,7 @@ export const ProjectDetails = () => {
             </div>
 
             <div
-              className="flex flex-wrap items-center gap-10 lg:grid sm:grid-cols-12 mx-3 mt-8"
+              className="flex items-center  justify-between lg:grid sm:grid-cols-12 mx-3 mt-8"
               style={{ borderBottom: "3px solid lightgray" }}
             >
               <div className="col-span-3">

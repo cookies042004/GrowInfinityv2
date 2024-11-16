@@ -62,26 +62,26 @@ export const Testimonials = () => {
       <div className="bg-[#FFF8F6] lg:py-8 lg:px-16">
         <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
           <div className="col-span-12 lg:col-span-6 flex justify-center">
-            <div className="m-5 lg:px-10 lg:py-16 font-roboto lg:pe-20 flex flex-col items-center ">
+            <div className="m-5 px-5 lg:px-10 lg:py-16 font-roboto lg:pe-20 flex flex-col items-center ">
               <h1 className="text-xl lg:text-4xl text-[#1A1A1A] my-4 font-medium">
                 What our customers are saying us?
               </h1>
-              <p className="text-[#1A1A1A] text-lg text-justify my-5 lg:pe-20">
+              <p className="text-[#1A1A1A] text-md lg:text-lg text-justify my-5 lg:pe-20">
                 Various versions have evolved over the years, sometimes by
                 accident, sometimes on purpose injected humour and the like.
               </p>
               <div className="flex justify-center lg:justify-start gap-10">
                 <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-xl lg:text-2xl">
+                  <h3 className="font-medium text-[#1A1A1A] text-lg lg:text-2xl">
                     10m+
                   </h3>
-                  <p>Happy People</p>
+                  <p className="text-sm lg:text-lg">Happy People</p>
                 </div>
                 <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-xl lg:text-2xl">
+                  <h3 className="font-medium text-[#1A1A1A] text-lg lg:text-2xl">
                     4.88
                   </h3>
-                  <p className="text-lg">Overall rating</p>
+                  <p className="text-sm lg:text-lg">Overall rating</p>
                   <div className="hidden lg:flex mt-3">
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
@@ -128,7 +128,7 @@ export const Testimonials = () => {
                           </div>
                         </div>
                         <div className="mt-5">
-                          <p className="leading-10 text-md lg:text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
+                          <p className="leading-10 text-sm lg:text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
                             {testimonial.text}
                           </p>
                         </div>

@@ -12,7 +12,7 @@ export const Choose = () => {
     <>
       {/* Why choose us?  */}
       <div className="my-10 max-w-[1280px] mx-auto">
-        <h1 className="text-3xl lg:text-4xl font-bold pt-6 font-roboto lg:font-medium text-black text-center">
+        <h1 className="text-2xl lg:text-4xl font-bold pt-6 font-roboto lg:font-medium text-black text-center">
           Why Choose us?
         </h1>
 

@@ -26,24 +26,23 @@ export const LatestNews = () => {
     speed: 500,
     autoplay: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1300,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
         },
       },
       {
-        breakpoint: 1000,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 786,
+        breakpoint: 550,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -61,11 +60,11 @@ export const LatestNews = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="my-5 py-10">
-        <h1 className="font-roboto text-3xl lg:text-4xl font-bold lg:font-medium text-white text-center py-8">
-          Latest News
-        </h1>
-        <div className="grid sm:grid-cols-12 my-5 max-w-[1280px] mx-auto gap-5">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="my-5 py-10">
+          <h1 className="font-roboto text-3xl lg:text-4xl font-bold lg:font-medium text-white text-center py-8">
+            Latest News
+          </h1>
           {loading && <p>Loading...</p>}
           {error && (
             <div>
@@ -75,41 +74,34 @@ export const LatestNews = () => {
               </Button>
             </div>
           )}
-          <div className="col-span-12">
-            {!loading && !error && (
-              <Slider {...settings}>
-                {news.map((item) => (
-                  <div key={item._id}>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <NewsCard item={item} />
-                    </a>
-                  </div>
-                ))}
-              </Slider>
-            )}
-          </div>
 
-          <div className="col-span-12">
-            <div className="flex justify-center mt-10">
-              <Link to="/news">
-                <Button
-                  size="large"
-                  variant="contained"
-                  endIcon={<EastIcon />}
-                  sx={{
-                    backgroundColor: "white",
-                    color: "#03002e",
-                    textTransform: "none",
-                  }}
-                >
-                  View all
-                </Button>
-              </Link>
-            </div>
+          {!loading && !error && (
+            <Slider {...settings}>
+              {news.map((item) => (
+                <div key={item._id}>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    <NewsCard item={item} />
+                  </a>
+                </div>
+              ))}
+            </Slider>
+          )}
+
+          <div className="flex justify-center mt-10">
+            <Link to="/news">
+              <Button
+                size="large"
+                variant="contained"
+                endIcon={<EastIcon />}
+                sx={{
+                  backgroundColor: "white",
+                  color: "#03002e",
+                  textTransform: "none",
+                }}
+              >
+                View all
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

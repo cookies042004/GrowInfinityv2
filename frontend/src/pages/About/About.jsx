@@ -243,7 +243,7 @@ export const About = () => {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="rounded-3xl h-[400px] w-[250px] max-w-full object-cover transform hover:scale-105 transition-transform duration-300"
+                        className="rounded-3xl h-[200px] lg:h-[400px] w-[250px] max-w-full object-cover transform hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 hover:opacity-30 rounded-3xl transition-opacity duration-300"></div>
                     </div>
@@ -256,7 +256,7 @@ export const About = () => {
                       <h5 className="text-gray-500 text-center lg:text-left text-sm lg:text-md pb-3 font-roboto">
                         {member.role}
                       </h5>
-                      <p className="text-gray-600 text-center lg:text-left text-sm lg:text-md font-light">
+                      <p className="hidden lg:block text-gray-600 text-center lg:text-left text-sm lg:text-md font-light">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Curabitur vel turpis nec leo aliquam viverra.
                       </p>
@@ -282,12 +282,12 @@ export const About = () => {
             Awards
           </h1>
           <div className="grid sm:grid-cols-12">
-            <div className="col-span-6 flex justify-start">
+            <div className="lg:col-span-6 flex justify-center lg:justify-start">
               <AwardComponent />
             </div>
-            <div className="col-span-6  flex items-center ">
-              <div className="text-white text-lg text-justify">
-                <p>
+            <div className="lg:col-span-6  flex items-center ">
+              <div className="text-white text-lg text-justify px-5">
+                <p className="text-sm lg:text-lg">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
                   voluptatem praesentium quibusdam ipsam odit alias consequuntur
                   nostrum, ad quidem libero pariatur commodi quia fuga
@@ -311,7 +311,7 @@ export const About = () => {
             </div>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-4">
             <Link to="/awards">
               <Button
                 size="large"

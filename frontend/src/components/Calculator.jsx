@@ -51,31 +51,33 @@ export const Calculator = () => {
   };
 
   return (
-    <div className="max-w-[1280px] mx-auto my-5 bg-white rounded-lg">
-      <div className="grid sm:grid-cols-12 gap-10 shadow-lg border rounded-lg p-10">
-        <div className="col-span-12">
-          <h1 className="text-center text-2xl font-medium font-roboto">
+    <div className="max-w-[1280px] mx-auto my-5 bg-white rounded-lg shadow-lg p-5 lg:p-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Header Section */}
+        <div className="col-span-2">
+          <h1 className="text-center text-lg font-medium">
             Home Loan EMI Calculator
           </h1>
           <hr
-            className="w-[200px] h-[3px] opacity-100 rounded-full mx-auto border-0 mt-1"
+            className="w-[45%] h-[3px] opacity-100 rounded-full mx-auto border-0 mt-1"
             style={{
-              background: "linear-gradient(to right, #4e54c8, #8f94fb)", // Blue gradient from deep blue to light blue
-              boxShadow: "0px 4px 10px rgba(78, 84, 200, 0.3)", // Soft blue shadow
+              background: "linear-gradient(to right, #4e54c8, #8f94fb)",
+              boxShadow: "0px 4px 10px rgba(78, 84, 200, 0.3)",
             }}
           />
         </div>
-        <div className="col-span-6">
-          <div className="flex flex-col justify-center">
-            {/* Loan Amount Slider */}
-            <div>
-              <div className="flex justify-between items-center">
-                <p>Loan Amount</p>
-                <p className="text-gray-600 mt-2">
-                  Amount: <strong>₹ {loanAmount} Lac</strong>
-                </p>
-              </div>
 
+        {/* Sliders Section */}
+        <div className="flex flex-col gap-5">
+          {/* Loan Amount Slider */}
+          <div>
+            <div className="flex justify-between items-center">
+              <p className="text-sm">Loan Amount</p>
+              <p className="text-gray-600 text-sm">
+                ₹ <strong>{loanAmount}</strong> Lac
+              </p>
+            </div>
+            <div className="w-full lg:w-[80%]">
               <Slider
                 sx={{ color: "#03002e" }}
                 value={loanAmount}
@@ -87,20 +89,21 @@ export const Calculator = () => {
                 valueLabelFormat={(value) => `₹ ${value} Lac`}
                 marks={[
                   { value: 1, label: "₹1 Lac" },
-                  { value: 100, label: "₹ 1 Cr" },
+                  { value: 100, label: "₹1 Cr" },
                 ]}
               />
             </div>
+          </div>
 
-            {/* Tenure Slider */}
-            <div className="mt-5">
-              <div className="flex justify-between items-center">
-                <p>Tenure (Years)</p>
-                <p className="text-gray-600 mt-2">
-                  Tenure: <strong>{loanDuration} Years</strong>
-                </p>
-              </div>
-
+          {/* Tenure Slider */}
+          <div>
+            <div className="flex justify-between items-center">
+              <p className="text-sm">Tenure (Years)</p>
+              <p className="text-gray-600 text-sm">
+                {loanDuration} Years
+              </p>
+            </div>
+            <div className="w-full lg:w-[80%]">
               <Slider
                 sx={{ color: "#03002e" }}
                 value={loanDuration}
@@ -116,17 +119,17 @@ export const Calculator = () => {
                 ]}
               />
             </div>
+          </div>
 
-            {/* Interest Rate Slider */}
-            <div className="mt-5">
-              <div className="flex justify-between items-center">
-                <p>Interest Rate (% P.A.)</p>
-
-                <p className="text-gray-600 mt-2 ps-5">
-                  Interest Rate: <strong>{interestRate}%</strong>
-                </p>
-              </div>
-
+          {/* Interest Rate Slider */}
+          <div>
+            <div className="flex justify-between items-center">
+              <p className="text-sm">Interest Rate (% P.A.)</p>
+              <p className="text-gray-600 text-sm">
+                {interestRate}%
+              </p>
+            </div>
+            <div className="w-full lg:w-[80%]">
               <Slider
                 sx={{ color: "#03002e" }}
                 value={interestRate}
@@ -145,41 +148,35 @@ export const Calculator = () => {
           </div>
         </div>
 
-        {/* EMI and Payment Details */}
-        <div className="col-span-6">
-          <div className="flex flex-col items-end gap-4">
-            <div>
-              <h2 className="text-lg font-semibold mb-3">
-                Monthly Home Loan EMI
-              </h2>
-              <p className="text-2xl text-end text-blue-600 font-semibold">
-                ₹{formatToIndianCurrency(emi)}
-              </p>
-            </div>
-            <div className="mt-5">
-              <h3 className="text-md font-medium text-gray-500">
-                Principal Amount
-              </h3>
-              <p className="text-end font-semibold">
-                ₹{formatToIndianCurrency(loanAmount * 100000)}
-              </p>
-            </div>
-            <div className="mt-5">
-              <h3 className="text-md font-medium text-gray-500">
-                Interest Amount
-              </h3>
-              <p className="text-end font-semibold">
-                ₹{formatToIndianCurrency(totalInterest)}
-              </p>
-            </div>
-            <div className="mt-5">
-              <h3 className="text-md font-medium text-gray-500">
-                Total Amount Payable
-              </h3>
-              <p className="text-end font-semibold">
-                ₹{formatToIndianCurrency(totalAmount)}
-              </p>
-            </div>
+        {/* Results Section */}
+        <div className="flex flex-col items-end gap-5">
+          <div>
+            <h2 className="text-sm font-semibold">
+              Monthly Home Loan EMI
+            </h2>
+            <p className="text-lg text-end text-blue-600 font-semibold">
+              ₹{formatToIndianCurrency(emi)}
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xs font-medium text-gray-500">Principal Amount</h3>
+            <p className="text-sm text-end font-semibold">
+              ₹{formatToIndianCurrency(loanAmount * 100000)}
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xs font-medium text-gray-500">Interest Amount</h3>
+            <p className="text-sm text-end font-semibold">
+              ₹{formatToIndianCurrency(totalInterest)}
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xs font-medium text-gray-500">
+              Total Amount Payable
+            </h3>
+            <p className="text-sm text-end font-semibold">
+              ₹{formatToIndianCurrency(totalAmount)}
+            </p>
           </div>
         </div>
       </div>

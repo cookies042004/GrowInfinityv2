@@ -50,7 +50,7 @@ export const SearchBar = () => {
               <button
                 id="dropdownDefaultButton"
                 data-dropdown-toggle="dropdown"
-                className="text-black bg-[#F4F4F4] font-medium text-sm px-5 w-full py-2.5 text-center justify-between lg:justify-start inline-flex items-center rounded-[17.56px]"
+                className="text-black bg-[#F4F4F4] font-medium text-sm px-5 w-full py-1 lg:py-2.5 text-center justify-between lg:justify-start inline-flex items-center rounded-[17.56px]"
                 type="button"
                 onClick={() => setProperty(!property)}
               >
@@ -109,7 +109,7 @@ export const SearchBar = () => {
               <button
                 id="dropdownBhkButton"
                 data-dropdown-toggle="dropdownBhk"
-                className="text-black w-full bg-[#F4F4F4] font-medium text-sm px-5 py-2.5 text-center inline-flex justify-between lg:justify-start items-center rounded-[17.56px]"
+                className="text-black w-full bg-[#F4F4F4] font-medium text-sm px-5 py-1 lg:py-2.5 text-center inline-flex justify-between lg:justify-start items-center rounded-[17.56px]"
                 type="button"
                 onClick={() => setBhk(!bhk)}
               >
@@ -167,7 +167,7 @@ export const SearchBar = () => {
                 <input
                   type="text"
                   placeholder="Your desired location, project, city goes here"
-                  className="bg-[#F4F4F4] rounded-[17.56px] p-3 w-full outline-none"
+                  className="bg-[#F4F4F4] rounded-[17.56px] p-2 lg:p-3 w-full outline-none"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   required
@@ -244,7 +244,7 @@ export const SearchBar = () => {
               </div>
             </div>
             <div className="col-span-2 lg:col-span-2">
-              <button className="bg-[#f4f4f4] w-full py-2 text-sm px-2 lg:text-lg rounded-2xl text-[#03002e] font-medium">
+              <button className="bg-[#f4f4f4] w-full py-2 text-xs px-2 lg:text-lg rounded-2xl text-[#03002e] font-medium">
                 Price (₹)
               </button>
             </div>
@@ -295,7 +295,7 @@ export const SearchBar = () => {
               <div>
                 <button
                   type="submit"
-                  className="text-white bg-[#03002E]  w-full rounded-[8.59px] py-2 px-10"
+                  className="text-white text-sm lg:text-lg bg-[#03002E]  w-full rounded-[8.59px] py-[4px] lg:py-2 px-10"
                   style={{ boxShadow: "0px 5.46px 13.27px 0px #03002E80" }}
                 >
                   Search
