@@ -35,12 +35,13 @@ export const LatestNews = () => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
+       
       {
         breakpoint: 550,
         settings: {
@@ -60,7 +61,7 @@ export const LatestNews = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-[1280px] mx-auto overflow-hidden">
         <div className="my-5 py-10">
           <h1 className="font-roboto text-3xl lg:text-4xl font-bold lg:font-medium text-white text-center py-8">
             Latest News

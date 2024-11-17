@@ -42,8 +42,8 @@ export const About = () => {
         </h1>
 
         <div className="grid sm:grid-cols-12 my-6">
-          <div className="col-span-12 lg:col-span-6 flex flex-col mt-6 items-start gap-3">
-            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-5">
+          <div className="col-span-12 lg:col-span-6 flex flex-col mt-3 lg:mt-6 items-start gap-3">
+            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-8">
               Grow Infinity Realtors is a highly regarded and accomplished real
               estate agency with a proven track record of success. Leveraging
               years of experience in the industry, the firm combines a strategic
@@ -53,12 +53,12 @@ export const About = () => {
               Grow Infinity Realtors takes the time to understand their unique
               needs and aspirations.
             </p>
-            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-5">
+            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-8">
               Grow Infinity Realtors is a highly regarded and accomplished real
               estate agency with a proven track record of success. Leveraging
               years of experience in the industry
             </p>
-            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-5">
+            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-8">
               Grow Infinity Realtors is a highly regarded and accomplished real
               estate agency with a proven track record of success. Leveraging
               years of experience in the industry
@@ -118,10 +118,10 @@ export const About = () => {
             },
           ].map((item, index) => (
             <div
-              className="col-span-12 md:col-span-6 lg:col-span-4 p-5"
+              className="col-span-6 md:col-span-6 lg:col-span-4 p-5"
               key={item.number}
             >
-              <div className="text-[#2f31c0] hover:text-white p-6 lg:p-10 font-roboto min-h-[250px] text-center border-2 border-blue-600 rounded-xl flex flex-col items-center justify-center cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-2xl hover:bg-gradient-to-r from-[#2f31c0] to-[#4a51f0]">
+              <div className="text-[#2f31c0] hover:text-white p-6 lg:p-10 font-roboto text-center border-2 border-blue-600 rounded-xl flex flex-col items-center justify-center cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-2xl hover:bg-gradient-to-r from-[#2f31c0] to-[#4a51f0]">
                 <h5 className="text-2xl lg:text-4xl font-bold mb-2">
                   {item.number}
                 </h5>
@@ -148,7 +148,7 @@ export const About = () => {
             />
           </div>
           <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
-            <p className="font-poppins text-sm px-5 lg:text-xl leading-9 text-justify text-gray-700">
+            <p className="font-poppins text-sm px-8 lg:text-xl leading-9 text-justify text-gray-700">
               At Grow Infinity Realtors, we take immense pride in our unwavering
               commitment to providing personalized real estate solutions
               tailored specifically to meet the unique needs and preferences of
@@ -170,7 +170,7 @@ export const About = () => {
         </div>
       </div>
       {/* Mission  */}
-      <div className="bg-gradient-to-r from-[#0e1d3499] to-[#0e1d34cc] text-white mt-10 mb-10 p-8">
+      <div className="bg-gradient-to-r from-[#0e1d3499] to-[#0e1d34cc] text-white mt-10 mb-10 py-5 px-8">
         <div className="grid sm:grid-cols-12 flex-col-reverse max-w-[1280px] mx-auto my-8">
           <div className="col-span-12 lg:col-span-6 flex flex-col justify-start">
             <h2 className="font-inter font-semibold text-center text-3xl lg:text-left lg:text-4xl mb-4 flex items-center justify-center lg:justify-start">

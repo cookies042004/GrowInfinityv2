@@ -35,6 +35,7 @@ import { Calculator } from "../../components/Calculator";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import { SearchBar } from "../../components/SearchBar";
 import CancelIcon from "@mui/icons-material/Cancel";
+import findRealEstate from "../../assets/img/find real estate.jpg"
 
 export const Home = () => {
   useEffect(() => {
@@ -364,15 +365,15 @@ export const Home = () => {
 
       <div className="mx-auto max-w-[1280px] my-10">
         <div className="grid sm:grid-cols-12">
-          <div className="hidden lg:flex col-span-12 lg:col-span-7 justify-center">
+          <div className="hidden md:flex col-span-12 md:col-span-6 lg:col-span-7 justify-center">
             <div className="grid sm:grid-cols-12">
               <div className="col-span-12">
                 <div className="grid sm:grid-cols-12">
                   <div className="col-span-9 m-5">
                     <img
-                      src={gallery2}
+                      src={findRealEstate}
                       alt=""
-                      className="rounded-lg h-[210px] w-[100%] "
+                      className="rounded-lg h-[210px] w-[100%] object-fill"
                     />
                   </div>
                 </div>
@@ -381,23 +382,23 @@ export const Home = () => {
                 <div className="grid sm:grid-cols-12">
                   <div className="col-span-5 mx-5">
                     <img
-                      src={gallery3}
+                      src={`https://images.unsplash.com/photo-1672917187338-7f81ecac3d3f?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
                       alt=""
-                      className="rounded-lg h-[200px] w-full"
+                      className="rounded-lg h-[200px] w-full object-cover"
                     />
                   </div>
                   <div className="col-span-6">
                     <img
-                      src={gallery1}
+                      src={`https://plus.unsplash.com/premium_photo-1661310038586-a99299befcc9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
                       alt=""
-                      className="rounded-lg h-[400px] w-full"
+                      className="rounded-lg h-[400px] w-full object-fill"
                     />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-5 flex flex-col justify-center lg:ps-14">
+          <div className="col-span-12 md:col-span-6  lg:col-span-5 flex flex-col justify-center lg:ps-14">
             <h1 className="text-[#1A1A1A] font-roboto  text-2xl lg:text-4xl font-medium text-center lg:text-start mt-4 lg:mt-0">
               How It works? <br />
               Find a perfect home
@@ -406,7 +407,7 @@ export const Home = () => {
               Pellentesque egestas elementum egestas faucibus sem. Velit nunc
               egestas ut morbi. Leo diam diam.
             </p>
-            <ul className="my-10 flex flex-col gap-10 lg:mx-0 mx-5">
+            <ul className="my-10 flex flex-col gap-10 lg:mx-0 mx-5 ps-10 lg:ps-4">
               <li>
                 <div className="flex gap-5">
                   <div className="relative">
@@ -482,7 +483,7 @@ export const Home = () => {
                       10 new offers every day. 350 offers on site, trusted by a
                       community of thousands of users.
                     </p>
-                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-3 flex items-center justify-center gap-2 mt-8">
+                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-2 lg:py-3 flex items-center justify-center gap-2 mt-8">
                       Get Started
                       <EastIcon size="small" sx={{ fontSize: "15px" }} />
                     </button>
@@ -506,7 +507,7 @@ export const Home = () => {
                       10 new offers every day. 350 offers on site, trusted by a
                       community of thousands of users.
                     </p>
-                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-3 flex items-center justify-center gap-2 mt-8">
+                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-2 lg:py-3 flex items-center justify-center gap-2 mt-8">
                       Get Started
                       <EastIcon size="small" sx={{ fontSize: "15px" }} />
                     </button>

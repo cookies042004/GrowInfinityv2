@@ -25,3 +25,9 @@
 .slick-slide > div {
   margin: 0 10px;
 }
+
+@media screen and (max-width: 550px){
+  .slick-slide > div {
+    margin: 0 35px;
+  }
+}

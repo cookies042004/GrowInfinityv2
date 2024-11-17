@@ -16,8 +16,8 @@ import brand14 from "../assets/img/Tata.png";
 
 export const Marquee = () => {
   return (
-    <div className="p-3">
-      <div className="py-3 overflow-hidden">
+    <div className="lg:p-3">
+      <div className="py-1 *:lg:py-3 overflow-hidden">
         <div className="marquee-container">
           <div className="marquee-content">
             {[
@@ -98,7 +98,7 @@ export const Marquee = () => {
           }
 
           .marquee-item img {
-            width: 35px;
+            width: 100px !important;
           }
         }
 

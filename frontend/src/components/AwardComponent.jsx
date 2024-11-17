@@ -39,7 +39,7 @@ export const AwardComponent = () => {
         }}
         pagination={true}
         modules={[EffectCards, Autoplay]}  // Add Autoplay module
-        className="mySwiper"
+        className="mySwiper awards-swiper"
       >
         <SwiperSlide>
           <img src={award1} className="h-[300px] w-[300px] lg:h-[500px] lg:w-[450px]" />

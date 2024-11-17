@@ -14,7 +14,7 @@ export const Footer = () => {
     <footer className="bg-[#03002e] text-white">
       <div className="grid sm:grid-cols-12 gap-5 px-8 mt-10 max-w-[1280px] mx-auto">
         <div className="col-span-12 md:col-span-12 lg:col-span-3">
-          <div className="flex justify-center lg:justify-start">
+          <div className="flex justify-start">
             <img
               src={footerLogo}
               alt=""
@@ -58,8 +58,8 @@ export const Footer = () => {
           </div>
         </div>
         <div className="col-span-3">
-          <div className="flex flex-col justify-center items-end">
-            <h2 className="font-poppins font-semibold pe-8 text-sm lg:text-lg uppercase">
+          <div className="flex flex-col justify-center items-start lg:items-end">
+            <h2 className="font-poppins font-semibold lg:pe-8 text-sm lg:text-lg uppercase">
               Follow us
             </h2>
             <ul className="flex justify-center gap-4 items-center font-normal text-xs lg:text-sm py-3 text-justify">
@@ -69,14 +69,14 @@ export const Footer = () => {
                   target="_blank"
                 >
                   <div className="flex gap-3">
-                    <img src={facebook} alt="facebook_logo" />
+                    <img src={facebook} alt="facebook_logo" className='w-[20px]' />
                   </div>
                 </a>
               </li>
               <li className="my-2">
                 <a href="#" target="_blank">
                   <div className="flex gap-3">
-                    <img src={twitter} alt="twitter_logo" />
+                    <img src={twitter} alt="twitter_logo" className='w-[20px]' />
                   </div>
                 </a>
               </li>
@@ -86,14 +86,14 @@ export const Footer = () => {
                   target="_blank"
                 >
                   <div className="flex gap-3">
-                    <img src={instagram} alt="instagram_logo" />
+                    <img src={instagram} alt="instagram_logo" className='w-[20px]' />
                   </div>
                 </a>
               </li>
               <li className="my-2">
                 <a href="#">
                   <div className="flex gap-3">
-                    <img src={youtube} alt="youtube_logo" />
+                    <img src={youtube} alt="youtube_logo" className='w-[20px]' />
                   </div>
                 </a>
               </li>

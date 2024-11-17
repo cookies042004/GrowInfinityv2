@@ -20,3 +20,10 @@
 .testimonial-item.slide-out-next {
   transform: translateX(100%);
 }
+
+@media screen and (max-width: 500px) {
+  .testimonial-swiper {
+    width: 400px !important;
+    height: 300px;
+  }
+}

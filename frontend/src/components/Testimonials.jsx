@@ -60,7 +60,7 @@ export const Testimonials = () => {
     <>
       {/* Testimonial  */}
       <div className="bg-[#FFF8F6] lg:py-8 lg:px-16">
-        <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
+        <div className="grid sm:grid-cols-12 gap-5 max-w-[1280px] mx-auto">
           <div className="col-span-12 lg:col-span-6 flex justify-center">
             <div className="m-5 px-5 lg:px-10 lg:py-16 font-roboto lg:pe-20 flex flex-col items-center ">
               <h1 className="text-xl lg:text-4xl text-[#1A1A1A] my-4 font-medium">
@@ -102,7 +102,7 @@ export const Testimonials = () => {
                 delay: 3000, // 3 seconds delay
                 disableOnInteraction: false, // Keep autoplay even after interaction
               }}
-              className="mySwiper"
+              className="mySwiper testimonial-swiper"
             >
               {testimonials.map((testimonial) => {
                 return (
