@@ -15,7 +15,7 @@ export const Navbar = ({ mobileMenu, setMobileMenu }) => {
 
   return (
     <>
-      <nav className="block lg:hidden bg-white max-w-[1280px]">
+      <nav className="block fixed z-[1000] w-[100%] top-0 lg:hidden bg-white shadow-lg">
         <div className="flex items-center justify-between m-3">
           <div>
             <Link to="/">

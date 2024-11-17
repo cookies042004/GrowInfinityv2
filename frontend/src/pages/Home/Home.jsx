@@ -55,7 +55,7 @@ export const Home = () => {
       {/* Hero  */}
       <div className="homeBanner overflow-hidden relative h-screen flex flex-col items-center lg:items-start justify-center lg:ps-24 ">
         <div className="text-center">
-          <h1 className="text-2xl lg:text-4xl font-medium lg:mt-24">
+          <h1 className="text-2xl lg:text-4xl font-medium mt-14 lg:mt-24">
             Find your next{" "}
             <Typewriter
               words={["best cozy place", "dream home", "office"]}
@@ -64,7 +64,7 @@ export const Home = () => {
             />
           </h1>
         </div>
-        <div className="my-10">
+        <div className="my-5 lg:my-10">
           <p className="font-dmsans text-center font-normal text-sm lg:text-lg lg:text-left px-5 lg:px-0">
             Find the best places around you at the cheapest and affordable
             prices.

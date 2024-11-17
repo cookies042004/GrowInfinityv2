@@ -76,11 +76,11 @@ export const About = () => {
       </div>
 
       <div className="my-5 max-w-[1280px] mx-auto">
-        <h1 className="text-center text-xl lg:text-4xl font-roboto font-medium py-8">
+        <h1 className="text-center text-xl lg:text-4xl font-roboto font-medium py-3 lg:py-8">
           <span className="text-gray-500">Stress-Free</span> Step to Your Dream
           Home
         </h1>
-        <div className="grid sm:grid-cols-12 mt-4 lg:mt-10 gap-5">
+        <div className="grid sm:grid-cols-12 mt-4 lg:mt-10 gap-3 lg:gap-5">
           {[
             {
               number: "01",
