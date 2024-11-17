@@ -43,7 +43,7 @@ export const About = () => {
 
         <div className="grid sm:grid-cols-12 my-6">
           <div className="col-span-12 lg:col-span-6 flex flex-col mt-3 lg:mt-6 items-start gap-3">
-            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-8">
+            <p className="font-poppins text-sm lg:text-lg lg:leading-9 text-justify text-gray-700 px-8">
               Grow Infinity Realtors is a highly regarded and accomplished real
               estate agency with a proven track record of success. Leveraging
               years of experience in the industry, the firm combines a strategic
@@ -53,12 +53,12 @@ export const About = () => {
               Grow Infinity Realtors takes the time to understand their unique
               needs and aspirations.
             </p>
-            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-8">
+            <p className="font-poppins text-sm lg:text-lg lg:leading-9 text-justify text-gray-700 px-8">
               Grow Infinity Realtors is a highly regarded and accomplished real
               estate agency with a proven track record of success. Leveraging
               years of experience in the industry
             </p>
-            <p className="font-poppins text-sm lg:text-lg leading-9 text-justify text-gray-700 px-8">
+            <p className="font-poppins text-sm lg:text-lg lg:leading-9 text-justify text-gray-700 px-8">
               Grow Infinity Realtors is a highly regarded and accomplished real
               estate agency with a proven track record of success. Leveraging
               years of experience in the industry
@@ -69,7 +69,7 @@ export const About = () => {
             <img
               src={aboutImg}
               alt="about-welcome-image"
-              className="h-[400px] w-[480px] mx-5"
+              className="h-[280px] lg:h-[400px] w-[480px] mx-5"
             />
           </div>
         </div>
@@ -148,7 +148,7 @@ export const About = () => {
             />
           </div>
           <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
-            <p className="font-poppins text-sm px-8 lg:text-xl leading-9 text-justify text-gray-700">
+            <p className="font-poppins text-sm px-8 lg:text-xl lg:leading-9 text-justify text-gray-700">
               At Grow Infinity Realtors, we take immense pride in our unwavering
               commitment to providing personalized real estate solutions
               tailored specifically to meet the unique needs and preferences of
@@ -176,7 +176,7 @@ export const About = () => {
             <h2 className="font-inter font-semibold text-center text-3xl lg:text-left lg:text-4xl mb-4 flex items-center justify-center lg:justify-start">
               Our Mission
             </h2>
-            <p className="font-inter font-normal text-sm lg:text-lg leading-9 my-3 text-justify">
+            <p className="font-inter font-normal text-sm lg:text-lg lg:leading-9 my-3 text-justify">
               Our mission is to deliver seamless, rewarding experiences for
               every client, ensuring that each real estate transaction is not
               only smooth but also transparent and successful. We believe that
@@ -186,7 +186,7 @@ export const About = () => {
               professionalism are the foundation of our company, and these core
               values guide everything we do.
             </p>
-            <p className="font-inter font-normal text-sm lg:text-lg leading-9 my-3 text-justify">
+            <p className="font-inter font-normal text-sm lg:text-lg lg:leading-9 my-3 text-justify">
               We prioritize building meaningful, long-term relationships with
               our clients, ensuring that their needs are always met with honesty
               and respect. By maintaining an unwavering commitment to excellence
@@ -196,11 +196,11 @@ export const About = () => {
               all their real estate needs, today and in the future.
             </p>
           </div>
-          <div className="col-span-12 lg:col-span-6 lg:flex items-center justify-end">
+          <div className="col-span-12 lg:col-span-6 lg:flex items-center justify-end mt-3">
             <img
               src={aboutImg2}
               alt="About us"
-              className="h-[400px] w-full lg:w-[503px] border-4 border-white shadow-lg transition-transform transform hover:scale-105"
+              className="h-[250px] lg:h-[400px] w-full lg:w-[503px] border-4 border-white shadow-lg transition-transform transform hover:scale-105"
             />
           </div>
         </div>
@@ -282,30 +282,26 @@ export const About = () => {
             Awards
           </h1>
           <div className="grid sm:grid-cols-12">
-            <div className="lg:col-span-6 flex justify-center lg:justify-start">
+            <div className="lg:col-span-6 flex justify-center lg:justify-start overflow-hidden">
               <AwardComponent />
             </div>
             <div className="lg:col-span-6  flex items-center ">
               <div className="text-white text-lg text-justify px-5">
                 <p className="text-sm lg:text-lg">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                  voluptatem praesentium quibusdam ipsam odit alias consequuntur
-                  nostrum, ad quidem libero pariatur commodi quia fuga
-                  architecto reiciendis necessitatibus modi mollitia atque
-                  accusamus iste similique tempora. Accusamus illum dicta, modi
-                  officiis provident eaque pariatur maiores facilis eum quisquam
-                  ea vel quaerat totam, itaque, quia est aliquid. Provident,
-                  distinctio vero recusandae deleniti similique est velit soluta
-                  facilis perspiciatis, accusamus dicta ipsa et consequuntur, in
-                  voluptates sed porro nulla animi enim laudantium nesciunt
-                  excepturi veritatis. Beatae accusantium at fuga possimus.
-                  Similique itaque delectus doloremque sunt alias quae magni
-                  provident aliquid, quasie vitae iusto repudiandae! Ad vel
-                  repellat ex beatae ea similique itaque dignissimos quibusdam?
-                  Fugit vel neque, tempora eum veniam sed voluptatibus
-                  dignissimos, excepturi consectetur laudantium assumenda hic
-                  accusantium officiis. Non dolores voluptate ex tenetur ad,
-                  voluptates autem.
+                  At Grow Infinity Realtors, we believe that our dedication to
+                  excellence speaks volumes, and it’s a privilege to see this
+                  dedication acknowledged by the real estate community and our
+                  valued clients. Each award we receive is a reflection of the
+                  trust and confidence that clients place in us, motivating us
+                  to continuously raise the bar in service and results.
+                </p>
+                <p className="text-sm lg:text-lg mt-3">
+                  These awards are more than just accolades; they are milestones
+                  that reinforce our mission to serve with integrity,
+                  innovation, and unmatched expertise. At Grow Infinity
+                  Realtors, your trust fuels our ambition, and we remain
+                  steadfast in our journey to redefine excellence in real
+                  estate.
                 </p>
               </div>
             </div>

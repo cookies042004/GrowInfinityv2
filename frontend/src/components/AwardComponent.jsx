@@ -19,7 +19,7 @@ import "./AwardComponent.css";
 
 export const AwardComponent = () => {
   return (
-    <div className="body my-10 overflow-hidden">
+    <div className="body my-10">
       <Swiper
         effect={"cards"}
         grabCursor={true}

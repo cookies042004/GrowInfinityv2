@@ -35,8 +35,9 @@ import { Calculator } from "../../components/Calculator";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import { SearchBar } from "../../components/SearchBar";
 import CancelIcon from "@mui/icons-material/Cancel";
-import findRealEstate from "../../assets/img/find real estate.jpg"
-
+import findRealEstate from "../../assets/img/find real estate.jpg";
+import keys from "../../assets/img/keys.jpeg";
+import realtor from "../../assets/img/meet realtor.jpeg";
 export const Home = () => {
   useEffect(() => {
     new PureCounter();
@@ -205,7 +206,7 @@ export const Home = () => {
             seamless experience to customers to secure their dream homes.
           </p>
           <div className="flex flex-wrap justify-center lg:grid sm:grid-cols-12">
-            <div className="col-span-6 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+            <div className="basis-1/4 col-span-6 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <ApartmentIcon
                   sx={{
@@ -227,13 +228,13 @@ export const Home = () => {
                       5000
                     </span>
                   </p>
-                  <p className="font-poppins font-medium text:sm lg:text-lg">
+                  <p className="font-poppins font-medium text-sm lg:text-lg">
                     Units Sold
                   </p>
                 </div>
               </div>
             </div>
-            <div className="col-span-6 md:col-span-6 lg:col-span-3  rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+            <div className="basis-1/4 col-span-6 md:col-span-6 lg:col-span-3  rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <EmojiEmotionsIcon
                   sx={{
@@ -255,13 +256,13 @@ export const Home = () => {
                       2000
                     </span>
                   </p>
-                  <p className="font-poppins font-medium text:sm lg:text-lg">
+                  <p className="font-poppins font-medium text-sm lg:text-lg">
                     Happy Users
                   </p>
                 </div>
               </div>
             </div>
-            <div className="col-span-6 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+            <div className="basis-1/4 col-span-6 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <AspectRatioIcon
                   sx={{
@@ -284,13 +285,13 @@ export const Home = () => {
                       10+
                     </span>
                   </p>
-                  <p className="font-poppins font-medium text:sm lg:text-lg">
-                    Years of Experience
+                  <p className="font-poppins font-medium text-sm lg:text-lg">
+                    Year of Experience
                   </p>
                 </div>
               </div>
             </div>
-            <div className="col-span-6 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
+            <div className="basis-1/4 col-span-6 md:col-span-6 lg:col-span-3 rounded-[17.07px] m-8 hover:text-white transition-all ease-in-out experience-card">
               <div className="flex flex-col items-center justify-center">
                 <AccessibilityNewIcon
                   sx={{
@@ -312,7 +313,7 @@ export const Home = () => {
                       30
                     </span>
                   </p>
-                  <p className="font-poppins font-medium text:sm lg:text-lg">
+                  <p className="font-poppins font-medium text-sm lg:text-lg">
                     Employees
                   </p>
                 </div>
@@ -382,14 +383,14 @@ export const Home = () => {
                 <div className="grid sm:grid-cols-12">
                   <div className="col-span-5 mx-5">
                     <img
-                      src={`https://images.unsplash.com/photo-1672917187338-7f81ecac3d3f?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
+                      src={realtor}
                       alt=""
                       className="rounded-lg h-[200px] w-full object-cover"
                     />
                   </div>
                   <div className="col-span-6">
                     <img
-                      src={`https://plus.unsplash.com/premium_photo-1661310038586-a99299befcc9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
+                      src={keys}
                       alt=""
                       className="rounded-lg h-[400px] w-full object-fill"
                     />
@@ -479,11 +480,18 @@ export const Home = () => {
                     <h4 className="font-medium text-lg lg:text-2xl">
                       Looking for the new home?
                     </h4>
-                    <p className="text-sm lg:text-lg font-normal lg:pe-20 text-justify">
+                    <p className="hidden lg:block text-sm lg:text-lg font-normal lg:pe-20 text-justify">
                       10 new offers every day. 350 offers on site, trusted by a
                       community of thousands of users.
                     </p>
-                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-2 lg:py-3 flex items-center justify-center gap-2 mt-8">
+                    <div className="flex lg:hidden justify-between">
+                      <p className="basis-1/2 text-sm lg:text-lg font-normal lg:pe-20 text-justify">
+                        10 new offers every day. 350 offers on site, trusted by
+                        a community of thousands of users.
+                      </p>
+                      <img src={home} alt="" className="w-[80px] h-[80px]" />
+                    </div>
+                    <button className="bg-[#1F4B43] rounded-lg text-white w-[50%] lg:w-[150px] text-sm py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
                       Get Started
                       <EastIcon size="small" sx={{ fontSize: "15px" }} />
                     </button>
@@ -503,11 +511,18 @@ export const Home = () => {
                     <h4 className="font-medium text-lg lg:text-2xl">
                       Want to sell your home?
                     </h4>
-                    <p className="text-sm lg:text-lg font-normal lg:pe-20 text-justify">
+                    <p className="hidden lg:block text-sm lg:text-lg font-normal lg:pe-20 text-justify">
                       10 new offers every day. 350 offers on site, trusted by a
                       community of thousands of users.
                     </p>
-                    <button className="bg-[#1F4B43] rounded-lg text-white lg:w-[150px] text-sm py-2 lg:py-3 flex items-center justify-center gap-2 mt-8">
+                    <div className="flex lg:hidden justify-between">
+                      <p className="basis-1/2 text-sm lg:text-lg font-normal lg:pe-20 text-justify">
+                        10 new offers every day. 350 offers on site, trusted by
+                        a community of thousands of users.
+                      </p>
+                      <img src={house} alt="" className="w-[80px] h-[80px]" />
+                    </div>
+                    <button className="bg-[#1F4B43] rounded-lg text-white w-[50%] lg:w-[150px] text-sm py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
                       Get Started
                       <EastIcon size="small" sx={{ fontSize: "15px" }} />
                     </button>

@@ -21,7 +21,7 @@ export const Footer = () => {
               className="h-[60px] w-[180px] lg:w-[250px] object-contain"
             />
           </div>
-          <p className="font-normal text-xs lg:text-sm py-3 text-justify leading-8">
+          <p className="font-normal text-xs lg:text-sm py-3 text-justify leading-5 lg:leading-8">
             Grow infinity realtors is an accomplished real estate agent firm.
             Drawing from their years of experience they brings a strategic yet
             personal approach to the home buying, selling, and renting process.

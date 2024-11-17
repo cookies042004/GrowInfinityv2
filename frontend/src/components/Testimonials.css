@@ -20,9 +20,17 @@
   transform: translateX(100%);
 }
 
-@media screen and (max-width: 430px) {
-  .testimonial-swiper{
-    width: 320px !important;
+@media screen and (max-width: 900px) {
+  .testimonial-swiper {
+    width: 400px !important;
+    height: 400px !important;
   }
-  
+
+}
+@media screen and (max-width: 430px) {
+  .testimonial-swiper {
+    width: 300px !important;
+    height: 300px !important;
+  }
+
 }

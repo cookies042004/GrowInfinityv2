@@ -72,24 +72,39 @@ export const Testimonials = () => {
                 Various versions have evolved over the years, sometimes by
                 accident, sometimes on purpose injected humour and the like.
               </p>
-              <div className="flex justify-center lg:justify-start gap-10">
+              <div className="flex justify-end lg:justify-start gap-10">
                 <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-lg lg:text-2xl">
+                  <h3 className="font-medium text-[#1A1A1A] text-xs lg:text-2xl">
                     10m+
                   </h3>
-                  <p className="text-sm lg:text-lg">Happy People</p>
+                  <p className="text-xs lg:text-lg">Happy People</p>
                 </div>
                 <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-lg lg:text-2xl">
+                  <h3 className="font-medium text-[#1A1A1A] text-xs lg:text-2xl">
                     4.88
                   </h3>
-                  <p className="text-sm lg:text-lg">Overall rating</p>
+                  <p className="text-xs lg:text-lg">Overall rating</p>
                   <div className="flex mt-3">
-                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
-                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
-                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
-                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
-                    <StarIcon sx={{ color: "#e7c874" }} size="small" />
+                    <StarIcon
+                      sx={{ color: "#e7c874", fontSize: { xs: 15, lg: 25 } }}
+                      size="small"
+                    />
+                    <StarIcon
+                      sx={{ color: "#e7c874", fontSize: { xs: 15, lg: 25 } }}
+                      size="small"
+                    />
+                    <StarIcon
+                      sx={{ color: "#e7c874", fontSize: { xs: 15, lg: 25 } }}
+                      size="small"
+                    />
+                    <StarIcon
+                      sx={{ color: "#e7c874", fontSize: { xs: 15, lg: 25 } }}
+                      size="small"
+                    />
+                    <StarIcon
+                      sx={{ color: "#e7c874", fontSize: { xs: 15, lg: 25 } }}
+                      size="small"
+                    />
                   </div>
                 </div>
               </div>
@@ -130,7 +145,7 @@ export const Testimonials = () => {
                           </div>
                         </div>
                         <div className="mt-5">
-                          <p className="leading-10 text-sm lg:text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
+                          <p className="lg:leading-10 text-sm lg:text-lg text-justify font-roboto font-medium text-[#1A1A1A]">
                             {testimonial.text}
                           </p>
                         </div>

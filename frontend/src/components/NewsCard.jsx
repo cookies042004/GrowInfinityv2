@@ -12,10 +12,10 @@ export const NewsCard = ({ item }) => {
       </div>
       <div className="p-2">
         <p className="py-2 px-3">{item.createdAt.split("T")[0]}</p>
-        <h3 className=" font-semibold text-md p-3">
+        <h3 className=" font-semibold text-sm lg:text-md p-3">
           {item.title.slice(0, 50) + ".."}
         </h3>
-        <p className="text-md p-3 text-[#1b1364] hover:font-semibold">Read more</p>
+        <p className="text-xs lg:text-md p-3 text-[#1b1364] hover:font-semibold">Read more</p>
       </div>
     </div>
   );
