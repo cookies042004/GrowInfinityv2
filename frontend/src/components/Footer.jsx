@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 import facebook from "../assets/icons/facebook.png";
 import twitter from "../assets/icons/twitter.png";
@@ -18,7 +18,7 @@ export const Footer = () => {
             <img
               src={footerLogo}
               alt=""
-              className="h-[60px] w-[250px] object-contain"
+              className="h-[60px] w-[180px] lg:w-[250px] object-contain"
             />
           </div>
           <p className="font-normal text-xs lg:text-sm py-3 text-justify leading-8">
@@ -68,16 +68,20 @@ export const Footer = () => {
                   href="https://www.facebook.com/p/Grow-Infinity-Realtors-100092248133482/?_rdr"
                   target="_blank"
                 >
-                  <div className="flex gap-3">
-                    <img src={facebook} alt="facebook_logo" className='w-[20px]' />
-                  </div>
+                  <img
+                    src={facebook}
+                    alt="facebook_logo"
+                    className="lg:w-[25px]"
+                  />
                 </a>
               </li>
               <li className="my-2">
                 <a href="#" target="_blank">
-                  <div className="flex gap-3">
-                    <img src={twitter} alt="twitter_logo" className='w-[20px]' />
-                  </div>
+                  <img
+                    src={twitter}
+                    alt="twitter_logo"
+                    className="lg:w-[25px]"
+                  />
                 </a>
               </li>
               <li className="my-2">
@@ -85,16 +89,20 @@ export const Footer = () => {
                   href="https://www.instagram.com/growinfinityrealtors_official/"
                   target="_blank"
                 >
-                  <div className="flex gap-3">
-                    <img src={instagram} alt="instagram_logo" className='w-[20px]' />
-                  </div>
+                  <img
+                    src={instagram}
+                    alt="instagram_logo"
+                    className="lg:w-[25px]"
+                  />
                 </a>
               </li>
               <li className="my-2">
                 <a href="#">
-                  <div className="flex gap-3">
-                    <img src={youtube} alt="youtube_logo" className='w-[20px]' />
-                  </div>
+                  <img
+                    src={youtube}
+                    alt="youtube_logo"
+                    className="lg:w-[25px]"
+                  />
                 </a>
               </li>
             </ul>

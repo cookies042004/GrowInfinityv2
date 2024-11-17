@@ -52,25 +52,25 @@ export const Layout = ({ children }) => {
       <div className="block lg:hidden fixed bottom-0 w-full z-50">
         <div className="bg-blue-700 text-white">
           <div className="flex item-center justify-between w-[100%]">
-            <div className="p-3 flex-1 border border-blue-800">
+            <div className="p-2 flex-1 border border-blue-800">
               <a
                 href="https://wa.me/+918750238581?text=Hello!%20I%20would%20like%20to%20inquire%20about%20your%20services"
                 target="_blank"
               >
                 <div className="flex justify-center items-center gap-3">
                   <WhatsAppIcon />
-                  <p>Whatsapp</p>
+                  <p className="text-sm">Whatsapp</p>
                 </div>
               </a>
             </div>
-            <div className="p-3 flex-1 border border-blue-800">
+            <div className="p-2 flex-1 border border-blue-800">
               <a
                 href="https://www.google.com/search?q=grow+infinity+realtors&rlz=1C1ONGR_enIN1124IN1124&oq=grow+infinity+realtors&gs_lcrp=EgZjaHJvbWUqDwgAECMYJxjjAhiABBiKBTIPCAAQIxgnGOMCGIAEGIoFMhUIARAuGCcYrwEYxwEYgAQYigUYjgUyBwgCEAAYgAQyCggDEAAYgAQYogQyCggEEAAYgAQYogQyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg3NjY2ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x2f7b6f8aa4bbbca1:0xcd4a6a4f021202d4,3,,,,"
                 target="_blank"
               >
                 <div className="flex justify-center items-center gap-3">
                   <GoogleIcon />
-                  <p>Submit Google Review</p>
+                  <p className="text-sm">Submit Google Review</p>
                 </div>
               </a>
             </div>
