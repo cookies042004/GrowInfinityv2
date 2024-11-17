@@ -75,646 +75,664 @@ export const ProjectDetails = () => {
       </div>
 
       <div className="bg-gray-100 lg:p-3" style={{ scrollBehavior: "smooth" }}>
-        <div className="grid sm:grid-cols-12 gap-10 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
-          <div className="col-span-12 lg:col-span-9 bg-white px-5 lg:px-12 py-4 lg:py-8">
-            <div className="grid sm:grid-cols-12 gap-3">
-              <div className="col-span-12 lg:col-span-8">
-                <div
-                  id="controls-carousel"
-                  className="relative w-full h-[400px] md:h-[500px] lg:h-[400px]"
-                >
-                  {/* Carousel Wrapper */}
-                  <div className="relative h-full overflow-hidden">
-                    {/* Dynamic Carousel Item with swipe effect */}
-                    <div
-                      className="flex transition-transform duration-700 ease-in-out"
-                      style={{
-                        transform: `translateX(-${currentIndex * 100}%)`, // Move the images horizontally
-                      }}
-                    >
-                      {images.map((image, index) => (
-                        <div
-                          key={index}
-                          className="w-full h-full flex-shrink-0"
-                        >
-                          <img
-                            src={image}
-                            className="block w-full h-full object-cover object-center"
-                            alt={`Carousel slide ${index}`}
-                          />
-                        </div>
-                      ))}
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:grid sm:grid-cols-12 gap-10 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
+            <div className="col-span-12 lg:col-span-9 bg-white px-5 lg:px-12 py-4 lg:py-8 w-auto">
+              <div className="grid sm:grid-cols-12 gap-3">
+                <div className="col-span-12 lg:col-span-8">
+                  <div
+                    id="controls-carousel"
+                    className="relative w-[100%] h-[280px] md:h-[300px] lg:h-[400px]"
+                  >
+                    {/* Carousel Wrapper */}
+                    <div className="relative h-full overflow-hidden">
+                      {/* Dynamic Carousel Item with swipe effect */}
+                      <div
+                        className="flex transition-transform duration-700 ease-in-out"
+                        style={{
+                          transform: `translateX(-${currentIndex * 100}%)`, // Move the images horizontally
+                        }}
+                      >
+                        {images.map((image, index) => (
+                          <div
+                            key={index}
+                            className="w-[100%] lg:w-full lg:h-full flex-shrink-0"
+                          >
+                            <img
+                              src={image}
+                              className="block w-[100%] h-[280px] lg:h-[400px] object-fill object-center"
+                              alt={`Carousel slide ${index}`}
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
+
+                    {/* Slider Controls */}
+                    <button
+                      type="button"
+                      className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                      onClick={handlePrevious}
+                    >
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg
+                          className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 6 10"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 1 1 5l4 4"
+                          />
+                        </svg>
+                        <span className="sr-only">Previous</span>
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                      onClick={handleNext}
+                    >
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg
+                          className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 6 10"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="m1 9 4-4-4-4"
+                          />
+                        </svg>
+                        <span className="sr-only">Next</span>
+                      </span>
+                    </button>
                   </div>
+                </div>
 
-                  {/* Slider Controls */}
-                  <button
-                    type="button"
-                    className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                    onClick={handlePrevious}
-                  >
-                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                      <svg
-                        className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 1 1 5l4 4"
-                        />
-                      </svg>
-                      <span className="sr-only">Previous</span>
-                    </span>
-                  </button>
-
-                  <button
-                    type="button"
-                    className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                    onClick={handleNext}
-                  >
-                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                      <svg
-                        className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="m1 9 4-4-4-4"
-                        />
-                      </svg>
-                      <span className="sr-only">Next</span>
-                    </span>
-                  </button>
+                <div className="hidden lg:block col-span-12 lg:col-span-4">
+                  <div className="flex flex-col gap-3">
+                    <img
+                      src={gallery2}
+                      className="w-full h-[195px]"
+                      alt="Carousel slide"
+                    />
+                    <img
+                      src={gallery3}
+                      className="w-full h-[195px]"
+                      alt="Carousel slide"
+                    />
+                  </div>
                 </div>
               </div>
-
-              <div className="hidden lg:block col-span-12 lg:col-span-4">
-                <div className="flex flex-col gap-3">
-                  <img
-                    src={gallery2}
-                    className="w-full h-[195px]"
-                    alt="Carousel slide"
-                  />
-                  <img
-                    src={gallery3}
-                    className="w-full h-[195px]"
-                    alt="Carousel slide"
-                  />
+              <div className="flex flex-col lg:flex-row gap-8 justify-between lg:items-center m-3">
+                <div className="font-roboto mt-6 flex justify-between">
+                  <div>
+                    <h1 className="font-medium text-2xl lg:text-4xl">
+                      CanterBury Lane
+                    </h1>
+                    <p className="text-md mt-3">Noida, UP-201301</p>
+                  </div>
+                  <div className="block lg:hidden">
+                    <h5 className="font-roboto font-semibold text-[#EB664E] text-2xl lg:text-4xl">
+                      ₹2.8Cr*
+                    </h5>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="flex flex-col lg:flex-row gap-8 justify-between lg:items-center m-3">
-              <div className="font-roboto mt-6 flex justify-between">
-                <div>
-                  <h1 className="font-medium text-2xl lg:text-4xl">
-                    CanterBury Lane
-                  </h1>
-                  <p className="text-md mt-3">Noida, UP-201301</p>
+                <div className="flex gap-5">
+                  <Button
+                    startIcon={<DownloadIcon />}
+                    variant="outlined"
+                    size="small"
+                    color="error"
+                    sx={{ textTransform: "none" }}
+                  >
+                    Download PDF
+                  </Button>
+                  <a
+                    href={`https://wa.me/+918750238581?text=Hi I am interested in Max Estate 128, Please share the details.`}
+                    target="_blank"
+                  >
+                    <Button
+                      startIcon={<WhatsAppIcon />}
+                      variant="outlined"
+                      size="small"
+                      color="success"
+                      sx={{ textTransform: "none" }}
+                    >
+                      WhatsApp Message
+                    </Button>
+                  </a>
                 </div>
-                <div className='block lg:hidden'>
+                <div className="hidden justify-end  lg:flex">
                   <h5 className="font-roboto font-semibold text-[#EB664E] text-2xl lg:text-4xl">
                     ₹2.8Cr*
                   </h5>
                 </div>
               </div>
-              <div className="flex gap-5">
-                <Button
-                  startIcon={<DownloadIcon />}
-                  variant="outlined"
-                  size="small"
-                  color="error"
-                  sx={{ textTransform: "none" }}
-                >
-                  Download PDF
-                </Button>
-                <a
-                  href={`https://wa.me/+918750238581?text=Hi I am interested in Max Estate 128, Please share the details.`}
-                  target="_blank"
-                >
-                  <Button
-                    startIcon={<WhatsAppIcon />}
-                    variant="outlined"
-                    size="small"
-                    color="success"
-                    sx={{ textTransform: "none" }}
-                  >
-                    WhatsApp Message
-                  </Button>
-                </a>
-              </div>
-              <div className="hidden justify-end  lg:flex">
-                <h5 className="font-roboto font-semibold text-[#EB664E] text-2xl lg:text-4xl">
-                  ₹2.8Cr*
-                </h5>
-              </div>
-            </div>
 
-            <div className="hidden gap-10 lg:grid sm:grid-cols-12 justify-center lg:justify-start py-5 ps-2">
-              <div className="col-span-3">
-                <div className="flex items-center gap-2">
-                  <HomeOutlinedIcon sx={{ color: "#5BC0EB" }} />
-                  <p className="font-roboto text-sm lg:text-lg">3 BHK</p>
+              <div className="hidden gap-10 lg:grid sm:grid-cols-12 justify-center lg:justify-start py-5 ps-2">
+                <div className="col-span-3">
+                  <div className="flex items-center gap-2">
+                    <HomeOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                    <p className="font-roboto text-sm lg:text-lg">3 BHK</p>
+                  </div>
+                </div>
+                <div className="col-span-3">
+                  <div className="flex items-center gap-2">
+                    <ChairOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                    <p className="font-roboto text-sm lg:text-lg">
+                      Semi-furnsihed
+                    </p>
+                  </div>
+                </div>
+                <div className="col-span-3">
+                  <div className="flex items-center gap-2">
+                    <SpaceDashboardOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                    <p className="font-roboto text-sm lg:text-lg">1850 sqft</p>
+                  </div>
+                </div>
+                <div className="col-span-3">
+                  <div className="flex items-center gap-2">
+                    <CurrencyRupeeOutlinedIcon sx={{ color: "#5BC0EB" }} />
+                    <p className="font-roboto text-sm lg:text-lg">
+                      10.6K per sqft
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="col-span-3">
-                <div className="flex items-center gap-2">
-                  <ChairOutlinedIcon sx={{ color: "#5BC0EB" }} />
-                  <p className="font-roboto text-sm lg:text-lg">
-                    Semi-furnsihed
+
+              <div
+                className="flex items-center  justify-between lg:grid sm:grid-cols-12 mx-3 mt-8"
+                style={{ borderBottom: "3px solid lightgray" }}
+              >
+                <div className="col-span-3">
+                  <h3 className="py-2">
+                    <a href="#description">Description</a>
+                  </h3>
+                </div>
+                <div className="col-span-3">
+                  <h3 className="py-2">
+                    <a href="#amenities">Amenities</a>
+                  </h3>
+                </div>
+                <div className="col-span-3">
+                  <h3 className="py-2">
+                    <a href="#location">Location</a>
+                  </h3>
+                </div>
+                <div className="col-span-3">
+                  <h3 className="py-2">
+                    <a href="#youtube">Virtual Tour</a>
+                  </h3>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-12 mx-3 mt-8 gap-8">
+                <div className="col-span-12" id="description">
+                  <h3 className="text-xl font-poppins font-semibold">
+                    Description
+                  </h3>
+                  <div className="mt-4 text-md leading-9">
+                    {/* Container for description text with transition */}
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ease-in-out`}
+                      style={{
+                        maxHeight: isExpanded ? "9999px" : "200px", // Use a large value for expanded state
+                      }}
+                    >
+                      <p>
+                        {isExpanded ? fullDescription : truncatedDescription}
+                      </p>
+                    </div>
+
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      size="small"
+                      sx={{
+                        borderRadius: "24px",
+                        textTransform: "none",
+                        display: "inline-block",
+                        marginTop: "10px",
+                        backgroundColor: "#5BC0EB",
+                      }}
+                      onClick={toggleDescription}
+                    >
+                      {isExpanded ? "Read Less" : "Read More"}
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="col-span-12" id="amenities">
+                  <h3 className="text-xl font-poppins font-semibold pb-5">
+                    Amenities
+                  </h3>
+
+                  <div className="border-2 border-gray p-3 rounded-lg">
+                    <h3 className="text-xl text-center font-roboto font-medium ">
+                      Society Amenities
+                    </h3>
+                    <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <PoolIcon size="large" sx={{ color: "#5BC0EB" }} />
+                          <p>Swimming pool</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12">
+                  <div className="border-2 border-gray p-3 rounded-lg">
+                    <h3 className="text-xl text-center font-roboto font-medium ">
+                      Flat Amenities
+                    </h3>
+                    <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3  p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12" id="location">
+                  <h3 className="text-xl font-poppins font-semibold pb-5">
+                    Location
+                  </h3>
+
+                  <div className="border-2 border-gray p-3 rounded-lg">
+                    <h3 className="text-xl text-center font-roboto font-medium">
+                      Location Advantages
+                    </h3>
+                    <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
+                        <div className="flex items-center gap-3 p-3 lg:p-5">
+                          <Battery5BarIcon
+                            size="large"
+                            sx={{ color: "#5BC0EB" }}
+                          />
+                          <p>Power Backup</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12" id="youtube">
+                  <h3 className="text-xl font-poppins font-semibold ">
+                    Virtual Tour
+                  </h3>
+                  <div className="flex items-center justify-center">
+                    <h1 className="text-3xl py-8">Coming Soon</h1>
+                  </div>
+                </div>
+
+                <div className="col-span-12">
+                  <h3 className="text-xl font-poppins font-semibold">
+                    Address
+                  </h3>
+                  <p className="py-3 text-md">
+                    Tata Eureka Park, Sector-150, Noida, Uttar Pradesh - 201310
                   </p>
                 </div>
-              </div>
-              <div className="col-span-3">
-                <div className="flex items-center gap-2">
-                  <SpaceDashboardOutlinedIcon sx={{ color: "#5BC0EB" }} />
-                  <p className="font-roboto text-sm lg:text-lg">1850 sqft</p>
-                </div>
-              </div>
-              <div className="col-span-3">
-                <div className="flex items-center gap-2">
-                  <CurrencyRupeeOutlinedIcon sx={{ color: "#5BC0EB" }} />
-                  <p className="font-roboto text-sm lg:text-lg">
-                    10.6K per sqft
-                  </p>
+
+                <div className="col-span-12">
+                  <Calculator />
                 </div>
               </div>
             </div>
-
-            <div
-              className="flex items-center  justify-between lg:grid sm:grid-cols-12 mx-3 mt-8"
-              style={{ borderBottom: "3px solid lightgray" }}
-            >
-              <div className="col-span-3">
-                <h3 className="py-2">
-                  <a href="#description">Description</a>
-                </h3>
-              </div>
-              <div className="col-span-3">
-                <h3 className="py-2">
-                  <a href="#amenities">Amenities</a>
-                </h3>
-              </div>
-              <div className="col-span-3">
-                <h3 className="py-2">
-                  <a href="#location">Location</a>
-                </h3>
-              </div>
-              <div className="col-span-3">
-                <h3 className="py-2">
-                  <a href="#youtube">Virtual Tour</a>
-                </h3>
-              </div>
-            </div>
-
-            <div className="grid sm:grid-cols-12 mx-3 mt-8 gap-8">
-              <div className="col-span-12" id="description">
-                <h3 className="text-xl font-poppins font-semibold">
-                  Description
-                </h3>
-                <div className="mt-4 text-md leading-9">
-                  {/* Container for description text with transition */}
-                  <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out`}
-                    style={{
-                      maxHeight: isExpanded ? "9999px" : "200px", // Use a large value for expanded state
-                    }}
-                  >
-                    <p>{isExpanded ? fullDescription : truncatedDescription}</p>
-                  </div>
-
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    size="small"
-                    sx={{
-                      borderRadius: "24px",
-                      textTransform: "none",
-                      display: "inline-block",
-                      marginTop: "10px",
-                      backgroundColor: "#5BC0EB",
-                    }}
-                    onClick={toggleDescription}
-                  >
-                    {isExpanded ? "Read Less" : "Read More"}
-                  </Button>
+            <div className="col-span-12 lg:col-span-3 bg-gray-100 w-auto px-5">
+              <div className="flex flex-col gap-5 sticky top-0">
+                <div className="bg-white px-5 py-8">
+                  <form>
+                    <h1 className="text-center text-xl font-medium font-roboto">
+                      Get Price on Request*
+                    </h1>
+                    <div className="grid sm:col-span-12 mt-4 gap-4">
+                      <div className="col-span-12">
+                        <label htmlFor="name" className="text-sm">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          className="border w-full py-1 px-2 rounded-lg outline-none"
+                        />
+                      </div>
+                      <div className="col-span-12">
+                        <label htmlFor="" className="text-sm">
+                          Email
+                        </label>
+                        <input
+                          type="text"
+                          className="border w-full py-1 px-2 rounded-lg outline-none"
+                        />
+                      </div>
+                      <div className="col-span-12">
+                        <label htmlFor="" className="text-sm">
+                          Phone
+                        </label>
+                        <input
+                          type="text"
+                          className="border w-full py-1 px-2 rounded-lg outline-none"
+                        />
+                      </div>
+                      <div className="col-span-12">
+                        <Button
+                          fullWidth
+                          sx={{
+                            textTransform: "none",
+                            backgroundColor: "#03002e",
+                            marginTop: "10px",
+                          }}
+                          variant="contained"
+                        >
+                          Submit
+                        </Button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              </div>
 
-              <div className="col-span-12" id="amenities">
-                <h3 className="text-xl font-poppins font-semibold pb-5">
-                  Amenities
-                </h3>
-
-                <div className="border-2 border-gray p-3 rounded-lg">
-                  <h3 className="text-xl text-center font-roboto font-medium ">
-                    Society Amenities
-                  </h3>
-                  <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <PoolIcon size="large" sx={{ color: "#5BC0EB" }} />
-                        <p>Swimming pool</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-span-12">
-                <div className="border-2 border-gray p-3 rounded-lg">
-                  <h3 className="text-xl text-center font-roboto font-medium ">
-                    Flat Amenities
-                  </h3>
-                  <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3  p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-span-12" id="location">
-                <h3 className="text-xl font-poppins font-semibold pb-5">
-                  Location
-                </h3>
-
-                <div className="border-2 border-gray p-3 rounded-lg">
-                  <h3 className="text-xl text-center font-roboto font-medium">
-                    Location Advantages
-                  </h3>
-                  <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                    <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                      <div className="flex items-center gap-3 p-3 lg:p-5">
-                        <Battery5BarIcon
-                          size="large"
-                          sx={{ color: "#5BC0EB" }}
-                        />
-                        <p>Power Backup</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-span-12" id="youtube">
-                <h3 className="text-xl font-poppins font-semibold ">
-                  Virtual Tour
-                </h3>
-                <div className="flex items-center justify-center">
-                  <h1 className="text-3xl py-8">Coming Soon</h1>
-                </div>
-              </div>
-
-              <div className="col-span-12">
-                <h3 className="text-xl font-poppins font-semibold">Address</h3>
-                <p className="py-3 text-md">
-                  Tata Eureka Park, Sector-150, Noida, Uttar Pradesh - 201310
-                </p>
-              </div>
-
-              <div className="col-span-12">
-                <Calculator />
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 lg:col-span-3 bg-gray-100">
-            <div className="flex flex-col gap-5 sticky top-0">
-              <div className="bg-white px-5 py-8 rounded-lg">
-                <form>
-                  <h1 className="text-center text-xl font-medium font-roboto">
-                    Get Price on Request*
-                  </h1>
-                  <div className="grid sm:col-span-12 mt-4 gap-4">
+                {/* Recent Property */}
+                <div className="bg-white p-5">
+                  <h1 className="text-xl font-medium">Recent Property</h1>
+                  <div className="grid sm:grid-cols-12 gap-6 mt-5">
                     <div className="col-span-12">
-                      <label htmlFor="name" className="text-sm">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        className="border w-full py-1 px-2 rounded-lg outline-none"
-                      />
+                      <div className="flex gap-8">
+                        <img
+                          src={gallery1}
+                          alt=""
+                          className="h-[60px] w-[60px] rounded"
+                        />
+                        <div className="flex flex-col items-center justify-center">
+                          <h1 className="text-md font-medium">
+                            CanterBury Lane
+                          </h1>
+                          <p className="text-sm">Posted on: 05/11/2024</p>
+                        </div>
+                      </div>
                     </div>
                     <div className="col-span-12">
-                      <label htmlFor="" className="text-sm">
-                        Email
-                      </label>
-                      <input
-                        type="text"
-                        className="border w-full py-1 px-2 rounded-lg outline-none"
-                      />
+                      <div className="flex gap-8">
+                        <img
+                          src={gallery1}
+                          alt=""
+                          className="h-[60px] w-[60px] rounded"
+                        />
+                        <div className="flex flex-col items-center justify-center">
+                          <h1 className="text-md font-medium">
+                            CanterBury Lane
+                          </h1>
+                          <p className="text-sm">Posted on: 05/11/2024</p>
+                        </div>
+                      </div>
                     </div>
                     <div className="col-span-12">
-                      <label htmlFor="" className="text-sm">
-                        Phone
-                      </label>
-                      <input
-                        type="text"
-                        className="border w-full py-1 px-2 rounded-lg outline-none"
-                      />
+                      <div className="flex gap-8">
+                        <img
+                          src={gallery1}
+                          alt=""
+                          className="h-[60px] w-[60px] rounded"
+                        />
+                        <div className="flex flex-col items-center justify-center">
+                          <h1 className="text-md font-medium">
+                            CanterBury Lane
+                          </h1>
+                          <p className="text-sm">Posted on: 05/11/2024</p>
+                        </div>
+                      </div>
                     </div>
                     <div className="col-span-12">
-                      <Button
-                        fullWidth
-                        sx={{
-                          textTransform: "none",
-                          backgroundColor: "#03002e",
-                          marginTop: "10px",
-                        }}
-                        variant="contained"
-                      >
-                        Submit
-                      </Button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-              {/* Recent Property */}
-              <div className="bg-white p-5 rounded-lg">
-                <h1 className="text-xl font-medium">Recent Property</h1>
-                <div className="grid sm:grid-cols-12 gap-6 mt-5">
-                  <div className="col-span-12">
-                    <div className="flex gap-8">
-                      <img
-                        src={gallery1}
-                        alt=""
-                        className="h-[60px] w-[60px] rounded"
-                      />
-                      <div className="flex flex-col items-center justify-center">
-                        <h1 className="text-md font-medium">CanterBury Lane</h1>
-                        <p className="text-sm">Posted on: 05/11/2024</p>
+                      <div className="flex gap-8">
+                        <img
+                          src={gallery1}
+                          alt=""
+                          className="h-[60px] w-[60px] rounded"
+                        />
+                        <div className="flex flex-col items-center justify-center">
+                          <h1 className="text-md font-medium">
+                            CanterBury Lane
+                          </h1>
+                          <p className="text-sm">Posted on: 05/11/2024</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-span-12">
-                    <div className="flex gap-8">
-                      <img
-                        src={gallery1}
-                        alt=""
-                        className="h-[60px] w-[60px] rounded"
-                      />
-                      <div className="flex flex-col items-center justify-center">
-                        <h1 className="text-md font-medium">CanterBury Lane</h1>
-                        <p className="text-sm">Posted on: 05/11/2024</p>
+                    <div className="col-span-12">
+                      <div className="flex gap-8">
+                        <img
+                          src={gallery1}
+                          alt=""
+                          className="h-[60px] w-[60px] rounded"
+                        />
+                        <div className="flex flex-col items-center justify-center">
+                          <h1 className="text-md font-medium">
+                            CanterBury Lane
+                          </h1>
+                          <p className="text-sm">Posted on: 05/11/2024</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-span-12">
-                    <div className="flex gap-8">
-                      <img
-                        src={gallery1}
-                        alt=""
-                        className="h-[60px] w-[60px] rounded"
-                      />
-                      <div className="flex flex-col items-center justify-center">
-                        <h1 className="text-md font-medium">CanterBury Lane</h1>
-                        <p className="text-sm">Posted on: 05/11/2024</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-span-12">
-                    <div className="flex gap-8">
-                      <img
-                        src={gallery1}
-                        alt=""
-                        className="h-[60px] w-[60px] rounded"
-                      />
-                      <div className="flex flex-col items-center justify-center">
-                        <h1 className="text-md font-medium">CanterBury Lane</h1>
-                        <p className="text-sm">Posted on: 05/11/2024</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-span-12">
-                    <div className="flex gap-8">
-                      <img
-                        src={gallery1}
-                        alt=""
-                        className="h-[60px] w-[60px] rounded"
-                      />
-                      <div className="flex flex-col items-center justify-center">
-                        <h1 className="text-md font-medium">CanterBury Lane</h1>
-                        <p className="text-sm">Posted on: 05/11/2024</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-span-12">
-                    <div className="flex gap-8">
-                      <img
-                        src={gallery1}
-                        alt=""
-                        className="h-[60px] w-[60px] rounded"
-                      />
-                      <div className="flex flex-col items-center justify-center">
-                        <h1 className="text-md font-medium">CanterBury Lane</h1>
-                        <p className="text-sm">Posted on: 05/11/2024</p>
+                    <div className="col-span-12">
+                      <div className="flex gap-8">
+                        <img
+                          src={gallery1}
+                          alt=""
+                          className="h-[60px] w-[60px] rounded"
+                        />
+                        <div className="flex flex-col items-center justify-center">
+                          <h1 className="text-md font-medium">
+                            CanterBury Lane
+                          </h1>
+                          <p className="text-sm">Posted on: 05/11/2024</p>
+                        </div>
                       </div>
                     </div>
                   </div>

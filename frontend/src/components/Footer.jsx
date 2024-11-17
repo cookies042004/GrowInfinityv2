@@ -68,20 +68,16 @@ export const Footer = () => {
                   href="https://www.facebook.com/p/Grow-Infinity-Realtors-100092248133482/?_rdr"
                   target="_blank"
                 >
-                  <img
-                    src={facebook}
-                    alt="facebook_logo"
-                    className="lg:w-[25px]"
-                  />
+                  <div className="w-[30px] h-[30px]">
+                    <img src={facebook} alt="facebook_logo" />
+                  </div>
                 </a>
               </li>
               <li className="my-2">
                 <a href="#" target="_blank">
-                  <img
-                    src={twitter}
-                    alt="twitter_logo"
-                    className="lg:w-[25px]"
-                  />
+                  <div className="w-[30px] h-[30px]">
+                    <img src={twitter} alt="twitter_logo" />
+                  </div>
                 </a>
               </li>
               <li className="my-2">
@@ -89,20 +85,19 @@ export const Footer = () => {
                   href="https://www.instagram.com/growinfinityrealtors_official/"
                   target="_blank"
                 >
-                  <img
-                    src={instagram}
-                    alt="instagram_logo"
-                    className="lg:w-[25px]"
-                  />
+                  <div className="w-[30px] h-[30px]">
+                    <img src={instagram} alt="instagram_logo" />
+                  </div>
                 </a>
               </li>
               <li className="my-2">
                 <a href="#">
-                  <img
-                    src={youtube}
-                    alt="youtube_logo"
-                    className="lg:w-[25px]"
-                  />
+                  <div className="w-[30px] h-[30px]">
+                    <img
+                      src={youtube}
+                      alt="youtube_logo"
+                      />
+                  </div>
                 </a>
               </li>
             </ul>

@@ -52,9 +52,9 @@ export const Calculator = () => {
 
   return (
     <div className="max-w-[1280px] mx-auto my-5 bg-white rounded-lg shadow-lg p-8 lg:p-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1">
         {/* Header Section */}
-        <div className="col-span-2">
+        <div className="col-span-2 mb-6">
           <h1 className="text-center text-lg font-medium">
             Home Loan EMI Calculator
           </h1>
@@ -67,17 +67,18 @@ export const Calculator = () => {
           />
         </div>
 
-        {/* Sliders Section */}
-        <div className="flex flex-col gap-5">
-          {/* Loan Amount Slider */}
-          <div>
-            <div className="flex justify-between items-center">
-              <p className="text-sm">Loan Amount</p>
-              <p className="text-gray-600 text-sm">
-                ₹ <strong>{loanAmount}</strong> Lac
-              </p>
-            </div>
-            <div className="w-full lg:w-[80%]">
+        {/* Sliders and Results in Rows */}
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Sliders Section */}
+          <div className="flex flex-col gap-5 flex-1">
+            {/* Loan Amount Slider */}
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between items-center">
+                <p className="text-sm">Loan Amount</p>
+                <p className="text-gray-600 text-sm">
+                  ₹ <strong>{loanAmount}</strong> Lac
+                </p>
+              </div>
               <Slider
                 sx={{ color: "#03002e" }}
                 value={loanAmount}
@@ -93,17 +94,13 @@ export const Calculator = () => {
                 ]}
               />
             </div>
-          </div>
 
-          {/* Tenure Slider */}
-          <div>
-            <div className="flex justify-between items-center">
-              <p className="text-sm">Tenure (Years)</p>
-              <p className="text-gray-600 text-sm">
-                {loanDuration} Years
-              </p>
-            </div>
-            <div className="w-full lg:w-[80%]">
+            {/* Tenure Slider */}
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between items-center">
+                <p className="text-sm">Tenure (Years)</p>
+                <p className="text-gray-600 text-sm">{loanDuration} Years</p>
+              </div>
               <Slider
                 sx={{ color: "#03002e" }}
                 value={loanDuration}
@@ -119,17 +116,13 @@ export const Calculator = () => {
                 ]}
               />
             </div>
-          </div>
 
-          {/* Interest Rate Slider */}
-          <div>
-            <div className="flex justify-between items-center">
-              <p className="text-sm">Interest Rate (% P.A.)</p>
-              <p className="text-gray-600 text-sm">
-                {interestRate}%
-              </p>
-            </div>
-            <div className="w-full lg:w-[80%]">
+            {/* Interest Rate Slider */}
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between items-center">
+                <p className="text-sm">Interest Rate (% P.A.)</p>
+                <p className="text-gray-600 text-sm">{interestRate}%</p>
+              </div>
               <Slider
                 sx={{ color: "#03002e" }}
                 value={interestRate}
@@ -146,37 +139,39 @@ export const Calculator = () => {
               />
             </div>
           </div>
-        </div>
 
-        {/* Results Section */}
-        <div className="flex flex-col items-end gap-5">
-          <div>
-            <h2 className="text-sm font-semibold">
-              Monthly Home Loan EMI
-            </h2>
-            <p className="text-lg text-end text-blue-600 font-semibold">
-              ₹{formatToIndianCurrency(emi)}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xs font-medium text-gray-500">Principal Amount</h3>
-            <p className="text-sm text-end font-semibold">
-              ₹{formatToIndianCurrency(loanAmount * 100000)}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xs font-medium text-gray-500">Interest Amount</h3>
-            <p className="text-sm text-end font-semibold">
-              ₹{formatToIndianCurrency(totalInterest)}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xs font-medium text-gray-500">
-              Total Amount Payable
-            </h3>
-            <p className="text-sm text-end font-semibold">
-              ₹{formatToIndianCurrency(totalAmount)}
-            </p>
+          {/* Results Section */}
+          <div className="flex flex-col items-end flex-1 gap-5 bg-gray-50 p-5 rounded-lg shadow-sm">
+            <div>
+              <h2 className="text-sm font-semibold">Monthly Home Loan EMI</h2>
+              <p className="text-lg text-end text-blue-600 font-semibold">
+                ₹{formatToIndianCurrency(emi)}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xs font-medium text-gray-500">
+                Principal Amount
+              </h3>
+              <p className="text-sm text-end font-semibold">
+                ₹{formatToIndianCurrency(loanAmount * 100000)}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xs font-medium text-gray-500">
+                Interest Amount
+              </h3>
+              <p className="text-sm text-end font-semibold">
+                ₹{formatToIndianCurrency(totalInterest)}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xs font-medium text-gray-500">
+                Total Amount Payable
+              </h3>
+              <p className="text-sm text-end font-semibold">
+                ₹{formatToIndianCurrency(totalAmount)}
+              </p>
+            </div>
           </div>
         </div>
       </div>
