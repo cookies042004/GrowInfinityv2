@@ -4,7 +4,6 @@
 }
 
 .testimonial-item {
-  position: absolute;
   width: 100%;
   transition: transform 0.5s ease-in-out;
 }
@@ -19,11 +18,4 @@
 
 .testimonial-item.slide-out-next {
   transform: translateX(100%);
-}
-
-@media screen and (max-width: 500px) {
-  .testimonial-swiper {
-    width: 400px !important;
-    height: 300px;
-  }
 }

@@ -11,6 +11,8 @@ import "swiper/css/effect-flip";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+import "./Testimonials.css";
+
 import { EffectFlip, Autoplay } from "swiper/modules";
 
 const testimonials = [
@@ -62,7 +64,7 @@ export const Testimonials = () => {
       <div className="bg-[#FFF8F6] lg:py-8 lg:px-16">
         <div className="grid sm:grid-cols-12 gap-5 max-w-[1280px] mx-auto">
           <div className="col-span-12 lg:col-span-6 flex justify-center">
-            <div className="m-5 px-5 lg:px-10 lg:py-16 font-roboto lg:pe-20 flex flex-col items-center ">
+            <div className="m-3 lg:m-5 px-5 lg:px-10 lg:py-16 font-roboto lg:pe-20 flex flex-col items-center ">
               <h1 className="text-xl lg:text-4xl text-[#1A1A1A] my-4 font-medium">
                 What our customers are saying us?
               </h1>
@@ -82,7 +84,7 @@ export const Testimonials = () => {
                     4.88
                   </h3>
                   <p className="text-sm lg:text-lg">Overall rating</p>
-                  <div className="hidden lg:flex mt-3">
+                  <div className="flex mt-3">
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
                     <StarIcon sx={{ color: "#e7c874" }} size="small" />
@@ -107,7 +109,7 @@ export const Testimonials = () => {
               {testimonials.map((testimonial) => {
                 return (
                   <SwiperSlide key={testimonial.name}>
-                    <div className="py-16 font-roboto lg:ps-26">
+                    <div className="py-8 lg:py-16 font-roboto lg:ps-26">
                       <div className="flex-col items-center gap-4 testimonial-item">
                         <div className="flex items-center gap-5">
                           <img
