@@ -19,7 +19,7 @@ import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import { Calculator } from "../../components/Calculator";
-
+import comingsoon from "../../assets/img/comingsoon.jpg";
 export const ProjectDetails = () => {
   const images = [gallery1, gallery2, gallery3];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -259,32 +259,40 @@ export const ProjectDetails = () => {
               >
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#description">Description</a>
+                    <a href="#description">
+                      <p className="text-xs font-semibold">Description</p>
+                    </a>
                   </h3>
                 </div>
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#amenities">Amenities</a>
+                    <a href="#amenities">
+                      <p className="text-xs font-semibold">Amenities</p>
+                    </a>
                   </h3>
                 </div>
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#location">Location</a>
+                    <a href="#location">
+                      <p className="text-xs font-semibold">Location</p>
+                    </a>
                   </h3>
                 </div>
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#youtube">Virtual Tour</a>
+                    <a href="#youtube">
+                      <p className="text-xs font-semibold">Virtual Tour</p>
+                    </a>
                   </h3>
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-12 mx-3 mt-8 gap-8">
+              <div className="grid sm:grid-cols-12 lg:mx-3 mt-8 gap-8">
                 <div className="col-span-12" id="description">
                   <h3 className="text-xl font-poppins font-semibold">
                     Description
                   </h3>
-                  <div className="mt-4 text-md leading-9">
+                  <div className="mt-4 text-md lg:leading-9">
                     {/* Container for description text with transition */}
                     <div
                       className={`overflow-hidden transition-all duration-500 ease-in-out`}
@@ -321,7 +329,7 @@ export const ProjectDetails = () => {
                   </h3>
 
                   <div className="border-2 border-gray p-3 rounded-lg">
-                    <h3 className="text-xl text-center font-roboto font-medium ">
+                    <h3 className="text-lg lg:text-xl text-center font-roboto font-medium ">
                       Society Amenities
                     </h3>
                     <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
@@ -400,7 +408,7 @@ export const ProjectDetails = () => {
 
                 <div className="col-span-12">
                   <div className="border-2 border-gray p-3 rounded-lg">
-                    <h3 className="text-xl text-center font-roboto font-medium ">
+                    <h3 className="text-lg  lg:text-xl text-center font-roboto font-medium ">
                       Flat Amenities
                     </h3>
                     <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
@@ -486,7 +494,7 @@ export const ProjectDetails = () => {
                   </h3>
 
                   <div className="border-2 border-gray p-3 rounded-lg">
-                    <h3 className="text-xl text-center font-roboto font-medium">
+                    <h3 className="text-lg lg:text-xl text-center font-roboto font-medium">
                       Location Advantages
                     </h3>
                     <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
@@ -570,8 +578,8 @@ export const ProjectDetails = () => {
                   <h3 className="text-xl font-poppins font-semibold ">
                     Virtual Tour
                   </h3>
-                  <div className="flex items-center justify-center">
-                    <h1 className="text-3xl py-8">Coming Soon</h1>
+                  <div className="flex items-center justify-center my-3">
+                    <img src={comingsoon} alt="" className="h-[200px] lg:h-[450px] w-[100%]" />
                   </div>
                 </div>
 

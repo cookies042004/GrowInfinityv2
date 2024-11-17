@@ -94,7 +94,7 @@ export const Marquee = () => {
 
         @media screen and (max-width: 500px) {
           .marquee-content {
-            gap: 30px;
+            gap: 5px;
           }
 
           .marquee-item img {

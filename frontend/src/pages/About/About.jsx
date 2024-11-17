@@ -121,14 +121,14 @@ export const About = () => {
               className="col-span-6 md:col-span-6 lg:col-span-4 p-5"
               key={item.number}
             >
-              <div className="text-[#2f31c0] hover:text-white p-6 lg:p-10 font-roboto text-center border-2 border-blue-600 rounded-xl flex flex-col items-center justify-center cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-2xl hover:bg-gradient-to-r from-[#2f31c0] to-[#4a51f0]">
+              <div className="text-[#042651] hover:text-white p-6 lg:p-10 font-roboto text-center border-2 rounded-xl flex flex-col items-center justify-center cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-2xl hover:bg-gradient-to-r from-[#042651] to-[#076bcd]">
                 <h5 className="text-2xl lg:text-4xl font-bold mb-2">
                   {item.number}
                 </h5>
                 <h3 className="text-xl lg:text-2xl py-3 font-semibold">
                   {item.title}
                 </h3>
-                <p className="text-sm lg:text-lg">{item.description}</p>
+                <p className="text-center text-sm lg:text-lg">{item.description}</p>
               </div>
             </div>
           ))}
@@ -281,8 +281,8 @@ export const About = () => {
           <h1 className="text-center text-3xl lg:text-4xl text-white font-medium">
             Awards
           </h1>
-          <div className="grid sm:grid-cols-12">
-            <div className="lg:col-span-6 flex justify-center lg:justify-start overflow-hidden">
+          <div className="grid sm:grid-cols-12 overflow-hidden">
+            <div className="lg:col-span-6 flex justify-center lg:justify-start">
               <AwardComponent />
             </div>
             <div className="lg:col-span-6  flex items-center ">

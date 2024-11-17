@@ -50,7 +50,7 @@ export const Layout = ({ children }) => {
       </div>
 
       <div className="block lg:hidden fixed bottom-0 w-full z-50">
-        <div className="bg-blue-700 text-white">
+        <div className="bg-gradient-to-r from-[#042651] to-[#076bcd] text-white">
           <div className="flex item-center justify-between w-[100%]">
             <div className="p-2 flex-1 border border-blue-800">
               <a
