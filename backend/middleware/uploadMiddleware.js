@@ -16,6 +16,8 @@ const storage = multer.diskStorage({
       uploadPath = "uploads/brochures/";
     } else if (req.originalUrl.includes("/api/v1/property")) {
       uploadPath = "uploads/property/";
+    } else if (req.originalUrl.includes("/api/v1/events")) {
+      uploadPath = "uploads/events/";
     } else {
       uploadPath = "uploads/";
     }
@@ -52,11 +54,6 @@ const upload = multer({
     fileSize: 1024 * 1024 * 5, // Limit files to 5MB
   },
   fileFilter: fileFilter,
-}).fields([
-  { name: "image", maxCount: 1 }, // Accept one image file
-  { name: "pdf", maxCount: 1 }, // Accept one PDF file
-  { name: "propertyImages", maxCount: 5 },
-  { name: "brochure", maxCount: 1 },
-]);
+}).array("image");
 
 module.exports = upload;

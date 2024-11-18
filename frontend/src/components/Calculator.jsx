@@ -74,12 +74,13 @@ export const Calculator = () => {
             {/* Loan Amount Slider */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center">
-                <p className="text-sm">Loan Amount</p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-xs">Loan Amount</p>
+                <p className="text-gray-600 text-xs">
                   ₹ <strong>{loanAmount}</strong> Lac
                 </p>
               </div>
               <Slider
+                size="small"
                 sx={{ color: "#03002e" }}
                 value={loanAmount}
                 onChange={handleLoanAmountChange}
@@ -89,8 +90,8 @@ export const Calculator = () => {
                 valueLabelDisplay="auto"
                 valueLabelFormat={(value) => `₹ ${value} Lac`}
                 marks={[
-                  { value: 1, label: "₹1 Lac" },
-                  { value: 100, label: "₹1 Cr" },
+                  { value: 1, label: "1 L" },
+                  { value: 100, label: "1 Cr" },
                 ]}
               />
             </div>
@@ -98,10 +99,11 @@ export const Calculator = () => {
             {/* Tenure Slider */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center">
-                <p className="text-sm">Tenure (Years)</p>
-                <p className="text-gray-600 text-sm">{loanDuration} Years</p>
+                <p className="text-xs">Tenure (Years)</p>
+                <p className="text-gray-600 text-xs">{loanDuration} Years</p>
               </div>
               <Slider
+                size="small"
                 sx={{ color: "#03002e" }}
                 value={loanDuration}
                 onChange={handleLoanDurationChange}
@@ -111,8 +113,8 @@ export const Calculator = () => {
                 valueLabelDisplay="auto"
                 valueLabelFormat={(value) => `${value} Years`}
                 marks={[
-                  { value: 1, label: "1 Year" },
-                  { value: 30, label: "30 Years" },
+                  { value: 1, label: "1" },
+                  { value: 30, label: "30" },
                 ]}
               />
             </div>
@@ -120,10 +122,11 @@ export const Calculator = () => {
             {/* Interest Rate Slider */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center">
-                <p className="text-sm">Interest Rate (% P.A.)</p>
-                <p className="text-gray-600 text-sm">{interestRate}%</p>
+                <p className="text-xs">Interest Rate (% P.A.)</p>
+                <p className="text-gray-600 text-xs">{interestRate}%</p>
               </div>
               <Slider
+                size="small"
                 sx={{ color: "#03002e" }}
                 value={interestRate}
                 onChange={handleInterestRateChange}

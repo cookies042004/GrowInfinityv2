@@ -5,12 +5,11 @@ const News = require("../models/news");
 //Create a News
 const createNews = async (req, res) => {
   try {
-    const imagePath = req.file.path;
-    const { title, description, url } = req.body;
+    const imagePath = req.files && req.files[0]?.path;
+    const { title, url } = req.body;
 
     const news = new News({
       title,
-      description,
       url,
       image: imagePath,
     });
@@ -75,7 +74,7 @@ const getSingleNews = async (req, res) => {
 const updateNews = async (req, res) => {
   try {
     const newsId = req.params.id;
-    const { title, description, url } = req.body;
+    const { title, url } = req.body;
 
     // Fetch the current news document
     const existingNews = await News.findById(newsId);
@@ -88,18 +87,17 @@ const updateNews = async (req, res) => {
 
     let updatedFields = {
       title,
-      description,
       url,
     };
 
     // Check if a new image was uploaded
-    if (req.file) {
-      const imagePath = req.file.path;
+    if (req.files) {
+      const imagePath = req.files && req.files[0]?.path;
       updatedFields.image = imagePath;
 
       // Delete the old image if it exists
       if (existingNews.image) {
-        const oldImagePath = path.join(__dirname, '..', existingNews.image);  
+        const oldImagePath = path.join(__dirname, "..", existingNews.image);
 
         fs.unlink(oldImagePath, (err) => {
           if (err) {
@@ -144,7 +142,12 @@ const deleteNews = async (req, res) => {
     }
 
     // Get the path to the image and delete it from the uploads folder
-    const imagePath = path.join(__dirname, '..', 'uploads/news', path.basename(deletedNews.image));
+    const imagePath = path.join(
+      __dirname,
+      "..",
+      "uploads/news",
+      path.basename(deletedNews.image)
+    );
 
     // Check if the image file exists before deleting it
     fs.access(imagePath, fs.constants.F_OK, (err) => {
@@ -157,9 +160,8 @@ const deleteNews = async (req, res) => {
             console.log("Image file deleted:", imagePath);
           }
         });
-      }
-      else{
-        console.log(err)
+      } else {
+        console.log(err);
       }
     });
 

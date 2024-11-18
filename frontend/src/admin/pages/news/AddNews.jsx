@@ -11,9 +11,10 @@ export const AddNews = () => {
   const [formData, setFormData] = useState({
     url: "",
     title: "",
-    description: "",
     selectedFile: null,
   });
+
+  const [imagePreview, setImagePreview] = useState(null); // New state for image preview
 
   const apiUrl = `${process.env.BASE_URL}/api/v1/news`;
 
@@ -32,6 +33,12 @@ export const AddNews = () => {
       ...formData,
       selectedFile: file, // Ensure the file is properly set
     });
+
+    // Set image preview URL
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setImagePreview(previewUrl); // Set the preview URL for image
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -40,7 +47,6 @@ export const AddNews = () => {
     const formDataToSend = new FormData();
     formDataToSend.append("url", formData.url);
     formDataToSend.append("title", formData.title);
-    formDataToSend.append("description", formData.description);
     formDataToSend.append("image", formData.selectedFile);
 
     try {
@@ -61,9 +67,9 @@ export const AddNews = () => {
       setFormData({
         url: "",
         title: "",
-        description: "",
         selectedFile: null,
       });
+      setImagePreview(null); // Reset image preview after successful submission
     } catch (error) {
       console.error(error); // Log the error
       toast.error("An error occurred while adding the news");
@@ -74,7 +80,6 @@ export const AddNews = () => {
     <>
       <ToastContainer />
       <AdminLayout />
-
 
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
@@ -108,19 +113,6 @@ export const AddNews = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="w-full p-2">
-                  <TextField
-                    id="outlined-textarea"
-                    label="Enter News Description*"
-                    color="secondary"
-                    size="small"
-                    multiline
-                    name="description"
-                    fullWidth
-                    value={formData.description}
-                    onChange={handleChange}
-                  />
-                </div>
 
                 {/* File input for image upload */}
                 <div className="w-full p-2">
@@ -150,6 +142,24 @@ export const AddNews = () => {
                       <Typography variant="body2" sx={{ mt: 1 }}>
                         {formData.selectedFile.name}
                       </Typography>
+                    )}
+
+                    {/* Image Preview */}
+                    {imagePreview && (
+                      <Box sx={{ mt: 2 }}>
+                        <Typography variant="body2" gutterBottom>
+                          Image Preview:
+                        </Typography>
+                        <img
+                          src={imagePreview}
+                          alt="Preview"
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto",
+                            borderRadius: "8px",
+                          }}
+                        />
+                      </Box>
                     )}
                   </Box>
                 </div>

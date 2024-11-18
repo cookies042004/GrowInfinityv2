@@ -86,7 +86,7 @@ export const ProjectDetails = () => {
 
       <div className="bg-gray-100 lg:p-3" style={{ scrollBehavior: "smooth" }}>
         <div className="container mx-auto">
-          <div className="flex flex-col lg:grid sm:grid-cols-12 gap-10 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
+          <div className="flex flex-col lg:grid sm:grid-cols-12 gap-6 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
             <div className="col-span-12 lg:col-span-9 bg-white px-5 lg:px-12 py-4 lg:py-8 w-auto">
               <div className="grid sm:grid-cols-12 gap-3">
                 <div className="col-span-12 lg:col-span-8">

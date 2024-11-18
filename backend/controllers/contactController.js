@@ -2,8 +2,8 @@ const Contact = require("../models/contact");
 
 // Submit a Enquiry
 const createContact = async (req, res) => {
-  const { name, email, budget, phone, message } = req.body;
-  const contact = new Contact({ name, email, budget, phone, message });
+  const { name, email, phone, message } = req.body;
+  const contact = new Contact({ name, email, phone, message });
   try {
     await contact.save();
     res.status(201).json({

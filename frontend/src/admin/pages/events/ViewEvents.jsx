@@ -11,24 +11,22 @@ import {
   Button,
 } from "@mui/material";
 
-import { useFetchData } from "../../../hooks/useFetchData"; // Import your hook
-import { AdminLayout } from "../../components/AdminLayout";
-import { Link } from "react-router-dom";
-
-import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-
-import EditIcon from "@mui/icons-material/Edit";
+import { useFetchData } from "../../../hooks/useFetchData";
+import { AdminLayout } from "../../components/AdminLayout";
+import { ToastContainer, toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
+
 import CircularProgress from "@mui/material/CircularProgress";
 
-export const ViewNews = () => {
-  document.title = "View News";
-  const apiUrl = `${process.env.BASE_URL}/api/v1/news`;
+export const ViewEvents = () => {
+  document.title = "View Events";
+
+  const apiUrl = `${process.env.BASE_URL}/api/v1/events`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl); // Use the custom hook
 
-  const news = data.news;
+  const events = data.events;
 
   const [page, setPage] = useState(0); // Current page
   const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page
@@ -44,30 +42,31 @@ export const ViewNews = () => {
     setPage(0);
   };
 
-  const handleDelete = async (newsId) => {
+  const handleDelete = async (eventId) => {
     try {
-      const deleteUrl = apiUrl + `/${newsId}`;
+      const deleteUrl = apiUrl + `/${eventId}`;
       const response = await axios.delete(deleteUrl);
 
       if (response.data.success) {
         refetch(); // Refetch data after deletion
         toast.success(response.data.message);
       } else {
-        toast.error("Failed to delete news");
+        toast.error("Failed to delete event");
       }
     } catch (err) {
       console.log(err);
       toast.error("An error occurred while deleting");
     }
   };
+
   return (
     <>
       <ToastContainer />
-      <AdminLayout />
+      <AdminLayout />{" "}
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
           <h2 className="text-xl font-bold p-2 text-center sm:text-left">
-            View News
+            View Events
           </h2>
           <Paper sx={{ marginTop: "20px" }}>
             {loading && (
@@ -77,7 +76,7 @@ export const ViewNews = () => {
               </div>
             )}
             {error && <p>{error}</p>} {/* Show error message */}
-            {news && (
+            {events && (
               <>
                 <TableContainer>
                   <Table>
@@ -85,60 +84,61 @@ export const ViewNews = () => {
                       <TableRow>
                         <TableCell>S No.</TableCell>
                         <TableCell>Title</TableCell>
-                        <TableCell>URL</TableCell>
-                        <TableCell>Image</TableCell>
+                        <TableCell>Description</TableCell>
+                        <TableCell>Images</TableCell>
                         <TableCell>Date</TableCell>
                         <TableCell>Action</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {news
+                      {events
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
                         )
-                        .map((article, i) => (
-                          <TableRow key={article._id}>
+                        .map((event, i) => (
+                          <TableRow key={event._id}>
                             <TableCell>{i + 1}</TableCell>
-                            <TableCell>{article.title.slice(0,20) + '...'}</TableCell>
-                            <TableCell>{article.url}</TableCell>
                             <TableCell>
-                              <img
-                                src={`${process.env.BASE_URL}/${article.image}`}
-                                alt={article.title}
-                                style={{
-                                  height: "100px",
-                                  width: "200px",
-                                  objectFit: "contain",
-                                  objectPosition: "center",
-                                }}
-                              />
+                              {event.title.slice(0, 20) + "..."}
                             </TableCell>
                             <TableCell>
-                              {new Date(article.createdAt).toLocaleDateString()}
+                              {event.description.slice(0, 20) + "..."}
+                            </TableCell>
+                            <TableCell>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  flexWrap: "wrap",
+                                  gap: "10px",
+                                }}
+                              >
+                                {event.image.map((img, index) => (
+                                  <img
+                                    key={index}
+                                    src={`${process.env.BASE_URL}/${img}`}
+                                    alt={`Image ${index + 1}`}
+                                    style={{
+                                      height: "100px",
+                                      width: "150px",
+                                      objectFit: "contain",
+                                      objectPosition: "center",
+                                      borderRadius: "8px",
+                                      boxShadow:
+                                        "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                                    }}
+                                  />
+                                ))}
+                              </div>
+                            </TableCell>
+
+                            <TableCell>
+                              {new Date(event.createdAt).toLocaleDateString()}
                             </TableCell>
                             <TableCell>
                               <div className="flex sm:block">
-                                <Link
-                                  to={`/admin/dashboard/update-news/${article._id}`}
-                                >
-                                  <Button
-                                    onClick={() => handleEdit(article._id)}
-                                    endIcon={<EditIcon />}
-                                    variant="outlined"
-                                    size="small"
-                                    color="success"
-                                    style={{
-                                      textTransform: "none",
-                                      marginRight: "20px",
-                                      // marginBottom: "10px"
-                                    }}
-                                  >
-                                    Edit
-                                  </Button>
-                                </Link>
                                 <Button
-                                  onClick={() => handleDelete(article._id)}
+                                  onClick={() => handleDelete(event._id)}
                                   endIcon={<DeleteIcon />}
                                   variant="contained"
                                   size="small"
@@ -157,7 +157,7 @@ export const ViewNews = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}
                   component="div"
-                  count={news.length} // Total number of contacts
+                  count={events.length} // Total number of contacts
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onPageChange={handleChangePage}

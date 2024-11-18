@@ -6,6 +6,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 import HomeIcon from "@mui/icons-material/Home";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import EventIcon from '@mui/icons-material/Event';
 
 export const AdminSidebar = ({ mobileMenu }) => {
   const [accordions, setAccordions] = useState([
@@ -14,7 +15,9 @@ export const AdminSidebar = ({ mobileMenu }) => {
     true,
     true,
     true,
-    true, true,
+    true,
+    true,
+    true
   ]); // Add more false values for more items
 
   const handleAccordion = (index) => {
@@ -26,8 +29,9 @@ export const AdminSidebar = ({ mobileMenu }) => {
   return (
     <aside
       id="logo-sidebar"
-      className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700 bg-white sm:translate-x-0 ${mobileMenu ? "translate-x-0" : "-translate-x-full"
-        }`}
+      className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700 bg-white sm:translate-x-0 ${
+        mobileMenu ? "translate-x-0" : "-translate-x-full"
+      }`}
       aria-label="Sidebar"
     >
       <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
@@ -214,6 +218,58 @@ export const AdminSidebar = ({ mobileMenu }) => {
               data-collapse-toggle="dropdown-example"
               onClick={() => handleAccordion(3)}
             >
+              <EventIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+
+              <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
+                Events
+              </span>
+              <svg
+                className="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+            <ul
+              id="dropdown-example"
+              className={accordions[3] ? "hidden" : "py-2 space-y-2"}
+            >
+              <li>
+                <Link
+                  to="/admin/dashboard/add-events"
+                  href="#"
+                  className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                >
+                  Add Events
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/admin/dashboard/view-events"
+                  className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                >
+                  View Events
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <button
+              type="button"
+              className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              aria-controls="dropdown-example"
+              data-collapse-toggle="dropdown-example"
+              onClick={() => handleAccordion(4)}
+            >
               <DesignServicesIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
                 Amenity
@@ -236,7 +292,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             </button>
             <ul
               id="dropdown-example"
-              className={accordions[3] ? "hidden" : "py-2 space-y-2"}
+              className={accordions[4] ? "hidden" : "py-2 space-y-2"}
             >
               <li>
                 <Link
@@ -262,7 +318,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-example"
               data-collapse-toggle="dropdown-example"
-              onClick={() => handleAccordion(4)}
+              onClick={() => handleAccordion(5)}
             >
               <PictureAsPdfIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
@@ -286,7 +342,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             </button>
             <ul
               id="dropdown-example"
-              className={accordions[4] ? "hidden" : "py-2 space-y-2"}
+              className={accordions[5] ? "hidden" : "py-2 space-y-2"}
             >
               <li>
                 <Link
@@ -312,7 +368,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-example"
               data-collapse-toggle="dropdown-example"
-              onClick={() => handleAccordion(5)}
+              onClick={() => handleAccordion(6)}
             >
               <ContactsIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
@@ -336,7 +392,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             </button>
             <ul
               id="dropdown-example"
-              className={accordions[5] ? "hidden" : "py-2 space-y-2"}
+              className={accordions[6] ? "hidden" : "py-2 space-y-2"}
             >
               <li>
                 <Link
@@ -354,7 +410,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-example"
               data-collapse-toggle="dropdown-example"
-              onClick={() => handleAccordion(6)}
+              onClick={() => handleAccordion(7)}
             >
               <ContactsIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
@@ -378,7 +434,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             </button>
             <ul
               id="dropdown-example"
-              className={accordions[6] ? "hidden" : "py-2 space-y-2"}
+              className={accordions[7] ? "hidden" : "py-2 space-y-2"}
             >
               <li>
                 <Link

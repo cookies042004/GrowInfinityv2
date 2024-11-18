@@ -80,7 +80,6 @@ export const ViewContact = () => {
                         <TableCell>Name</TableCell>
                         <TableCell>Email</TableCell>
                         <TableCell>Phone</TableCell>
-                        <TableCell>Budget</TableCell>
                         <TableCell>Message</TableCell>
                         <TableCell>Date</TableCell>
                         <TableCell>Action</TableCell>
@@ -98,7 +97,6 @@ export const ViewContact = () => {
                             <TableCell>{contact.name}</TableCell>
                             <TableCell>{contact.email}</TableCell>
                             <TableCell>{contact.phone}</TableCell>
-                            <TableCell>{contact.budget}</TableCell>
                             <TableCell>{contact.message}</TableCell>
                             <TableCell>
                               {new Date(contact.createdAt).toLocaleDateString()}

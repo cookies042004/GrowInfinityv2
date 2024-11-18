@@ -15,7 +15,6 @@ export const UpdateNews = () => {
   const [formData, setFormData] = useState({
     url: "",
     title: "",
-    description: "",
     selectedFile: null,
   });
 
@@ -29,7 +28,6 @@ export const UpdateNews = () => {
       setFormData({
         url: data.news.url || "",
         title: data.news.title || "",
-        description: data.news.description || "",
         selectedFile: null, 
       });
     }
@@ -56,7 +54,6 @@ export const UpdateNews = () => {
     const formDataToSend = new FormData();
     formDataToSend.append("url", formData.url);
     formDataToSend.append("title", formData.title);
-    formDataToSend.append("description", formData.description);
     formDataToSend.append("image", formData.selectedFile);
 
     try {
@@ -116,20 +113,6 @@ export const UpdateNews = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="w-full p-2">
-                  <TextField
-                    id="outlined-textarea"
-                    label="Enter News Description*"
-                    color="secondary"
-                    size="small"
-                    multiline
-                    name="description"
-                    fullWidth
-                    value={formData.description} // Controlled by formData
-                    onChange={handleChange}
-                  />
-                </div>
-
                 {/* Image Preview */}
                 <div className="w-full p-2">
                   {data?.news?.image && (

@@ -32,6 +32,8 @@ import { SingleProject } from "./pages/SingleProject/SingleProject.jsx";
 import { ViewPropertyEnquiry } from "./admin/pages/propertyEnquiry/ViewPropertyEnquiry.jsx";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import { Awards } from "./pages/Awards/Awards.jsx";
+import { AddEvents } from "./admin/pages/events/AddEvents.jsx";
+import { ViewEvents } from "./admin/pages/events/ViewEvents.jsx";
 
 const App = () => {
   return (
@@ -123,6 +125,23 @@ const App = () => {
         element={
           <PrivateRoute>
             <UpdateNews />
+          </PrivateRoute>
+        }
+      />
+      {/* Events  */}
+      <Route
+        path="/admin/dashboard/add-events"
+        element={
+          <PrivateRoute>
+            <AddEvents />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/view-events"
+        element={
+          <PrivateRoute>
+            <ViewEvents />
           </PrivateRoute>
         }
       />

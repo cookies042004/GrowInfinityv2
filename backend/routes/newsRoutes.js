@@ -15,13 +15,13 @@ const {
 router
   .route("/")
   .get(getNews)
-  .post(upload, createNews); // Use upload for handling both image and pdf
+  .post(upload, createNews); 
 
 // Route to get, update, or delete specific news by ID
 router
   .route("/:id")
   .get(getSingleNews)
-  .patch(upload, updateNews) // Use upload for handling both image and pdf in update
+  .patch(upload, updateNews) 
   .delete(deleteNews);
 
 module.exports = router;
