@@ -61,6 +61,16 @@ export const ProjectDetails = () => {
 
   const truncatedDescription = fullDescription.slice(0, 200) + "...";
 
+  const handleAnchorClick = (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Layout>
       {/* Project Details Hero */}
@@ -259,29 +269,37 @@ export const ProjectDetails = () => {
               >
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#description">
-                      <p className="text-xs font-semibold">Description</p>
+                    <a href="#description" onClick={handleAnchorClick}>
+                      <p className="text-xs lg:text-lg font-semibold">
+                        Description
+                      </p>
                     </a>
                   </h3>
                 </div>
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#amenities">
-                      <p className="text-xs font-semibold">Amenities</p>
+                    <a href="#amenities" onClick={handleAnchorClick}>
+                      <p className="text-xs lg:text-lg font-semibold">
+                        Amenities
+                      </p>
                     </a>
                   </h3>
                 </div>
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#location">
-                      <p className="text-xs font-semibold">Location</p>
+                    <a href="#location" onClick={handleAnchorClick}>
+                      <p className="text-xs lg:text-lg font-semibold">
+                        Location
+                      </p>
                     </a>
                   </h3>
                 </div>
                 <div className="col-span-3">
                   <h3 className="py-2">
-                    <a href="#youtube">
-                      <p className="text-xs font-semibold">Virtual Tour</p>
+                    <a href="#youtube" onClick={handleAnchorClick}>
+                      <p className="text-xs lg:text-lg font-semibold">
+                        Virtual Tour
+                      </p>
                     </a>
                   </h3>
                 </div>
@@ -579,7 +597,11 @@ export const ProjectDetails = () => {
                     Virtual Tour
                   </h3>
                   <div className="flex items-center justify-center my-3">
-                    <img src={comingsoon} alt="" className="h-[200px] lg:h-[450px] w-[100%]" />
+                    <img
+                      src={comingsoon}
+                      alt=""
+                      className="h-[200px] lg:h-[450px] w-[100%]"
+                    />
                   </div>
                 </div>
 
@@ -601,7 +623,7 @@ export const ProjectDetails = () => {
               <div className="flex flex-col gap-5 sticky top-0">
                 <div className="bg-white px-5 py-8">
                   <form>
-                    <h1 className="text-center text-xl font-medium font-roboto">
+                    <h1 className="text-center text-lg font-medium font-roboto">
                       Get Price on Request*
                     </h1>
                     <div className="grid sm:col-span-12 mt-4 gap-4">
@@ -651,95 +673,97 @@ export const ProjectDetails = () => {
 
                 {/* Recent Property */}
                 <div className="bg-white p-5">
-                  <h1 className="text-xl font-medium">Recent Property</h1>
+                  <h1 className="text-xl text-center font-medium">
+                    Recent Property
+                  </h1>
                   <div className="grid sm:grid-cols-12 gap-6 mt-5">
                     <div className="col-span-12">
-                      <div className="flex gap-8">
+                      <div className="flex gap-3">
                         <img
                           src={gallery1}
                           alt=""
-                          className="h-[60px] w-[60px] rounded"
+                          className="h-[40px] w-[40px] rounded"
                         />
                         <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-md font-medium">
+                          <h1 className="text-sm font-medium">
                             CanterBury Lane
                           </h1>
-                          <p className="text-sm">Posted on: 05/11/2024</p>
+                          <p className="text-xs">Posted on: 05/11/2024</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-span-12">
-                      <div className="flex gap-8">
+                      <div className="flex gap-3">
                         <img
                           src={gallery1}
                           alt=""
-                          className="h-[60px] w-[60px] rounded"
+                          className="h-[40px] w-[40px] rounded"
                         />
                         <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-md font-medium">
+                          <h1 className="text-sm font-medium">
                             CanterBury Lane
                           </h1>
-                          <p className="text-sm">Posted on: 05/11/2024</p>
+                          <p className="text-xs">Posted on: 05/11/2024</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-span-12">
-                      <div className="flex gap-8">
+                      <div className="flex gap-3">
                         <img
                           src={gallery1}
                           alt=""
-                          className="h-[60px] w-[60px] rounded"
+                          className="h-[40px] w-[40px] rounded"
                         />
                         <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-md font-medium">
+                          <h1 className="text-sm font-medium">
                             CanterBury Lane
                           </h1>
-                          <p className="text-sm">Posted on: 05/11/2024</p>
+                          <p className="text-xs">Posted on: 05/11/2024</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-span-12">
-                      <div className="flex gap-8">
+                      <div className="flex gap-3">
                         <img
                           src={gallery1}
                           alt=""
-                          className="h-[60px] w-[60px] rounded"
+                          className="h-[40px] w-[40px] rounded"
                         />
                         <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-md font-medium">
+                          <h1 className="text-sm font-medium">
                             CanterBury Lane
                           </h1>
-                          <p className="text-sm">Posted on: 05/11/2024</p>
+                          <p className="text-xs">Posted on: 05/11/2024</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-span-12">
-                      <div className="flex gap-8">
+                      <div className="flex gap-3">
                         <img
                           src={gallery1}
                           alt=""
-                          className="h-[60px] w-[60px] rounded"
+                          className="h-[40px] w-[40px] rounded"
                         />
                         <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-md font-medium">
+                          <h1 className="text-sm font-medium">
                             CanterBury Lane
                           </h1>
-                          <p className="text-sm">Posted on: 05/11/2024</p>
+                          <p className="text-xs">Posted on: 05/11/2024</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-span-12">
-                      <div className="flex gap-8">
+                      <div className="flex gap-3">
                         <img
                           src={gallery1}
                           alt=""
-                          className="h-[60px] w-[60px] rounded"
+                          className="h-[40px] w-[40px] rounded"
                         />
                         <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-md font-medium">
+                          <h1 className="text-sm font-medium">
                             CanterBury Lane
                           </h1>
-                          <p className="text-sm">Posted on: 05/11/2024</p>
+                          <p className="text-xs">Posted on: 05/11/2024</p>
                         </div>
                       </div>
                     </div>

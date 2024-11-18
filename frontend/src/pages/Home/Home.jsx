@@ -285,7 +285,7 @@ export const Home = () => {
                       10+
                     </span>
                   </p>
-                  <p className="font-poppins font-medium text-sm lg:text-lg">
+                  <p className="font-poppins font-medium text-center text-sm lg:text-lg">
                     Year of Experience
                   </p>
                 </div>
@@ -370,11 +370,11 @@ export const Home = () => {
             <div className="grid sm:grid-cols-12">
               <div className="col-span-12">
                 <div className="grid sm:grid-cols-12">
-                  <div className="col-span-9 m-5">
+                  <div className="col-span-8 m-5">
                     <img
                       src={findRealEstate}
                       alt=""
-                      className="rounded-lg h-[210px] w-[100%] object-fill"
+                      className="rounded-lg h-[250px] w-[100%] object-fill"
                     />
                   </div>
                 </div>
@@ -388,7 +388,7 @@ export const Home = () => {
                       className="rounded-lg h-[200px] w-full object-cover"
                     />
                   </div>
-                  <div className="col-span-6">
+                  <div className="col-span-5">
                     <img
                       src={keys}
                       alt=""
@@ -400,62 +400,65 @@ export const Home = () => {
             </div>
           </div>
           <div className="col-span-12 md:col-span-6  lg:col-span-5 flex flex-col justify-center lg:ps-14">
-            <h1 className="text-[#1A1A1A] font-roboto  text-2xl lg:text-4xl font-medium text-center lg:text-start mt-4 lg:mt-0">
+            <h1 className="px-5 text-[#1A1A1A] font-roboto  text-2xl lg:text-4xl font-medium text-center lg:text-start mt-4 lg:mt-0">
               How It works? <br />
               Find a perfect home
             </h1>
             <p className="font-roboto text-md lg:text-lg text-[#1A1A1A] px-5 mt-5">
-              Pellentesque egestas elementum egestas faucibus sem. Velit nunc
-              egestas ut morbi. Leo diam diam.
+              Discover your ideal home with ease. Browse listings, get expert
+              advice, and find the perfect match for your lifestyle.
             </p>
-            <ul className="my-10 flex flex-col gap-10 lg:mx-0 mx-5 ps-10 lg:ps-4">
+            <ul className="my-10 flex flex-col gap-10 lg:mx-0 mx-5 ps-6 lg:ps-4">
               <li>
                 <div className="flex gap-5">
-                  <div className="relative">
+                  <div className="relative basis-[10%]">
                     <img src={Icon1} alt="" className="w-[35px] h-[35px]" />
-                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] bottom-[38px]"></div>
+                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] top-[8%]"></div>
                   </div>
-                  <div className="flex-col">
+                  <div className="flex-col basis-[90%]">
                     <h1 className="text-lg lg:text-xl font-roboto font-medium text-[#1A1A1A]">
                       Find Real Estate
                     </h1>
                     <p className="mt-2 text-sm lg:text-lg">
-                      Sumo petentium ut per, at his wisim utinam <br />{" "}
-                      adipiscing. Est ei graeco
+                      Finding your dream property has never been easier. With
+                      Grow Infinity Realtors, you access extensive listings, and
+                      expert guidance for a seamless real estate journey. Start
+                      exploring today and discover your perfect home.
                     </p>
                   </div>
                 </div>
               </li>
               <li>
                 <div className="flex gap-5">
-                  <div className="relative">
+                  <div className="relative basis-[10%]">
                     <img src={Icon2} alt="" className="w-[35px] h-[35px]" />
-                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] bottom-[38px]"></div>
+                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] top-[10%]"></div>
                   </div>
-                  <div className="flex-col">
+                  <div className="flex-col basis-[90%]">
                     <h1 className="text-lg lg:text-xl font-roboto font-medium text-[#1A1A1A]">
                       Meet Realtor
                     </h1>
                     <p className="mt-2 text-sm lg:text-lg">
-                      Sumo petentium ut per, at his wisim utinam <br />{" "}
-                      adipiscing. Est ei graeco
+                      Connect with trusted real estate professionals who
+                      understand your needs and priorities.
                     </p>
                   </div>
                 </div>
               </li>
               <li>
                 <div className="flex gap-5">
-                  <div className="relative">
+                  <div className="relative basis-[10%]">
                     <img src={Icon3} alt="" className="w-[35px] h-[35px]" />
-                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] bottom-[38px]"></div>
+                    <div className="bg-[#e7c873b8] absolute h-[30px] w-[30px] rounded-[50%] left-[-8px] top-[10%]"></div>
                   </div>
-                  <div className="flex-col">
+                  <div className="flex-col basis-[90%]">
                     <h1 className="text-lg lg:text-xl font-roboto font-medium text-[#1A1A1A]">
                       Take the keys
                     </h1>
                     <p className="mt-2 text-sm lg:text-lg">
-                      Sumo petentium ut per, at his wisim utinam <br />{" "}
-                      adipiscing. Est ei graeco
+                      Unlock your future with confidence. Take the Home Keys and
+                      step into your new beginning with expert guidance and
+                      support.
                     </p>
                   </div>
                 </div>
@@ -481,13 +484,13 @@ export const Home = () => {
                       Looking for the new home?
                     </h4>
                     <p className="hidden lg:block text-sm lg:text-lg font-normal lg:pe-20 text-justify">
-                      10 new offers every day. 350 offers on site, trusted by a
-                      community of thousands of users.
+                      Let us help you find the perfect place to suit your needs
+                      and lifestyle.
                     </p>
                     <div className="flex lg:hidden justify-between">
-                      <p className="basis-1/2 text-sm lg:text-lg font-normal lg:pe-20 text-justify">
-                        10 new offers every day. 350 offers on site, trusted by
-                        a community of thousands of users.
+                      <p className="basis-[60%] text-sm lg:text-lg font-normal lg:pe-20 text-justify">
+                        Let us help you find the perfect place to suit your
+                        needs and lifestyle.
                       </p>
                       <img src={home} alt="" className="w-[80px] h-[80px]" />
                     </div>
@@ -512,13 +515,13 @@ export const Home = () => {
                       Want to sell your home?
                     </h4>
                     <p className="hidden lg:block text-sm lg:text-lg font-normal lg:pe-20 text-justify">
-                      10 new offers every day. 350 offers on site, trusted by a
-                      community of thousands of users.
+                      Let our experts help you get the best price with a
+                      seamless selling experience.
                     </p>
                     <div className="flex lg:hidden justify-between">
-                      <p className="basis-1/2 text-sm lg:text-lg font-normal lg:pe-20 text-justify">
-                        10 new offers every day. 350 offers on site, trusted by
-                        a community of thousands of users.
+                      <p className="basis-[60%] text-sm lg:text-lg font-normal lg:pe-20 text-justify">
+                        Let our experts help you get the best price with a
+                        seamless selling experience.
                       </p>
                       <img src={house} alt="" className="w-[80px] h-[80px]" />
                     </div>

@@ -11,9 +11,14 @@
   height: 420px;
 }
 
-
 @media screen and (max-width: 768px) {
   .newsbanner {
     height: 300px !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .newsbanner {
+    height: 240px !important;
   }
 }

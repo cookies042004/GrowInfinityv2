@@ -69,7 +69,7 @@ export const Contact = () => {
         {/* Contact Hero  */}
         <div className="contactbanner flex items-center justify-center">
           <div className="grid sm:grid-cols-12">
-            <div className="col-span-12 text-center lg:mt-20 flex justify-center items-center">
+            <div className="col-span-12 text-center mt-10 lg:mt-20 flex justify-center items-center">
               <h1 className="font-dmsans  text-3xl lg:text-4xl font-medium text-white">
                 Contact Us
               </h1>
@@ -81,9 +81,9 @@ export const Contact = () => {
           <div className="max-w-[1280px] mx-auto">
             <div className="grid sm:grid-cols-12 py-10">
               <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
-                <div className="flex flex-col gap-5 justify-center items-center">
-                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[70px] w-[70px]">
-                    <EmailIcon sx={{ fontSize: "40px", color: "white" }} />
+                <div className="flex flex-col gap-3 lg:gap-5 justify-center items-center">
+                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[50px] w-[50px] lg:h-[70px] lg:w-[70px]">
+                    <EmailIcon sx={{ fontSize: {sm: '20px' ,lg:"40px"}, color: "white" }} />
                   </div>
 
                   <p className="font-dmsans font-semibold text-lg">
@@ -99,9 +99,9 @@ export const Contact = () => {
                 </div>
               </div>
               <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
-                <div className="flex flex-col gap-5 justify-center items-center">
-                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[70px] w-[70px]">
-                    <LocationOnIcon sx={{ fontSize: "40px", color: "white" }} />
+                <div className="flex flex-col gap-3 lg:gap-5  justify-center items-center">
+                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[50px] w-[50px] lg:h-[70px] lg:w-[70px]">
+                    <LocationOnIcon sx={{ fontSize: {sm: '20px' ,lg:"40px"}, color: "white" }} />
                   </div>
 
                   <p className="font-dmsans font-semibold text-lg">Office</p>
@@ -114,10 +114,10 @@ export const Contact = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-3 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
-                <div className="flex flex-col gap-5 justify-center items-center">
-                  <div className="flex items-center justify-center p-5 bg-[#0529ff] rounded-[50%] h-[70px] w-[70px]">
-                    <LocalPhoneIcon sx={{ fontSize: "40px", color: "white" }} />
+              <div className="col-span-12 md:col-span-6 lg:col-span-4 flex justify-center bg-white m-5 px-2 lg:px-4 py-4 lg:py-6 rounded-[24px] shadow-lg">
+                <div className="flex flex-col gap-3 lg:gap-5  justify-center items-center">
+                  <div className="flex items-center justify-center p-3 lg:p-5 bg-[#0529ff] rounded-[50%] h-[50px] w-[50px] lg:h-[70px] lg:w-[70px]">
+                    <LocalPhoneIcon sx={{ fontSize: {sm: '20px' ,lg:"40px"}, color: "white" }} />
                   </div>
 
                   <p className="font-dmsans font-semibold text-lg">Phone</p>

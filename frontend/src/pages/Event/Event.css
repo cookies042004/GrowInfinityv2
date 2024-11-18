@@ -12,7 +12,11 @@
         height: 300px !important;
     }
 }
-
+@media screen and (max-width: 500px) {
+    .eventbanner {
+        height: 240px !important;
+    }
+}
 
 :root {
     --d: 700ms;

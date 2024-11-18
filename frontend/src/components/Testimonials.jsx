@@ -64,23 +64,26 @@ export const Testimonials = () => {
       <div className="bg-[#FFF8F6] lg:py-8 lg:px-16">
         <div className="grid sm:grid-cols-12 gap-5 max-w-[1280px] mx-auto">
           <div className="col-span-12 lg:col-span-6 flex justify-center">
-            <div className="m-3 lg:m-5 px-5 lg:px-10 lg:py-16 font-roboto lg:pe-20 flex flex-col items-center ">
+            <div className="m-3 lg:m-5 px-5 lg:px-7 lg:py-16 font-roboto lg:pe-20 flex flex-col items-center ">
               <h1 className="text-xl lg:text-4xl text-[#1A1A1A] my-4 font-medium">
                 What our customers are saying us?
               </h1>
               <p className="text-[#1A1A1A] text-md lg:text-lg text-justify my-5 lg:pe-20">
-                Various versions have evolved over the years, sometimes by
-                accident, sometimes on purpose injected humour and the like.
+                Don't just take our word for it—hear directly from those who
+                have experienced our services. Our customers' stories reflect
+                the dedication, expertise, and care we put into every
+                transaction. Read their testimonials and see why we're the
+                trusted choice for all your real estate needs.
               </p>
-              <div className="flex justify-end lg:justify-start gap-10">
-                <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-xs lg:text-2xl">
+              <div className="flex justify-end lg:justify-start gap-10 w-full">
+                <div className="flex-col mt-5 lg:mt-10">
+                  <h3 className="font-medium text-[#1A1A1A] text-sm lg:text-2xl">
                     10m+
                   </h3>
                   <p className="text-xs lg:text-lg">Happy People</p>
                 </div>
-                <div className="flex-col mt-10">
-                  <h3 className="font-medium text-[#1A1A1A] text-xs lg:text-2xl">
+                <div className="flex-col mt-5 lg:mt-10">
+                  <h3 className="font-medium text-[#1A1A1A] text-sm lg:text-2xl">
                     4.88
                   </h3>
                   <p className="text-xs lg:text-lg">Overall rating</p>

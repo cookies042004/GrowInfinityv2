@@ -10,7 +10,7 @@ import ApartmentIcon from "@mui/icons-material/Apartment";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import PhoneCallbackIcon from "@mui/icons-material/PhoneCallback";
-import StorefrontIcon from '@mui/icons-material/Storefront';
+import StorefrontIcon from "@mui/icons-material/Storefront";
 import { NavigationBar } from "../../components/NavigationBar";
 
 export const Services = () => {
@@ -20,7 +20,7 @@ export const Services = () => {
         {/* Service Hero  */}
         <div className="servicebanner flex items-center justify-center">
           <div className="grid sm:grid-cols-12">
-            <div className="col-span-12 text-center lg:mt-20">
+            <div className="col-span-12 text-center mt-10 lg:mt-20">
               <h1 className="font-dmsans font-medium text-white text-3xl lg:text-4xl">
                 Services
               </h1>
@@ -40,10 +40,12 @@ export const Services = () => {
             <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2 rounded-xl">
                 <i>
-                  <ApartmentIcon sx={{ fontSize: "50px" }} />
+                  <ApartmentIcon
+                    sx={{ fontSize: { xs: "30px", lg: "50px" } }}
+                  />
                 </i>
                 <h3>RESIDENTIAL</h3>
-                <p className="px-5 text-center">
+                <p className="px-5 text-center text-sm lg:text-md">
                   These services focus on buying and selling homes, condos,
                   apartments, and other residential properties. They cater to
                   individuals and families for a place to live.
@@ -56,10 +58,12 @@ export const Services = () => {
             <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2 rounded-xl">
                 <i>
-                  <StorefrontIcon sx={{ fontSize: "50px" }} />
+                  <StorefrontIcon
+                    sx={{ fontSize: { xs: "30px", lg: "50px" } }}
+                  />
                 </i>
                 <h3>COMMERCIAL</h3>
-                <p className="px-5 text-center">
+                <p className="px-5 text-center text-sm lg:text-md">
                   Commercial real estate services deal with buying and selling
                   commercial properties like office buildings, retail spaces,
                   industrial warehouses, and land for development.
@@ -73,10 +77,10 @@ export const Services = () => {
             <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2 rounded-xl">
                 <i>
-                  <HomeWorkIcon sx={{ fontSize: "50px" }} />
+                  <HomeWorkIcon sx={{ fontSize: { xs: "30px", lg: "50px" } }} />
                 </i>
                 <h3>HOME RENTAL</h3>
-                <p className="px-5 text-center">
+                <p className="px-5 text-center text-sm lg:text-md">
                   Home rental services streamline the rental process, ensuring a
                   convenient and secure experience for both property owners and
                   renters.
@@ -90,10 +94,12 @@ export const Services = () => {
             <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2 rounded-xl">
                 <i>
-                  <CreditScoreIcon sx={{ fontSize: "50px" }} />
+                  <CreditScoreIcon
+                    sx={{ fontSize: { xs: "30px", lg: "50px" } }}
+                  />
                 </i>
                 <h3>HOME LOAN</h3>
-                <p className="px-5 text-center">
+                <p className="px-5 text-center text-sm lg:text-md">
                   We offer a comprehensive suite of loan services to make your
                   home buying journey seamless. In addition to helping you find
                   the perfect property, expert home loan services.
@@ -106,10 +112,12 @@ export const Services = () => {
             <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2 rounded-xl">
                 <i>
-                  <AutoGraphIcon sx={{ fontSize: "50px" }} />
+                  <AutoGraphIcon
+                    sx={{ fontSize: { xs: "30px", lg: "50px" } }}
+                  />
                 </i>
                 <h3>INVESTMENT</h3>
-                <p className="px-5 text-center">
+                <p className="px-5 text-center text-sm lg:text-md">
                   Investment-focused services assist clients in buying and
                   selling properties for investment purposes, such as rental
                   properties, vacation rentals, and fix-and-flip opportunities.
@@ -122,10 +130,12 @@ export const Services = () => {
             <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
               <div className="service-info-1 border flex flex-col gap-2 rounded-xl">
                 <i>
-                  <PhoneCallbackIcon sx={{ fontSize: "50px" }} />
+                  <PhoneCallbackIcon
+                    sx={{ fontSize: { xs: "30px", lg: "50px" } }}
+                  />
                 </i>
                 <h3>CONSULTATION</h3>
-                <p className="px-5 text-center">
+                <p className="px-5 text-center text-sm lg:text-md">
                   These services offer expert advice to buyers and sellers,
                   helping them make informed decisions, understand market
                   trends, and strategize for successful transactions.

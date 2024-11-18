@@ -52,7 +52,7 @@ export const Layout = ({ children }) => {
       <div className="block lg:hidden fixed bottom-0 w-full z-50">
         <div className="bg-gradient-to-r from-[#042651] to-[#076bcd] text-white">
           <div className="flex item-center justify-between w-[100%]">
-            <div className="p-2 flex-1 border border-blue-800">
+            <div className="p-2 flex-1 border border-blue-950">
               <a
                 href="https://wa.me/+918750238581?text=Hello!%20I%20would%20like%20to%20inquire%20about%20your%20services"
                 target="_blank"

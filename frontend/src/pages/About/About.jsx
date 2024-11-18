@@ -24,7 +24,7 @@ export const About = () => {
       {/* About Hero  */}
       <div className="aboutbanner flex items-center justify-center">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 text-center lg:mt-20">
+          <div className="col-span-12 text-center mt-10 lg:mt-20">
             <h1 className="font-dmsans text-center font-medium text-white text-3xl lg:text-4xl">
               About Us
             </h1>
@@ -65,7 +65,7 @@ export const About = () => {
             </p>
           </div>
 
-          <div className="col-span-12 lg:col-span-6 flex justify-center mt-8 lg:mt-0 lg:justify-end ">
+          <div className="col-span-12 lg:col-span-6 flex items-center justify-center mt-8 lg:mt-0 lg:justify-end ">
             <img
               src={aboutImg}
               alt="about-welcome-image"
@@ -282,10 +282,10 @@ export const About = () => {
             Awards
           </h1>
           <div className="grid sm:grid-cols-12 overflow-hidden">
-            <div className="lg:col-span-6 flex justify-center lg:justify-start">
+            <div className="col-span-12 lg:col-span-6 flex justify-center lg:justify-start">
               <AwardComponent />
             </div>
-            <div className="lg:col-span-6  flex items-center ">
+            <div className="col-span-12 lg:col-span-6  flex items-center ">
               <div className="text-white text-lg text-justify px-5">
                 <p className="text-sm lg:text-lg">
                   At Grow Infinity Realtors, we believe that our dedication to

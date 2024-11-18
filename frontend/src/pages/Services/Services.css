@@ -17,6 +17,12 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .servicebanner {
+    height: 240px !important;
+  }
+}
+
 /*! CSS Used from: https://www.growinfinityrealtors.in/css/bootstrap.min.css */
 *,
 ::after,
