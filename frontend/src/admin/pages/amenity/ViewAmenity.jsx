@@ -11,27 +11,26 @@ import {
   TablePagination,
   TableRow,
   Paper,
+  Box,
+  CircularProgress,
 } from "@mui/material";
-
-import CircularProgress from "@mui/material/CircularProgress";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-
+import EditIcon from "@mui/icons-material/Edit";
 import { Link } from "react-router-dom";
-import { useFetchData } from "../../../hooks/useFetchData";
 import axios from "axios";
+import { useFetchData } from "../../../hooks/useFetchData";
 
 export const ViewAmenity = () => {
   document.title = "View Amenity";
   const apiUrl = `${process.env.BASE_URL}/api/v1/amenities`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
-  const amenity = data.amenity;
+  const amenity = data?.amenity || [];
 
-  const [page, setPage] = useState(0); // Current page
-  const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  // Handle pagination change (page number)
+  // Pagination Change
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -41,16 +40,17 @@ export const ViewAmenity = () => {
     setPage(0);
   };
 
+  // Handle Delete Amenity
   const handleDelete = async (amenityId) => {
     try {
-      const deleteUrl = apiUrl + `/${amenityId}`;
+      const deleteUrl = `${apiUrl}/${amenityId}`;
       const response = await axios.delete(deleteUrl);
 
       if (response.data.success) {
-        refetch(); // Refetch data after deletion
+        refetch();
         toast.success(response.data.message);
       } else {
-        toast.error("Failed to delete contact");
+        toast.error("Failed to delete amenity");
       }
     } catch (err) {
       console.log(err);
@@ -63,29 +63,67 @@ export const ViewAmenity = () => {
       <ToastContainer />
       <AdminLayout />
       <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-          <h2 className="text-xl font-bold p-2 text-center sm:text-left">
-            View Amenity
-          </h2>
+        <div className="p-6 bg-white shadow-lg rounded-lg border border-gray-200 mt-20">
+          <div className="flex items-center justify-between pb-6 border-b">
+            <h2 className="text-2xl font-bold text-blue-600  text-center sm:text-left">
+              View Amenity
+            </h2>
+            <div className="flex gap-4">
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={refetch}
+                sx={{ textTransform: "none" }}
+              >
+                Refresh
+              </Button>
+            </div>
+          </div>
+
           <Paper sx={{ marginTop: "20px" }}>
             {loading && (
-              <div className="flex justify-center">
-                <CircularProgress size="large" color="secondary" />{" "}
-                {/* Show loading state */}
+              <div className="flex justify-center py-10">
+                <CircularProgress size="large" color="secondary" />
               </div>
             )}
-            {error && <p>{error}</p>} {/* Show error message */}
+            {error && <p className="text-red-500 text-center">{error}</p>}
             {amenity && (
               <>
                 <TableContainer>
                   <Table>
                     <TableHead>
-                      <TableRow>
-                        <TableCell>S No.</TableCell>
-                        <TableCell>Type</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Image</TableCell>
-                        <TableCell>Action</TableCell>
+                      <TableRow className="bg-blue-100">
+                        <TableCell
+                          sx={{ width: "14%" }}
+                          className="font-semibold"
+                        >
+                          S No.
+                        </TableCell>
+                        <TableCell
+                          sx={{ width: "14%" }}
+                          className="font-semibold"
+                        >
+                          Type
+                        </TableCell>
+                        <TableCell
+                          sx={{ width: "14%" }}
+                          className="font-semibold"
+                        >
+                          Name
+                        </TableCell>
+                        <TableCell
+                          sx={{ width: "14%" }}
+                          className="font-semibold"
+                        >
+                          Image
+                        </TableCell>
+                        <TableCell
+                          sx={{ width: "14%" }}
+                          className="font-semibold"
+                        >
+                          Action
+                        </TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -95,7 +133,12 @@ export const ViewAmenity = () => {
                           page * rowsPerPage + rowsPerPage
                         )
                         .map((amenity, i) => (
-                          <TableRow key={amenity._id}>
+                          <TableRow
+                            key={amenity._id}
+                            className={`${
+                              i % 2 === 0 ? "bg-gray-50" : "bg-white"
+                            } hover:bg-gray-100`}
+                          >
                             <TableCell>{i + 1}</TableCell>
                             <TableCell>
                               {amenity.type === "flat_amenity"
@@ -108,39 +151,39 @@ export const ViewAmenity = () => {
                             </TableCell>
                             <TableCell>{amenity.name}</TableCell>
                             <TableCell>
-                              <img
-                                src={`${process.env.BASE_URL}/${amenity.image}`}
-                                alt={amenity.name}
-                                style={{
-                                  height: "50px",
-                                  width: "100px",
-                                  objectFit: "contain",
-                                  objectPosition: "center",
-                                }}
-                              />
+                              <Box className="flex gap-2">
+                                <img
+                                  src={`${process.env.BASE_URL}/${amenity.image}`} // Assuming it's an array with only one image.
+                                  alt={`Amenity Image`}
+                                  style={{
+                                    height: "70px",
+                                    width: "120px",
+                                    objectFit: "cover",
+                                    objectPosition: "center",
+                                    borderRadius: "8px",
+                                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                                  }}
+                                />
+                              </Box>
                             </TableCell>
                             <TableCell>
-                              <div className="flex sm:block">
+                              <div className="flex gap-2">
                                 <Link
                                   to={`/admin/dashboard/update-amenity/${amenity._id}`}
                                 >
                                   <Button
-                                    onClick={() => handleEdit(amenity._id)}
-                                    endIcon={<EditIcon />}
+                                    startIcon={<EditIcon />}
                                     variant="outlined"
                                     size="small"
                                     color="success"
-                                    style={{
-                                      textTransform: "none",
-                                      marginRight: "20px",
-                                    }}
+                                    style={{ textTransform: "none" }}
                                   >
                                     Edit
                                   </Button>
                                 </Link>
                                 <Button
                                   onClick={() => handleDelete(amenity._id)}
-                                  endIcon={<DeleteIcon />}
+                                  startIcon={<DeleteIcon />}
                                   variant="contained"
                                   size="small"
                                   color="error"
@@ -155,14 +198,20 @@ export const ViewAmenity = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
+
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}
                   component="div"
-                  count={amenity.length} // Total number of contacts
+                  count={amenity.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onPageChange={handleChangePage}
                   onRowsPerPageChange={handleChangeRowsPerPage}
+                  sx={{
+                    ".MuiTablePagination-toolbar": {
+                      justifyContent: "center",
+                    },
+                  }}
                 />
               </>
             )}

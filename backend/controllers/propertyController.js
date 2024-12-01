@@ -173,7 +173,7 @@ const searchProperty = async (req, res) => {
     }
 
     // Use a regular expression for case-insensitive search
-    const searchRegex = new RegExp(query, 'i');
+    const searchRegex = new RegExp(query, "i");
 
     const properties = await Property.find({
       $or: [
@@ -209,10 +209,21 @@ const searchProperty = async (req, res) => {
   }
 };
 
+// Count number of Property
+const getTotalProperties = async (req, res) => {
+  try {
+    const totalProperties = await Property.countDocuments({}); // Assuming you are using MongoDB
+    res.status(200).json({ success: true, totalProperties });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error", error });
+  }
+};
+
 module.exports = {
   getProperty,
   getSingleProperty,
   createProperty,
   deleteProperty,
-  searchProperty
+  searchProperty,
+  getTotalProperties
 };

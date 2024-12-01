@@ -1,32 +1,30 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { AdminLayout } from "../../components/AdminLayout";
 import {
+  Box,
+  Button,
   Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
   TablePagination,
-  Button,
+  TableRow,
 } from "@mui/material";
-
-import axios from "axios";
-import { useFetchData } from "../../../hooks/useFetchData";
-import { AdminLayout } from "../../components/AdminLayout";
-import { ToastContainer, toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 import CircularProgress from "@mui/material/CircularProgress";
+import { useFetchData } from "../../../hooks/useFetchData";
 
 export const ViewEvents = () => {
   document.title = "View Events";
-
   const apiUrl = `${process.env.BASE_URL}/api/v1/events`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl); // Use the custom hook
 
-  const events = data.events;
+  const events = data?.events || [];
 
   const [page, setPage] = useState(0); // Current page
   const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page
@@ -42,6 +40,7 @@ export const ViewEvents = () => {
     setPage(0);
   };
 
+  // Handle delete event
   const handleDelete = async (eventId) => {
     try {
       const deleteUrl = apiUrl + `/${eventId}`;
@@ -54,7 +53,7 @@ export const ViewEvents = () => {
         toast.error("Failed to delete event");
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       toast.error("An error occurred while deleting");
     }
   };
@@ -62,17 +61,30 @@ export const ViewEvents = () => {
   return (
     <>
       <ToastContainer />
-      <AdminLayout />{" "}
+      <AdminLayout />
       <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-          <h2 className="text-xl font-bold p-2 text-center sm:text-left">
-            View Events
-          </h2>
+        <div className="p-4 bg-white shadow-md rounded-lg border border-gray-200 mt-20">
+          <div className="flex items-center justify-between pb-6 border-b">
+            <h2 className="text-2xl font-bold text-blue-600 text-center sm:text-left">
+              View Events
+            </h2>
+            <div className="flex gap-4">
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={refetch}
+                sx={{ textTransform: "none" }}
+              >
+                Refresh
+              </Button>
+            </div>
+          </div>
+
           <Paper sx={{ marginTop: "20px" }}>
             {loading && (
-              <div className="flex justify-center">
-                <CircularProgress size="large" color="secondary" />{" "}
-                {/* Show loading state */}
+              <div className="flex justify-center py-10">
+                <CircularProgress size="large" color="secondary" />
               </div>
             )}
             {error && <p>{error}</p>} {/* Show error message */}
@@ -81,13 +93,15 @@ export const ViewEvents = () => {
                 <TableContainer>
                   <Table>
                     <TableHead>
-                      <TableRow>
-                        <TableCell>S No.</TableCell>
-                        <TableCell>Title</TableCell>
-                        <TableCell>Description</TableCell>
-                        <TableCell>Images</TableCell>
-                        <TableCell>Date</TableCell>
-                        <TableCell>Action</TableCell>
+                      <TableRow className="bg-blue-100">
+                        <TableCell className="font-semibold">S No.</TableCell>
+                        <TableCell className="font-semibold">Title</TableCell>
+                        <TableCell className="font-semibold">
+                          Description
+                        </TableCell>
+                        <TableCell className="font-semibold">Images</TableCell>
+                        <TableCell className="font-semibold">Date</TableCell>
+                        <TableCell className="font-semibold">Action</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -97,7 +111,12 @@ export const ViewEvents = () => {
                           page * rowsPerPage + rowsPerPage
                         )
                         .map((event, i) => (
-                          <TableRow key={event._id}>
+                          <TableRow
+                            key={event._id}
+                            className={`${
+                              i % 2 === 0 ? "bg-gray-50" : "bg-white"
+                            } hover:bg-gray-200`}
+                          >
                             <TableCell>{i + 1}</TableCell>
                             <TableCell>
                               {event.title.slice(0, 20) + "..."}
@@ -106,13 +125,7 @@ export const ViewEvents = () => {
                               {event.description.slice(0, 20) + "..."}
                             </TableCell>
                             <TableCell>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  flexWrap: "wrap",
-                                  gap: "10px",
-                                }}
-                              >
+                              <Box className="flex flex-wrap gap-2">
                                 {event.image.map((img, index) => (
                                   <img
                                     key={index}
@@ -121,7 +134,7 @@ export const ViewEvents = () => {
                                     style={{
                                       height: "100px",
                                       width: "150px",
-                                      objectFit: "contain",
+                                      objectFit: "cover",
                                       objectPosition: "center",
                                       borderRadius: "8px",
                                       boxShadow:
@@ -129,21 +142,26 @@ export const ViewEvents = () => {
                                     }}
                                   />
                                 ))}
-                              </div>
+                              </Box>
                             </TableCell>
-
                             <TableCell>
                               {new Date(event.createdAt).toLocaleDateString()}
                             </TableCell>
                             <TableCell>
-                              <div className="flex sm:block">
+                              <div className="flex justify-center">
                                 <Button
                                   onClick={() => handleDelete(event._id)}
                                   endIcon={<DeleteIcon />}
                                   variant="contained"
                                   size="small"
                                   color="error"
-                                  style={{ textTransform: "none" }}
+                                  sx={{
+                                    textTransform: "none",
+                                    backgroundColor: "#ff4d4f",
+                                    "&:hover": {
+                                      backgroundColor: "#ff7875",
+                                    },
+                                  }}
                                 >
                                   Delete
                                 </Button>
@@ -157,11 +175,20 @@ export const ViewEvents = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}
                   component="div"
-                  count={events.length} // Total number of contacts
+                  count={events.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onPageChange={handleChangePage}
                   onRowsPerPageChange={handleChangeRowsPerPage}
+                  sx={{
+                    ".MuiTablePagination-toolbar": {
+                      justifyContent: "center",
+                    },
+                    ".MuiTablePagination-selectLabel, .MuiTablePagination-input":
+                      {
+                        fontSize: "0.9rem",
+                      },
+                  }}
                 />
               </>
             )}

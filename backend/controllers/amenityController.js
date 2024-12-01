@@ -1,10 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 const Amenity = require("../models/amenity");
+
 // Create a Amenity
 const createAmenity = async (req, res) => {
   try {
-    const imagePath = req.file.path;
+    const imagePath =  req.files && req.files[0]?.path;
     const { type, name } = req.body;
 
     const amenity = new Amenity({
@@ -93,8 +94,8 @@ const updateAmenity = async (req, res) => {
     };
 
     // Check if a new image was uploaded
-    if (req.file) {
-      const imagePath = req.file.path;
+    if (req.files) {
+      const imagePath = req.files && req.files[0]?.path;
       updatedFields.image = imagePath;
 
       // Delete the old image if it exists

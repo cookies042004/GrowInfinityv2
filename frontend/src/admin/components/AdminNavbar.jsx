@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import growinfinity from "../../assets/img/Grow Infinity Logo White.png";
 
 export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
   const [profile, setProfile] = useState(true);
@@ -46,7 +47,7 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
             </button>
             <Link to="/admin/dashboard" className="flex ms-2 md:me-24">
               <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                Grow Infinity Realtors
+                <img src={growinfinity} alt="" className="h-[50px]" />
               </span>
             </Link>
           </div>
@@ -72,7 +73,7 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
                 className={
                   profile
                     ? "hidden"
-                    : `absolute z-50  my-4 text-base list-none bg-white divide-y right-[9px] top-[30px] divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`
+                    : `absolute z-50  my-4 text-base list-none bg-white divide-y right-[9px] top-[40px] divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`
                 }
                 id="dropdown-user"
               >
@@ -81,7 +82,7 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
                     <button
                       onClick={signOut}
                       href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      className="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem"
                     >
                       Sign out

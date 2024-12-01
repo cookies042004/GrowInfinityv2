@@ -40,7 +40,7 @@ export const ViewPropertyCategory = () => {
       <ToastContainer />
       <AdminLayout />
       <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
           <h2 className="text-xl font-bold text-center sm:text-left">View Property Categories</h2>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
             {loading && (

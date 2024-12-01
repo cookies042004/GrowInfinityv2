@@ -181,10 +181,21 @@ const deleteNews = async (req, res) => {
   }
 };
 
+// Count number of Property Enquiry
+const getTotalNews = async (req, res) => {
+  try {
+    const totalNews = await News.countDocuments({}); // Assuming you are using MongoDB
+    res.status(200).json({ success: true, totalNews });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error", error });
+  }
+};
+
 module.exports = {
   createNews,
   getNews,
   getSingleNews,
   updateNews,
   deleteNews,
+  getTotalNews
 };

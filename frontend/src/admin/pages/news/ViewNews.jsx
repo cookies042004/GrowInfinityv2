@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { AdminLayout } from "../../components/AdminLayout";
 import {
-  Paper,
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -8,37 +10,30 @@ import {
   TableHead,
   TableRow,
   TablePagination,
-  Button,
+  Paper,
+  CircularProgress,
+  Typography,
 } from "@mui/material";
-
-import { useFetchData } from "../../../hooks/useFetchData"; // Import your hook
-import { AdminLayout } from "../../components/AdminLayout";
 import { Link } from "react-router-dom";
-
-import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-
+import { useFetchData } from "../../../hooks/useFetchData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CircularProgress from "@mui/material/CircularProgress";
 
 export const ViewNews = () => {
   document.title = "View News";
   const apiUrl = `${process.env.BASE_URL}/api/v1/news`;
 
-  const { data, loading, error, refetch } = useFetchData(apiUrl); // Use the custom hook
-
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
   const news = data.news;
 
-  const [page, setPage] = useState(0); // Current page
-  const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  // Handle pagination change (page number)
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
-  // Handle rows per page change
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
@@ -50,7 +45,7 @@ export const ViewNews = () => {
       const response = await axios.delete(deleteUrl);
 
       if (response.data.success) {
-        refetch(); // Refetch data after deletion
+        refetch();
         toast.success(response.data.message);
       } else {
         toast.error("Failed to delete news");
@@ -60,29 +55,47 @@ export const ViewNews = () => {
       toast.error("An error occurred while deleting");
     }
   };
+
   return (
     <>
       <ToastContainer />
       <AdminLayout />
       <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-          <h2 className="text-xl font-bold p-2 text-center sm:text-left">
-            View News
-          </h2>
+        <div className="p-4 bg-white shadow-md rounded-lg border border-gray-200 mt-20">
+          <div className="flex items-center justify-between pb-6 border-b">
+            <h2 className="text-2xl font-bold text-center p-2 sm:text-left text-blue-600">
+              View News
+            </h2>
+            <div className="flex gap-4">
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={refetch}
+                sx={{ textTransform: "none" }}
+              >
+                Refresh
+              </Button>
+            </div>
+          </div>
+
           <Paper sx={{ marginTop: "20px" }}>
             {loading && (
-              <div className="flex justify-center">
-                <CircularProgress size="large" color="secondary" />{" "}
-                {/* Show loading state */}
+              <div className="flex justify-center py-10">
+                <CircularProgress size="large" color="secondary" />
               </div>
             )}
-            {error && <p>{error}</p>} {/* Show error message */}
+            {error && (
+              <div className="text-center text-red-500 py-4">
+                <Typography variant="h6">Error: {error}</Typography>
+              </div>
+            )}
             {news && (
               <>
                 <TableContainer>
-                  <Table>
+                  <Table sx={{ minWidth: 650 }}>
                     <TableHead>
-                      <TableRow>
+                      <TableRow className="bg-gray-100">
                         <TableCell>S No.</TableCell>
                         <TableCell>Title</TableCell>
                         <TableCell>URL</TableCell>
@@ -98,9 +111,18 @@ export const ViewNews = () => {
                           page * rowsPerPage + rowsPerPage
                         )
                         .map((article, i) => (
-                          <TableRow key={article._id}>
+                          <TableRow
+                            key={article._id}
+                            sx={{
+                              "&:hover": {
+                                backgroundColor: "#f1f1f1",
+                              },
+                            }}
+                          >
                             <TableCell>{i + 1}</TableCell>
-                            <TableCell>{article.title.slice(0,20) + '...'}</TableCell>
+                            <TableCell>
+                              {article.title.slice(0, 20) + "..."}
+                            </TableCell>
                             <TableCell>{article.url}</TableCell>
                             <TableCell>
                               <img
@@ -108,9 +130,10 @@ export const ViewNews = () => {
                                 alt={article.title}
                                 style={{
                                   height: "100px",
-                                  width: "200px",
+                                  width: "150px",
                                   objectFit: "contain",
-                                  objectPosition: "center",
+                                  borderRadius: "8px",
+                                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
                                 }}
                               />
                             </TableCell>
@@ -118,32 +141,27 @@ export const ViewNews = () => {
                               {new Date(article.createdAt).toLocaleDateString()}
                             </TableCell>
                             <TableCell>
-                              <div className="flex sm:block">
+                              <div className="flex gap-2 justify-center">
                                 <Link
                                   to={`/admin/dashboard/update-news/${article._id}`}
                                 >
                                   <Button
-                                    onClick={() => handleEdit(article._id)}
-                                    endIcon={<EditIcon />}
                                     variant="outlined"
                                     size="small"
-                                    color="success"
-                                    style={{
-                                      textTransform: "none",
-                                      marginRight: "20px",
-                                      // marginBottom: "10px"
-                                    }}
+                                    color="primary"
+                                    startIcon={<EditIcon />}
+                                    sx={{ textTransform: "none" }}
                                   >
                                     Edit
                                   </Button>
                                 </Link>
                                 <Button
                                   onClick={() => handleDelete(article._id)}
-                                  endIcon={<DeleteIcon />}
                                   variant="contained"
                                   size="small"
                                   color="error"
-                                  style={{ textTransform: "none" }}
+                                  startIcon={<DeleteIcon />}
+                                  sx={{ textTransform: "none" }}
                                 >
                                   Delete
                                 </Button>
@@ -157,7 +175,7 @@ export const ViewNews = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}
                   component="div"
-                  count={news.length} // Total number of contacts
+                  count={news.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onPageChange={handleChangePage}

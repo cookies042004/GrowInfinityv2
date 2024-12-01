@@ -7,6 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import EventIcon from '@mui/icons-material/Event';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 
 export const AdminSidebar = ({ mobileMenu }) => {
   const [accordions, setAccordions] = useState([
@@ -34,7 +35,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
       }`}
       aria-label="Sidebar"
     >
-      <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+      <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800 mt-3">
         <ul className="space-y-2 font-medium">
           <li>
             <Link
@@ -412,7 +413,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               data-collapse-toggle="dropdown-example"
               onClick={() => handleAccordion(7)}
             >
-              <ContactsIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+              <QuestionAnswerIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
                 Property Enquiry
               </span>

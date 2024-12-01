@@ -10,6 +10,7 @@ export const useFetchData = (url) => {
     try {
       setLoading(true);
       const response = await axios.get(url);
+      
       if (response.data.success) {
         setData(response.data || []); // Set data as an array or default to []
       } else {
