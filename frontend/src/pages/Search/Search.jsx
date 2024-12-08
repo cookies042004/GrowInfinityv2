@@ -7,51 +7,51 @@ import { useFetchData } from "../../hooks/useFetchData";
 
 export const Search = () => {
   const { id } = useParams();
-  const apiUrl = `${process.env.BASE_URL}/api/v1/property/search?query=${id}`
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property/search?query=${id}`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
   const properties = data.properties;
 
-
   return (
     <Layout>
       {/* Search Hero  */}
-      <div className="searchbanner flex items-center lg:ps-24">
+      <div className="searchbanner flex items-center justify-center">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 text-center lg:col-span-6 lg:text-left">
-            <h1 className="font-dmsans font-medium text-white text-5xl lg:text-[86.76px]">
+          <div className="col-span-12 text-center mt-10 lg:mt-20 flex justify-center items-center">
+            <h1 className="font-dmsans text-3xl lg:text-4xl font-medium text-white">
               Search Properties
             </h1>
-            <p className="font-dmsans font-normal text-white text-xl py-4  lg:text-[22.39px] px-5 lg:px-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna
-            </p>
           </div>
         </div>
       </div>
 
       <div className="flex my-8 justify-center">
-        <h3 className="text-5xl">Search results for <span className="font-bold capitalize">{id}</span> </h3>
+        <h3 className="text-3xl">
+          Search results for <span className="font-bold capitalize">{id}</span>{" "}
+        </h3>
       </div>
 
       <div className="grid sm:grid-cols-12 mx-16">
-        {
-          properties && properties.map((property) => {
+        {properties &&
+          properties.map((property) => {
             return (
-              <div className="col-span-4 flex justify-center">
-                <PropertyCard key={property._id}
+              <div className="col-span-3 flex justify-center m-3">
+                <PropertyCard
+                  key={property._id}
                   id={property._id}
                   name={property.name}
-                  address={property.address}
-                  image={property.propertyImages[0]} />
+                  image={property.image[0]}
+                  location={property.location}
+                  builder={property.builder}
+                  unit={property.unit}
+                  size={property.size}
+                  price={property.price}
+                />
               </div>
-            )
-          })
-        }
-
+            );
+          })}
       </div>
-
     </Layout>
   );
 };

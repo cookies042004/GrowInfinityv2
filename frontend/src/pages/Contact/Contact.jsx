@@ -25,7 +25,6 @@ export const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    budget: "",
     message: "",
   });
 
@@ -79,7 +78,6 @@ export const Contact = () => {
           name: "",
           email: "",
           phone: "",
-          budget: "",
           message: "",
         });
       } else {

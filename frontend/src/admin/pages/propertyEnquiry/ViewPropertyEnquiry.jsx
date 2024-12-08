@@ -88,13 +88,22 @@ export const ViewPropertyEnquiry = () => {
                           Name
                         </TableCell>
                         <TableCell className="font-semibold text-gray-700">
+                          Email
+                        </TableCell>
+                        <TableCell className="font-semibold text-gray-700">
                           Mobile
                         </TableCell>
                         <TableCell className="font-semibold text-gray-700">
-                          Property
+                          Property Name
                         </TableCell>
                         <TableCell className="font-semibold text-gray-700">
-                          Message
+                          Reason
+                        </TableCell>
+                        <TableCell className="font-semibold text-gray-700">
+                          Dealer
+                        </TableCell>
+                        <TableCell className="font-semibold text-gray-700">
+                          Date
                         </TableCell>
                       </TableRow>
                     </TableHead>
@@ -120,13 +129,22 @@ export const ViewPropertyEnquiry = () => {
                               {propertyEnquiry.name}
                             </TableCell>
                             <TableCell className="text-gray-600">
+                              {propertyEnquiry.email}
+                            </TableCell>
+                            <TableCell className="text-gray-600">
                               {propertyEnquiry.mobile}
                             </TableCell>
                             <TableCell className="text-gray-600">
                               {propertyEnquiry.property.name}
                             </TableCell>
                             <TableCell className="text-gray-600">
-                              {propertyEnquiry.message}
+                              {propertyEnquiry.reason}
+                            </TableCell>
+                            <TableCell className="text-gray-600">
+                              {propertyEnquiry.dealer}
+                            </TableCell>
+                            <TableCell>
+                              {new Date(propertyEnquiry.createdAt).toLocaleDateString()}
                             </TableCell>
                           </TableRow>
                         ))}

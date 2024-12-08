@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Layout } from "../../components/Layout";
 
 import "./Home.css";
-import { PropertyCard } from "../../components/PropertyCard";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import AspectRatioIcon from "@mui/icons-material/AspectRatio";
@@ -14,20 +13,14 @@ import { Testimonials } from "../../components/Testimonials";
 import { Typewriter } from "react-simple-typewriter";
 
 import PureCounter from "@srexi/purecounterjs";
-import { Link, useNavigate } from "react-router-dom";
-import { useFetchData } from "../../hooks/useFetchData";
+import { Link } from "react-router-dom";
 import Icon1 from "../../assets/img/Icon.png";
 import Icon2 from "../../assets/img/Icon (1).png";
 import Icon3 from "../../assets/img/Icon (2).png";
-import gallery2 from "../../assets/img/gallery2.png";
-import gallery1 from "../../assets/img/gallery1.png";
-import gallery3 from "../../assets/img/gallery3.png";
 import home from "../../assets/img/home.png";
 import house from "../../assets/img/house.png";
 import EastIcon from "@mui/icons-material/East";
 import { Card } from "../../components/Card";
-import { NewsCard } from "../../components/NewsCard";
-
 import { Button } from "@mui/material";
 import { Marquee } from "../../components/Marquee";
 import { LatestNews } from "../../components/LatestNews";
@@ -38,17 +31,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import findRealEstate from "../../assets/img/find real estate.jpg";
 import keys from "../../assets/img/keys.jpeg";
 import realtor from "../../assets/img/meet realtor.jpeg";
+
 export const Home = () => {
   useEffect(() => {
     new PureCounter();
   }, []);
 
   const [calculator, setCalculator] = useState(false);
-
-  const apiUrl = `${process.env.BASE_URL}/api/v1/property`;
-  const { data, loading, error, refetch } = useFetchData(apiUrl);
-
-  const properties = data.properties;
 
   return (
     <Layout>
@@ -114,30 +103,9 @@ export const Home = () => {
         <h1 className="text-center text-black lg:text-4xl text-2xl font-bold py-8 lg:font-medium">
           New Launches
         </h1>
-        {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
-          {properties &&
-            properties
-              .filter(
-                (property) => property.category.name == "Featured Projects"
-              )
-              .slice(0, 3)
-              .map((property) => {
-                return (
-                  <PropertyCard
-                    key={property._id}
-                    id={property._id}
-                    name={property.name}
-                    address={property.address}
-                    image={property.propertyImages[0]}
-                  />
-                );
-              })}
-        </div> */}
-
-        <Card />
-
+        <Card category="New Launches" />
         <div className="flex justify-center my-3">
-          <Link to={"/property/featured-projects"}>
+          <Link to={"/property/new-launches"}>
             <Button
               size="large"
               variant="contained"
@@ -159,26 +127,9 @@ export const Home = () => {
         <h1 className="text-center text-black lg:text-4xl text-2xl font-bold py-8 lg:font-medium">
           Luxury Living
         </h1>
-        {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
-          {properties &&
-            properties
-              .filter((property) => property.category.name == "Luxury Project")
-              .slice(0, 3)
-              .map((property) => {
-                return (
-                  <PropertyCard
-                    key={property._id}
-                    id={property._id}
-                    name={property.name}
-                    address={property.address}
-                    image={property.propertyImages[0]}
-                  />
-                );
-              })}
-        </div> */}
-        <Card />
+        <Card category="Luxury Living" />
         <div className="flex justify-center my-3">
-          <Link to={"/property/featured-projects"}>
+          <Link to={"/property/luxury-living"}>
             <Button
               size="large"
               variant="contained"
@@ -328,26 +279,9 @@ export const Home = () => {
         <h1 className="text-center text-black  text-2xl lg:text-4xl font-bold py-8 lg:font-medium">
           Affordable Living
         </h1>
-        {/* <div className="flex justify-around mx-5 my-4 overflow-hidden">
-          {properties &&
-            properties
-              .filter((property) => property.category.name == "Top Properties")
-              .slice(0, 3)
-              .map((property) => {
-                return (
-                  <PropertyCard
-                    key={property._id}
-                    id={property._id}
-                    name={property.name}
-                    address={property.address}
-                    image={property.propertyImages[0]}
-                  />
-                );
-              })}
-        </div> */}
-        <Card />
+        <Card category="Affordable Living" />
         <div className="flex justify-center my-3">
-          <Link to={"/property/top-properties"}>
+          <Link to={"/property/affordable-living"}>
             <Button
               size="large"
               variant="contained"

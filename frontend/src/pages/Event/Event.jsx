@@ -3,8 +3,13 @@ import "./Event.css";
 import { Layout } from "../../components/Layout";
 import { NavigationBar } from "../../components/NavigationBar";
 import { Link } from "react-router-dom";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const Event = () => {
+  const apiUrl = `${process.env.BASE_URL}/api/v1/events`;
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
+  const events = data.events;
+
   return (
     <Layout>
       <div className="eventbanner flex justify-center items-center">
@@ -24,147 +29,35 @@ export const Event = () => {
           Events
         </h1>
         <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto mt-3 lg:mt-8">
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-            <div className="card">
-              <div className="content">
-                <h2 className="title">Mountain View</h2>
-                <p className="copy">
-                  Check out all of these gorgeous mountain trips with beautiful
-                  views of, you guessed it, the mountains
-                </p>
-                <p className="copy-1 text-lg">Posted On: 10/12/2024</p>
-
-                <Link to="/event/abc">
-                  <button className="btn">View Trips</button>
-                </Link>
-              </div>
-            </div>
-          </div>
+          {events &&
+            events.map((event) => {
+              const imageUrl = `${process.env.BASE_URL}/${event.image[0]}`.replace(/\\/g, '/');
+              return (
+                <div
+                  className="col-span-12 md:col-span-6 lg:col-span-4 m-5"
+                  key={event._id}
+                >
+                  <div
+                    className="card bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url(${imageUrl})`,
+                    }}
+                  >
+                    <div className="content">
+                      <h2 className="title">{event.title}</h2>
+                      <p className="copy">{event.description}</p>
+                      <p className="copy-1 text-lg">
+                        Posted On:{" "}
+                        {new Date(event.createdAt).toLocaleDateString()}
+                      </p>
+                      <Link to={`/event/${event._id}`}>
+                        <button className="btn">View Trips</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
     </Layout>

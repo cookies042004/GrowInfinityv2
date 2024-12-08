@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { AdminLayout } from "../../components/AdminLayout";
 import {
+  Box,
   Paper,
   Table,
   TableBody,
@@ -92,23 +93,26 @@ export const ViewProperty = () => {
             )}
             {properties && (
               <>
+
                 <TableContainer>
-                  <Table>
+                  <Table sx={{ width: '100%' }}>
                     <TableHead>
                       <TableRow className="bg-gray-100">
                         <TableCell>S No.</TableCell>
-                        <TableCell>Property Category</TableCell>
-                        <TableCell>Property Name</TableCell>
-                        <TableCell>Property Location</TableCell>
-                        <TableCell>Property Description</TableCell>
-                        <TableCell>Property Address</TableCell>
-                        <TableCell>Parking</TableCell>
+                        <TableCell>Category</TableCell>
+                        <TableCell>Name</TableCell>
+                        <TableCell>Builder</TableCell>
+                        <TableCell>Location</TableCell>
+                        <TableCell>Description</TableCell>
+                        <TableCell>Address</TableCell>
+                        <TableCell>Unit (BHK)</TableCell>
+                        <TableCell>Size (sq.ft)</TableCell>
+                        <TableCell>Price (₹)</TableCell>
                         <TableCell>Furnish Type</TableCell>
                         <TableCell>Flat Amenity</TableCell>
                         <TableCell>Society Amenity</TableCell>
                         <TableCell>Location Advantages</TableCell>
-                        <TableCell>Property Images</TableCell>
-                        <TableCell>Property Brochure</TableCell>
+                        <TableCell>Images</TableCell>
                         <TableCell>Action</TableCell>
                       </TableRow>
                     </TableHead>
@@ -126,18 +130,15 @@ export const ViewProperty = () => {
                             <TableCell>{i + 1}</TableCell>
                             <TableCell>{property.category?.name}</TableCell>
                             <TableCell>{property.name}</TableCell>
+                            <TableCell>{property.builder}</TableCell>
                             <TableCell>{property.location}</TableCell>
                             <TableCell>{property.description}</TableCell>
                             <TableCell>
-                              {property.address +
-                                ", " +
-                                property.city +
-                                ", " +
-                                property.state +
-                                ", " +
-                                property.pincode}
+                              {property.address}
                             </TableCell>
-                            <TableCell>{property.parking}</TableCell>
+                            <TableCell>{property.unit}</TableCell>
+                            <TableCell>{property.size}</TableCell>
+                            <TableCell>{property.price}</TableCell>
                             <TableCell>{property.furnishType}</TableCell>
                             <TableCell>
                               {property.amenities
@@ -165,8 +166,8 @@ export const ViewProperty = () => {
                                 ))}
                             </TableCell>
                             <TableCell>
-                              <div className="flex flex-col gap-3">
-                                {property.propertyImages?.map(
+                              <Box className="flex flex-wrap gap-2">
+                                {property.image?.map(
                                   (element, index) => (
                                     <img
                                       key={index}
@@ -184,37 +185,22 @@ export const ViewProperty = () => {
                                     />
                                   )
                                 )}
-                              </div>
+                              </Box>
                             </TableCell>
+
                             <TableCell>
-                              {property.brochure?.split("\\").pop()}
-                            </TableCell>
-                            <TableCell>
-                              <div className="flex gap-2 justify-center">
-                                <Link
-                                  to={`/admin/dashboard/update-property/${property._id}`}
-                                >
-                                  <Button
-                                    variant="outlined"
-                                    size="small"
-                                    color="primary"
-                                    startIcon={<EditIcon />}
-                                    sx={{ textTransform: "none" }}
-                                  >
-                                    Edit
-                                  </Button>
-                                </Link>
-                                <Button
-                                  onClick={() => handleDelete(property._id)}
-                                  variant="contained"
-                                  size="small"
-                                  color="error"
-                                  startIcon={<DeleteIcon />}
-                                  sx={{ textTransform: "none" }}
-                                >
-                                  Delete
-                                </Button>
-                              </div>
+
+                              <Button
+                                onClick={() => handleDelete(property._id)}
+                                variant="contained"
+                                size="small"
+                                color="error"
+                                startIcon={<DeleteIcon />}
+                                sx={{ textTransform: "none" }}
+                              >
+                                Delete
+                              </Button>
+
                             </TableCell>
                           </TableRow>
                         ))}
@@ -236,9 +222,9 @@ export const ViewProperty = () => {
                       justifyContent: "center",
                     },
                     ".MuiTablePagination-selectLabel, .MuiTablePagination-input":
-                      {
-                        fontSize: "0.9rem",
-                      },
+                    {
+                      fontSize: "0.9rem",
+                    },
                   }}
                 />
               </>

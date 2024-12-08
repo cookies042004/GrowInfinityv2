@@ -93,8 +93,8 @@ export const AdminLogin = () => {
           style={{
             backdropFilter: "blur(30px)",
           }}
-        >
-          <h2 className="text-center text-3xl">Admin Login</h2>
+        > 
+          <h2 className="text-center text-3xl mt-4">Admin Login</h2>
           <h5 className="text-center text-sm pt-3">
             Welcome back! Unlock the power of administrative controls.
           </h5>

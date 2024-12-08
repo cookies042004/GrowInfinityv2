@@ -1,16 +1,31 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
-import "./SingleProject.css"
+import "./SingleProject.css";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
 import { PropertyCard } from "../../components/PropertyCard";
-import { Card } from "../../components/Card";
 
 export const SingleProject = () => {
   const { id } = useParams();
-  // const apiUrl = `/api/v1/property`;
-  // const { data, loading, error, refetch } = useFetchData(apiUrl);
-  // const properties = data.properties;
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property`;
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
+  const properties = data.properties || [];
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const capitalizeWords = (str) => {
+    return str
+      .split(" ") // Split the string into words
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+      .join(" "); // Join the words back together
+  };
+
   return (
     <Layout>
       <div className="projectbanner flex justify-center items-center">
@@ -22,10 +37,29 @@ export const SingleProject = () => {
           </div>
         </div>
       </div>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+
+      <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto my-10">
+        {properties &&
+          properties
+            .filter((property) => property.category.name == capitalizeWords(id.replace("-", " ")))
+            .map((property) => {
+              return (
+                <div className="col-span-12 lg:col-span-3 m-3">
+                  <PropertyCard
+                    key={property._id}
+                    id={property._id}
+                    name={property.name}
+                    image={property.image[0]}
+                    location={property.location}
+                    builder={property.builder}
+                    unit={property.unit}
+                    size={property.size}
+                    price={property.price}
+                  />
+                </div>
+              );
+            })}
+      </div>
     </Layout>
   );
 };

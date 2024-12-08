@@ -62,36 +62,40 @@ const createProperty = async (req, res) => {
     const {
       category,
       name,
+      builder,
+      unit,
+      size,
+      price,
       location,
       description,
       address,
-      city,
-      state,
-      pincode,
-      parking,
       furnishType,
-      constructionStatus,
       amenities,
     } = req.body;
 
-    const propertyImages = req.files.propertyImages.map((file) => file.path);
-    const brochure = req.files.brochure[0].path;
+    const image = [];
+    const paths = req.files;
+
+    paths.forEach((path, index) => {
+      image[index] = path.path;
+    });
+
+    // const propertyImages = req.files.propertyImages.map((file) => file.path);
+    // const brochure = req.files.brochure[0].path;
 
     const newProperty = new Property({
       category,
       name,
+      builder,
+      unit,
+      size,
+      price,
       location,
       description,
       address,
-      city,
-      state,
-      pincode,
-      parking,
       furnishType,
-      constructionStatus,
       amenities,
-      propertyImages,
-      brochure,
+      image,
     });
 
     await newProperty.save();
@@ -127,15 +131,15 @@ const deleteProperty = async (req, res) => {
     }
 
     // Delete the brochure if it exists
-    const brochurePath = path.join(__dirname, "../", property.brochure);
-    if (property.brochure && fs.existsSync(brochurePath)) {
-      fs.unlinkSync(brochurePath);
-    }
+    // const brochurePath = path.join(__dirname, "../", property.brochure);
+    // if (property.brochure && fs.existsSync(brochurePath)) {
+    //   fs.unlinkSync(brochurePath);
+    // }
 
     // Delete property images if they exist
-    if (property.propertyImages && property.propertyImages.length > 0) {
-      property.propertyImages.forEach((image) => {
-        const imagePath = path.join(__dirname, "../", image);
+    if (property.image && property.image.length > 0) {
+      property.image.forEach((ele) => {
+        const imagePath = path.join(__dirname, "../", ele);
         if (fs.existsSync(imagePath)) {
           fs.unlinkSync(imagePath);
         }
@@ -219,11 +223,42 @@ const getTotalProperties = async (req, res) => {
   }
 };
 
+// Recent Property - Fetch latest 5 properties based on createdAt
+const recentProperty = async (req, res) => {
+  try {
+    const recentProperties = await Property.find()
+      .sort({ createdAt: -1 }) // Sort by createdAt in descending order (latest first)
+      .limit(6) // Limit to 5 properties
+
+    if (recentProperties.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No recent properties found.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Recent properties fetched successfully!",
+      properties: recentProperties,
+    });
+  } catch (error) {
+    console.log("Error in recentProperty:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error,
+    });
+  }
+};
+
+
 module.exports = {
   getProperty,
   getSingleProperty,
   createProperty,
   deleteProperty,
   searchProperty,
-  getTotalProperties
+  getTotalProperties,
+  recentProperty
 };

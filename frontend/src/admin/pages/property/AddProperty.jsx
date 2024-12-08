@@ -45,15 +45,13 @@ export const AddProperty = () => {
   const [formData, setFormData] = useState({
     category: "",
     name: "",
+    builder: "",
+    unit: "",
+    size: "",
+    price: "",
     location: "",
     address: "",
     description: "",
-    city: "",
-    state: "",
-    pincode: "",
-    videoLink: "",
-    constructionStatus: "",
-    parking: "",
     furnishType: "",
     societyAmenities: [],
     flatAmenities: [],
@@ -62,7 +60,6 @@ export const AddProperty = () => {
 
   // State to track uploaded images and brochure
   const [uploadedImages, setUploadedImages] = useState([]);
-  const [brochure, setBrochure] = useState(null);
 
   // Handle form input changes
   const handleChange = (event) => {
@@ -100,12 +97,6 @@ export const AddProperty = () => {
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
     setUploadedImages((prevImages) => [...prevImages, ...files]);
-  };
-
-  // Handler for uploading brochure
-  const handleBrochureUpload = (event) => {
-    const file = event.target.files[0];
-    setBrochure(file);
   };
 
   // Function to display image previews
@@ -150,13 +141,8 @@ export const AddProperty = () => {
 
     // Append uploaded images
     uploadedImages.forEach((image) => {
-      formDataToSend.append("propertyImages", image);
+      formDataToSend.append("image", image);
     });
-
-    // Append the brochure if it exists
-    if (brochure) {
-      formDataToSend.append("brochure", brochure);
-    }
 
     try {
       const response = await axios.post(
@@ -174,22 +160,20 @@ export const AddProperty = () => {
         setFormData({
           category: "",
           name: "",
+          builder: "",
+          unit: "",
+          size: "",
+          price: "",
           location: "",
           address: "",
           description: "",
-          city: "",
-          state: "",
-          pincode: "",
-          videoLink: "",
-          constructionStatus: "",
-          parking: "",
           furnishType: "",
           societyAmenities: [],
           flatAmenities: [],
           locationAdvantages: [],
         });
         setUploadedImages([]); 
-        setBrochure(null); 
+        
       }
     } catch (error) {
       console.error("Error adding property:", error);
@@ -246,8 +230,57 @@ export const AddProperty = () => {
                   />
                 </div>
 
-                {/* Property Location */}
                 <div className="w-full sm:w-1/2 mb-4 p-2">
+                  <TextField
+                    label="Enter Builder Name*"
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                    name="builder"
+                    value={formData.builder}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </div>
+                <div className="w-full sm:w-1/2 mb-4 p-2">
+                  <TextField
+                    label="Enter Unit (in BHK)*"
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                    name="unit"
+                    value={formData.unit}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </div>
+                <div className="w-full sm:w-1/2 mb-4 p-2">
+                  <TextField
+                    label="Enter Size (in sq.ft)*"
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                    name="size"
+                    value={formData.size}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </div>
+                <div className="w-full sm:w-1/2 mb-4 p-2">
+                  <TextField
+                    label="Enter Price(In digits)*"
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                    name="price"
+                    value={formData.price}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </div>
+
+                {/* Property Location */}
+                <div className="w-full mb-4 p-2">
                   <TextField
                     label="Enter Property Location*"
                     variant="outlined"
@@ -261,7 +294,7 @@ export const AddProperty = () => {
                 </div>
 
                 {/* Property Address */}
-                <div className="w-full sm:w-1/2 mb-4 p-2">
+                <div className="w-full mb-4 p-2">
                   <TextField
                     label="Enter Property Address*"
                     variant="outlined"
@@ -287,109 +320,6 @@ export const AddProperty = () => {
                     multiline
                     fullWidth
                   />
-                </div>
-
-                {/* City */}
-                <div className="w-full sm:w-1/2 mb-4 p-2">
-                  <TextField
-                    label="Enter Property City*"
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </div>
-
-                {/* State */}
-                <div className="w-full sm:w-1/2 mb-4 p-2">
-                  <TextField
-                    label="Enter Property State*"
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    name="state"
-                    value={formData.state}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </div>
-
-                {/* Pincode */}
-                <div className="w-full sm:w-1/2 mb-4 p-2">
-                  <TextField
-                    label="Enter Property Pincode*"
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    name="pincode"
-                    value={formData.pincode}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </div>
-
-                {/* Video Link */}
-                <div className="w-full sm:w-1/2 mb-4 p-2">
-                  <TextField
-                    label="Enter Youtube Video Link*"
-                    variant="outlined"
-                    color="secondary"
-                    size="small"
-                    name="videoLink"
-                    value={formData.videoLink}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </div>
-
-                {/* Construction Status */}
-                <div className="w-full mb-4 p-2">
-                  <FormControl>
-                    <FormLabel color="secondary">Construction Status</FormLabel>
-                    <RadioGroup
-                      row
-                      name="constructionStatus"
-                      value={formData.constructionStatus}
-                      onChange={handleChange}
-                    >
-                      <FormControlLabel
-                        value="Ready to move"
-                        control={<Radio color="secondary" />}
-                        label="Ready to move"
-                      />
-                      <FormControlLabel
-                        value="Under Construction"
-                        control={<Radio color="secondary" />}
-                        label="Under Construction"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </div>
-
-                <div className="w-full mb-4 p-2">
-                  <FormControl>
-                    <FormLabel color="secondary">Parking</FormLabel>
-                    <RadioGroup
-                      row
-                      name="parking"
-                      value={formData.parking}
-                      onChange={handleChange}
-                    >
-                      <FormControlLabel
-                        value="Covered"
-                        control={<Radio color="secondary" />}
-                        label="Covered"
-                      />
-                      <FormControlLabel
-                        value="Uncovered"
-                        control={<Radio color="secondary" />}
-                        label="Uncovered"
-                      />
-                    </RadioGroup>
-                  </FormControl>
                 </div>
 
                 {/* Furnish Type */}
@@ -510,40 +440,11 @@ export const AddProperty = () => {
                   </FormControl>
                 </div>
 
-                {/* Brochure Upload */}
-                <div className="w-full mb-4 p-2">
-                  <FormControl component="fieldset">
-                    <FormLabel id="brochure-upload">
-                      Upload Brochure (PDF)
-                    </FormLabel>
-                    <input
-                      accept="application/pdf"
-                      style={{ display: "none" }}
-                      id="brochure-upload-input"
-                      type="file"
-                      onChange={handleBrochureUpload}
-                    />
-                    <label htmlFor="brochure-upload-input">
-                      <Button
-                        variant="outlined"
-                        component="span"
-                        size="small"
-                        style={{ textTransform: "none" }}
-                      >
-                        Choose Brochure
-                      </Button>
-                    </label>
-                    <Typography variant="body2">
-                      {brochure ? brochure.name : "No brochure selected"}
-                    </Typography>
-                  </FormControl>
-                </div>
-
                 {/* Image Upload */}
                 <div className="w-full mb-4 p-2">
                   <FormControl component="fieldset">
                     <FormLabel id="image-upload">
-                      Upload Property Images (5 images only)
+                      Upload Property Images
                     </FormLabel>
                     <input
                       accept="image/*"

@@ -58,9 +58,36 @@ const getEvent = async (req, res) => {
   }
 };
 
+// Get Single Event
+const getSingleEvent = async (req, res) => {
+  try {
+    const { id } = req.params;
 
+    const event = await Event.findById(id);
 
+    // If the event doesn't exist, return 404
+    if (!event) {
+      return res.status(404).json({
+        success: false,
+        message: "Event not found",
+      });
+    }
 
+    // Return the found event data
+    res.status(200).json({
+      success: true,
+      message: "Event fetched successfully",
+      event,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error,
+    });
+  }
+};
 // Delete Event
 const deleteEvent = async (req, res) => {
   try {
@@ -128,4 +155,4 @@ const deleteEvent = async (req, res) => {
   }
 };
 
-module.exports = { createEvent, getEvent, deleteEvent };
+module.exports = { createEvent, getEvent, getSingleEvent, deleteEvent };

@@ -2,13 +2,15 @@ const propertyEnquiry = require("../models/propertyEnquiry");
 
 const createPropertyEnquiry = async (req, res) => {
   try {
-    const { name, mobile, property, message } = req.body;
+    const { name, email, mobile, property, reason, dealer } = req.body;
 
     const newPropertyEnquiry = new propertyEnquiry({
       name,
+      email,
       mobile,
       property,
-      message,
+      reason,
+      dealer,
     });
 
     await newPropertyEnquiry.save();

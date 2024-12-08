@@ -28,7 +28,6 @@ export const AddNews = () => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    console.log(file); // Add this to check if the file is correctly selected
     setFormData({
       ...formData,
       selectedFile: file, // Ensure the file is properly set
@@ -55,8 +54,6 @@ export const AddNews = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-
-      console.log(response); // Add this to check the response from the server
 
       if (response.data.success) {
         toast.success(response.data.message);

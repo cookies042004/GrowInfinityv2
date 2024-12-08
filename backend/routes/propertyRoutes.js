@@ -7,12 +7,14 @@ const {
   deleteProperty,
   searchProperty,
   getTotalProperties,
+  recentProperty,
 } = require("../controllers/propertyController");
 
 const router = express.Router();
 
 router.route("/search").get(searchProperty);
 router.get("/total-properties", getTotalProperties);  
+router.get("/recent-properties", recentProperty);  
 
 router.route("/").get(getProperty).post(upload, createProperty);
 

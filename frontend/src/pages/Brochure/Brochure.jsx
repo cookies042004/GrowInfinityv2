@@ -2,8 +2,9 @@ import React from "react";
 import { useFetchData } from "../../hooks/useFetchData";
 import { Layout } from "../../components/Layout";
 import gallery1 from "../../assets/img/gallery1.png";
-import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
-import DownloadIcon from "@mui/icons-material/Download";
+import gallery2 from "../../assets/img/gallery2.png";
+import gallery3 from "../../assets/img/gallery3.png";
+
 import "./Brochure.css";
 
 export const Brochure = () => {
@@ -61,7 +62,7 @@ export const Brochure = () => {
 
               {/* Image */}
               <img
-                src={gallery1}
+                src={gallery2}
                 alt="Gallery Image"
                 className="h-[280px] w-full rounded-t-lg object-cover"
               />
@@ -74,7 +75,7 @@ export const Brochure = () => {
               </button>
 
               {/* Title */}
-              <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
+              <h4 className="text-center text-xl font-roboto py-3 z-10">{`Tata Eureka`}</h4>
             </div>
           </div>
           <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-6">
@@ -84,7 +85,7 @@ export const Brochure = () => {
 
               {/* Image */}
               <img
-                src={gallery1}
+                src={gallery3}
                 alt="Gallery Image"
                 className="h-[280px] w-full rounded-t-lg object-cover"
               />
@@ -97,7 +98,7 @@ export const Brochure = () => {
               </button>
 
               {/* Title */}
-              <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
+              <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Hanei`}</h4>
             </div>
           </div>
           <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-6">
@@ -120,7 +121,7 @@ export const Brochure = () => {
               </button>
 
               {/* Title */}
-              <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
+              <h4 className="text-center text-xl font-roboto py-3 z-10">{`ATS Pristine`}</h4>
             </div>
           </div>
           <div className="col-span-12 md:col-span-6 lg:col-span-3 m-5 mx-6">
@@ -143,7 +144,7 @@ export const Brochure = () => {
               </button>
 
               {/* Title */}
-              <h4 className="text-center text-xl font-roboto py-3 z-10">{`Ace Starlit`}</h4>
+              <h4 className="text-center text-xl font-roboto py-3 z-10">{`Prestige`}</h4>
             </div>
           </div>
         </div>

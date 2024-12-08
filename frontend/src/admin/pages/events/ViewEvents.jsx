@@ -130,7 +130,7 @@ export const ViewEvents = () => {
                                   <img
                                     key={index}
                                     src={`${process.env.BASE_URL}/${img}`}
-                                    alt={`Image ${index + 1}`}
+                                    alt={`${event.title} Image ${index + 1}`}
                                     style={{
                                       height: "100px",
                                       width: "150px",

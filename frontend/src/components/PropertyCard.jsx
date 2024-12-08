@@ -1,135 +1,130 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import Axios
-import arrowRight from "../assets/img/arrow-right.png";
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import "./PropertyCard.css";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import HomeIcon from "@mui/icons-material/Home";
+import SquareFootIcon from "@mui/icons-material/SquareFoot";
+import { Button } from "@mui/material";
+import CallIcon from "@mui/icons-material/Call";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import DoneIcon from "@mui/icons-material/Done";
 import { Link } from "react-router-dom";
-import { Button, TextField } from "@mui/material";
+import { PropertyEnquiryForm } from "./PropertyEnquiryForm";
 
-export const PropertyCard = ({ id, name, address, image }) => {
+export const PropertyCard = ({
+  id,
+  name,
+  image,
+  location,
+  builder,
+  unit,
+  size,
+  price,
+}) => {
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', mobile: '', message: '', propertyName: name });
-  const [error, setError] = useState('');
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setFormData({ name: '', mobile: '', message: '', property: id }); // Reset form
-    setError('');
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.mobile || !formData.message) {
-      setError('All fields are required.');
-      return;
+  function toINRCr(amount) {
+    // Convert the amount to Crores
+    let crAmount = amount / 10000000;
+    // If the decimal part is 0, return without decimals
+    if (crAmount % 1 === 0) {
+      return crAmount.toFixed(0) + " Cr";
+    } else {
+      return crAmount.toFixed(1) + " Cr";
     }
-
-    try {
-      await axios.post(`${process.env.BASE_URL}/api/v1/property-enquiry`, formData);
-      handleClose(); // Close modal on successful submission
-      alert('Enquiry submitted successfully!');
-    } catch (err) {
-      console.error(err);
-      setError('Failed to submit enquiry.');
-    }
-  };
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 600,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+  }
 
   return (
-    <div className="property-card font-poppins text-[#03002E] p-5 w-[350px] my-5">
+    <div className="border relative p-2 hover:shadow-2xl bg-white">
       <div className="flex justify-center">
         <img
           src={`${process.env.BASE_URL}/${image}`}
           alt=""
-          className="rounded-[50%] object-center"
-          style={{ height: '300px' }}
+          className="h-[230px] w-[100%]"
         />
       </div>
-      <h1 className="text-xl font-semibold mt-5">{name}</h1>
-      <p className="font-normal ">{address}</p>
-      <p className="font-semibold text-[#161A23]">3 BHK</p>
-      <p className="font-semibold">From INR 17 Lakh</p>
-      <div className="flex gap-8 py-6">
-        <div className="bg-[#03002E] rounded-[16.7px] px-7 py-1">
+      <div className="mt-3 font-roboto text-sm flex justify-between">
+        <p className="font-semibold ps-3 text-sm">
+          {name} <br />{" "}
+          <span className="text-gray-700 font-normal text-xs">
+            By {builder}
+          </span>
+        </p>
+        <p className="font-semibold text-[#EB664E] text-lg">
+          ₹{toINRCr(price)}*
+        </p>
+      </div>
+      <div className="flex items-center mt-3">
+        <LocationOnIcon
+          sx={{
+            color: "darkblue",
+            fontSize: "18px",
+            paddingBottom: "3px",
+          }}
+        />
+        <p className="text-xs">{location}</p>
+      </div>
+      <div className="flex gap-3 justify-between mt-5 font-roboto">
+        <div className="flex gap-1 items-center">
+          <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+          <p className="text-xs">{unit} BHK</p>
+        </div>
+        <div className="flex gap-1 items-center">
+          <SquareFootIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+          <p className="text-xs">{size} sq.ft</p>
+        </div>
+        <div className="flex gap-1 items-center">
+          <CurrencyRupeeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
+          <p className="text-xs">{Math.trunc(price / size)} / sq.ft.</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex gap-3">
+        <div className="flex-1">
           <Link to={`/project/${id}`}>
-            <button className="text-white">Details</button>
+            <Button
+              fullWidth
+              variant="outlined"
+              sx={{
+                backgroundColor: "#03002e",
+                color: "#fff",
+                textTransform: "none",
+              }}
+            >
+              View Details
+            </Button>
           </Link>
         </div>
-        <button onClick={handleOpen} className="text-white bg-[#03002E] rounded-[16.7px] px-7 py-1 flex justify-between gap-4 items-center">
-          Enquiry
-          <span>
-            <img src={arrowRight} alt="" />
-          </span>
-        </button>
+        <div className="flex-1">
+          <Button
+            onClick={handleOpen}
+            fullWidth
+            variant="contained"
+            color="success"
+            startIcon={<CallIcon />}
+            sx={{ color: "#fff", textTransform: "none" }}
+          >
+            Enquiry
+          </Button>
+        </div>
       </div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ textAlign: 'center' }}>
-            Enquiry Form
-          </Typography>
-          {error && <Typography color="error">{error}</Typography>}
-          <form onSubmit={handleSubmit}>
-            <div className="my-10">
-              <TextField size="small" id="name" name="name" label="Name" variant="outlined" value={formData.name} fullWidth
-                onChange={handleChange} required />
-            </div>
-            <div className="my-10">
-              <TextField size="small" id="mobile" name="mobile" label="Mobile Number" variant="outlined" value={formData.mobile} fullWidth
-                onChange={handleChange} required />
-            </div>
-            <div className="my-10">
-              <TextField size="small"
-                required
-                id="propertyName"
-                name="propertyName"
-                label="Property"
-                defaultValue={name}
-                fullWidth
-              />
-            </div>
-            <div className="my-10">
-              <TextField size="small"
-                required
-                id="message"
-                name="message"
-                label="Message"
-                multiline
-                value={formData.message}
-                onChange={handleChange}
-                fullWidth
-              />
-            </div>
-            <input type="hidden" name="propertyName" value={formData.propertyName} />
-            <Button variant="contained" sx={{ background: '#03002E', textTransform: 'none', }} fullWidth type="submit">
-              Submit
-            </Button>
-          </form>
-        </Box>
-      </Modal>
+
+      <PropertyEnquiryForm id={id} handleClose={handleClose} open={open} />
+
+      <div className="absolute top-[20px]">
+        <Button
+          endIcon={<DoneIcon />}
+          size="small"
+          variant="contained"
+          color="success"
+          sx={{ borderRadius: "0px", height: "25px" }}
+        >
+          RERA
+        </Button>
+      </div>
     </div>
   );
 };

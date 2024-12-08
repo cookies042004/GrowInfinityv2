@@ -3,27 +3,54 @@ import { Layout } from "../../components/Layout";
 import gallery1 from "../../assets/img/gallery1.png";
 import gallery2 from "../../assets/img/gallery2.png";
 import gallery3 from "../../assets/img/gallery3.png";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import EastIcon from "@mui/icons-material/East";
+import { useParams } from "react-router-dom";
+import { useFetchData } from "../../hooks/useFetchData";
+
 import "./ProjectDetails.css";
 import { Link } from "react-router-dom";
 import { Card } from "../../components/Card";
 import { Marquee } from "../../components/Marquee";
-import ReactPlayer from "react-player";
-import Battery5BarIcon from "@mui/icons-material/Battery5Bar";
 import { Button } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import PoolIcon from "@mui/icons-material/Pool";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import { Calculator } from "../../components/Calculator";
 import comingsoon from "../../assets/img/comingsoon.jpg";
+import { RecentProperty } from "../../components/RecentProperty";
+import { ContactForm } from "../../components/ContactForm";
+
 export const ProjectDetails = () => {
-  const images = [gallery1, gallery2, gallery3];
+  const { id } = useParams();
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property/${id}`;
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
+  const property = data.property;
+
+  const images = [];
+
+  if (property) {
+    property.image.forEach((item) => {
+      let realImage = `${process.env.BASE_URL}/${item}`;
+      images.push(realImage);
+    });
+  }
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
+
+  function toINRCr(amount) {
+    // Convert the amount to Crores
+    let crAmount = amount / 10000000;
+    // If the decimal part is 0, return without decimals
+    if (crAmount % 1 === 0) {
+      return crAmount.toFixed(0) + " Cr";
+    } else {
+      return crAmount.toFixed(1) + " Cr";
+    }
+  }
 
   const handleNext = () => {
     setIsFading(true);
@@ -48,18 +75,13 @@ export const ProjectDetails = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const fullDescription = `Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-    Facilis velit voluptatem rerum molestiae. Debitis ab, aliquid quasi fugit animi repellendus deleniti maiores ullam accusamus
-    hic, exercitationem veniam soluta possimus sit minima excepturi maxime laboriosam sequi facilis? Maiores, obcaecati
-    perspiciatis. Quidem explicabo, molestias corrupti hic ex similique sequi illo cupiditate voluptatem officiis non
-    temporibus laborum iure deserunt nisi officia? Provident, excepturi corrupti doloremque nobis, perspiciatis quaerat
-    aliquid porro quidem aperiam minus dolorem ipsum eum. Eum, necessitatibus! Ducimus mollitia sed perspiciatis incidunt
-    sequi odio, repudiandae assumenda. Dolores ipsum magni aut iusto tempore aliquid laborum ut excepturi, labore perferendis
-    rem. Ea expedita architecto nisi quae dolorum possimus laboriosam autem. Optio possimus eos molestias impedit
-    aspernatur nesciunt earum, odio inventore sapiente praesentium quidem illo libero dolore perspiciatis quae ullam eum
-    doloremque sit id recusandae, non ipsum itaque excepturi eaque.`;
+  const fullDescription = property?.description || "";
 
-  const truncatedDescription = fullDescription.slice(0, 200) + "...";
+  // Truncate description only if it has content
+  const truncatedDescription =
+    fullDescription.length > 200
+      ? fullDescription.slice(0, 200) + "..."
+      : fullDescription; // If less than 200 characters, no truncation
 
   const handleAnchorClick = (e) => {
     e.preventDefault();
@@ -174,15 +196,25 @@ export const ProjectDetails = () => {
                 <div className="hidden lg:block col-span-12 lg:col-span-4">
                   <div className="flex flex-col gap-3">
                     <img
-                      src={gallery2}
+                      src={images[(currentIndex + 1) % images.length]}
                       className="w-full h-[195px]"
-                      alt="Carousel slide"
+                      alt="Next image in carousel"
                     />
-                    <img
-                      src={gallery3}
-                      className="w-full h-[195px]"
-                      alt="Carousel slide"
-                    />
+
+                    <div className="relative">
+                      <img
+                        src={images[images.length - 1]}
+                        className="w-full h-[195px]"
+                        alt="Carousel slide"
+                      />
+                      <div className="absolute top-0 w-full h-[195px] bg-[#3357ccc0] ">
+                        <div className="flex items-center justify-center h-full">
+                          <p className="text-white text-xl font-semibold">
+                            {property?.image.length - 2}+ Photos
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -190,13 +222,13 @@ export const ProjectDetails = () => {
                 <div className="font-roboto mt-6 flex justify-between">
                   <div>
                     <h1 className="font-medium text-2xl lg:text-4xl">
-                      CanterBury Lane
+                      {property?.name}
                     </h1>
-                    <p className="text-md mt-3">Noida, UP-201301</p>
+                    <p className="text-md mt-3">{property?.location}</p>
                   </div>
                   <div className="block lg:hidden">
                     <h5 className="font-roboto font-semibold text-[#EB664E] text-2xl lg:text-4xl">
-                      ₹2.8Cr*
+                      ₹{toINRCr(property?.price)}*
                     </h5>
                   </div>
                 </div>
@@ -211,7 +243,7 @@ export const ProjectDetails = () => {
                     Download PDF
                   </Button>
                   <a
-                    href={`https://wa.me/+918750238581?text=Hi I am interested in Max Estate 128, Please share the details.`}
+                    href={`https://wa.me/+918750238581?text=Hi I am interested in ${property?.name}, Please share the details.`}
                     target="_blank"
                   >
                     <Button
@@ -227,7 +259,7 @@ export const ProjectDetails = () => {
                 </div>
                 <div className="hidden justify-end  lg:flex">
                   <h5 className="font-roboto font-semibold text-[#EB664E] text-2xl lg:text-4xl">
-                    ₹2.8Cr*
+                    ₹{toINRCr(property?.price)}*
                   </h5>
                 </div>
               </div>
@@ -236,28 +268,32 @@ export const ProjectDetails = () => {
                 <div className="col-span-3">
                   <div className="flex items-center gap-2">
                     <HomeOutlinedIcon sx={{ color: "#5BC0EB" }} />
-                    <p className="font-roboto text-sm lg:text-lg">3 BHK</p>
+                    <p className="font-roboto text-sm lg:text-lg">
+                      {property?.unit} BHK
+                    </p>
                   </div>
                 </div>
                 <div className="col-span-3">
                   <div className="flex items-center gap-2">
                     <ChairOutlinedIcon sx={{ color: "#5BC0EB" }} />
                     <p className="font-roboto text-sm lg:text-lg">
-                      Semi-furnsihed
+                      {property?.furnishType}
                     </p>
                   </div>
                 </div>
                 <div className="col-span-3">
                   <div className="flex items-center gap-2">
                     <SpaceDashboardOutlinedIcon sx={{ color: "#5BC0EB" }} />
-                    <p className="font-roboto text-sm lg:text-lg">1850 sqft</p>
+                    <p className="font-roboto text-sm lg:text-lg">
+                      {property?.size} sqft
+                    </p>
                   </div>
                 </div>
                 <div className="col-span-3">
                   <div className="flex items-center gap-2">
                     <CurrencyRupeeOutlinedIcon sx={{ color: "#5BC0EB" }} />
                     <p className="font-roboto text-sm lg:text-lg">
-                      10.6K per sqft
+                      {Math.trunc(property?.price / property?.size)} per sqft
                     </p>
                   </div>
                 </div>
@@ -351,75 +387,26 @@ export const ProjectDetails = () => {
                       Society Amenities
                     </h3>
                     <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <PoolIcon size="large" sx={{ color: "#5BC0EB" }} />
-                          <p>Swimming pool</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
+                      {property &&
+                        property.amenities
+                          .filter((item) => item.type == "society_amenity")
+                          .map((item) => {
+                            return (
+                              <div
+                                className="col-span-6 md:col-span-6 lg:col-span-3"
+                                key={item._id}
+                              >
+                                <div className="flex items-center gap-3 p-3 lg:p-5">
+                                  <img
+                                    src={`${process.env.BASE_URL}/${item.image}`}
+                                    alt={item.name}
+                                    className="h-[30px] w-[30px]"
+                                  />
+                                  <p>{item.name}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
                     </div>
                   </div>
                 </div>
@@ -430,78 +417,26 @@ export const ProjectDetails = () => {
                       Flat Amenities
                     </h3>
                     <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3  p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
+                      {property &&
+                        property.amenities
+                          .filter((item) => item.type == "flat_amenity")
+                          .map((item) => {
+                            return (
+                              <div
+                                className="col-span-6 md:col-span-6 lg:col-span-3"
+                                key={item._id}
+                              >
+                                <div className="flex items-center gap-3 p-3 lg:p-5">
+                                  <img
+                                    src={`${process.env.BASE_URL}/${item.image}`}
+                                    alt={item.name}
+                                    className="h-[30px] w-[30px]"
+                                  />
+                                  <p>{item.name}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
                     </div>
                   </div>
                 </div>
@@ -516,78 +451,26 @@ export const ProjectDetails = () => {
                       Location Advantages
                     </h3>
                     <div className="flex flex-wrap lg:grid sm:grid-cols-12 mt-5 lg:gap-5">
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
-                      <div className="col-span-6 md:col-span-6 lg:col-span-3">
-                        <div className="flex items-center gap-3 p-3 lg:p-5">
-                          <Battery5BarIcon
-                            size="large"
-                            sx={{ color: "#5BC0EB" }}
-                          />
-                          <p>Power Backup</p>
-                        </div>
-                      </div>
+                      {property &&
+                        property.amenities
+                          .filter((item) => item.type == "location_advantages")
+                          .map((item) => {
+                            return (
+                              <div
+                                className="col-span-6 md:col-span-6 lg:col-span-3"
+                                key={item._id}
+                              >
+                                <div className="flex items-center gap-3 p-3 lg:p-5">
+                                  <img
+                                    src={`${process.env.BASE_URL}/${item.image}`}
+                                    alt={item.name}
+                                    className="h-[30px] w-[30px]"
+                                  />
+                                  <p>{item.name}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
                     </div>
                   </div>
                 </div>
@@ -609,9 +492,7 @@ export const ProjectDetails = () => {
                   <h3 className="text-xl font-poppins font-semibold">
                     Address
                   </h3>
-                  <p className="py-3 text-md">
-                    Tata Eureka Park, Sector-150, Noida, Uttar Pradesh - 201310
-                  </p>
+                  <p className="py-3 text-md">{property?.address}</p>
                 </div>
 
                 <div className="col-span-12">
@@ -621,154 +502,11 @@ export const ProjectDetails = () => {
             </div>
             <div className="col-span-12 lg:col-span-3 bg-gray-100 w-auto px-5">
               <div className="flex flex-col gap-5 sticky top-0">
-                <div className="bg-white px-5 py-8">
-                  <form>
-                    <h1 className="text-center text-lg font-medium font-roboto">
-                      Get Price on Request*
-                    </h1>
-                    <div className="grid sm:col-span-12 mt-4 gap-4">
-                      <div className="col-span-12">
-                        <label htmlFor="name" className="text-sm">
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          className="border w-full py-1 px-2 rounded-lg outline-none"
-                        />
-                      </div>
-                      <div className="col-span-12">
-                        <label htmlFor="" className="text-sm">
-                          Email
-                        </label>
-                        <input
-                          type="text"
-                          className="border w-full py-1 px-2 rounded-lg outline-none"
-                        />
-                      </div>
-                      <div className="col-span-12">
-                        <label htmlFor="" className="text-sm">
-                          Phone
-                        </label>
-                        <input
-                          type="text"
-                          className="border w-full py-1 px-2 rounded-lg outline-none"
-                        />
-                      </div>
-                      <div className="col-span-12">
-                        <Button
-                          fullWidth
-                          sx={{
-                            textTransform: "none",
-                            backgroundColor: "#03002e",
-                            marginTop: "10px",
-                          }}
-                          variant="contained"
-                        >
-                          Submit
-                        </Button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+                {/* Contact Form  */}
+                <ContactForm />
 
                 {/* Recent Property */}
-                <div className="bg-white p-5">
-                  <h1 className="text-xl text-center font-medium">
-                    Recent Property
-                  </h1>
-                  <div className="grid sm:grid-cols-12 gap-6 mt-5">
-                    <div className="col-span-12">
-                      <div className="flex gap-3">
-                        <img
-                          src={gallery1}
-                          alt=""
-                          className="h-[40px] w-[40px] rounded"
-                        />
-                        <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-sm font-medium">
-                            CanterBury Lane
-                          </h1>
-                          <p className="text-xs">Posted on: 05/11/2024</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-span-12">
-                      <div className="flex gap-3">
-                        <img
-                          src={gallery1}
-                          alt=""
-                          className="h-[40px] w-[40px] rounded"
-                        />
-                        <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-sm font-medium">
-                            CanterBury Lane
-                          </h1>
-                          <p className="text-xs">Posted on: 05/11/2024</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-span-12">
-                      <div className="flex gap-3">
-                        <img
-                          src={gallery1}
-                          alt=""
-                          className="h-[40px] w-[40px] rounded"
-                        />
-                        <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-sm font-medium">
-                            CanterBury Lane
-                          </h1>
-                          <p className="text-xs">Posted on: 05/11/2024</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-span-12">
-                      <div className="flex gap-3">
-                        <img
-                          src={gallery1}
-                          alt=""
-                          className="h-[40px] w-[40px] rounded"
-                        />
-                        <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-sm font-medium">
-                            CanterBury Lane
-                          </h1>
-                          <p className="text-xs">Posted on: 05/11/2024</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-span-12">
-                      <div className="flex gap-3">
-                        <img
-                          src={gallery1}
-                          alt=""
-                          className="h-[40px] w-[40px] rounded"
-                        />
-                        <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-sm font-medium">
-                            CanterBury Lane
-                          </h1>
-                          <p className="text-xs">Posted on: 05/11/2024</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-span-12">
-                      <div className="flex gap-3">
-                        <img
-                          src={gallery1}
-                          alt=""
-                          className="h-[40px] w-[40px] rounded"
-                        />
-                        <div className="flex flex-col items-center justify-center">
-                          <h1 className="text-sm font-medium">
-                            CanterBury Lane
-                          </h1>
-                          <p className="text-xs">Posted on: 05/11/2024</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <RecentProperty />
               </div>
             </div>
           </div>
@@ -777,19 +515,24 @@ export const ProjectDetails = () => {
 
       {/* Featured Projects  */}
       <div className="bg-gray-100 p-3">
-        <h1 className="text-center text-black lg:text-4xl text-3xl font-bold py-8 lg:font-medium">
-          Featured Projects
+        <h1 className="text-center text-black lg:text-4xl text-2xl font-bold py-8 lg:font-medium">
+          New Launches
         </h1>
-        <Card />
-
+        <Card category="New Launches" />
         <div className="flex justify-center my-3">
-          <Link to={"/property/featured-projects"}>
-            <button
-              className="bg-[#03002E] text-white rounded-3xl font-dmsans px-10 py-1 text-lg transition-colors duration-300 font-medium"
-              style={{ boxShadow: "0px 11.93px 29px 0px rgba(0, 0, 0, 0.5)" }}
+          <Link to={"/property/new-launches"}>
+            <Button
+              size="large"
+              variant="contained"
+              endIcon={<EastIcon />}
+              sx={{
+                backgroundColor: "#03002e",
+                color: "white",
+                textTransform: "none",
+              }}
             >
-              View All
-            </button>
+              View all
+            </Button>
           </Link>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import HomeIcon from "@mui/icons-material/Home";
 import Slider from "@mui/material/Slider";
-import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,6 +10,7 @@ export const SearchBar = () => {
   const [bhk, setBhk] = useState(false);
   const [selectedValue, setSelectedValue] = useState("Sale");
   const [bhkValue, setBhkValue] = useState("4 BHK");
+  const navigate = useNavigate();
 
   const options = ["Sale", "Purchase"];
   const bhkOptions = ["2 BHK", "3 BHK", "4 BHK"]; // Add BHK options here
@@ -27,7 +28,7 @@ export const SearchBar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     try {
-      navigator(`/search/${searchQuery}`);
+      navigate(`/search/${searchQuery}`);
     } catch (error) {
       console.log(error);
     }
@@ -235,6 +236,7 @@ export const SearchBar = () => {
             <div className="hidden lg:block col-span-12 lg:col-span-2 md:col-span-12">
               <div>
                 <button
+                  onClick={handleSearch}
                   type="submit"
                   className="text-white bg-[#03002E]  w-full rounded-[8.59px] py-2 px-10"
                   style={{ boxShadow: "0px 5.46px 13.27px 0px #03002E80" }}
@@ -294,6 +296,7 @@ export const SearchBar = () => {
             <div className="block lg:hidden col-span-12 lg:col-span-2 md:col-span-12">
               <div>
                 <button
+                  onClick={handleSearch}
                   type="submit"
                   className="text-white text-sm lg:text-lg bg-[#03002E]  w-full rounded-[8.59px] py-[4px] lg:py-2 px-10"
                   style={{ boxShadow: "0px 5.46px 13.27px 0px #03002E80" }}
