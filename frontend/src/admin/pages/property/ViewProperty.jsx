@@ -93,9 +93,8 @@ export const ViewProperty = () => {
             )}
             {properties && (
               <>
-
-                <TableContainer>
-                  <Table sx={{ width: '100%' }}>
+                <TableContainer sx={{width: "100%"}}>
+                  <Table sx={{ width: "100%" }}>
                     <TableHead>
                       <TableRow className="bg-gray-100">
                         <TableCell>S No.</TableCell>
@@ -132,10 +131,10 @@ export const ViewProperty = () => {
                             <TableCell>{property.name}</TableCell>
                             <TableCell>{property.builder}</TableCell>
                             <TableCell>{property.location}</TableCell>
-                            <TableCell>{property.description}</TableCell>
                             <TableCell>
-                              {property.address}
+                              {property.description.slice(0, 50) + "..."}
                             </TableCell>
+                            <TableCell>{property.address}</TableCell>
                             <TableCell>{property.unit}</TableCell>
                             <TableCell>{property.size}</TableCell>
                             <TableCell>{property.price}</TableCell>
@@ -166,30 +165,27 @@ export const ViewProperty = () => {
                                 ))}
                             </TableCell>
                             <TableCell>
-                              <Box className="flex flex-wrap gap-2">
-                                {property.image?.map(
-                                  (element, index) => (
-                                    <img
-                                      key={index}
-                                      src={`${process.env.BASE_URL}/${element}`}
-                                      alt={`Image ${index + 1}`}
-                                      style={{
-                                        height: "100px",
-                                        width: "150px",
-                                        objectFit: "contain",
-                                        objectPosition: "center",
-                                        borderRadius: "8px",
-                                        boxShadow:
-                                          "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                                      }}
-                                    />
-                                  )
-                                )}
+                              <Box style={{ display: "flex", gap: "10px" }}>
+                                {property.image?.map((element, index) => (
+                                  <img
+                                    key={index}
+                                    src={`${process.env.BASE_URL}/${element}`}
+                                    alt={`Image ${index + 1}`}
+                                    style={{
+                                      height: "100px",
+                                      width: "150px",
+                                      objectFit: "contain",
+                                      objectPosition: "center",
+                                      borderRadius: "8px",
+                                      boxShadow:
+                                        "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                                    }}
+                                  />
+                                ))}
                               </Box>
                             </TableCell>
 
                             <TableCell>
-
                               <Button
                                 onClick={() => handleDelete(property._id)}
                                 variant="contained"
@@ -200,7 +196,6 @@ export const ViewProperty = () => {
                               >
                                 Delete
                               </Button>
-
                             </TableCell>
                           </TableRow>
                         ))}
@@ -222,9 +217,9 @@ export const ViewProperty = () => {
                       justifyContent: "center",
                     },
                     ".MuiTablePagination-selectLabel, .MuiTablePagination-input":
-                    {
-                      fontSize: "0.9rem",
-                    },
+                      {
+                        fontSize: "0.9rem",
+                      },
                   }}
                 />
               </>

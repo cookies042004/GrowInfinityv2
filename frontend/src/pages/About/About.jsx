@@ -148,7 +148,7 @@ export const About = () => {
             />
           </div>
           <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
-            <p className="font-poppins text-sm px-8 lg:text-xl lg:leading-9 text-justify text-gray-700">
+            <p className="font-poppins text-sm px-8 lg:text-lg lg:leading-9 text-justify text-gray-700">
               At Grow Infinity Realtors, we take immense pride in our unwavering
               commitment to providing personalized real estate solutions
               tailored specifically to meet the unique needs and preferences of
@@ -218,13 +218,13 @@ export const About = () => {
           <div className="grid sm:grid-cols-12 gap-8 mx-auto">
             {[
               {
-                name: "Alex Tucker",
-                role: "Chief Architect",
+                name: "Ankit Goyal",
+                role: "Director",
                 image: directorImg,
               },
               {
-                name: "Taylor Smith",
-                role: "Senior Designer",
+                name: "Tushar Gupta",
+                role: "Director",
                 image: directorImg,
               },
             ].map((member, index) => (
