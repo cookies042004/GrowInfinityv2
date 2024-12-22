@@ -99,7 +99,7 @@ export const ViewProperty = () => {
                 <TableContainer sx={{ width: "100%" }}>
                   <Table sx={{ width: "100%" }}>
                     <TableHead>
-                      <TableRow className="bg-gray-100">
+                      <TableRow className="bg-gray-100" sx={{textWrap: "nowrap"}}>
                         <TableCell>S No.</TableCell>
                         <TableCell>Category</TableCell>
                         <TableCell>Name</TableCell>
