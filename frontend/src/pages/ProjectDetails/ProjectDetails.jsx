@@ -108,35 +108,7 @@ export const ProjectDetails = () => {
         <div className="container mx-auto">
           <div className="flex flex-col lg:grid sm:grid-cols-12 gap-6 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
             <div className="col-span-12 lg:col-span-9 bg-white px-3 lg:px-12 py-4 lg:py-8">
-              <div className="grid sm:grid-cols-12 gap-4">
-                <div className="lg:col-span-8">
-                  <Carousel galleryImages={images} />
-                </div>
-                <div className="hidden lg:block lg:col-span-4">
-                  <div className="flex flex-col gap-3">
-                    <img
-                      src={images[(currentIndex + 1) % images.length]}
-                      className="w-full h-[195px]"
-                      alt="Next image in carousel"
-                    />
-
-                    <div className="relative">
-                      <img
-                        src={images[images.length - 1]}
-                        className="w-full h-[195px]"
-                        alt="Carousel slide"
-                      />
-                      <div className="absolute top-0 w-full h-[195px] bg-[#3357ccc0] ">
-                        <div className="flex items-center justify-center h-full">
-                          <p className="text-white text-xl font-semibold">
-                            {property?.image.length - 2}+ Photos
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Carousel galleryImages={images} />
               <div className="flex flex-col lg:flex-row gap-8 justify-between lg:items-center m-3">
                 <div className="font-roboto mt-6 flex justify-between">
                   <div>
