@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Layout } from "../../components/Layout";
-import gallery1 from "../../assets/img/gallery1.png";
-import gallery2 from "../../assets/img/gallery2.png";
-import gallery3 from "../../assets/img/gallery3.png";
 import EastIcon from "@mui/icons-material/East";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
@@ -22,6 +19,7 @@ import { Calculator } from "../../components/Calculator";
 import comingsoon from "../../assets/img/comingsoon.jpg";
 import { RecentProperty } from "../../components/RecentProperty";
 import { ContactForm } from "../../components/ContactForm";
+import Carousel from "../../components/Carousel";
 
 export const ProjectDetails = () => {
   const { id } = useParams();
@@ -109,91 +107,12 @@ export const ProjectDetails = () => {
       <div className="bg-gray-100 lg:p-3" style={{ scrollBehavior: "smooth" }}>
         <div className="container mx-auto">
           <div className="flex flex-col lg:grid sm:grid-cols-12 gap-6 max-w-[1280px] mt-3 lg:mt-8 mx-auto">
-            <div className="col-span-12 lg:col-span-9 bg-white px-5 lg:px-12 py-4 lg:py-8 w-auto">
-              <div className="grid sm:grid-cols-12 gap-3">
-                <div className="col-span-12 lg:col-span-8">
-                  <div
-                    id="controls-carousel"
-                    className="relative w-[100%] h-[280px] md:h-[300px] lg:h-[400px]"
-                  >
-                    {/* Carousel Wrapper */}
-                    <div className="relative h-full overflow-hidden">
-                      {/* Dynamic Carousel Item with swipe effect */}
-                      <div
-                        className="flex transition-transform duration-700 ease-in-out"
-                        style={{
-                          transform: `translateX(-${currentIndex * 100}%)`, // Move the images horizontally
-                        }}
-                      >
-                        {images.map((image, index) => (
-                          <div
-                            key={index}
-                            className="w-[100%] lg:w-full lg:h-full flex-shrink-0"
-                          >
-                            <img
-                              src={image}
-                              className="block w-[100%] h-[280px] lg:h-[400px] object-fill object-center"
-                              alt={`Carousel slide ${index}`}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Slider Controls */}
-                    <button
-                      type="button"
-                      className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                      onClick={handlePrevious}
-                    >
-                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg
-                          className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 6 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 1 1 5l4 4"
-                          />
-                        </svg>
-                        <span className="sr-only">Previous</span>
-                      </span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                      onClick={handleNext}
-                    >
-                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg
-                          className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 6 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="m1 9 4-4-4-4"
-                          />
-                        </svg>
-                        <span className="sr-only">Next</span>
-                      </span>
-                    </button>
-                  </div>
+            <div className="col-span-12 lg:col-span-9 bg-white px-3 lg:px-12 py-4 lg:py-8">
+              <div className="grid sm:grid-cols-12 gap-4">
+                <div className="lg:col-span-8">
+                  <Carousel galleryImages={images} />
                 </div>
-
-                <div className="hidden lg:block col-span-12 lg:col-span-4">
+                <div className="hidden lg:block lg:col-span-4">
                   <div className="flex flex-col gap-3">
                     <img
                       src={images[(currentIndex + 1) % images.length]}
@@ -263,7 +182,6 @@ export const ProjectDetails = () => {
                   </h5>
                 </div>
               </div>
-
               <div className="hidden gap-10 lg:grid sm:grid-cols-12 justify-center lg:justify-start py-5 ps-2">
                 <div className="col-span-3">
                   <div className="flex items-center gap-2">
@@ -298,7 +216,6 @@ export const ProjectDetails = () => {
                   </div>
                 </div>
               </div>
-
               <div
                 className="flex items-center  justify-between lg:grid sm:grid-cols-12 mx-3 mt-8"
                 style={{ borderBottom: "3px solid lightgray" }}
@@ -340,7 +257,6 @@ export const ProjectDetails = () => {
                   </h3>
                 </div>
               </div>
-
               <div className="grid sm:grid-cols-12 lg:mx-3 mt-8 gap-8">
                 <div className="col-span-12" id="description">
                   <h3 className="text-xl font-poppins font-semibold">
@@ -502,10 +418,7 @@ export const ProjectDetails = () => {
             </div>
             <div className="col-span-12 lg:col-span-3 bg-gray-100 w-auto px-5">
               <div className="flex flex-col gap-5 sticky top-0">
-                {/* Contact Form  */}
                 <ContactForm />
-
-                {/* Recent Property */}
                 <RecentProperty />
               </div>
             </div>

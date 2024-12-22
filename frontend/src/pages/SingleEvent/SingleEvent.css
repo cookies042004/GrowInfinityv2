@@ -6,3 +6,14 @@
     background-repeat: no-repeat;
     height: 420px;
 }
+
+@media screen and (max-width: 768px) {
+    .sinlgleeventbanner {
+        height: 300px !important;
+    }
+}
+@media screen and (max-width: 500px) {
+    .sinlgleeventbanner {
+        height: 240px !important;
+    }
+}

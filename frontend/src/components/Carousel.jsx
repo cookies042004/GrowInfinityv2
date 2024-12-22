@@ -22,24 +22,29 @@ const Carousel = ({ galleryImages }) => {
       data-carousel="static"
     >
       {/* Carousel wrapper */}
-      <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-        {galleryImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute duration-700 ease-in-out w-[100%] ${
-              index === activeIndex ? "block" : "hidden"
-            }`}
-            data-carousel-item
-          >
-            <img
-              src={`${process.env.BASE_URL}/${image}`}
-              className="block h-full object-cover object-center"
-              alt={`Slide ${index + 1}`}
-              style={{ width: "100%" }}
-            />
-          </div>
-        ))}
+      <div className="relative overflow-hidden h-[280px] md:h-[350px] lg:h-[400px]">
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{
+            transform: `translateX(-${activeIndex * 100}%)`,
+          }}
+        >
+          {galleryImages.map((image, index) => (
+            <div
+              key={index}
+              className="w-full flex-shrink-0"
+              style={{ flex: "0 0 100%" }}
+            >
+              <img
+                src={image}
+                className="block h-full object-cover object-center"
+                alt={`Slide ${index + 1}`}
+              />
+            </div>
+          ))}
+        </div>
       </div>
+
       {/* Slider controls */}
       <button
         type="button"

@@ -14,9 +14,7 @@ import {
   Button,
   CircularProgress,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useFetchData } from "../../../hooks/useFetchData";
 export const ViewProperty = () => {
@@ -25,7 +23,7 @@ export const ViewProperty = () => {
   const apiUrl = `${process.env.BASE_URL}/api/v1/property`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
-  const properties = data.properties;
+  const properties = data?.properties || [];
 
   const [page, setPage] = useState(0); // Current page
   const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page
@@ -91,9 +89,14 @@ export const ViewProperty = () => {
                 <Typography variant="h6">Error: {error}</Typography>
               </div>
             )}
+            {!loading && properties.length === 0 && (
+              <div className="text-center text-gray-500 py-4">
+                <Typography variant="h6">No properties found</Typography>
+              </div>
+            )}
             {properties && (
               <>
-                <TableContainer sx={{width: "100%"}}>
+                <TableContainer sx={{ width: "100%" }}>
                   <Table sx={{ width: "100%" }}>
                     <TableHead>
                       <TableRow className="bg-gray-100">
@@ -165,7 +168,14 @@ export const ViewProperty = () => {
                                 ))}
                             </TableCell>
                             <TableCell>
-                              <Box style={{ display: "flex", gap: "10px" }}>
+                              <Box
+                                sx={{
+                                  width: "100%",
+                                  display: "flex",
+                                  flexWrap: "nowrap",
+                                  gap: "10px",
+                                }}
+                              >
                                 {property.image?.map((element, index) => (
                                   <img
                                     key={index}
@@ -202,7 +212,6 @@ export const ViewProperty = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-
                 {/* Pagination */}
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}

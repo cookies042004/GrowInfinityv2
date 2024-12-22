@@ -15,8 +15,8 @@ export const SingleEvent = () => {
     <Layout>
       <div className="sinlgleeventbanner flex justify-center items-center">
         <div className="grid sm:grid-cols-12">
-          <div className="col-span-12 text-center mt-20">
-            <h1 className="font-dmsans font-medium text-white text-5xl capitalize">
+          <div className="col-span-12 text-center mt-10 lg:mt-20">
+            <h1 className="font-dmsans font-medium text-white text-3xl lg:text-4xl capitalize">
               Events
             </h1>
           </div>
@@ -26,18 +26,18 @@ export const SingleEvent = () => {
       <NavigationBar />
 
       <div className="my-10">
-        <h1 className="font-roboto text-4xl font-bold lg:font-medium text-center py-8">
+        <h1 className="font-roboto text-3xl lg:text-4xl font-bold lg:font-medium text-center py-3 lg:py-8">
           {event?.title}
         </h1>
-        <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto gap-8 mt-8">
+        <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto gap-5 mt-8">
           {event &&
             event.image.map((item) => {
               return (
-                <div className="col-span-4">
+                <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
                   <img
                     src={`${process.env.BASE_URL}/${item}`}
                     alt=""
-                    className="h-[300px] object-fill rounded-lg"
+                    className="h-[250px] lg:h-[300px] object-fill rounded-lg"
                   />
                 </div>
               );
