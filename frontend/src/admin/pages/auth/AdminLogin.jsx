@@ -9,6 +9,7 @@ import {
   IconButton,
   TextField,
   Button,
+  CircularProgress,
 } from "@mui/material";
 
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -23,6 +24,7 @@ export const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -44,7 +46,7 @@ export const AdminLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (email == "" || password == "") {
       toast.error("Please provide both email & password !");
       return;
@@ -63,10 +65,12 @@ export const AdminLogin = () => {
           sameSite: "Strict",
         });
         navigate("/admin/dashboard");
+        setLoading(false);
       } else {
         toast.error("Invalid credentials");
       }
     } catch (error) {
+      setLoading(false);
       if (
         error.response &&
         error.response.data &&
@@ -93,7 +97,7 @@ export const AdminLogin = () => {
           style={{
             backdropFilter: "blur(30px)",
           }}
-        > 
+        >
           <h2 className="text-center text-3xl mt-4">Admin Login</h2>
           <h5 className="text-center text-sm pt-3">
             Welcome back! Unlock the power of administrative controls.
@@ -114,7 +118,10 @@ export const AdminLogin = () => {
               </Grid>
               <Grid item xs={12}>
                 <FormControl fullWidth variant="outlined">
-                  <InputLabel htmlFor="outlined-adornment-password" color="secondary">
+                  <InputLabel
+                    htmlFor="outlined-adornment-password"
+                    color="secondary"
+                  >
                     Password*
                   </InputLabel>
                   <OutlinedInput
@@ -144,9 +151,17 @@ export const AdminLogin = () => {
                   variant="contained"
                   color="secondary"
                   fullWidth
-                  sx={{ marginTop: "8px", padding: "10px" }}
+                  sx={{
+                    marginTop: "8px",
+                    padding: "10px",
+                    textTransform: "none",
+                  }}
                 >
-                  Login
+                  {loading ? (
+                    <CircularProgress size="30px" sx={{ color: "white" }} />
+                  ) : (
+                    "Login"
+                  )}
                 </Button>
               </Grid>
             </Grid>

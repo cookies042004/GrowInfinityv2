@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { AdminLayout } from "../../components/AdminLayout";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Button, TextField, Box, Typography } from "@mui/material";
+import {
+  Button,
+  TextField,
+  CircularProgress,
+  Box,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 
 export const AddEvents = () => {
@@ -15,7 +21,7 @@ export const AddEvents = () => {
   });
 
   const [imagePreviews, setImagePreviews] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     setFormData({ ...formData, selectedFiles: files });
@@ -31,8 +37,12 @@ export const AddEvents = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    if (!formData.title || !formData.description || formData.selectedFiles.length === 0) {
+    setLoading(true);
+    if (
+      !formData.title ||
+      !formData.description ||
+      formData.selectedFiles.length === 0
+    ) {
       toast.error("Please fill all the fields and upload images!");
       return;
     }
@@ -43,14 +53,28 @@ export const AddEvents = () => {
     formData.selectedFiles.forEach((file) => data.append("image", file));
 
     try {
-      const response = await axios.post(`${process.env.BASE_URL}/api/v1/events`, data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        `${process.env.BASE_URL}/api/v1/events`,
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
-      toast.success("Event added successfully!");
-      setFormData({ title: "", description: "", selectedFiles: [] });
-      setImagePreviews([]);
+      if (response.data.success) {
+        setLoading(false);
+        toast.success("Event added successfully!");
+        setFormData({ title: "", description: "", selectedFiles: [] });
+        setImagePreviews([]);
+      } else {
+        setLoading(false);
+
+        console.error(response.data);
+        toast.error("Failed to add event. Please try again.");
+      }
     } catch (error) {
+      setLoading(false);
+
       toast.error("Failed to add event. Please try again.");
       console.error(error);
     }
@@ -63,7 +87,9 @@ export const AddEvents = () => {
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
           <div className="container mx-auto">
-            <h2 className="text-xl font-bold p-2 text-center sm:text-left">Add Events</h2>
+            <h2 className="text-xl font-bold p-2 text-center sm:text-left">
+              Add Events
+            </h2>
             <form onSubmit={handleSubmit}>
               <div className="flex flex-wrap my-5">
                 <div className="w-full mb-4 p-2">
@@ -97,7 +123,8 @@ export const AddEvents = () => {
                 <div className="w-full p-2">
                   <Box sx={{ mt: 2 }}>
                     <Typography variant="body1" gutterBottom>
-                      Upload Event Images*
+                      Upload Event Images - (Only jpeg, jpg, png files are
+                      allowed Max size: 1 mb)
                     </Typography>
                     <input
                       accept="image/*"
@@ -121,7 +148,14 @@ export const AddEvents = () => {
 
                     {/* Image Previews */}
                     {imagePreviews.length > 0 && (
-                      <Box sx={{ mt: 2, display: "flex", gap: 2, flexWrap: "wrap" }}>
+                      <Box
+                        sx={{
+                          mt: 2,
+                          display: "flex",
+                          gap: 2,
+                          flexWrap: "wrap",
+                        }}
+                      >
                         {imagePreviews.map((preview, index) => (
                           <img
                             key={index}
@@ -145,12 +179,16 @@ export const AddEvents = () => {
                 <Button
                   variant="contained"
                   color="secondary"
-                  startIcon={<AddCircleIcon />}
+                  startIcon={!loading && <AddCircleIcon />}
                   type="submit"
                   size="small"
-                  style={{ textTransform: "none" }}
+                  style={{ textTransform: "none", width: "130px" }}
                 >
-                  Add Events
+                  {loading ? (
+                    <CircularProgress size="25px" sx={{ color: "white" }} />
+                  ) : (
+                    "Add Events"
+                  )}
                 </Button>
               </div>
             </form>
@@ -160,4 +198,3 @@ export const AddEvents = () => {
     </>
   );
 };
-

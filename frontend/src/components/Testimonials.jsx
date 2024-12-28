@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Testimonial1 from "../assets/img/testimonial1.jpeg";
 import Testimonial2 from "../assets/img/testimonial2.jpeg";
+import Testimonial3 from "../assets/img/testimonial3.png";
+import Testimonial4 from "../assets/img/testimonial4.png";
 import StarIcon from "@mui/icons-material/Star";
 import quote from "../assets/img/SVG.png";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,24 +19,30 @@ import { EffectFlip, Autoplay } from "swiper/modules";
 
 const testimonials = [
   {
-    name: "Cameron Williamson",
-    role: "Designer",
+    name: "Harun Riaz",
+    role: "Client",
     image: Testimonial1,
-    text: "Searches for multiplexes, property comparisons, and the loan estimator. Works great. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dores.",
+    text: "Provided good real estate support for the sale of my residential property in Noida Extension. The company has updated knowledge about sale purchase of real estate in Noida. Company run by young professionals including Bhanu.",
   },
   {
-    name: "Sarah Lee",
-    role: "Developer",
-    image:
-      "https://images.unsplash.com/photo-1645800803579-9cdc733f3bfc?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Another testimonial image
-    text: "Amazing platform to compare properties. It really helped me make the right decisions for my projects! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dores.",
+    name: "Prince Gupta",
+    role: "Client",
+    image: Testimonial2, // Another testimonial image
+    text: "Recently I purchased a Flat in the Noida Sector 150 and deal was facilitated by grow infinity realtors. All staff from grow infinity realtors were very good and always coordinates for my concern and helped a lot to complete all the process during transfer/purchase.",
   },
   {
-    name: "John Doe",
-    role: "Product Manager",
-    image:
-      "https://images.unsplash.com/photo-1617724748068-691efeeaf542?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Another testimonial image
-    text: "The loan estimator tool saved me so much time. Excellent features and user-friendly interface.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dores.",
+    name: "Himanshu Gupta",
+    role: "Client",
+    image: Testimonial3, // Another testimonial image
+    text: `Best investment advisors ⭐️
+
+From the start, their team demonstrated extensive market knowledge and a genuine commitment to helping me find the perfect investment. They provided valuable insights and tailored advice that helped me make informed decisions..`,
+  },
+  {
+    name: "Raja Sharma",
+    role: "Client",
+    image: Testimonial4, // Another testimonial image
+    text: `“I had an amazing experience with grow infinity professionals. Your customer service was outstanding, and my flat was exactly what I was looking for.” “I was so pleased with the service I received from your representative.great thanks to Mr. Vishal who first understood my requirement and guided me n come up with all possible solution to take me a final decision”`,
   },
 ];
 

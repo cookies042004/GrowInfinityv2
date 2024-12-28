@@ -1,201 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import { AdminLayout } from "../../components/AdminLayout";
+import { useParams } from "react-router-dom";
 import {
-  Button,
-  Checkbox,
-  CircularProgress,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useFetchData } from "../../../hooks/useFetchData";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
+    Button,
+    Checkbox,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    InputLabel,
+    MenuItem,
+    Radio,
+    RadioGroup,
+    Select,
+    TextField,
+    Typography,
+  } from "@mui/material";
+  import { useFetchData } from "../../../hooks/useFetchData";
+  import AddCircleIcon from "@mui/icons-material/AddCircle";
+  import { ToastContainer, toast } from "react-toastify";
 
-export const AddProperty = () => {
-  document.title = "Add Property";
+export const UpdateProperty = () => {
+  document.title = "Update Property";
 
-  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
-  // Fetch categories and amenities data
-  const {
-    data: categoriesData,
-    error: categoryError,
-    loading: categoryLoading,
-    refetch: refetchCategories,
-  } = useFetchData(`${process.env.BASE_URL}/api/v1/category`);
-
-  const categories = categoriesData?.category || [];
-
-  const {
-    data: amenitiesData,
-    error: amenitiesError,
-    loading: amenitiesLoading,
-    refetch: refetchAmenities,
-  } = useFetchData(`${process.env.BASE_URL}/api/v1/amenities`);
-
-  const amenities = amenitiesData?.amenity || [];
-
-  // State to manage form data
-  const [formData, setFormData] = useState({
-    category: "",
-    name: "",
-    builder: "",
-    unit: "",
-    size: "",
-    price: "",
-    location: "",
-    address: "",
-    description: "",
-    furnishType: "",
-    societyAmenities: [],
-    flatAmenities: [],
-    locationAdvantages: [],
-  });
-
-  // State to track uploaded images and brochure
-  const [uploadedImages, setUploadedImages] = useState([]);
-
-  // Handle form input changes
-  const handleChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  // Handle select changes
-  const handleSelectChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  // Handle checkbox changes
-  const handleCheckboxChange = (event, type) => {
-    const { name, checked } = event.target;
-    setFormData((prevData) => {
-      const currentItems = prevData[type];
-      if (checked) {
-        return { ...prevData, [type]: [...currentItems, name] };
-      } else {
-        return {
-          ...prevData,
-          [type]: currentItems.filter((item) => item !== name),
-        };
-      }
-    });
-  };
-
-  // Handler for uploading images
-  const handleImageUpload = (event) => {
-    const files = Array.from(event.target.files);
-    setUploadedImages((prevImages) => [...prevImages, ...files]);
-  };
-
-  // Function to display image previews
-  const renderImagePreviews = () => {
-    return uploadedImages.map((image, index) => (
-      <img
-        key={index}
-        src={URL.createObjectURL(image)}
-        alt="Preview"
-        style={{ width: "100px", marginRight: "10px", marginBottom: "10px" }}
-      />
-    ));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    const allSelectedAmenities = [
-      ...formData.societyAmenities,
-      ...formData.flatAmenities,
-      ...formData.locationAdvantages,
-    ];
-
-    const formDataToSend = new FormData();
-
-    // Append form fields to FormData
-    Object.keys(formData).forEach((key) => {
-      if (
-        Array.isArray(formData[key]) &&
-        (key === "societyAmenities" ||
-          key === "flatAmenities" ||
-          key === "locationAdvantages")
-      ) {
-        formData[key].forEach((item) =>
-          formDataToSend.append("amenities", item)
-        );
-      } else {
-        formDataToSend.append(key, formData[key]);
-      }
-    });
-
-    // Append uploaded images
-    uploadedImages.forEach((image) => {
-      formDataToSend.append("image", image);
-    });
-
-    try {
-      const response = await axios.post(
-        `${process.env.BASE_URL}/api/v1/property`,
-        formDataToSend,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      if (response.status === 201) {
-        toast.success("Property added successfully!");
-        setFormData({
-          category: "",
-          name: "",
-          builder: "",
-          unit: "",
-          size: "",
-          price: "",
-          location: "",
-          address: "",
-          description: "",
-          furnishType: "",
-          societyAmenities: [],
-          flatAmenities: [],
-          locationAdvantages: [],
-        });
-        setUploadedImages([]);
-      }
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.error("Error adding property:", error);
-      toast.error("Failed to add property.");
-    }
-  };
-
+  const apiUrl = `${process.env.BASE_URL}/api/v1/property/${id}`;
   return (
     <>
       <ToastContainer />
       <AdminLayout />
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
-          <h2 className="text-xl font-bold p-2 text-center sm:text-left">
-            Add Property
-          </h2>
           <div className="container mx-auto">
-            <form onSubmit={handleSubmit}>
+            <h2 className="text-xl font-bold p-2 text-center sm:text-left">
+              Update Property
+            </h2>
+            <form>
               <div className="flex flex-wrap my-5">
                 {/* Property Category */}
                 <div className="w-full sm:w-1/2 mb-4 p-2">
@@ -207,8 +47,8 @@ export const AddProperty = () => {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       name="category"
-                      value={formData.category}
-                      onChange={handleSelectChange}
+                    //   value={formData.category}
+                    //   onChange={handleSelectChange}
                       label="Enter Amenity Type*"
                     >
                       {categories.map((category) => (
@@ -228,8 +68,8 @@ export const AddProperty = () => {
                     color="secondary"
                     size="small"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
+                    // value={formData.name}
+                    // onChange={handleChange}
                     fullWidth
                   />
                 </div>
@@ -277,8 +117,8 @@ export const AddProperty = () => {
                     color="secondary"
                     size="small"
                     name="price"
-                    value={formData.price}
-                    onChange={handleChange}
+                    // value={formData.price}
+                    // onChange={handleChange}
                     fullWidth
                   />
                 </div>
@@ -305,8 +145,8 @@ export const AddProperty = () => {
                     color="secondary"
                     size="small"
                     name="address"
-                    value={formData.address}
-                    onChange={handleChange}
+                    // value={formData.address}
+                    // onChange={handleChange}
                     fullWidth
                   />
                 </div>
@@ -319,8 +159,8 @@ export const AddProperty = () => {
                     color="secondary"
                     size="small"
                     name="description"
-                    value={formData.description}
-                    onChange={handleChange}
+                    // value={formData.description}
+                    // onChange={handleChange}
                     multiline
                     fullWidth
                   />
@@ -333,8 +173,8 @@ export const AddProperty = () => {
                     <RadioGroup
                       row
                       name="furnishType"
-                      value={formData.furnishType}
-                      onChange={handleChange}
+                    //   value={formData.furnishType}
+                    //   onChange={handleChange}
                     >
                       <FormControlLabel
                         value="Fully Furnished"
@@ -448,8 +288,7 @@ export const AddProperty = () => {
                 <div className="w-full mb-4 p-2">
                   <FormControl component="fieldset">
                     <FormLabel id="image-upload">
-                      Upload Property Images - (Only jpeg, jpg, png files are
-                      allowed Max size: 1 mb)
+                      Upload Property Images
                     </FormLabel>
                     <input
                       accept="image/*"
@@ -485,20 +324,17 @@ export const AddProperty = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    startIcon={!loading && <AddCircleIcon />} // Conditional rendering for the icon
+                    startIcon={<AddCircleIcon />}
                     type="submit"
                     size="small"
-                    style={{ textTransform: "none", width: "130px" }}
+                    style={{ textTransform: "none" }}
                   >
-                    {loading ? (
-                      <CircularProgress size="25px" sx={{ color: "white" }} />
-                    ) : (
-                      "Add Property"
-                    )}
+                    Add Property
                   </Button>
                 </div>
               </div>
             </form>
+
           </div>
         </div>
       </div>

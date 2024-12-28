@@ -13,10 +13,13 @@ import {
   TablePagination,
   Button,
   CircularProgress,
+  Typography,
 } from "@mui/material";
 import axios from "axios";
+import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useFetchData } from "../../../hooks/useFetchData";
+import { Link } from "react-router-dom";
 export const ViewProperty = () => {
   document.title = "View Property";
 
@@ -99,7 +102,10 @@ export const ViewProperty = () => {
                 <TableContainer sx={{ width: "100%" }}>
                   <Table sx={{ width: "100%" }}>
                     <TableHead>
-                      <TableRow className="bg-gray-100" sx={{textWrap: "nowrap"}}>
+                      <TableRow
+                        className="bg-gray-100"
+                        sx={{ textWrap: "nowrap" }}
+                      >
                         <TableCell>S No.</TableCell>
                         <TableCell>Category</TableCell>
                         <TableCell>Name</TableCell>
@@ -196,16 +202,31 @@ export const ViewProperty = () => {
                             </TableCell>
 
                             <TableCell>
-                              <Button
-                                onClick={() => handleDelete(property._id)}
-                                variant="contained"
-                                size="small"
-                                color="error"
-                                startIcon={<DeleteIcon />}
-                                sx={{ textTransform: "none" }}
-                              >
-                                Delete
-                              </Button>
+                              <div className="flex gap-2">
+                                <Link
+                                  to={`/admin/dashboard/update-property/${property._id}`}
+                                >
+                                  <Button
+                                    startIcon={<EditIcon />}
+                                    variant="outlined"
+                                    size="small"
+                                    color="success"
+                                    style={{ textTransform: "none" }}
+                                  >
+                                    Edit
+                                  </Button>
+                                </Link>
+                                <Button
+                                  onClick={() => handleDelete(property._id)}
+                                  variant="contained"
+                                  size="small"
+                                  color="error"
+                                  startIcon={<DeleteIcon />}
+                                  sx={{ textTransform: "none" }}
+                                >
+                                  Delete
+                                </Button>
+                              </div>
                             </TableCell>
                           </TableRow>
                         ))}

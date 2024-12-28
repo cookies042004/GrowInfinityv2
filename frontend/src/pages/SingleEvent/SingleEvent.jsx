@@ -4,6 +4,7 @@ import { Layout } from "../../components/Layout";
 import { NavigationBar } from "../../components/NavigationBar";
 import { useFetchData } from "../../hooks/useFetchData";
 import { useParams } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 export const SingleEvent = () => {
   const { id } = useParams();
@@ -30,6 +31,16 @@ export const SingleEvent = () => {
           {event?.title}
         </h1>
         <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto gap-5 mt-8">
+          {loading && (
+            <div className="col-span-12 flex justify-center">
+              <CircularProgress size="30px" />
+            </div>
+          )}
+          {error && (
+            <div className="col-span-12 flex justify-center">
+              <p>Error: {error}</p>
+            </div>
+          )}
           {event &&
             event.image.map((item) => {
               return (

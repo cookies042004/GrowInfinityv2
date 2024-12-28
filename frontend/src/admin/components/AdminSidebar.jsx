@@ -90,7 +90,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/add-property"
+                  to="/admin/add-property"
                   href="#"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
@@ -99,7 +99,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               </li>
               <li>
                 <Link
-                  to="/admin/dashboard/view-property"
+                  to="/admin/view-property"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View Property
@@ -142,7 +142,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/add-property-category"
+                  to="/admin/add-property-category"
                   href="#"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
@@ -151,7 +151,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               </li>
               <li>
                 <Link
-                  to="/admin/dashboard/view-property-category"
+                  to="/admin/view-property-category"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View Property Category
@@ -194,7 +194,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/add-news"
+                  to="/admin/add-news"
                   href="#"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
@@ -203,7 +203,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               </li>
               <li>
                 <Link
-                  to="/admin/dashboard/view-news"
+                  to="/admin/view-news"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View News
@@ -246,7 +246,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/add-events"
+                  to="/admin/add-events"
                   href="#"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
@@ -255,7 +255,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               </li>
               <li>
                 <Link
-                  to="/admin/dashboard/view-events"
+                  to="/admin/view-events"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View Events
@@ -297,7 +297,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/add-amenity"
+                  to="/admin/add-amenity"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   Add Amenity
@@ -305,7 +305,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               </li>
               <li>
                 <Link
-                  to="/admin/dashboard/view-amenity"
+                  to="/admin/view-amenity"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View Amenity
@@ -347,7 +347,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/add-brochure"
+                  to="/admin/add-brochure"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   Add Brochure
@@ -355,7 +355,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               </li>
               <li>
                 <Link
-                  to="/admin/dashboard/view-brochure"
+                  to="/admin/view-brochure"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View Brochure
@@ -397,7 +397,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/view-contact"
+                  to="/admin/view-contact"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View Contact Enquiry
@@ -439,7 +439,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/dashboard/view-property-enquiry"
+                  to="/admin/view-property-enquiry"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
                   View Property Enquiry

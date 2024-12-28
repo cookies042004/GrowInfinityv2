@@ -15,6 +15,7 @@ import { ViewAmenity } from "./admin/pages/amenity/ViewAmenity.jsx";
 import { UpdateAmenity } from "./admin/pages/amenity/UpdateAmenity.jsx";
 import { AddProperty } from "./admin/pages/property/AddProperty.jsx";
 import { ViewProperty } from "./admin/pages/property/ViewProperty.jsx";
+import { UpdateProperty } from "./admin/pages/property/UpdateProperty.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { About } from "./pages/About/About.jsx";
 import { Services } from "./pages/Services/Services.jsx";
@@ -69,7 +70,7 @@ const App = () => {
 
       {/* Property */}
       <Route
-        path="/admin/dashboard/add-property"
+        path="/admin/add-property"
         element={
           <PrivateRoute>
             <AddProperty />
@@ -77,7 +78,7 @@ const App = () => {
         }
       />
       <Route
-        path="/admin/dashboard/view-property"
+        path="/admin/view-property"
         element={
           <PrivateRoute>
             <ViewProperty />
@@ -85,9 +86,18 @@ const App = () => {
         }
       />
 
+      <Route
+        path="/admin/update-property/:id"
+        element={
+          <PrivateRoute>
+            <UpdateProperty />
+          </PrivateRoute>
+        }
+      />
+
       {/* Property Category  */}
       <Route
-        path="/admin/dashboard/add-property-category"
+        path="/admin/add-property-category"
         element={
           <PrivateRoute>
             <AddPropertyCategory />
@@ -95,7 +105,7 @@ const App = () => {
         }
       />
       <Route
-        path="/admin/dashboard/view-property-category"
+        path="/admin/view-property-category"
         element={
           <PrivateRoute>
             <ViewPropertyCategory />
@@ -104,7 +114,7 @@ const App = () => {
       />
       {/* News  */}
       <Route
-        path="/admin/dashboard/add-news"
+        path="/admin/add-news"
         element={
           <PrivateRoute>
             <AddNews />
@@ -112,7 +122,7 @@ const App = () => {
         }
       />
       <Route
-        path="/admin/dashboard/view-news"
+        path="/admin/view-news"
         element={
           <PrivateRoute>
             <ViewNews />
@@ -121,7 +131,7 @@ const App = () => {
       />
 
       <Route
-        path="/admin/dashboard/update-news/:id"
+        path="/admin/update-news/:id"
         element={
           <PrivateRoute>
             <UpdateNews />
@@ -130,7 +140,7 @@ const App = () => {
       />
       {/* Events  */}
       <Route
-        path="/admin/dashboard/add-events"
+        path="/admin/add-events"
         element={
           <PrivateRoute>
             <AddEvents />
@@ -138,7 +148,7 @@ const App = () => {
         }
       />
       <Route
-        path="/admin/dashboard/view-events"
+        path="/admin/view-events"
         element={
           <PrivateRoute>
             <ViewEvents />
@@ -148,7 +158,7 @@ const App = () => {
 
       {/* Amenity  */}
       <Route
-        path="/admin/dashboard/add-amenity"
+        path="/admin/add-amenity"
         element={
           <PrivateRoute>
             <AddAmenity />
@@ -156,7 +166,7 @@ const App = () => {
         }
       />
       <Route
-        path="/admin/dashboard/view-amenity"
+        path="/admin/view-amenity"
         element={
           <PrivateRoute>
             <ViewAmenity />
@@ -164,7 +174,7 @@ const App = () => {
         }
       />
       <Route
-        path="/admin/dashboard/update-amenity/:id"
+        path="/admin/update-amenity/:id"
         element={
           <PrivateRoute>
             <UpdateAmenity />
@@ -174,7 +184,7 @@ const App = () => {
 
       {/* Brochure  */}
       <Route
-        path="/admin/dashboard/add-brochure"
+        path="/admin/add-brochure"
         element={
           <PrivateRoute>
             <AddBrochure />
@@ -182,7 +192,7 @@ const App = () => {
         }
       />
       <Route
-        path="/admin/dashboard/view-brochure"
+        path="/admin/view-brochure"
         element={
           <PrivateRoute>
             <ViewBrochure />
@@ -191,7 +201,7 @@ const App = () => {
       />
 
       <Route
-        path="/admin/dashboard/update-brochure/:id"
+        path="/admin/update-brochure/:id"
         element={
           <PrivateRoute>
             <UpdateBrochure />
@@ -201,7 +211,7 @@ const App = () => {
 
       {/* Contact  */}
       <Route
-        path="/admin/dashboard/view-contact"
+        path="/admin/view-contact"
         element={
           <PrivateRoute>
             <ViewContact />
@@ -211,7 +221,7 @@ const App = () => {
 
       {/* Property Enquiry  */}
       <Route
-        path="/admin/dashboard/view-property-enquiry"
+        path="/admin/view-property-enquiry"
         element={
           <PrivateRoute>
             <ViewPropertyEnquiry />

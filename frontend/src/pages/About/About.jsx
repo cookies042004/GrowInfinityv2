@@ -8,7 +8,8 @@ import aboutImg2 from "../../assets/img/aboutImg2.png";
 import { Choose } from "../../components/Choose";
 import { Testimonials } from "../../components/Testimonials";
 
-import directorImg from "../../assets/img/director1.webp";
+import founder from "../../assets/img/ankitgoyal.jpeg";
+import coFounder from "../../assets/img/tushargupta.jpg";
 import whatwedo from "../../assets/img/17.png";
 import { NavigationBar } from "../../components/NavigationBar";
 import { AwardComponent } from "../../components/AwardComponent";
@@ -128,7 +129,9 @@ export const About = () => {
                 <h3 className="text-xl lg:text-2xl py-3 font-semibold">
                   {item.title}
                 </h3>
-                <p className="text-center text-sm lg:text-lg">{item.description}</p>
+                <p className="text-center text-sm lg:text-lg">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}
@@ -219,13 +222,15 @@ export const About = () => {
             {[
               {
                 name: "Ankit Goyal",
-                role: "Director",
-                image: directorImg,
+                role: "Founder",
+                image: founder,
+                tagline: "Leading the vision to redefine modern living.",
               },
               {
                 name: "Tushar Gupta",
-                role: "Director",
-                image: directorImg,
+                role: "Co-Founder",
+                image: coFounder,
+                tagline: "Driving innovation and excellence in real estate.",
               },
             ].map((member, index) => (
               <div
@@ -243,7 +248,7 @@ export const About = () => {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="rounded-3xl h-[200px] lg:h-[400px] w-[250px] max-w-full object-cover transform hover:scale-105 transition-transform duration-300"
+                        className="rounded-3xl h-[200px] lg:h-[400px] w-[180px] lg:w-[250px] max-w-full object-top object-cover transform hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 hover:opacity-30 rounded-3xl transition-opacity duration-300"></div>
                     </div>
@@ -257,8 +262,7 @@ export const About = () => {
                         {member.role}
                       </h5>
                       <p className="hidden lg:block text-gray-600 text-center lg:text-left text-sm lg:text-md font-light">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Curabitur vel turpis nec leo aliquam viverra.
+                        {member.tagline}
                       </p>
                     </div>
                   </div>

@@ -115,6 +115,89 @@ const createProperty = async (req, res) => {
   }
 };
 
+// Update a Property
+const updateProperty = async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+
+    const {
+      category,
+      name,
+      builder,
+      unit,
+      size,
+      price,
+      location,
+      description,
+      address,
+      furnishType,
+      amenities,
+    } = req.body;
+
+    // Find the property by ID
+    const property = await Property.findById(propertyId);
+
+    if (!property) {
+      return res.status(404).json({
+        success: false,
+        message: "Property not found",
+      });
+    }
+
+    const newImages = [];
+    const newPaths = req.files;
+
+    if (newPaths && newPaths.length > 0) {
+      // Delete old images
+      if (property.image && property.image.length > 0) {
+        property.image.forEach((ele) => {
+          const imagePath = path.join(__dirname, "../", ele);
+          if (fs.existsSync(imagePath)) {
+            fs.unlinkSync(imagePath);
+          }
+        });
+      }
+
+      // Save new images
+      newPaths.forEach((path, index) => {
+        newImages[index] = path.path;
+      });
+    }
+
+    // Update the property fields
+    property.category = category || property.category;
+    property.name = name || property.name;
+    property.builder = builder || property.builder;
+    property.unit = unit || property.unit;
+    property.size = size || property.size;
+    property.price = price || property.price;
+    property.location = location || property.location;
+    property.description = description || property.description;
+    property.address = address || property.address;
+    property.furnishType = furnishType || property.furnishType;
+    property.amenities = amenities || property.amenities;
+    if (newImages.length > 0) {
+      property.image = newImages;
+    }
+
+    // Save the updated property
+    await property.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Property updated successfully",
+      property,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
+
 // Delete a property
 const deleteProperty = async (req, res) => {
   try {
@@ -228,7 +311,7 @@ const recentProperty = async (req, res) => {
   try {
     const recentProperties = await Property.find()
       .sort({ createdAt: -1 }) // Sort by createdAt in descending order (latest first)
-      .limit(6) // Limit to 5 properties
+      .limit(6); // Limit to 5 properties
 
     if (recentProperties.length === 0) {
       return res.status(404).json({
@@ -252,13 +335,13 @@ const recentProperty = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getProperty,
   getSingleProperty,
   createProperty,
+  updateProperty,
   deleteProperty,
   searchProperty,
   getTotalProperties,
-  recentProperty
+  recentProperty,
 };
