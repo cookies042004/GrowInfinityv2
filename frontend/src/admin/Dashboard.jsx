@@ -179,7 +179,7 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-12">
+            <div className="hidden lg:block col-span-12">
               <div className="flex items-center justify-center h-auto mb-4 bg-gray-100">
                 <div className="ml-0 w-full">
                   <div className="p-6 bg-white rounded-lg shadow-lg border border-gray-300 w-full">

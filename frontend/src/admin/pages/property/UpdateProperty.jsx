@@ -24,7 +24,7 @@ import { useParams } from "react-router-dom";
 export const UpdateProperty = () => {
   document.title = "Update Property";
   const { id } = useParams();
-  const [ buttonLoading, setButtonLoading ] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
   // Fetching the property data by ID
   const { data, loading, error, refetch } = useFetchData(
     `${process.env.BASE_URL}/api/v1/property/${id}`
@@ -507,7 +507,7 @@ export const UpdateProperty = () => {
                     startIcon={!buttonLoading && <AddCircleIcon />} // Conditional rendering for the icon
                     type="submit"
                     size="small"
-                    style={{ textTransform: "none", width: "130px" }}
+                    style={{ textTransform: "none", width: "150px" }}
                   >
                     {buttonLoading ? (
                       <CircularProgress size="25px" sx={{ color: "white" }} />

@@ -1,7 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const Amenity = require("../models/amenity");
-
+const Property = require("../models/property");
+      
 // Create a Amenity
 const createAmenity = async (req, res) => {
   try {
@@ -134,11 +135,23 @@ const updateAmenity = async (req, res) => {
   }
 };
 
-// Delete a amenity
 const deleteAmenity = async (req, res) => {
   try {
     const amenityId = req.params.id;
 
+    // Check if any property is using the amenity
+    const associatedProperty = await Property.findOne({
+      amenities: amenityId,
+    });
+
+    if (associatedProperty) {
+      return res.status(400).json({
+        success: false,
+        message: "Amenity cannot be deleted as it is associated with a property.",
+      });
+    }
+
+    // Proceed to delete the amenity if it is not associated with any property
     const deletedAmenity = await Amenity.findByIdAndDelete(amenityId);
 
     if (!deletedAmenity) {
@@ -168,25 +181,28 @@ const deleteAmenity = async (req, res) => {
           }
         });
       } else {
-        console.log(err);
+        console.error("Image file not found:", err);
       }
     });
 
-    const amenity = await Amenity.find();
+    const amenities = await Amenity.find();
 
     res.status(200).json({
       success: true,
       message: "Amenity deleted successfully",
-      amenity,
+      amenities,
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).json({
       success: false,
       message: "Internal Server Error",
     });
   }
 };
+
+module.exports = deleteAmenity;
+
 
 module.exports = {
   createAmenity,

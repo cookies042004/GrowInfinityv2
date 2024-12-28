@@ -1,4 +1,5 @@
 const Category = require("../models/category");
+const Property = require("../models/property");
 
 // Create a Category
 const createCategory = async (req, res) => {
@@ -42,6 +43,18 @@ const deleteCategory = async (req, res) => {
   try {
     const categoryId = req.params.id;
 
+    // Check if any property is associated with this category
+    const propertyExists = await Property.findOne({ category: categoryId });
+
+    if (propertyExists) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Category cannot be deleted as properties are associated with it",
+      });
+    }
+
+    // Proceed with deletion if no associated properties are found
     const deletedCategory = await Category.findByIdAndDelete(categoryId);
 
     if (!deletedCategory) {
@@ -51,16 +64,16 @@ const deleteCategory = async (req, res) => {
       });
     }
 
-    const category = await Category.find();
+    const categories = await Category.find();
 
     res.status(200).json({
       success: true,
       message: "Category deleted successfully",
-      category,
+      categories,
     });
   } catch (err) {
     console.log(err);
-    res.status(200).json({
+    res.status(500).json({
       success: false,
       message: "Internal Server Error",
     });
@@ -70,5 +83,5 @@ const deleteCategory = async (req, res) => {
 module.exports = {
   createCategory,
   getCategory,
-  deleteCategory
+  deleteCategory,
 };

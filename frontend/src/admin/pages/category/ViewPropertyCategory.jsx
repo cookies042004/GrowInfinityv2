@@ -16,7 +16,7 @@ export const ViewPropertyCategory = () => {
   const { data, loading, error, refetch } = useFetchData(apiUrl);
 
   const categories = data.category;
-
+  
   // Handle delete action
   const handleDelete = async (categoryId) => {
     try {
@@ -27,11 +27,16 @@ export const ViewPropertyCategory = () => {
         refetch(); // Refresh the list after deletion
         toast.success(response.data.message);
       } else {
-        toast.error("Failed to delete category");
+        toast.error(response.data.message);
       }
     } catch (err) {
-      console.log(err);
-      toast.error("An error occurred while deleting");
+      // Handle errors properly
+      if (err.response && err.response.data && err.response.data.message) {
+        toast.error(err.response.data.message); // Show server error message
+      } else {
+        toast.error("Something went wrong. Please try again."); // Fallback for unexpected errors
+      }
+      console.error(err);
     }
   };
 
@@ -41,7 +46,9 @@ export const ViewPropertyCategory = () => {
       <AdminLayout />
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
-          <h2 className="text-xl font-bold text-center sm:text-left">View Property Categories</h2>
+          <h2 className="text-xl font-bold text-center sm:text-left">
+            View Property Categories
+          </h2>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
             {loading && (
               <div className="flex justify-center">

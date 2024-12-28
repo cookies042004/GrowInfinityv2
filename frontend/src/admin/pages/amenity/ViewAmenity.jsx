@@ -53,8 +53,13 @@ export const ViewAmenity = () => {
         toast.error("Failed to delete amenity");
       }
     } catch (err) {
-      console.log(err);
-      toast.error("An error occurred while deleting");
+        // Handle errors properly
+        if (err.response && err.response.data && err.response.data.message) {
+          toast.error(err.response.data.message); // Show server error message
+        } else {
+          toast.error("Something went wrong. Please try again."); // Fallback for unexpected errors
+        }
+        console.error(err);
     }
   };
 

@@ -176,9 +176,7 @@ export const ViewProperty = () => {
                             <TableCell>
                               <Box
                                 sx={{
-                                  width: "100%",
                                   display: "flex",
-                                  flexWrap: "nowrap",
                                   gap: "10px",
                                 }}
                               >
@@ -188,9 +186,10 @@ export const ViewProperty = () => {
                                     src={`${process.env.BASE_URL}/${element}`}
                                     alt={`Image ${index + 1}`}
                                     style={{
-                                      height: "100px",
-                                      width: "150px",
-                                      objectFit: "contain",
+                                      height: "100px", // Fixed height
+                                      width: "auto", // Auto width to maintain aspect ratio
+                                      maxWidth: "150px", // Prevent images from becoming too wide
+                                      objectFit: "contain", // Ensures the entire image is visible
                                       objectPosition: "center",
                                       borderRadius: "8px",
                                       boxShadow:
