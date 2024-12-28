@@ -18,6 +18,10 @@ const storage = multer.diskStorage({
       uploadPath = "uploads/property/";
     } else if (req.originalUrl.includes("/api/v1/events")) {
       uploadPath = "uploads/events/";
+    } else if (req.originalUrl.includes("/api/v1/awards")) {
+      uploadPath = "uploads/awards/";
+    } else if (req.originalUrl.includes("/api/v1/testimonials")) {
+      uploadPath = "uploads/testimonials/";
     } else {
       uploadPath = "uploads/";
     }
@@ -35,7 +39,7 @@ const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === "image/jpeg" ||
     file.mimetype === "image/jpg" ||
-    file.mimetype === "image/png" 
+    file.mimetype === "image/png"
     // || file.mimetype === "application/pdf" // Allow PDF
   ) {
     cb(null, true); // Accept the file

@@ -35,6 +35,10 @@ import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import { Awards } from "./pages/Awards/Awards.jsx";
 import { AddEvents } from "./admin/pages/events/AddEvents.jsx";
 import { ViewEvents } from "./admin/pages/events/ViewEvents.jsx";
+import { AddAwards } from "./admin/pages/awards/AddAwards.jsx";
+import { ViewAwards } from "./admin/pages/awards/ViewAwards.jsx";
+import { AddTestimonial } from "./admin/pages/testimonial/AddTestimonial.jsx";
+import { ViewTestimonial } from "./admin/pages/testimonial/ViewTestimonial.jsx";
 
 const App = () => {
   return (
@@ -205,6 +209,42 @@ const App = () => {
         element={
           <PrivateRoute>
             <UpdateBrochure />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Awards */}
+      <Route
+        path="/admin/add-award"
+        element={
+          <PrivateRoute>
+            <AddAwards />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/view-award"
+        element={
+          <PrivateRoute>
+            <ViewAwards />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Testimonials  */}
+      <Route
+        path="/admin/add-testimonial"
+        element={
+          <PrivateRoute>
+            <AddTestimonial />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/view-testimonial"
+        element={
+          <PrivateRoute>
+            <ViewTestimonial />
           </PrivateRoute>
         }
       />

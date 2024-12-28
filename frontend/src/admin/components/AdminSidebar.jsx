@@ -6,8 +6,10 @@ import ArticleIcon from "@mui/icons-material/Article";
 import HomeIcon from "@mui/icons-material/Home";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import EventIcon from '@mui/icons-material/Event';
-import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import EventIcon from "@mui/icons-material/Event";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 export const AdminSidebar = ({ mobileMenu }) => {
   const [accordions, setAccordions] = useState([
@@ -18,7 +20,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
     true,
     true,
     true,
-    true
+    true,
   ]); // Add more false values for more items
 
   const handleAccordion = (index) => {
@@ -371,9 +373,9 @@ export const AdminSidebar = ({ mobileMenu }) => {
               data-collapse-toggle="dropdown-example"
               onClick={() => handleAccordion(6)}
             >
-              <ContactsIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+              <EmojiEventsIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
-                Contact
+                Awards
               </span>
               <svg
                 className="w-3 h-3"
@@ -397,10 +399,18 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/view-contact"
+                  to="/admin/add-award"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
-                  View Contact Enquiry
+                  Add Awards
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/admin/view-award"
+                  className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                >
+                  View Awards
                 </Link>
               </li>
             </ul>
@@ -413,9 +423,9 @@ export const AdminSidebar = ({ mobileMenu }) => {
               data-collapse-toggle="dropdown-example"
               onClick={() => handleAccordion(7)}
             >
-              <QuestionAnswerIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+              <ReviewsIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
-                Property Enquiry
+                Testimonials
               </span>
               <svg
                 className="w-3 h-3"
@@ -439,13 +449,39 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <Link
-                  to="/admin/view-property-enquiry"
+                  to="/admin/add-testimonial"
                   className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 >
-                  View Property Enquiry
+                  Add Testimonial
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/admin/view-testimonial"
+                  className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                >
+                  View Testimonial
                 </Link>
               </li>
             </ul>
+          </li>
+          <li>
+            <Link
+              to="/admin/view-contact"
+              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <ContactsIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+              <span className="ms-3">Contact Enquiry</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/admin/view-property-enquiry"
+              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <QuestionAnswerIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+              <span className="ms-3">Property Enquiry</span>
+            </Link>
           </li>
         </ul>
       </div>

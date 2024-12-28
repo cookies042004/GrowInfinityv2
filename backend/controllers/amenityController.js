@@ -201,9 +201,6 @@ const deleteAmenity = async (req, res) => {
   }
 };
 
-module.exports = deleteAmenity;
-
-
 module.exports = {
   createAmenity,
   getAmenity,

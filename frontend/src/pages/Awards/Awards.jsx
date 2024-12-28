@@ -2,16 +2,14 @@ import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Layout } from "../../components/Layout";
 import { NavigationBar } from "../../components/NavigationBar";
-
-import award1 from "../../assets/img/1.jpg";
-import award2 from "../../assets/img/4.jpg";
-import award3 from "../../assets/img/Award.jpg";
-import award4 from "../../assets/img/Experion Award.jpg";
-import award5 from "../../assets/img/Experion Elements.jpg";
-
+import { useFetchData } from "../../hooks/useFetchData";
 import "./Awards.css";
+import { CircularProgress } from "@mui/material";
 
 export const Awards = () => {
+  const apiUrl = `${process.env.BASE_URL}/api/v1/awards`;
+  const { data, loading, error, refetch } = useFetchData(apiUrl);
+  const awards = data?.awards || [];
   return (
     <>
       <ToastContainer />
@@ -34,21 +32,23 @@ export const Awards = () => {
           </h1>
 
           <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto">
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-              <img src={award1} alt="" />
-            </div>
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-              <img src={award2} alt="" />
-            </div>
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-              <img src={award3} alt="" />
-            </div>
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-              <img src={award4} alt="" />
-            </div>
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
-              <img src={award5} alt="" />
-            </div>
+            {loading && (
+              <div className="col-span-12 flex justify-center">
+                <CircularProgress size="30px" />
+              </div>
+            )}
+            {error && (
+              <div className="col-span-12 flex justify-center">
+                <p>Something went wrong while loading the awards.</p>
+              </div>
+            )}
+            {awards?.map((award, i) => {
+              return (
+                <div key={award._id} className="col-span-12 md:col-span-6 lg:col-span-4 m-5">
+                  <img src={`${process.env.BASE_URL}/${award.image}`} alt="" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </Layout>
