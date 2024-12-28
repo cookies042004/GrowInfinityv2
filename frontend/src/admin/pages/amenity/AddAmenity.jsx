@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { AdminLayout } from "../../components/AdminLayout";
@@ -24,6 +24,7 @@ export const AddAmenity = () => {
     selectedFile: null,
   });
   const [loading, setLoading] = useState(false);
+  const imageInputRef = useRef();
 
   const apiUrl = `${process.env.BASE_URL}/api/v1/amenities`;
 
@@ -71,6 +72,10 @@ export const AddAmenity = () => {
         name: "",
         selectedFile: null,
       });
+      // Reset the file input after submission
+      if (imageInputRef.current) {
+        imageInputRef.current.value = ""; // Reset the file input
+      }
     } catch (error) {
       setLoading(false);
       console.error(error);
@@ -134,6 +139,7 @@ export const AddAmenity = () => {
                       allowed Max size: 1 mb)
                     </Typography>
                     <input
+                      ref={imageInputRef}
                       accept="image/*"
                       style={{ display: "none" }}
                       id="upload-button-file"

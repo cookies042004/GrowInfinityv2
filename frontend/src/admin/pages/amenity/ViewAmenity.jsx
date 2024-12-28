@@ -169,7 +169,7 @@ export const ViewAmenity = () => {
                             <TableCell>
                               <div className="flex gap-2">
                                 <Link
-                                  to={`/admin/dashboard/update-amenity/${amenity._id}`}
+                                  to={`/admin/update-amenity/${amenity._id}`}
                                 >
                                   <Button
                                     startIcon={<EditIcon />}

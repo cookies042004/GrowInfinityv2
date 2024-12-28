@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AdminLayout } from "../../components/AdminLayout";
 import {
   Button,
@@ -63,6 +63,9 @@ export const AddProperty = () => {
 
   // State to track uploaded images and brochure
   const [uploadedImages, setUploadedImages] = useState([]);
+
+  // Ref to the file input element
+  const imageInputRef = useRef();
 
   // Handle form input changes
   const handleChange = (event) => {
@@ -176,6 +179,11 @@ export const AddProperty = () => {
           locationAdvantages: [],
         });
         setUploadedImages([]);
+
+        // Reset the file input after submission
+        if (imageInputRef.current) {
+          imageInputRef.current.value = ""; // Reset the file input
+        }
       }
       setLoading(false);
     } catch (error) {
@@ -456,6 +464,7 @@ export const AddProperty = () => {
                       style={{ display: "none" }}
                       id="image-upload-input"
                       type="file"
+                      ref={imageInputRef}
                       multiple
                       onChange={handleImageUpload}
                     />

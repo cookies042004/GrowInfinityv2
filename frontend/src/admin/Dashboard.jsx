@@ -103,7 +103,7 @@ export const Dashboard = () => {
       <div className="p-4 sm:ml-64">
         <div className="mt-20">
           <div className="grid sm:grid-cols-12 gap-4 mb-4">
-            <div className="col-span-6 md:col-span-6 lg:col-span-3">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3">
               <div className="flex flex-col items-center justify-center h-[160px] rounded-lg shadow-lg bg-white border-t-4 border-blue-500 p-6">
                 <div className="flex flex-col gap-2 items-center justify-center">
                   <h5 className="text-md lg:text-lg font-semibold text-gray-700">
@@ -122,7 +122,7 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-6 md:col-span-6 lg:col-span-3">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3">
               <div className="flex flex-col items-center justify-center h-[160px] rounded-lg shadow-lg bg-white border-t-4 border-green-500 p-6">
                 <div className="flex flex-col gap-2 items-center justify-center">
                   <h5 className="text-md lg:text-lg font-semibold text-gray-700">
@@ -141,7 +141,7 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-6 md:col-span-6 lg:col-span-3">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3">
               <div className="flex flex-col items-center justify-center h-[160px] rounded-lg shadow-lg bg-white border-t-4 border-purple-500 p-6">
                 <div className="flex flex-col gap-2 items-center justify-center">
                   <h5 className="text-md lg:text-lg font-semibold text-gray-700">
@@ -160,7 +160,7 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-6 md:col-span-6 lg:col-span-3">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3">
               <div className="flex flex-col items-center justify-center h-[160px] rounded-lg shadow-lg bg-white border-t-4 border-yellow-500 p-6">
                 <div className="flex flex-col gap-2 items-center justify-center">
                   <h5 className="text-md lg:text-lg font-semibold text-gray-700">

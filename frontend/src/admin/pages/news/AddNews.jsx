@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { Button, TextField, Box, Typography } from "@mui/material";
+import React, { useState, useRef } from "react";
+import {
+  Button,
+  TextField,
+  Box,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -18,6 +24,7 @@ export const AddNews = () => {
   const [imagePreview, setImagePreview] = useState(null); // New state for image preview
 
   const apiUrl = `${process.env.BASE_URL}/api/v1/news`;
+  const imageInputRef = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,6 +75,9 @@ export const AddNews = () => {
         selectedFile: null,
       });
       setImagePreview(null); // Reset image preview after successful submission
+      if (imageInputRef.current) {
+        imageInputRef.current.value = ""; // Reset the file input
+      }
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -125,6 +135,7 @@ export const AddNews = () => {
                     </Typography>
                     <input
                       accept="image/*"
+                      ref={imageInputRef}
                       style={{ display: "none" }}
                       id="upload-button-file"
                       type="file"
@@ -174,7 +185,7 @@ export const AddNews = () => {
                   startIcon={!loading && <AddCircleIcon />}
                   type="submit"
                   size="small"
-                  style={{ textTransform: "none", width: "130px"  }}
+                  style={{ textTransform: "none", width: "130px" }}
                 >
                   {loading ? (
                     <CircularProgress size="25px" sx={{ color: "white" }} />

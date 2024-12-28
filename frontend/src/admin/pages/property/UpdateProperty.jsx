@@ -1,41 +1,218 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AdminLayout } from "../../components/AdminLayout";
-import { useParams } from "react-router-dom";
 import {
-    Button,
-    Checkbox,
-    FormControl,
-    FormControlLabel,
-    FormLabel,
-    InputLabel,
-    MenuItem,
-    Radio,
-    RadioGroup,
-    Select,
-    TextField,
-    Typography,
-  } from "@mui/material";
-  import { useFetchData } from "../../../hooks/useFetchData";
-  import AddCircleIcon from "@mui/icons-material/AddCircle";
-  import { ToastContainer, toast } from "react-toastify";
+  Button,
+  Checkbox,
+  CircularProgress,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { useFetchData } from "../../../hooks/useFetchData";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export const UpdateProperty = () => {
   document.title = "Update Property";
-
   const { id } = useParams();
+  const [ buttonLoading, setButtonLoading ] = useState(false);
+  // Fetching the property data by ID
+  const { data, loading, error, refetch } = useFetchData(
+    `${process.env.BASE_URL}/api/v1/property/${id}`
+  );
+  console.log(data?.property);
 
-  const apiUrl = `${process.env.BASE_URL}/api/v1/property/${id}`;
+  // Fetch categories and amenities data
+  const {
+    data: categoriesData,
+    error: categoryError,
+    loading: categoryLoading,
+    refetch: refetchCategories,
+  } = useFetchData(`${process.env.BASE_URL}/api/v1/category`);
+
+  const categories = categoriesData?.category || [];
+
+  const {
+    data: amenitiesData,
+    error: amenitiesError,
+    loading: amenitiesLoading,
+    refetch: refetchAmenities,
+  } = useFetchData(`${process.env.BASE_URL}/api/v1/amenities`);
+
+  const amenities = amenitiesData?.amenity || [];
+
+  // State to manage form data
+  const [formData, setFormData] = useState({
+    category: "",
+    name: "",
+    builder: "",
+    unit: "",
+    size: "",
+    price: "",
+    location: "",
+    address: "",
+    description: "",
+    furnishType: "",
+    societyAmenities: [],
+    flatAmenities: [],
+    locationAdvantages: [],
+  });
+
+  // State to track uploaded images and brochure
+  const [uploadedImages, setUploadedImages] = useState([]);
+
+  // Ref to the file input element
+  const imageInputRef = useRef();
+
+  // Load property data into formData when property is fetched
+  useEffect(() => {
+    if (data?.property) {
+      const property = data.property;
+      setFormData({
+        category: property.category._id || "",
+        name: property.name || "",
+        builder: property.builder || "",
+        unit: property.unit || "",
+        size: property.size || "",
+        price: property.price || "",
+        location: property.location || "",
+        address: property.address || "",
+        description: property.description || "",
+        furnishType: property.furnishType || "",
+        societyAmenities: property.societyAmenities || [],
+        flatAmenities: property.flatAmenities || [],
+        locationAdvantages: property.locationAdvantages || [],
+      });
+      setUploadedImages(property.images || []);
+    }
+  }, [data]);
+
+  // Handle form input changes
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  // Handle select changes
+  const handleSelectChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  // Handle checkbox changes
+  const handleCheckboxChange = (event, type) => {
+    const { name, checked } = event.target;
+    setFormData((prevData) => {
+      const currentItems = prevData[type];
+      if (checked) {
+        return { ...prevData, [type]: [...currentItems, name] };
+      } else {
+        return {
+          ...prevData,
+          [type]: currentItems.filter((item) => item !== name),
+        };
+      }
+    });
+  };
+
+  // Handler for uploading images
+  const handleImageUpload = (event) => {
+    const files = Array.from(event.target.files);
+    setUploadedImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  // Function to display image previews
+  const renderImagePreviews = () => {
+    return uploadedImages.map((image, index) => (
+      <img
+        key={index}
+        src={URL.createObjectURL(image)}
+        alt="Preview"
+        style={{ width: "100px", marginRight: "10px", marginBottom: "10px" }}
+      />
+    ));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setButtonLoading(true);
+    const allSelectedAmenities = [
+      ...formData.societyAmenities,
+      ...formData.flatAmenities,
+      ...formData.locationAdvantages,
+    ];
+
+    const formDataToSend = new FormData();
+
+    // Append form fields to FormData
+    Object.keys(formData).forEach((key) => {
+      if (
+        Array.isArray(formData[key]) &&
+        (key === "societyAmenities" ||
+          key === "flatAmenities" ||
+          key === "locationAdvantages")
+      ) {
+        formData[key].forEach((item) =>
+          formDataToSend.append("amenities", item)
+        );
+      } else {
+        formDataToSend.append(key, formData[key]);
+      }
+    });
+
+    // Append uploaded images
+    uploadedImages.forEach((image) => {
+      formDataToSend.append("image", image);
+    });
+
+    try {
+      const response = await axios.patch(
+        `${process.env.BASE_URL}/api/v1/property/${id}`,
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("Property updated successfully!");
+        refetch(); // Refetch the property data
+      }
+      setButtonLoading(false);
+    } catch (error) {
+      setButtonLoading(false);
+      console.error("Error updating property:", error);
+      toast.error("Failed to update property.");
+    }
+  };
+
   return (
     <>
       <ToastContainer />
       <AdminLayout />
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
+          <h2 className="text-xl font-bold p-2 text-center sm:text-left">
+            Update Property
+          </h2>
           <div className="container mx-auto">
-            <h2 className="text-xl font-bold p-2 text-center sm:text-left">
-              Update Property
-            </h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="flex flex-wrap my-5">
                 {/* Property Category */}
                 <div className="w-full sm:w-1/2 mb-4 p-2">
@@ -47,9 +224,9 @@ export const UpdateProperty = () => {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       name="category"
-                    //   value={formData.category}
-                    //   onChange={handleSelectChange}
-                      label="Enter Amenity Type*"
+                      value={formData.category}
+                      onChange={handleSelectChange}
+                      label="Property Category*"
                     >
                       {categories.map((category) => (
                         <MenuItem key={category._id} value={category._id}>
@@ -68,12 +245,13 @@ export const UpdateProperty = () => {
                     color="secondary"
                     size="small"
                     name="name"
-                    // value={formData.name}
-                    // onChange={handleChange}
+                    value={formData.name}
+                    onChange={handleChange}
                     fullWidth
                   />
                 </div>
 
+                {/* Property Inputs */}
                 <div className="w-full sm:w-1/2 mb-4 p-2">
                   <TextField
                     label="Enter Builder Name*"
@@ -112,13 +290,13 @@ export const UpdateProperty = () => {
                 </div>
                 <div className="w-full sm:w-1/2 mb-4 p-2">
                   <TextField
-                    label="Enter Price(In digits)*"
+                    label="Enter Price (in digits)*"
                     variant="outlined"
                     color="secondary"
                     size="small"
                     name="price"
-                    // value={formData.price}
-                    // onChange={handleChange}
+                    value={formData.price}
+                    onChange={handleChange}
                     fullWidth
                   />
                 </div>
@@ -145,8 +323,8 @@ export const UpdateProperty = () => {
                     color="secondary"
                     size="small"
                     name="address"
-                    // value={formData.address}
-                    // onChange={handleChange}
+                    value={formData.address}
+                    onChange={handleChange}
                     fullWidth
                   />
                 </div>
@@ -159,8 +337,8 @@ export const UpdateProperty = () => {
                     color="secondary"
                     size="small"
                     name="description"
-                    // value={formData.description}
-                    // onChange={handleChange}
+                    value={formData.description}
+                    onChange={handleChange}
                     multiline
                     fullWidth
                   />
@@ -173,8 +351,8 @@ export const UpdateProperty = () => {
                     <RadioGroup
                       row
                       name="furnishType"
-                    //   value={formData.furnishType}
-                    //   onChange={handleChange}
+                      value={formData.furnishType}
+                      onChange={handleChange}
                     >
                       <FormControlLabel
                         value="Fully Furnished"
@@ -288,13 +466,15 @@ export const UpdateProperty = () => {
                 <div className="w-full mb-4 p-2">
                   <FormControl component="fieldset">
                     <FormLabel id="image-upload">
-                      Upload Property Images
+                      Upload Property Images - (Only jpeg, jpg, png files are
+                      allowed Max size: 1 mb)
                     </FormLabel>
                     <input
                       accept="image/*"
                       style={{ display: "none" }}
                       id="image-upload-input"
                       type="file"
+                      ref={imageInputRef}
                       multiple
                       onChange={handleImageUpload}
                     />
@@ -324,17 +504,20 @@ export const UpdateProperty = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    startIcon={<AddCircleIcon />}
+                    startIcon={!buttonLoading && <AddCircleIcon />} // Conditional rendering for the icon
                     type="submit"
                     size="small"
-                    style={{ textTransform: "none" }}
+                    style={{ textTransform: "none", width: "130px" }}
                   >
-                    Add Property
+                    {buttonLoading ? (
+                      <CircularProgress size="25px" sx={{ color: "white" }} />
+                    ) : (
+                      "Update Property"
+                    )}
                   </Button>
                 </div>
               </div>
             </form>
-
           </div>
         </div>
       </div>

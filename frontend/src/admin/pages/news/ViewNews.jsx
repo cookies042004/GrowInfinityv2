@@ -143,7 +143,7 @@ export const ViewNews = () => {
                             <TableCell>
                               <div className="flex gap-2 justify-center">
                                 <Link
-                                  to={`/admin/dashboard/update-news/${article._id}`}
+                                  to={`/admin/update-news/${article._id}`}
                                 >
                                   <Button
                                     variant="outlined"

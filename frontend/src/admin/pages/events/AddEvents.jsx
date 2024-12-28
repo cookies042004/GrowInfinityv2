@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { AdminLayout } from "../../components/AdminLayout";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -13,6 +13,9 @@ import axios from "axios";
 
 export const AddEvents = () => {
   document.title = "Add Events";
+
+  // Ref to the file input element
+  const imageInputRef = useRef();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -66,6 +69,10 @@ export const AddEvents = () => {
         toast.success("Event added successfully!");
         setFormData({ title: "", description: "", selectedFiles: [] });
         setImagePreviews([]);
+         // Reset the file input after submission
+         if (imageInputRef.current) {
+          imageInputRef.current.value = ""; // Reset the file input
+        }
       } else {
         setLoading(false);
 
@@ -127,6 +134,7 @@ export const AddEvents = () => {
                       allowed Max size: 1 mb)
                     </Typography>
                     <input
+                      ref={imageInputRef}
                       accept="image/*"
                       style={{ display: "none" }}
                       id="upload-button-file"

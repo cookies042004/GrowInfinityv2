@@ -204,7 +204,7 @@ export const ViewProperty = () => {
                             <TableCell>
                               <div className="flex gap-2">
                                 <Link
-                                  to={`/admin/dashboard/update-property/${property._id}`}
+                                  to={`/admin/update-property/${property._id}`}
                                 >
                                   <Button
                                     startIcon={<EditIcon />}
