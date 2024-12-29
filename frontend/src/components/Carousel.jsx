@@ -39,7 +39,7 @@ const Carousel = ({ galleryImages }) => {
                 >
                   <img
                     src={image}
-                    className="block h-[280px] md:h-[350px] lg:h-[400px]   object-fill object-center"
+                    className="block h-[280px] md:h-[350px] lg:h-[400px] w-full  object-fill object-center"
                     alt={`Slide ${index + 1}`}
                   />
                 </div>
