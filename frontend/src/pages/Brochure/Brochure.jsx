@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFetchData } from "../../hooks/useFetchData";
 import { Layout } from "../../components/Layout";
 import gallery1 from "../../assets/img/gallery1.png";
 import gallery2 from "../../assets/img/gallery2.png";
 import gallery3 from "../../assets/img/gallery3.png";
-
+import DownloadIcon from "@mui/icons-material/Download";
 import "./Brochure.css";
+import { EnquiryForm } from "../../components/EnquiryForm";
 
 export const Brochure = () => {
   const apiUrl = `${process.env.BASE_URL}/api/v1/brochures/`;
 
   const { data, loading, error, refetch } = useFetchData(apiUrl);
   const brochures = data.brochure;
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Layout>
@@ -45,10 +52,12 @@ export const Brochure = () => {
               />
 
               {/* Hover content: Download button */}
-              <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                {/* <DownloadIcon className="mr-2 w-6 h-6" />
-                Download */}
-                Coming soon
+              <button
+                onClick={handleOpen}
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4"
+              >
+                <DownloadIcon className="mr-2 w-6 h-6" />
+                Download
               </button>
 
               {/* Title */}
@@ -68,10 +77,12 @@ export const Brochure = () => {
               />
 
               {/* Hover content: Download button */}
-              <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                 {/* <DownloadIcon className="mr-2 w-6 h-6" />
-                Download */}
-                Coming soon
+              <button
+                onClick={handleOpen}
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4"
+              >
+                <DownloadIcon className="mr-2 w-6 h-6" />
+                Download
               </button>
 
               {/* Title */}
@@ -91,10 +102,12 @@ export const Brochure = () => {
               />
 
               {/* Hover content: Download button */}
-              <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                 {/* <DownloadIcon className="mr-2 w-6 h-6" />
-                Download */}
-                Coming soon
+              <button
+                onClick={handleOpen}
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4"
+              >
+                <DownloadIcon className="mr-2 w-6 h-6" />
+                Download
               </button>
 
               {/* Title */}
@@ -114,10 +127,12 @@ export const Brochure = () => {
               />
 
               {/* Hover content: Download button */}
-              <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                  {/* <DownloadIcon className="mr-2 w-6 h-6" />
-                Download */}
-                Coming soon
+              <button
+                onClick={handleOpen}
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4"
+              >
+                <DownloadIcon className="mr-2 w-6 h-6" />
+                Download
               </button>
 
               {/* Title */}
@@ -137,15 +152,20 @@ export const Brochure = () => {
               />
 
               {/* Hover content: Download button */}
-              <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4">
-                  {/* <DownloadIcon className="mr-2 w-6 h-6" />
-                Download */}
-                Coming soon
+              <button
+                onClick={handleOpen}
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-white text-xl font-semibold transition-opacity duration-300 p-4"
+              >
+                <DownloadIcon className="mr-2 w-6 h-6" />
+                Download
               </button>
 
               {/* Title */}
               <h4 className="text-center text-xl font-roboto py-3 z-10">{`Prestige`}</h4>
             </div>
+          </div>
+          <div className="col-span-12">
+            <EnquiryForm handleClose={handleClose} open={open} />
           </div>
         </div>
       </div>

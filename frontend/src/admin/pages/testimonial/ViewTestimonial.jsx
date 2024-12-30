@@ -14,9 +14,11 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import { useFetchData } from "../../../hooks/useFetchData";
+import { Link } from "react-router-dom";
 
 export const ViewTestimonial = () => {
   document.title = "View Testimonial";
@@ -171,16 +173,31 @@ export const ViewTestimonial = () => {
                               </Box>
                             </TableCell>
                             <TableCell>
-                              <Button
-                                onClick={() => handleDelete(testimonial._id)}
-                                startIcon={<DeleteIcon />}
-                                variant="contained"
-                                size="small"
-                                color="error"
-                                style={{ textTransform: "none" }}
-                              >
-                                Delete
-                              </Button>
+                              <div className="flex gap-2">
+                                <Link
+                                  to={`/admin/update-testimonial/${testimonial._id}`}
+                                >
+                                  <Button
+                                    startIcon={<EditIcon />}
+                                    variant="outlined"
+                                    size="small"
+                                    color="success"
+                                    style={{ textTransform: "none" }}
+                                  >
+                                    Edit
+                                  </Button>
+                                </Link>
+                                <Button
+                                  onClick={() => handleDelete(testimonial._id)}
+                                  startIcon={<DeleteIcon />}
+                                  variant="contained"
+                                  size="small"
+                                  color="error"
+                                  style={{ textTransform: "none" }}
+                                >
+                                  Delete
+                                </Button>
+                              </div>
                             </TableCell>
                           </TableRow>
                         ))}

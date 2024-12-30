@@ -46,8 +46,11 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
               </svg>
             </button>
             <Link to="/admin/dashboard" className="flex ms-2 md:me-24">
-              <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+              <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:block hidden">
                 <img src={growinfinity} alt="" className="h-[50px]" />
+              </span>
+              <span className="self-center text-xl font-medium sm:text-2xl whitespace-nowrap dark:text-white">
+                <p>GrowInfinity Realtors</p>
               </span>
             </Link>
           </div>

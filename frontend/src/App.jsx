@@ -39,6 +39,7 @@ import { AddAwards } from "./admin/pages/awards/AddAwards.jsx";
 import { ViewAwards } from "./admin/pages/awards/ViewAwards.jsx";
 import { AddTestimonial } from "./admin/pages/testimonial/AddTestimonial.jsx";
 import { ViewTestimonial } from "./admin/pages/testimonial/ViewTestimonial.jsx";
+import { UpdateTestimonial } from "./admin/pages/testimonial/UpdateTestimonial.jsx";
 
 const App = () => {
   return (
@@ -245,6 +246,14 @@ const App = () => {
         element={
           <PrivateRoute>
             <ViewTestimonial />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/update-testimonial/:id"
+        element={
+          <PrivateRoute>
+            <UpdateTestimonial />
           </PrivateRoute>
         }
       />

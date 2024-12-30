@@ -3,7 +3,6 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import googlereview from "../assets/img/Google review button.jpeg";
 import whatsappfloat from "../assets/img/whatsapp float.png";
-import "./Layout.css";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import GoogleIcon from "@mui/icons-material/Google";
 
@@ -32,7 +31,7 @@ export const Layout = ({ children }) => {
           <img
             src={googlereview}
             alt="Google Review Button"
-            className="w-[120px] lg:w-[150px] cursor-pointer animated-button"
+            className="w-[120px] lg:w-[150px] cursor-pointer "
           />
         </a>
       </div>
@@ -44,7 +43,7 @@ export const Layout = ({ children }) => {
           <img
             src={whatsappfloat}
             alt="Whatsapp Button"
-            className="w-[45px] h-[45px] lg:w-[70px] lg:h-[70px] cursor-pointer animated-button"
+            className="w-[45px] h-[45px] lg:w-[70px] lg:h-[70px] cursor-pointer "
           />
         </a>
       </div>

@@ -428,10 +428,12 @@ export const Home = () => {
                       </p>
                       <img src={home} alt="" className="w-[80px] h-[80px]" />
                     </div>
-                    <button className="bg-[#1F4B43] rounded-lg text-white w-[50%] lg:w-[150px] text-sm py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
-                      Get Started
-                      <EastIcon size="small" sx={{ fontSize: "15px" }} />
-                    </button>
+                    <Link to={"/contact"}>
+                      <button className="bg-[#1F4B43] rounded-lg text-white w-[50%] lg:w-[150px] text-sm py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
+                        Contact us
+                        <EastIcon size="small" sx={{ fontSize: "15px" }} />
+                      </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-span-12 lg:col-span-3 hidden lg:flex items-end">
@@ -459,10 +461,12 @@ export const Home = () => {
                       </p>
                       <img src={house} alt="" className="w-[80px] h-[80px]" />
                     </div>
-                    <button className="bg-[#1F4B43] rounded-lg text-white w-[50%] lg:w-[150px] text-sm py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
-                      Get Started
-                      <EastIcon size="small" sx={{ fontSize: "15px" }} />
-                    </button>
+                    <Link to={"/contact"}>
+                      <button className="bg-[#1F4B43] rounded-lg text-white w-[50%] lg:w-[150px] text-sm py-1 lg:py-3 flex items-center justify-center gap-2 mt-8">
+                        Contact us
+                        <EastIcon size="small" sx={{ fontSize: "15px" }} />
+                      </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-span-12 lg:col-span-3 hidden lg:flex items-end">

@@ -4,6 +4,8 @@ const {
   getTestimonials,
   createTestimonials,
   deleteTestimonial,
+  updateTestimonial,
+  getSingleTestimonial,
 } = require("../controllers/testimonialController");
 
 const router = express.Router();
@@ -12,6 +14,10 @@ const router = express.Router();
 router.route("/").get(getTestimonials).post(upload, createTestimonials);
 
 // Route to get, delete, or update a specific amenity by ID
-router.route("/:id").delete(deleteTestimonial);
+router
+  .route("/:id")
+  .delete(deleteTestimonial)
+  .get(getSingleTestimonial)
+  .patch(upload, updateTestimonial);
 
 module.exports = router;

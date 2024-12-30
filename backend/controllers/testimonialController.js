@@ -45,13 +45,109 @@ const getTestimonials = async (req, res) => {
   }
 };
 
+// Fetch the single Testimonial
+const getSingleTestimonial = async (req, res) => {
+  try {
+    const testimonialId = req.params.id;
+    const testimonial = await Testimonials.findById(testimonialId);
+
+    if (!testimonial) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Testimonial not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Testimonial found successfully",
+      testimonial,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      err,
+    });
+  }
+};
+
+// Update a amenity
+const updateTestimonial = async (req, res) => {
+  try {
+    const testimonialId = req.params.id;
+    const { name, role, review } = req.body;
+
+    // Fetch the current news document
+    const existingTestimonial = await Testimonials.findById(testimonialId);
+
+    if (!existingTestimonial) {
+      return res.status(404).json({
+        success: false,
+        message: "Testimonial not found",
+      });
+    }
+
+    let updatedFields = {
+      name,
+      role,
+      review,
+    };
+
+    // Check if a new image was uploaded
+    if (req.files) {
+      const imagePath = req.files && req.files[0]?.path;
+      updatedFields.image = imagePath;
+
+      // Delete the old image if it exists
+      if (existingTestimonial.image) {
+        const oldImagePath = path.join(
+          __dirname,
+          "..",
+          existingTestimonial.image
+        ); // Construct the full path
+        fs.unlink(oldImagePath, (err) => {
+          if (err) {
+            console.error(`Error deleting old image: ${err.message}`);
+          }
+        });
+      }
+    }
+
+    // Update the news item
+    const updatedTestimonial = await Testimonials.findByIdAndUpdate(
+      testimonialId,
+      updatedFields,
+      {
+        new: true, // Return the updated document
+      }
+    );
+
+    // Send success response
+    res.status(200).json({
+      success: true,
+      message: "Record updated successfully",
+      testimonial: updatedTestimonial,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error: err,
+    });
+  }
+};
+
 // Delete Testimonials
 const deleteTestimonial = async (req, res) => {
   try {
     const testimonialId = req.params.id;
 
     // Proceed to delete the amenity if it is not associated with any property
-    const deletedTestimonial = await Testimonials.findByIdAndDelete(testimonialId);
+    const deletedTestimonial = await Testimonials.findByIdAndDelete(
+      testimonialId
+    );
 
     if (!deletedTestimonial) {
       return res.status(404).json({
@@ -100,4 +196,10 @@ const deleteTestimonial = async (req, res) => {
   }
 };
 
-module.exports = { createTestimonials, getTestimonials, deleteTestimonial };
+module.exports = {
+  createTestimonials,
+  getTestimonials,
+  deleteTestimonial,
+  getSingleTestimonial,
+  updateTestimonial,
+};
