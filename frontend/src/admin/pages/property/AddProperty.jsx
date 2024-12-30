@@ -256,6 +256,7 @@ export const AddProperty = () => {
                 </div>
                 <div className="w-full sm:w-1/2 mb-4 p-2">
                   <TextField
+                    type="number"
                     label="Enter Unit (in BHK)*"
                     variant="outlined"
                     color="secondary"
@@ -268,6 +269,7 @@ export const AddProperty = () => {
                 </div>
                 <div className="w-full sm:w-1/2 mb-4 p-2">
                   <TextField
+                    type="number"
                     label="Enter Size (in sq.ft)*"
                     variant="outlined"
                     color="secondary"
@@ -280,6 +282,7 @@ export const AddProperty = () => {
                 </div>
                 <div className="w-full sm:w-1/2 mb-4 p-2">
                   <TextField
+                    type="number"
                     label="Enter Price(In digits)*"
                     variant="outlined"
                     color="secondary"
