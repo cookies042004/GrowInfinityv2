@@ -42,6 +42,7 @@ app.use("/api/v1/property-enquiry", propertyEnquiryRoutes);
 app.use("/api/v1/awards", awardsRoutes);
 app.use("/api/v1/testimonials", testimonialRoutes);
 
+
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
