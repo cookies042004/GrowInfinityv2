@@ -27,6 +27,9 @@ export const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    if(!searchQuery){
+      return alert("Please enter name or location");
+     }
     try {
       navigate(`/search/${searchQuery}`);
     } catch (error) {

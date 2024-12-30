@@ -4,6 +4,7 @@ import "./SingleProject.css";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
 import { PropertyCard } from "../../components/PropertyCard";
+import { CircularProgress } from "@mui/material";
 
 export const SingleProject = () => {
   const { id } = useParams();
@@ -39,9 +40,22 @@ export const SingleProject = () => {
       </div>
 
       <div className="grid sm:grid-cols-12 max-w-[1280px] mx-auto my-10">
+        {loading && (
+          <div className="col-span-12 items-center flex justify-center">
+            <CircularProgress size="30px" />
+          </div>
+        )}
+        {error && (
+          <div className="col-span-12 flex items-center justify-center">
+            <p>Something went wrong: {error}</p>
+          </div>
+        )}
         {properties &&
           properties
-            .filter((property) => property.category.name == capitalizeWords(id.replace("-", " ")))
+            .filter(
+              (property) =>
+                property.category.name == capitalizeWords(id.replace("-", " "))
+            )
             .map((property) => {
               return (
                 <div className="col-span-12 lg:col-span-3 m-3">
