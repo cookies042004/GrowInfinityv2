@@ -21,7 +21,12 @@ const awardsRoutes = require("./routes/awardsRoutes");
 const testimonialRoutes = require("./routes/testimonialRoutes");
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: 'https://www.growinfinityrealtors.in', // Allow only the frontend domain
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Adjust allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+};
+app.use(cors(corsOptions));  
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({ extended: true }));
