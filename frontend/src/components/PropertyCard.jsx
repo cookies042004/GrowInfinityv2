@@ -27,13 +27,12 @@ export const PropertyCard = ({
   };
 
   function toINRCr(amount) {
-    // Convert the amount to Crores
-    let crAmount = amount / 10000000;
-    // If the decimal part is 0, return without decimals
-    if (crAmount % 1 === 0) {
-      return crAmount.toFixed(0) + " Cr";
-    } else {
-      return crAmount.toFixed(1) + " Cr";
+    // writing code for converting amount in lakhs and crores
+    if(amount < 10000000){
+      return (amount/100000).toFixed(1) + " Lakhs";
+    }
+    else{
+      return (amount/10000000).toFixed(1) + " Crore";
     }
   }
 
@@ -70,7 +69,7 @@ export const PropertyCard = ({
       <div className="flex gap-3 justify-between mt-5 font-roboto">
         <div className="flex gap-1 items-center">
           <HomeIcon sx={{ color: "darkblue", fontSize: "18px" }} />
-          <p className="text-xs">{unit} BHK</p>
+          <p className="text-xs">{unit}</p>
         </div>
         <div className="flex gap-1 items-center">
           <SquareFootIcon sx={{ color: "darkblue", fontSize: "18px" }} />

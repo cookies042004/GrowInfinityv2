@@ -61,6 +61,11 @@ export const AddProperty = () => {
     locationAdvantages: [],
   });
 
+  // State to manage select all
+  const [selectAllSociety, setSelectAllSociety] = useState(false);
+  const [selectAllFlat, setSelectAllFlat] = useState(false);
+  const [selectAllLocation, setSelectAllLocation] = useState(false);
+
   // State to track uploaded images and brochure
   const [uploadedImages, setUploadedImages] = useState([]);
 
@@ -85,19 +90,71 @@ export const AddProperty = () => {
 
   // Handle checkbox changes
   const handleCheckboxChange = (event, type) => {
-    const { name, checked } = event.target;
-    setFormData((prevData) => {
-      const currentItems = prevData[type];
-      if (checked) {
-        return { ...prevData, [type]: [...currentItems, name] };
-      } else {
-        return {
-          ...prevData,
-          [type]: currentItems.filter((item) => item !== name),
-        };
-      }
+    const { name, checked } = event.target;  // Use name instead of value
+  
+    if (name === "selectAll") {
+      if (type === "societyAmenities") setSelectAllSociety(checked);
+      if (type === "flatAmenities") setSelectAllFlat(checked);
+      if (type === "locationAdvantages") setSelectAllLocation(checked);
+  
+      setFormData({
+        ...formData,
+        [type]: checked
+          ? amenities
+              .filter((amenity) => amenity.type === amenityTypeMap[type])
+              .map((amenity) => amenity._id)
+          : [],
+      });
+    } else {
+      const updatedAmenities = checked
+        ? [...formData[type], name] // Using `name` instead of `value`
+        : formData[type].filter((amenity) => amenity !== name);
+  
+      setFormData({ ...formData, [type]: updatedAmenities });
+  
+      // Check if all checkboxes are selected, then auto-check "Select All"
+      const allSelected =
+        updatedAmenities.length ===
+        amenities.filter((amenity) => amenity.type === getAmenityType(type)).length;
+  
+      if (type === "societyAmenities") setSelectAllSociety(allSelected);
+      if (type === "flatAmenities") setSelectAllFlat(allSelected);
+      if (type === "locationAdvantages") setSelectAllLocation(allSelected);
+    }
+  };
+  
+
+  // dynamic amenity type mapping
+  const getAmenityType = (type) => {
+    return type === "locationAdvantages"
+    ? "location_advantages"
+    : type.replace("Amenities", "_amenity"); 
+  };
+
+
+  // radio button handler
+  const handleRadioChange = (event, type) => {
+    const { value } = event.target; 
+  
+    const isSelectAll = value === "selectAll";
+  
+    const selectAllStateSetters = {
+      societyAmenities: setSelectAllSociety,
+      flatAmenities: setSelectAllFlat,
+      locationAdvantages: setSelectAllLocation,
+    };
+    selectAllStateSetters[type](isSelectAll);
+  
+    setFormData({
+      ...formData,
+      [type]: isSelectAll
+        ? amenities
+            .filter((amenity) => amenity.type === getAmenityType(type))
+            .map((amenity) => amenity._id)
+        : [],
     });
   };
+  
 
   // Handler for uploading images
   const handleImageUpload = (event) => {
@@ -256,7 +313,7 @@ export const AddProperty = () => {
                 </div>
                 <div className="w-full sm:w-1/2 mb-4 p-2">
                   <TextField
-                    type="number"
+                    type="string"
                     label="Enter Unit (in BHK)*"
                     variant="outlined"
                     color="secondary"
@@ -370,28 +427,46 @@ export const AddProperty = () => {
                 <div className="w-full mb-4 p-2">
                   <FormControl component="fieldset">
                     <FormLabel color="secondary">Society Amenities</FormLabel>
-                    <div className="flex flex-wrap">
-                      {amenities
-                        .filter((amenity) => amenity.type === "society_amenity")
-                        .map((amenity) => (
-                          <FormControlLabel
-                            key={amenity._id}
-                            control={
-                              <Checkbox
-                                color="secondary"
-                                name={amenity._id}
-                                checked={formData.societyAmenities.includes(
-                                  amenity._id
-                                )}
-                                onChange={(e) =>
-                                  handleCheckboxChange(e, "societyAmenities")
-                                }
-                              />
-                            }
-                            label={amenity.name}
-                          />
-                        ))}
-                    </div>
+                    <RadioGroup value={selectAllSociety ? 'selectAll' : 'individual'}
+                    onChange={(e) => handleRadioChange(e, 'societyAmenities')} >
+                      <div className="flex flex-wrap">
+                        <FormControlLabel
+                          control={
+                            <Radio
+                              color="secondary"
+                              value="selectAll"
+                              onChange={(e) =>
+                                handleRadioChange(e, "societyAmenities")
+                              }
+                            />
+                          }
+                          label="Select All"
+                        />
+
+                        {amenities
+                          .filter(
+                            (amenity) => amenity.type === "society_amenity"
+                          )
+                          .map((amenity) => (
+                            <FormControlLabel
+                              key={amenity._id}
+                              control={
+                                <Checkbox
+                                  color="secondary"
+                                  name={amenity._id}
+                                  checked={formData.societyAmenities.includes(
+                                    amenity._id
+                                  )}
+                                  onChange={(e) =>
+                                    handleCheckboxChange(e, "societyAmenities")
+                                  }
+                                />
+                              }
+                              label={amenity.name}
+                            />
+                          ))}
+                      </div>
+                    </RadioGroup>
                   </FormControl>
                 </div>
 
@@ -399,28 +474,46 @@ export const AddProperty = () => {
                 <div className="w-full mb-4 p-2">
                   <FormControl component="fieldset">
                     <FormLabel color="secondary">Flat Amenities</FormLabel>
-                    <div className="flex flex-wrap">
-                      {amenities
-                        .filter((amenity) => amenity.type === "flat_amenity")
-                        .map((amenity) => (
-                          <FormControlLabel
-                            key={amenity._id}
-                            control={
-                              <Checkbox
-                                color="secondary"
-                                name={amenity._id}
-                                checked={formData.flatAmenities.includes(
-                                  amenity._id
-                                )}
-                                onChange={(e) =>
-                                  handleCheckboxChange(e, "flatAmenities")
-                                }
-                              />
-                            }
-                            label={amenity.name}
-                          />
-                        ))}
-                    </div>
+                    <RadioGroup value={selectAllFlat ? 'selectAll' : 'individual'}
+                    onChange={(e) => handleRadioChange(e, 'flatAmenities')} >
+                      <div className="flex flex-wrap">
+                        <FormControlLabel
+                          control={
+                            <Radio
+                              color="secondary"
+                              value="selectAll"
+                              onChange={(e) =>
+                                handleRadioChange(e, "flatAmenities")
+                              }
+                            />
+                          }
+                          label="Select All"
+                        />
+
+                        {amenities
+                          .filter(
+                            (amenity) => amenity.type === "flat_amenity"
+                          )
+                          .map((amenity) => (
+                            <FormControlLabel
+                              key={amenity._id}
+                              control={
+                                <Checkbox
+                                  color="secondary"
+                                  name={amenity._id}
+                                  checked={formData.flatAmenities.includes(
+                                    amenity._id
+                                  )}
+                                  onChange={(e) =>
+                                    handleCheckboxChange(e, "flatAmenities")
+                                  }
+                                />
+                              }
+                              label={amenity.name}
+                            />
+                          ))}
+                      </div>
+                    </RadioGroup>
                   </FormControl>
                 </div>
 
@@ -428,30 +521,46 @@ export const AddProperty = () => {
                 <div className="w-full mb-4 p-2">
                   <FormControl component="fieldset">
                     <FormLabel color="secondary">Location Advantages</FormLabel>
-                    <div className="flex flex-wrap">
-                      {amenities
-                        .filter(
-                          (amenity) => amenity.type === "location_advantages"
-                        )
-                        .map((amenity) => (
-                          <FormControlLabel
-                            key={amenity._id}
-                            control={
-                              <Checkbox
-                                color="secondary"
-                                name={amenity._id}
-                                checked={formData.locationAdvantages.includes(
-                                  amenity._id
-                                )}
-                                onChange={(e) =>
-                                  handleCheckboxChange(e, "locationAdvantages")
-                                }
-                              />
-                            }
-                            label={amenity.name}
-                          />
-                        ))}
-                    </div>
+                    <RadioGroup value={selectAllLocation ? 'selectAll' : 'individual'}
+                    onChange={(e) => handleRadioChange(e, 'locationAdvantages')} >
+                      <div className="flex flex-wrap">
+                        <FormControlLabel
+                          control={
+                            <Radio
+                              color="secondary"
+                              value="selectAll"
+                              onChange={(e) =>
+                                handleRadioChange(e, "locationAdvantages")
+                              }
+                            />
+                          }
+                          label="Select All"
+                        />
+
+                        {amenities
+                          .filter(
+                            (amenity) => amenity.type === "location_advantages"
+                          )
+                          .map((amenity) => (
+                            <FormControlLabel
+                              key={amenity._id}
+                              control={
+                                <Checkbox
+                                  color="secondary"
+                                  name={amenity._id}
+                                  checked={formData.locationAdvantages.includes(
+                                    amenity._id
+                                  )}
+                                  onChange={(e) =>
+                                    handleCheckboxChange(e, "locationAdvantages")
+                                  }
+                                />
+                              }
+                              label={amenity.name}
+                            />
+                          ))}
+                      </div>
+                    </RadioGroup>
                   </FormControl>
                 </div>
 

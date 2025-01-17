@@ -19,6 +19,7 @@ const propertySchema = new mongoose.Schema(
     },
     unit: {
       type: String,
+      // enum: ["1BHK", "2BHK", "3BHK", "4BHK", "5BHK"],
       required: true,
     },
     size: {

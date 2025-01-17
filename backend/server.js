@@ -22,7 +22,7 @@ const testimonialRoutes = require("./routes/testimonialRoutes");
 
 // Middleware
 const corsOptions = {
-  origin: 'https://www.growinfinityrealtors.in', // Allow only the frontend domain
+  origin: '*', // Allow only the frontend domain
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Adjust allowed methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
 };

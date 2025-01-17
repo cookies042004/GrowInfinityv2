@@ -2,7 +2,7 @@ const Category = require("../models/category");
 const Property = require("../models/property");
 
 // Create a Category
-const createCategory = async (req, res) => {
+const   createCategory = async (req, res) => {
   const { name } = req.body;
   const category = new Category({ name });
   try {
